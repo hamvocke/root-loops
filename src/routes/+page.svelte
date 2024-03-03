@@ -20,3 +20,15 @@
 
 	<Slider id="slider-colors" label="Artificial Colos" bind:value={$colors} />
 </section>
+
+<style>
+	header {
+		display: flex;
+		flex-direction: column;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 900;
+	}
+</style>
