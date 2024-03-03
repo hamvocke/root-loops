@@ -10,7 +10,7 @@
 
 <header>
 	<h1>Root Loops</h1>
-	<small>A color scheme generator for cereal lovers.</small>
+	<p class="caption">A color scheme generator for cereal lovers.</p>
 </header>
 
 <section class="sliders">
@@ -25,10 +25,22 @@
 	header {
 		display: flex;
 		flex-direction: column;
+		text-align: center;
+		margin-bottom: 3rem;
 	}
 
 	h1 {
-		font-size: 4rem;
+		font-size: 7rem;
+		text-transform: uppercase;
+		letter-spacing: -3px;
 		font-weight: 900;
+		margin-bottom: 0.5rem;
+	}
+
+	.caption {
+		margin-top: 0;
+		font-size: 1.4rem;
+		font-weight: 300;
+		font-style: italic;
 	}
 </style>
