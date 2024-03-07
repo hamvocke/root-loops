@@ -40,7 +40,7 @@
 
 <section class="bowl">
 	{#each cereals as cereal}
-		<div class="cereal" style="background: {cereal.color}"></div>
+		<div class="cereal" style="--color: {cereal.color};"></div>
 	{/each}
 </section>
 
@@ -87,5 +87,6 @@
 		height: clamp(3rem, 9vw, 128px);
 		width: clamp(3rem, 9vw, 128px);
 		border-radius: 50%;
+		background: var(--color);
 	}
 </style>
