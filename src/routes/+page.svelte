@@ -15,7 +15,16 @@
 		{ name: 'base05', color: '#444' },
 		{ name: 'base06', color: '#555' },
 		{ name: 'base07', color: '#666' },
-		{ name: 'base08', color: '#777' }
+		{ name: 'base08', color: '#777' },
+
+		{ name: 'base09', color: '#888' },
+		{ name: 'base10', color: '#999' },
+		{ name: 'base11', color: '#aaa' },
+		{ name: 'base12', color: '#bbb' },
+		{ name: 'base13', color: '#ccc' },
+		{ name: 'base14', color: '#ddd' },
+		{ name: 'base15', color: '#eee' },
+		{ name: 'base16', color: '#fff' }
 	];
 </script>
 
@@ -67,14 +76,16 @@
 	}
 
 	.bowl {
-		display: flex;
-		gap: 2rem;
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		grid-template-rows: auto;
+		gap: 1rem;
 		margin-bottom: 3rem;
 	}
 
 	.cereal {
-		height: 128px;
-		width: 128px;
+		height: clamp(3rem, 9vw, 128px);
+		width: clamp(3rem, 9vw, 128px);
 		border-radius: 50%;
 	}
 </style>
