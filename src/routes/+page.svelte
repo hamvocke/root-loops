@@ -1,30 +1,27 @@
 <script lang="ts">
 	import Slider from './Slider.svelte';
 	import { milk, flavor, colors } from './stores';
+	import Color from 'colorjs.io';
 
-	type Cereal = {
-		name: string;
-		color: string;
-	};
+	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
+	$: cerealColors = [
+		new Color('oklch', [$milk * 0.05, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.1, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.2, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.3, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.35, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.4, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.45, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.5, $flavor * 0.04, $colors * 50]),
 
-	let cereals: Cereal[] = [
-		{ name: 'base01', color: '#000' },
-		{ name: 'base02', color: '#111' },
-		{ name: 'base03', color: '#222' },
-		{ name: 'base04', color: '#333' },
-		{ name: 'base05', color: '#444' },
-		{ name: 'base06', color: '#555' },
-		{ name: 'base07', color: '#666' },
-		{ name: 'base08', color: '#777' },
-
-		{ name: 'base09', color: '#888' },
-		{ name: 'base10', color: '#999' },
-		{ name: 'base11', color: '#aaa' },
-		{ name: 'base12', color: '#bbb' },
-		{ name: 'base13', color: '#ccc' },
-		{ name: 'base14', color: '#ddd' },
-		{ name: 'base15', color: '#eee' },
-		{ name: 'base16', color: '#fff' }
+		new Color('oklch', [$milk * 0.6, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.65, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.7, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.75, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.8, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.85, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.9, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [$milk * 0.95, $flavor * 0.04, $colors * 50])
 	];
 </script>
 
@@ -39,9 +36,9 @@
 </header>
 
 <section class="bowl">
-	{#each cereals as cereal}
+	{#each cerealColors as cereal}
 		<!-- todo: consider adding cereal-texture? -->
-		<div class="cereal" style="--color: {cereal.color};"></div>
+		<div class="cereal" style="--color: {cereal};"></div>
 	{/each}
 </section>
 
@@ -85,11 +82,12 @@
 	}
 
 	.cereal {
+		--outline-color: hsl(from var(--color) h s l / 0.1);
 		box-sizing: border-box;
 		height: clamp(3rem, 9vw, 128px);
 		width: clamp(3rem, 9vw, 128px);
 		border-radius: 50%;
 		border: 2rem solid var(--color);
-		outline: 0.5rem solid #0001;
+		outline: 0.5rem solid hsl(from var(--color) h s l / 0.2);
 	}
 </style>
