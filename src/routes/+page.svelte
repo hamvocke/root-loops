@@ -40,6 +40,7 @@
 
 <section class="bowl">
 	{#each cereals as cereal}
+		<!-- todo: consider adding cereal-texture? -->
 		<div class="cereal" style="--color: {cereal.color};"></div>
 	{/each}
 </section>
@@ -84,9 +85,11 @@
 	}
 
 	.cereal {
+		box-sizing: border-box;
 		height: clamp(3rem, 9vw, 128px);
 		width: clamp(3rem, 9vw, 128px);
 		border-radius: 50%;
-		background: var(--color);
+		border: 2rem solid var(--color);
+		outline: 0.5rem solid #0001;
 	}
 </style>
