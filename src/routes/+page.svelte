@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Slider from './Slider.svelte';
-	import { generateColors } from '$lib/colorcrunch';
+	import { generateColors, generateBowlColors } from '$lib/colorcrunch';
 
 	let milk = 6;
 	let flavor = 1;

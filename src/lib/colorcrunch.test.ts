@@ -46,4 +46,10 @@ describe('generateColors', () => {
     expect(colors[2].l).toBe(0.67);
     expect(colors[3].l).toBe(1);
   });
+
+  it('generates bowl colors with given chroma value', () => {
+    let colors = generateColors(1, 0.2);
+
+    expect(colors[0].c).toBe(0.2);
+  });
 });

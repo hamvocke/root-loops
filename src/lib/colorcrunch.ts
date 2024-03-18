@@ -8,12 +8,12 @@ export function generateColors(count: number, l: number = 0.6, c: number = 0.2):
     .map((_color, i) => new Color("oklch", [l, c, h(i)]));
 }
 
-export function generateBowlColors(count: number): Color[] {
+export function generateBowlColors(count: number, chroma: number = 0.02): Color[] {
   const l = (i: number) => lightness(i, count);
 
   return new Array(count)
     .fill(undefined)
-    .map((_color, i) => new Color("oklch", [l(i), 0.02, 340]));
+    .map((_color, i) => new Color("oklch", [l(i), chroma, 340]));
 }
 
 function hue(index: number, colorCount: number): number {
