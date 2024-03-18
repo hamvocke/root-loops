@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Slider from './Slider.svelte';
 	import Color from 'colorjs.io';
+	import { generateColors } from '$lib/colorcrunch';
 
 	function calcMilk(milk, lightness) {
 		return milk * 0.01 + lightness;
