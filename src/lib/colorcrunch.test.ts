@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateColors } from './colorcrunch';
+import { generateColors, generateBowlColors } from './colorcrunch';
 import Color from 'colorjs.io';
 
 describe('generateColors', () => {
@@ -31,5 +31,19 @@ describe('generateColors', () => {
 
     expect(colors[0].l).toBe(0.2);
     expect(colors[0].c).toBe(0.1);
+  });
+
+  it('generates bowl colors in oklch space', () => {
+    let colors = generateBowlColors(5);
+    expect(colors.every(c => c.space === Color.spaces.oklch)).toBeTruthy();
+  });
+
+  it('generates bowl colors with equal lightness distance', () => {
+    let colors = generateBowlColors(4);
+
+    expect(colors[0].l).toBe(0);
+    expect(colors[1].l).toBe(0.33);
+    expect(colors[2].l).toBe(0.67);
+    expect(colors[3].l).toBe(1);
   });
 });
