@@ -22,7 +22,7 @@
 </header>
 
 <section class="bowl">
-	{#each cereals as cereal}
+	{#each allColors as cereal}
 		<!-- todo: consider adding cereal-texture? -->
 		<div class="cereal" style="--color: {cereal};"></div>
 	{/each}
@@ -68,12 +68,10 @@
 	}
 
 	.cereal {
-		--outline-color: hsl(from var(--color) h s l / 0.1);
 		box-sizing: border-box;
 		height: clamp(3rem, 9vw, 128px);
 		width: clamp(3rem, 9vw, 128px);
 		border-radius: 50%;
-		border: 2rem solid var(--color);
-		outline: 0.5rem solid hsl(from var(--color) h s l / 0.2);
+		border: 3rem solid var(--color);
 	}
 </style>
