@@ -8,7 +8,17 @@
 
 	// TODO: inGamut() checks
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-	$: allColors = [...generateColors(6, colors / 10), ...generateBowlColors(4, milk / 100)];
+	$: cerealColors = generateColors(6, colors / 10);
+	$: intenseCerealColors = generateColors(6, (colors - 2) / 10);
+	$: bowlColors = generateBowlColors(4, milk / 100);
+	$: allColors = [
+		bowlColors[0],
+		...cerealColors,
+		bowlColors[2],
+		bowlColors[1],
+		...intenseCerealColors,
+		bowlColors[3]
+	];
 </script>
 
 <svelte:head>
