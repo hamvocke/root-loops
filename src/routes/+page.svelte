@@ -2,7 +2,7 @@
 	import Slider from './Slider.svelte';
 	import { generateColors } from '$lib/colorcrunch';
 
-	let milk = 8;
+	let milk = 6;
 	let flavor = 1;
 	let colors = 1;
 
@@ -33,7 +33,7 @@
 
 	<Slider id="slider-flavor" label="Flavor" bind:value={flavor} />
 
-	<Slider id="slider-colors" label="Artificial Colos" bind:value={colors} />
+	<Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
 </section>
 
 <style>
