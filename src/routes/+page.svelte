@@ -4,11 +4,11 @@
 
 	let milk = 6;
 	let flavor = 1;
-	let colors = 1;
+	let colors = 6;
 
 	// TODO: inGamut() checks
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-	$: cereals = generateColors(6, milk / 10);
+	$: allColors = [...generateColors(6, colors / 10), ...generateBowlColors(4, milk / 100)];
 </script>
 
 <svelte:head>
