@@ -25,4 +25,11 @@ describe('generateColors', () => {
     expect(colors[6].h).toBe(270);
     expect(colors[7].h).toBe(315);
   });
+
+  it('generates colors with given lightness and chroma values', () => {
+    let colors = generateColors(1, 0.2, 0.1);
+
+    expect(colors[0].l).toBe(0.2);
+    expect(colors[0].c).toBe(0.1);
+  });
 });
