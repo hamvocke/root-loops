@@ -2,22 +2,23 @@
 	import Slider from './Slider.svelte';
 	import { generateColors } from '$lib/colorcrunch';
 
-	let milk = 1;
+	let milk = 8;
 	let flavor = 1;
 	let colors = 1;
 
+	// TODO: inGamut() checks
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-	let cereals = generateColors(16);
+	$: cereals = generateColors(6, milk / 10);
 </script>
 
 <svelte:head>
 	<title>Root Loops</title>
-	<meta name="description" content="A color scheme for the cereal developer" />
+	<meta name="description" content="A code & terminal color scheme for cereal lovers." />
 </svelte:head>
 
 <header>
 	<h1>Root Loops</h1>
-	<p class="caption">A color scheme generator for cereal lovers.</p>
+	<p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
 </header>
 
 <section class="bowl">
