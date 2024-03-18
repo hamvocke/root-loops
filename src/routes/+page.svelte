@@ -3,25 +3,28 @@
 	import { milk, flavor, colors } from './stores';
 	import Color from 'colorjs.io';
 
+	function calcMilk(milk, lightness) {
+		return milk * 0.01 + lightness;
+	}
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
 	$: cerealColors = [
-		new Color('oklch', [$milk * 0.05, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.1, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.2, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.3, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.35, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.4, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.45, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.5, $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.15), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.2), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.25), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.3), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.35), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.4), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.45), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.5), $flavor * 0.04, $colors * 50]),
 
-		new Color('oklch', [$milk * 0.6, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.65, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.7, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.75, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.8, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.85, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.9, $flavor * 0.04, $colors * 50]),
-		new Color('oklch', [$milk * 0.95, $flavor * 0.04, $colors * 50])
+		new Color('oklch', [calcMilk($milk, 0.45), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.5), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.55), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.6), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.65), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.7), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.75), $flavor * 0.04, $colors * 50]),
+		new Color('oklch', [calcMilk($milk, 0.8), $flavor * 0.04, $colors * 50])
 	];
 </script>
 
