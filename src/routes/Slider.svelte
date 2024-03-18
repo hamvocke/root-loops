@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type { Writable } from 'svelte/store';
 	export let label = 'My Slider';
 	export let id: string;
-	export let value: Writable<number>;
+	export let value: number;
 </script>
 
 <div class="slider">
