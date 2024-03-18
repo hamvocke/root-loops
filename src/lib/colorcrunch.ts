@@ -6,7 +6,7 @@ export function generateColors(count: number): Color[] {
 
   return new Array(count)
     .fill(undefined)
-    .map((_color, i) => new Color("oklch", [l(i), 0, h(i)]));
+    .map((_color, i) => new Color("oklch", [l(i), 0.2, h(i)]));
 }
 
 function lightness(index: number, colorCount: number): number {

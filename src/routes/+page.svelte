@@ -1,36 +1,13 @@
 <script lang="ts">
 	import Slider from './Slider.svelte';
-	import Color from 'colorjs.io';
 	import { generateColors } from '$lib/colorcrunch';
-
-	function calcMilk(milk, lightness) {
-		return milk * 0.01 + lightness;
-	}
 
 	let milk = 1;
 	let flavor = 1;
 	let colors = 1;
 
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-	$: cerealColors = [
-		new Color('oklch', [calcMilk(milk, 0.15), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.2), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.25), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.3), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.35), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.4), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.45), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.5), flavor * 0.04, colors * 50]),
-
-		new Color('oklch', [calcMilk(milk, 0.45), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.5), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.55), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.6), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.65), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.7), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.75), flavor * 0.04, colors * 50]),
-		new Color('oklch', [calcMilk(milk, 0.8), flavor * 0.04, colors * 50])
-	];
+	let cereals = generateColors(16);
 </script>
 
 <svelte:head>
@@ -44,7 +21,7 @@
 </header>
 
 <section class="bowl">
-	{#each cerealColors as cereal}
+	{#each cereals as cereal}
 		<!-- todo: consider adding cereal-texture? -->
 		<div class="cereal" style="--color: {cereal};"></div>
 	{/each}
