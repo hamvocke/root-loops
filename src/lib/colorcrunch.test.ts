@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { equalHueDistance, equalLightnessDistance } from './colorcrunch';
+import { equalHueDistance, equalLightnessDistance, crunch } from './colorcrunch';
 import Color from 'colorjs.io';
 
 describe('generateColors', () => {
@@ -14,16 +14,16 @@ describe('generateColors', () => {
 	});
 
 	it('generates colors with equal hue distance', () => {
-		let colors = equalHueDistance(8);
+		let colors = equalHueDistance(8, 0.6, 0.2, 15);
 
-		expect(colors[0].h).toBe(0);
-		expect(colors[1].h).toBe(45);
-		expect(colors[2].h).toBe(90);
-		expect(colors[3].h).toBe(135);
-		expect(colors[4].h).toBe(180);
-		expect(colors[5].h).toBe(225);
-		expect(colors[6].h).toBe(270);
-		expect(colors[7].h).toBe(315);
+		expect(colors[0].h).toBe(15);
+		expect(colors[1].h).toBe(60);
+		expect(colors[2].h).toBe(105);
+		expect(colors[3].h).toBe(150);
+		expect(colors[4].h).toBe(195);
+		expect(colors[5].h).toBe(240);
+		expect(colors[6].h).toBe(285);
+		expect(colors[7].h).toBe(330);
 	});
 
 	it('generates colors with given lightness and chroma values', () => {
@@ -52,4 +52,25 @@ describe('generateColors', () => {
 
 		expect(colors[0].c).toBe(0.2);
 	});
+
+  it('generates base tone cereals with low chroma', () => {
+    let cereals = crunch();
+
+    expect(cereals["black"].c).toBeLessThan(0.03);
+    expect(cereals["white"].c).toBeLessThan(0.03);
+    expect(cereals["bright_black"].c).toBeLessThan(0.03);
+    expect(cereals["bright_white"].c).toBeLessThan(0.03);
+  });
+
+  it('generates red tone cereals with right hue', () => {
+    const cereals = crunch();
+    const red = cereals["red"];
+    const brightRed = cereals["bright_red"];
+
+    expect(red.h).toBeGreaterThanOrEqual(15);
+    expect(red.h).toBeLessThanOrEqual(30);
+
+    expect(brightRed.h).toBeGreaterThanOrEqual(15);
+    expect(brightRed.h).toBeLessThanOrEqual(30);
+  });
 });
