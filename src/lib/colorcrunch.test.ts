@@ -1,20 +1,20 @@
 import { describe, it, expect } from 'vitest';
-import { generateColors, generateBowlColors } from './colorcrunch';
+import { equalHueDistance, equalLightnessDistance } from './colorcrunch';
 import Color from 'colorjs.io';
 
 describe('generateColors', () => {
 	it('generates the right amount of colors', () => {
-    let colors = generateColors(16);
+    let colors = equalHueDistance(16);
 		expect(colors.length).toBe(16);
 	});
 
   it('generates colors in oklch space', () => {
-    let colors = generateColors(5);
+    let colors = equalHueDistance(5);
     expect(colors.every(c => c.space === Color.spaces.oklch)).toBeTruthy();
   });
 
   it('generates colors with equal hue distance', () => {
-    let colors = generateColors(8);
+    let colors = equalHueDistance(8);
 
     expect(colors[0].h).toBe(0);
     expect(colors[1].h).toBe(45);
@@ -27,19 +27,19 @@ describe('generateColors', () => {
   });
 
   it('generates colors with given lightness and chroma values', () => {
-    let colors = generateColors(1, 0.2, 0.1);
+    let colors = equalHueDistance(1, 0.2, 0.1);
 
     expect(colors[0].l).toBe(0.2);
     expect(colors[0].c).toBe(0.1);
   });
 
   it('generates bowl colors in oklch space', () => {
-    let colors = generateBowlColors(5);
+    let colors = equalLightnessDistance(5);
     expect(colors.every(c => c.space === Color.spaces.oklch)).toBeTruthy();
   });
 
   it('generates bowl colors with equal lightness distance', () => {
-    let colors = generateBowlColors(4);
+    let colors = equalLightnessDistance(4);
 
     expect(colors[0].l).toBe(0);
     expect(colors[1].l).toBe(0.33);
@@ -48,7 +48,7 @@ describe('generateColors', () => {
   });
 
   it('generates bowl colors with given chroma value', () => {
-    let colors = generateColors(1, 0.2);
+    let colors = equalHueDistance(1, 0.2);
 
     expect(colors[0].c).toBe(0.2);
   });

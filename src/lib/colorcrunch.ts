@@ -1,6 +1,6 @@
 import Color from "colorjs.io";
 
-export function generateColors(count: number, l: number = 0.6, c: number = 0.2): Color[] {
+export function equalHueDistance(count: number, l: number = 0.6, c: number = 0.2): Color[] {
   const h = (i: number) => hue(i, count);
 
   return new Array(count)
@@ -8,7 +8,7 @@ export function generateColors(count: number, l: number = 0.6, c: number = 0.2):
     .map((_color, i) => new Color("oklch", [l, c, h(i)]));
 }
 
-export function generateBowlColors(count: number, chroma: number = 0.02): Color[] {
+export function equalLightnessDistance(count: number, chroma: number = 0.02): Color[] {
   const l = (i: number) => lightness(i, count);
 
   return new Array(count)
@@ -27,3 +27,4 @@ function lightness(index: number, colorCount: number): number {
   const step = maxLightness / (colorCount - 1);
   return Math.round(step * index) / 100;
 }
+

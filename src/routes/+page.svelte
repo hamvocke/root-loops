@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Slider from './Slider.svelte';
-	import { generateColors, generateBowlColors } from '$lib/colorcrunch';
+	import { equalHueDistance, equalLightnessDistance } from '$lib/colorcrunch';
 
 	let milk = 6;
 	let flavor = 1;
@@ -8,9 +8,9 @@
 
 	// TODO: inGamut() checks
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-	$: cerealColors = generateColors(6, colors / 10);
-	$: intenseCerealColors = generateColors(6, (colors - 2) / 10);
-	$: bowlColors = generateBowlColors(4, milk / 100);
+	$: cerealColors = equalHueDistance(6, colors / 10);
+	$: intenseCerealColors = equalHueDistance(6, (colors - 2) / 10);
+	$: bowlColors = equalLightnessDistance(4, milk / 100);
 	$: allColors = [
 		bowlColors[0],
 		...cerealColors,
