@@ -14,7 +14,7 @@ describe('generateColors', () => {
 	});
 
 	it('generates colors with equal hue distance', () => {
-		let colors = equalHueDistance(8, 0.6, 0.2, 15);
+		let colors = equalHueDistance(8, 0.6, 0.2);
 
 		expect(colors[0].h).toBe(15);
 		expect(colors[1].h).toBe(60);
@@ -84,5 +84,19 @@ describe('generateColors', () => {
 
     expect(brightGreen.h).toBeGreaterThanOrEqual(115);
     expect(brightGreen.h).toBeLessThanOrEqual(140);
+  });
+
+  it('generates bright colors with higher lightness than regular colors', () => {
+    const cereals = crunch();
+
+    expect(cereals['bright_black'].l).toBeGreaterThan(cereals['black'].l);
+    expect(cereals['bright_red'].l).toBeGreaterThan(cereals['red'].l);
+    expect(cereals['bright_green'].l).toBeGreaterThan(cereals['green'].l);
+    expect(cereals['bright_yellow'].l).toBeGreaterThan(cereals['yellow'].l);
+    expect(cereals['bright_blue'].l).toBeGreaterThan(cereals['blue'].l);
+    expect(cereals['bright_magenta'].l).toBeGreaterThan(cereals['magenta'].l);
+    expect(cereals['bright_cyan'].l).toBeGreaterThan(cereals['cyan'].l);
+    expect(cereals['bright_white'].l).toBeGreaterThan(cereals['white'].l);
+
   });
 });
