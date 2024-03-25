@@ -1,6 +1,7 @@
 :root {
 	--font-body: system-ui, sans-serif;
 	--color-text: rgba(0, 0, 0, 0.7);
+  --color-gray-100: rgba(0, 0, 0, 0.1);
 	font-family: var(--font-body);
 	color: var(--color-text);
 }
