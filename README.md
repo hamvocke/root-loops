@@ -1,5 +1,7 @@
 # Root Loops
 
+[![Tests](https://github.com/hamvocke/root-loops/actions/workflows/test.yaml/badge.svg)](https://github.com/hamvocke/root-loops/actions/workflows/test.yaml)
+
 ## Developing
 
 Install dependencies via `npm install`.
