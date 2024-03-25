@@ -74,6 +74,18 @@ describe('colorcrunch', () => {
     expect(brightRed.h).toBeLessThanOrEqual(60);
   });
 
+  it('generates yellow tone cereals with right hue', () => {
+    const cereals = crunch();
+    const yellow = cereals["yellow"];
+    const brightYellow = cereals["bright_yellow"];
+
+    expect(yellow.h).toBeGreaterThanOrEqual(60);
+    expect(yellow.h).toBeLessThanOrEqual(120);
+
+    expect(brightYellow.h).toBeGreaterThanOrEqual(60);
+    expect(brightYellow.h).toBeLessThanOrEqual(120);
+  });
+
   it('generates green tone cereals with right hue', () => {
     const cereals = crunch();
     const green = cereals["green"];
@@ -86,16 +98,16 @@ describe('colorcrunch', () => {
     expect(brightGreen.h).toBeLessThanOrEqual(180);
   });
 
-  it('generates yellow tone cereals with right hue', () => {
+  it('generates cyan tone cereals with right hue', () => {
     const cereals = crunch();
-    const yellow = cereals["yellow"];
-    const brightYellow = cereals["bright_yellow"];
+    const cyan = cereals["cyan"];
+    const brightCyan = cereals["bright_cyan"];
 
-    expect(yellow.h).toBeGreaterThanOrEqual(60);
-    expect(yellow.h).toBeLessThanOrEqual(120);
+    expect(cyan.h).toBeGreaterThanOrEqual(180);
+    expect(cyan.h).toBeLessThanOrEqual(240);
 
-    expect(brightYellow.h).toBeGreaterThanOrEqual(60);
-    expect(brightYellow.h).toBeLessThanOrEqual(120);
+    expect(brightCyan.h).toBeGreaterThanOrEqual(180);
+    expect(brightCyan.h).toBeLessThanOrEqual(240);
   });
 
   it('generates blue tone cereals with right hue', () => {
@@ -120,18 +132,6 @@ describe('colorcrunch', () => {
 
     expect(brightMagenta.h).toBeGreaterThanOrEqual(300);
     expect(brightMagenta.h).toBeLessThanOrEqual(360);
-  });
-
-  it('generates cyan tone cereals with right hue', () => {
-    const cereals = crunch();
-    const cyan = cereals["cyan"];
-    const brightCyan = cereals["bright_cyan"];
-
-    expect(cyan.h).toBeGreaterThanOrEqual(180);
-    expect(cyan.h).toBeLessThanOrEqual(240);
-
-    expect(brightCyan.h).toBeGreaterThanOrEqual(180);
-    expect(brightCyan.h).toBeLessThanOrEqual(240);
   });
 
   it('generates bright colors with higher lightness than regular colors', () => {
