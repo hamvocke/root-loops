@@ -44,7 +44,7 @@ export function crunch() {
 		'bright_green': brightAccentColors[2],
 		'bright_yellow': brightAccentColors[1],
 		'bright_blue': brightAccentColors[4],
-		'bright_magenta': brightAccentColors[2],
+		'bright_magenta': brightAccentColors[5],
 		'bright_cyan': brightAccentColors[3],
 		'bright_white': baseColors[3],
   };
