@@ -86,6 +86,18 @@ describe('colorcrunch', () => {
     expect(brightGreen.h).toBeLessThanOrEqual(140);
   });
 
+  it('generates yellow tone cereals with right hue', () => {
+    const cereals = crunch();
+    const yellow = cereals["yellow"];
+    const brightYellow = cereals["bright_yellow"];
+
+    expect(yellow.h).toBeGreaterThanOrEqual(70);
+    expect(yellow.h).toBeLessThanOrEqual(100);
+
+    expect(brightYellow.h).toBeGreaterThanOrEqual(70);
+    expect(brightYellow.h).toBeLessThanOrEqual(100);
+  });
+
   it('generates bright colors with higher lightness than regular colors', () => {
     const cereals = crunch();
 
