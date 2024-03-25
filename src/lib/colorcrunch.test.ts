@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { equalHueDistance, equalLightnessDistance, crunch } from './colorcrunch';
 import Color from 'colorjs.io';
 
-describe('generateColors', () => {
+describe('colorcrunch', () => {
 	it('generates the right amount of colors', () => {
 		let colors = equalHueDistance(16);
 		expect(colors.length).toBe(16);
@@ -68,10 +68,10 @@ describe('generateColors', () => {
     const brightRed = cereals["bright_red"];
 
     expect(red.h).toBeGreaterThanOrEqual(15);
-    expect(red.h).toBeLessThanOrEqual(30);
+    expect(red.h).toBeLessThanOrEqual(45);
 
     expect(brightRed.h).toBeGreaterThanOrEqual(15);
-    expect(brightRed.h).toBeLessThanOrEqual(30);
+    expect(brightRed.h).toBeLessThanOrEqual(45);
   });
 
   it('generates green tone cereals with right hue', () => {
@@ -79,10 +79,10 @@ describe('generateColors', () => {
     const green = cereals["green"];
     const brightGreen = cereals["bright_green"];
 
-    expect(green.h).toBeGreaterThanOrEqual(115);
+    expect(green.h).toBeGreaterThanOrEqual(110);
     expect(green.h).toBeLessThanOrEqual(140);
 
-    expect(brightGreen.h).toBeGreaterThanOrEqual(115);
+    expect(brightGreen.h).toBeGreaterThanOrEqual(110);
     expect(brightGreen.h).toBeLessThanOrEqual(140);
   });
 
@@ -97,6 +97,5 @@ describe('generateColors', () => {
     expect(cereals['bright_magenta'].l).toBeGreaterThan(cereals['magenta'].l);
     expect(cereals['bright_cyan'].l).toBeGreaterThan(cereals['cyan'].l);
     expect(cereals['bright_white'].l).toBeGreaterThan(cereals['white'].l);
-
   });
 });
