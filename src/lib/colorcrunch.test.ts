@@ -122,6 +122,18 @@ describe('colorcrunch', () => {
     expect(brightMagenta.h).toBeLessThanOrEqual(360);
   });
 
+  it('generates cyan tone cereals with right hue', () => {
+    const cereals = crunch();
+    const cyan = cereals["cyan"];
+    const brightCyan = cereals["bright_cyan"];
+
+    expect(cyan.h).toBeGreaterThanOrEqual(170);
+    expect(cyan.h).toBeLessThanOrEqual(230);
+
+    expect(brightCyan.h).toBeGreaterThanOrEqual(170);
+    expect(brightCyan.h).toBeLessThanOrEqual(230);
+  });
+
   it('generates bright colors with higher lightness than regular colors', () => {
     const cereals = crunch();
 
