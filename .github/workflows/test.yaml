@@ -1,0 +1,19 @@
+name: Run Tests
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  unit:
+    name: 'Unit Tests'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: npm run test:unit
+  playwright:
+    name: 'Playwright Tests'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: npm run test:integration-docker
