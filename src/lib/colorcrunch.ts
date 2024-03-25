@@ -37,15 +37,15 @@ export function crunch() {
 		'yellow': accentColors[1],
 		'blue': accentColors[4],
 		'magenta': accentColors[5],
-		'cyan': accentColors[4],
+		'cyan': accentColors[3],
 		'white': baseColors[1],
 		'bright_black': baseColors[2],
 		'bright_red': brightAccentColors[0],
 		'bright_green': brightAccentColors[2],
 		'bright_yellow': brightAccentColors[1],
-		'bright_blue': brightAccentColors[2],
+		'bright_blue': brightAccentColors[4],
 		'bright_magenta': brightAccentColors[2],
-		'bright_cyan': brightAccentColors[1],
+		'bright_cyan': brightAccentColors[3],
 		'bright_white': baseColors[3],
   };
 	return cereals;
