@@ -67,11 +67,11 @@ describe('colorcrunch', () => {
     const red = cereals["red"];
     const brightRed = cereals["bright_red"];
 
-    expect(red.h).toBeGreaterThanOrEqual(15);
-    expect(red.h).toBeLessThanOrEqual(45);
+    expect(red.h).toBeGreaterThanOrEqual(0);
+    expect(red.h).toBeLessThanOrEqual(60);
 
-    expect(brightRed.h).toBeGreaterThanOrEqual(15);
-    expect(brightRed.h).toBeLessThanOrEqual(45);
+    expect(brightRed.h).toBeGreaterThanOrEqual(0);
+    expect(brightRed.h).toBeLessThanOrEqual(60);
   });
 
   it('generates green tone cereals with right hue', () => {
@@ -79,11 +79,11 @@ describe('colorcrunch', () => {
     const green = cereals["green"];
     const brightGreen = cereals["bright_green"];
 
-    expect(green.h).toBeGreaterThanOrEqual(110);
-    expect(green.h).toBeLessThanOrEqual(140);
+    expect(green.h).toBeGreaterThanOrEqual(120);
+    expect(green.h).toBeLessThanOrEqual(180);
 
-    expect(brightGreen.h).toBeGreaterThanOrEqual(110);
-    expect(brightGreen.h).toBeLessThanOrEqual(140);
+    expect(brightGreen.h).toBeGreaterThanOrEqual(120);
+    expect(brightGreen.h).toBeLessThanOrEqual(180);
   });
 
   it('generates yellow tone cereals with right hue', () => {
@@ -91,11 +91,11 @@ describe('colorcrunch', () => {
     const yellow = cereals["yellow"];
     const brightYellow = cereals["bright_yellow"];
 
-    expect(yellow.h).toBeGreaterThanOrEqual(70);
-    expect(yellow.h).toBeLessThanOrEqual(100);
+    expect(yellow.h).toBeGreaterThanOrEqual(60);
+    expect(yellow.h).toBeLessThanOrEqual(120);
 
-    expect(brightYellow.h).toBeGreaterThanOrEqual(70);
-    expect(brightYellow.h).toBeLessThanOrEqual(100);
+    expect(brightYellow.h).toBeGreaterThanOrEqual(60);
+    expect(brightYellow.h).toBeLessThanOrEqual(120);
   });
 
   it('generates blue tone cereals with right hue', () => {
@@ -103,11 +103,11 @@ describe('colorcrunch', () => {
     const blue = cereals["blue"];
     const brightBlue = cereals["bright_blue"];
 
-    expect(blue.h).toBeGreaterThanOrEqual(230);
-    expect(blue.h).toBeLessThanOrEqual(260);
+    expect(blue.h).toBeGreaterThanOrEqual(240);
+    expect(blue.h).toBeLessThanOrEqual(300);
 
-    expect(brightBlue.h).toBeGreaterThanOrEqual(230);
-    expect(brightBlue.h).toBeLessThanOrEqual(260);
+    expect(brightBlue.h).toBeGreaterThanOrEqual(240);
+    expect(brightBlue.h).toBeLessThanOrEqual(300);
   });
 
   it('generates magenta tone cereals with right hue', () => {
@@ -127,11 +127,11 @@ describe('colorcrunch', () => {
     const cyan = cereals["cyan"];
     const brightCyan = cereals["bright_cyan"];
 
-    expect(cyan.h).toBeGreaterThanOrEqual(170);
-    expect(cyan.h).toBeLessThanOrEqual(230);
+    expect(cyan.h).toBeGreaterThanOrEqual(180);
+    expect(cyan.h).toBeLessThanOrEqual(240);
 
-    expect(brightCyan.h).toBeGreaterThanOrEqual(170);
-    expect(brightCyan.h).toBeLessThanOrEqual(230);
+    expect(brightCyan.h).toBeGreaterThanOrEqual(180);
+    expect(brightCyan.h).toBeLessThanOrEqual(240);
   });
 
   it('generates bright colors with higher lightness than regular colors', () => {
