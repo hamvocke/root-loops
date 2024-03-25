@@ -31,22 +31,22 @@ export function crunch() {
 	const accentColors = equalHueDistance(6, 0.6, 0.2);
 	const brightAccentColors = equalHueDistance(6, 0.7, 0.2);
 	const cereals = {
-		'black': baseColors[0],
-		'red': accentColors[0],
-		'green': accentColors[2],
-		'yellow': accentColors[1],
-		'blue': accentColors[4],
-		'magenta': accentColors[5],
-		'cyan': accentColors[3],
-		'white': baseColors[1],
-		'bright_black': baseColors[2],
-		'bright_red': brightAccentColors[0],
-		'bright_green': brightAccentColors[2],
-		'bright_yellow': brightAccentColors[1],
-		'bright_blue': brightAccentColors[4],
-		'bright_magenta': brightAccentColors[5],
-		'bright_cyan': brightAccentColors[3],
-		'bright_white': baseColors[3],
-  };
+		black: baseColors[0],
+		red: accentColors[0],
+		green: accentColors[2],
+		yellow: accentColors[1],
+		blue: accentColors[4],
+		magenta: accentColors[5],
+		cyan: accentColors[3],
+		white: baseColors[1],
+		bright_black: baseColors[2],
+		bright_red: brightAccentColors[0],
+		bright_green: brightAccentColors[2],
+		bright_yellow: brightAccentColors[1],
+		bright_blue: brightAccentColors[4],
+		bright_magenta: brightAccentColors[5],
+		bright_cyan: brightAccentColors[3],
+		bright_white: baseColors[3]
+	};
 	return cereals;
 }
