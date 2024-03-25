@@ -73,4 +73,16 @@ describe('generateColors', () => {
     expect(brightRed.h).toBeGreaterThanOrEqual(15);
     expect(brightRed.h).toBeLessThanOrEqual(30);
   });
+
+  it('generates green tone cereals with right hue', () => {
+    const cereals = crunch();
+    const green = cereals["green"];
+    const brightGreen = cereals["bright_green"];
+
+    expect(green.h).toBeGreaterThanOrEqual(115);
+    expect(green.h).toBeLessThanOrEqual(140);
+
+    expect(brightGreen.h).toBeGreaterThanOrEqual(115);
+    expect(brightGreen.h).toBeLessThanOrEqual(140);
+  });
 });

@@ -33,7 +33,7 @@ export function crunch() {
 	const cereals = {
 		'black': baseColors[0],
 		'red': accentColors[0],
-		'green': accentColors[1],
+		'green': accentColors[2],
 		'yellow': accentColors[2],
 		'blue': accentColors[3],
 		'magenta': accentColors[0],
@@ -41,7 +41,7 @@ export function crunch() {
 		'white': baseColors[1],
 		'bright_black': baseColors[2],
 		'bright_red': brightAccentColors[0],
-		'bright_green': accentColors[7],
+		'bright_green': brightAccentColors[2],
 		'bright_yellow': accentColors[8],
 		'bright_blue': accentColors[9],
 		'bright_magenta': accentColors[10],
