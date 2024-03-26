@@ -8,7 +8,8 @@
 
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-  $: cereals = crunch();
+  // $: cereals = crunch();
+  let cereals = crunch();
 </script>
 
 <svelte:head>

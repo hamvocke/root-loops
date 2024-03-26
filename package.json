@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "test:integration": "playwright test",
     "test:integration-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.42.1-focal npm run test:integration",
-    "test:unit": "vitest"
+    "test:unit": "vitest",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.1",
@@ -26,6 +27,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.36.0-next.4",
+    "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "prettier-plugin-svelte": "^3.2.2",
     "svelte": "^5.0.0-next.1",

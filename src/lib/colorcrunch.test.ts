@@ -4,17 +4,17 @@ import { crunch, equalHueDistance, equalLightnessDistance } from "./colorcrunch"
 
 describe("equalHueDistance", () => {
   it("generates the right amount of colors", () => {
-    let colors = equalHueDistance(16);
+    const colors = equalHueDistance(16);
     expect(colors.length).toBe(16);
   });
 
   it("generates colors in oklch space", () => {
-    let colors = equalHueDistance(5);
+    const colors = equalHueDistance(5);
     expect(colors.every((c) => c.space === Color.spaces.oklch)).toBeTruthy();
   });
 
   it("generates colors with equal hue distance", () => {
-    let colors = equalHueDistance(8, 0.6, 0.2);
+    const colors = equalHueDistance(8, 0.6, 0.2);
 
     expect(colors[0].h).toBe(15);
     expect(colors[1].h).toBe(60);
@@ -27,14 +27,14 @@ describe("equalHueDistance", () => {
   });
 
   it("generates colors with given lightness and chroma values", () => {
-    let colors = equalHueDistance(1, 0.2, 0.1);
+    const colors = equalHueDistance(1, 0.2, 0.1);
 
     expect(colors[0].l).toBe(0.2);
     expect(colors[0].c).toBe(0.1);
   });
 
   it("generates bowl colors with given chroma value", () => {
-    let colors = equalHueDistance(1, 0.2);
+    const colors = equalHueDistance(1, 0.2);
 
     expect(colors[0].c).toBe(0.2);
   });
@@ -42,17 +42,17 @@ describe("equalHueDistance", () => {
 
 describe("equalLightnessDistance", () => {
   it("generates bowl colors in oklch space", () => {
-    let colors = equalLightnessDistance(5);
+    const colors = equalLightnessDistance(5);
     expect(colors.every((c) => c.space === Color.spaces.oklch)).toBeTruthy();
   });
 
   it("generates the right amount of colors", () => {
-    let colors = equalLightnessDistance(16);
+    const colors = equalLightnessDistance(16);
     expect(colors.length).toBe(16);
   });
 
   it("generates colors with equal lightness distance", () => {
-    let colors = equalLightnessDistance(4);
+    const colors = equalLightnessDistance(4);
 
     expect(colors[0].l).toBe(0);
     expect(colors[1].l).toBe(0.33);
@@ -61,7 +61,7 @@ describe("equalLightnessDistance", () => {
   });
 
   it("generates colors with given chroma values", () => {
-    let colors = equalLightnessDistance(2, 0.2);
+    const colors = equalLightnessDistance(2, 0.2);
 
     expect(colors[0].c).toBe(0.2);
     expect(colors[1].c).toBe(0.2);
@@ -70,7 +70,7 @@ describe("equalLightnessDistance", () => {
 
 describe("crunch", () => {
   it("generates base tone cereals with low chroma", () => {
-    let cereals = crunch();
+    const cereals = crunch();
 
     expect(cereals.black.c).toBeLessThan(0.03);
     expect(cereals.white.c).toBeLessThan(0.03);
@@ -79,7 +79,7 @@ describe("crunch", () => {
   });
 
   it("generates base tone cereals with increasing lightness", () => {
-    let cereals = crunch();
+    const cereals = crunch();
 
     expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
     expect(cereals.white.l).toBeGreaterThan(cereals.brightBlack.l);
