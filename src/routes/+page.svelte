@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Slider from './Slider.svelte';
-	import { equalHueDistance, equalLightnessDistance } from '$lib/colorcrunch';
+	import { crunch } from '$lib/colorcrunch';
 
 	let milk = 6;
 	let flavor = 1;
@@ -8,17 +8,7 @@
 
 	// TODO: inGamut() checks
 	// TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-	$: cerealColors = equalHueDistance(6, colors / 10);
-	$: intenseCerealColors = equalHueDistance(6, (colors - 2) / 10);
-	$: bowlColors = equalLightnessDistance(4, milk / 100);
-	$: allColors = [
-		bowlColors[0],
-		...cerealColors,
-		bowlColors[2],
-		bowlColors[1],
-		...intenseCerealColors,
-		bowlColors[3]
-	];
+	$: cereals = crunch();
 </script>
 
 <svelte:head>
@@ -32,9 +22,8 @@
 </header>
 
 <section class="bowl">
-	{#each allColors as cereal}
-		<!-- todo: consider adding cereal-texture? -->
-		<div class="cereal" style="--color: {cereal};"></div>
+	{#each Object.entries(cereals) as [_key, color]}
+		<div class="cereal" style="--color: {color}"></div>
 	{/each}
 </section>
 
