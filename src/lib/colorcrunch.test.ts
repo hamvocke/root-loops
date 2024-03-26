@@ -62,6 +62,14 @@ describe('colorcrunch', () => {
 		expect(cereals.brightWhite.c).toBeLessThan(0.03);
 	});
 
+	it('generates base tone cereals with increasing lightness', () => {
+		let cereals = crunch();
+
+    expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l)
+    expect(cereals.white.l).toBeGreaterThan(cereals.brightBlack.l)
+    expect(cereals.brightBlack.l).toBeGreaterThan(cereals.black.l)
+	});
+
 	it('generates red tone cereals with right hue', () => {
 		const cereals = crunch();
 		const red = cereals.red;
