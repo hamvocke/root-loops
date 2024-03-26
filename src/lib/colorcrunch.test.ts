@@ -56,16 +56,16 @@ describe('colorcrunch', () => {
 	it('generates base tone cereals with low chroma', () => {
 		let cereals = crunch();
 
-		expect(cereals['black'].c).toBeLessThan(0.03);
-		expect(cereals['white'].c).toBeLessThan(0.03);
-		expect(cereals['bright_black'].c).toBeLessThan(0.03);
-		expect(cereals['bright_white'].c).toBeLessThan(0.03);
+		expect(cereals.black.c).toBeLessThan(0.03);
+		expect(cereals.white.c).toBeLessThan(0.03);
+		expect(cereals.brightBlack.c).toBeLessThan(0.03);
+		expect(cereals.brightWhite.c).toBeLessThan(0.03);
 	});
 
 	it('generates red tone cereals with right hue', () => {
 		const cereals = crunch();
-		const red = cereals['red'];
-		const brightRed = cereals['bright_red'];
+		const red = cereals.red;
+		const brightRed = cereals.brightRed;
 
 		expect(red.h).toBeGreaterThanOrEqual(0);
 		expect(red.h).toBeLessThanOrEqual(60);
@@ -76,8 +76,8 @@ describe('colorcrunch', () => {
 
 	it('generates yellow tone cereals with right hue', () => {
 		const cereals = crunch();
-		const yellow = cereals['yellow'];
-		const brightYellow = cereals['bright_yellow'];
+		const yellow = cereals.yellow;
+		const brightYellow = cereals.brightYellow
 
 		expect(yellow.h).toBeGreaterThanOrEqual(60);
 		expect(yellow.h).toBeLessThanOrEqual(120);
@@ -88,8 +88,8 @@ describe('colorcrunch', () => {
 
 	it('generates green tone cereals with right hue', () => {
 		const cereals = crunch();
-		const green = cereals['green'];
-		const brightGreen = cereals['bright_green'];
+		const green = cereals.green;
+		const brightGreen = cereals.brightGreen;
 
 		expect(green.h).toBeGreaterThanOrEqual(120);
 		expect(green.h).toBeLessThanOrEqual(180);
@@ -100,8 +100,8 @@ describe('colorcrunch', () => {
 
 	it('generates cyan tone cereals with right hue', () => {
 		const cereals = crunch();
-		const cyan = cereals['cyan'];
-		const brightCyan = cereals['bright_cyan'];
+		const cyan = cereals.cyan;
+		const brightCyan = cereals.brightCyan;
 
 		expect(cyan.h).toBeGreaterThanOrEqual(180);
 		expect(cyan.h).toBeLessThanOrEqual(240);
@@ -112,8 +112,8 @@ describe('colorcrunch', () => {
 
 	it('generates blue tone cereals with right hue', () => {
 		const cereals = crunch();
-		const blue = cereals['blue'];
-		const brightBlue = cereals['bright_blue'];
+		const blue = cereals.blue;
+		const brightBlue = cereals.brightBlue;
 
 		expect(blue.h).toBeGreaterThanOrEqual(240);
 		expect(blue.h).toBeLessThanOrEqual(300);
@@ -124,8 +124,8 @@ describe('colorcrunch', () => {
 
 	it('generates magenta tone cereals with right hue', () => {
 		const cereals = crunch();
-		const magenta = cereals['magenta'];
-		const brightMagenta = cereals['bright_magenta'];
+		const magenta = cereals.magenta;
+		const brightMagenta = cereals.brightMagenta;
 
 		expect(magenta.h).toBeGreaterThanOrEqual(300);
 		expect(magenta.h).toBeLessThanOrEqual(360);
@@ -137,13 +137,13 @@ describe('colorcrunch', () => {
 	it('generates bright colors with higher lightness than regular colors', () => {
 		const cereals = crunch();
 
-		expect(cereals['bright_black'].l).toBeGreaterThan(cereals['black'].l);
-		expect(cereals['bright_red'].l).toBeGreaterThan(cereals['red'].l);
-		expect(cereals['bright_green'].l).toBeGreaterThan(cereals['green'].l);
-		expect(cereals['bright_yellow'].l).toBeGreaterThan(cereals['yellow'].l);
-		expect(cereals['bright_blue'].l).toBeGreaterThan(cereals['blue'].l);
-		expect(cereals['bright_magenta'].l).toBeGreaterThan(cereals['magenta'].l);
-		expect(cereals['bright_cyan'].l).toBeGreaterThan(cereals['cyan'].l);
-		expect(cereals['bright_white'].l).toBeGreaterThan(cereals['white'].l);
+		expect(cereals.brightBlack.l).toBeGreaterThan(cereals.black.l);
+		expect(cereals.brightRed.l).toBeGreaterThan(cereals.red.l);
+		expect(cereals.brightGreen.l).toBeGreaterThan(cereals.green.l);
+		expect(cereals.brightYellow.l).toBeGreaterThan(cereals.yellow.l);
+		expect(cereals.brightBlue.l).toBeGreaterThan(cereals.blue.l);
+		expect(cereals.brightMagenta.l).toBeGreaterThan(cereals.magenta.l);
+		expect(cereals.brightCyan.l).toBeGreaterThan(cereals.cyan.l);
+		expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
 	});
 });

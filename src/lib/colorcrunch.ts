@@ -39,14 +39,14 @@ export function crunch() {
 		magenta: accentColors[5],
 		cyan: accentColors[3],
 		white: baseColors[1],
-		bright_black: baseColors[2],
-		bright_red: brightAccentColors[0],
-		bright_green: brightAccentColors[2],
-		bright_yellow: brightAccentColors[1],
-		bright_blue: brightAccentColors[4],
-		bright_magenta: brightAccentColors[5],
-		bright_cyan: brightAccentColors[3],
-		bright_white: baseColors[3]
+		brightBlack: baseColors[2],
+		brightRed: brightAccentColors[0],
+		brightGreen: brightAccentColors[2],
+		brightYellow: brightAccentColors[1],
+		brightBlue: brightAccentColors[4],
+		brightMagenta: brightAccentColors[5],
+		brightCyan: brightAccentColors[3],
+		brightWhite: baseColors[3]
 	};
 	return cereals;
 }
