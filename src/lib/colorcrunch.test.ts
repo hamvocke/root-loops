@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { equalHueDistance, equalLightnessDistance, crunch } from './colorcrunch';
 import Color from 'colorjs.io';
+import { describe, expect, it } from 'vitest';
+import { crunch, equalHueDistance, equalLightnessDistance } from './colorcrunch';
 
 describe('equalHueDistance', () => {
 	it('generates the right amount of colors', () => {
@@ -88,74 +88,62 @@ describe('crunch', () => {
 
 	it('generates red tone cereals with right hue', () => {
 		const cereals = crunch();
-		const red = cereals.red;
-		const brightRed = cereals.brightRed;
 
-		expect(red.h).toBeGreaterThanOrEqual(0);
-		expect(red.h).toBeLessThanOrEqual(60);
+		expect(cereals.red.h).toBeGreaterThanOrEqual(0);
+		expect(cereals.red.h).toBeLessThanOrEqual(60);
 
-		expect(brightRed.h).toBeGreaterThanOrEqual(0);
-		expect(brightRed.h).toBeLessThanOrEqual(60);
+		expect(cereals.brightRed.h).toBeGreaterThanOrEqual(0);
+		expect(cereals.brightRed.h).toBeLessThanOrEqual(60);
 	});
 
 	it('generates yellow tone cereals with right hue', () => {
 		const cereals = crunch();
-		const yellow = cereals.yellow;
-		const brightYellow = cereals.brightYellow
 
-		expect(yellow.h).toBeGreaterThanOrEqual(60);
-		expect(yellow.h).toBeLessThanOrEqual(120);
+		expect(cereals.yellow.h).toBeGreaterThanOrEqual(60);
+		expect(cereals.yellow.h).toBeLessThanOrEqual(120);
 
-		expect(brightYellow.h).toBeGreaterThanOrEqual(60);
-		expect(brightYellow.h).toBeLessThanOrEqual(120);
+		expect(cereals.brightYellow.h).toBeGreaterThanOrEqual(60);
+		expect(cereals.brightYellow.h).toBeLessThanOrEqual(120);
 	});
 
 	it('generates green tone cereals with right hue', () => {
 		const cereals = crunch();
-		const green = cereals.green;
-		const brightGreen = cereals.brightGreen;
 
-		expect(green.h).toBeGreaterThanOrEqual(120);
-		expect(green.h).toBeLessThanOrEqual(180);
+		expect(cereals.green.h).toBeGreaterThanOrEqual(120);
+		expect(cereals.green.h).toBeLessThanOrEqual(180);
 
-		expect(brightGreen.h).toBeGreaterThanOrEqual(120);
-		expect(brightGreen.h).toBeLessThanOrEqual(180);
+		expect(cereals.brightGreen.h).toBeGreaterThanOrEqual(120);
+		expect(cereals.brightGreen.h).toBeLessThanOrEqual(180);
 	});
 
 	it('generates cyan tone cereals with right hue', () => {
 		const cereals = crunch();
-		const cyan = cereals.cyan;
-		const brightCyan = cereals.brightCyan;
 
-		expect(cyan.h).toBeGreaterThanOrEqual(180);
-		expect(cyan.h).toBeLessThanOrEqual(240);
+		expect(cereals.cyan.h).toBeGreaterThanOrEqual(180);
+		expect(cereals.cyan.h).toBeLessThanOrEqual(240);
 
-		expect(brightCyan.h).toBeGreaterThanOrEqual(180);
-		expect(brightCyan.h).toBeLessThanOrEqual(240);
+		expect(cereals.brightCyan.h).toBeGreaterThanOrEqual(180);
+		expect(cereals.brightCyan.h).toBeLessThanOrEqual(240);
 	});
 
 	it('generates blue tone cereals with right hue', () => {
 		const cereals = crunch();
-		const blue = cereals.blue;
-		const brightBlue = cereals.brightBlue;
 
-		expect(blue.h).toBeGreaterThanOrEqual(240);
-		expect(blue.h).toBeLessThanOrEqual(300);
+		expect(cereals.blue.h).toBeGreaterThanOrEqual(240);
+		expect(cereals.blue.h).toBeLessThanOrEqual(300);
 
-		expect(brightBlue.h).toBeGreaterThanOrEqual(240);
-		expect(brightBlue.h).toBeLessThanOrEqual(300);
+		expect(cereals.brightBlue.h).toBeGreaterThanOrEqual(240);
+		expect(cereals.brightBlue.h).toBeLessThanOrEqual(300);
 	});
 
 	it('generates magenta tone cereals with right hue', () => {
 		const cereals = crunch();
-		const magenta = cereals.magenta;
-		const brightMagenta = cereals.brightMagenta;
 
-		expect(magenta.h).toBeGreaterThanOrEqual(300);
-		expect(magenta.h).toBeLessThanOrEqual(360);
+		expect(cereals.magenta.h).toBeGreaterThanOrEqual(300);
+		expect(cereals.magenta.h).toBeLessThanOrEqual(360);
 
-		expect(brightMagenta.h).toBeGreaterThanOrEqual(300);
-		expect(brightMagenta.h).toBeLessThanOrEqual(360);
+		expect(cereals.brightMagenta.h).toBeGreaterThanOrEqual(300);
+		expect(cereals.brightMagenta.h).toBeLessThanOrEqual(360);
 	});
 
 	it('generates bright colors with higher lightness than regular colors', () => {
