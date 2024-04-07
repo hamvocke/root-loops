@@ -26,10 +26,16 @@ function lightness(index: number, colorCount: number): number {
   return Math.round(step * index) / 100;
 }
 
-export function crunch() {
+export type CrunchOptions = {
+  milk?: number;
+};
+
+// TODO: find better name for 'crunch()'. 'pour'? 'prepare'? 'make'?
+export function crunch(options?: CrunchOptions) {
+  const milk = options?.milk ? options.milk / 10 : 0.5;
   const baseColors = equalLightnessDistance(4, 0.02);
-  const accentColors = equalHueDistance(6, 0.6, 0.2);
-  const brightAccentColors = equalHueDistance(6, 0.7, 0.2);
+  const accentColors = equalHueDistance(6, milk, 0.2);
+  const brightAccentColors = equalHueDistance(6, milk + 0.1, 0.2);
   const cereals = {
     black: baseColors[0],
     red: accentColors[0],

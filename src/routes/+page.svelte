@@ -9,7 +9,7 @@
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   // $: cereals = crunch();
-  let cereals = crunch();
+  $: cereals = crunch({ milk: milk });
 </script>
 
 <svelte:head>

@@ -158,4 +158,12 @@ describe("crunch", () => {
     expect(cereals.brightCyan.l).toBeGreaterThan(cereals.cyan.l);
     expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
   });
+
+  it("uses 'milk' parameter to drive lightness", () => {
+    const lessMilk = crunch({ milk: 5 });
+    const moreMilk = crunch({ milk: 6 });
+
+    expect(lessMilk.red.l).toBeLessThan(moreMilk.red.l);
+    expect(lessMilk.brightCyan.l).toBeLessThan(moreMilk.brightCyan.l);
+  });
 });
