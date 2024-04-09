@@ -159,11 +159,24 @@ describe("crunch", () => {
     expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
   });
 
-  it("uses 'milk' parameter to drive lightness", () => {
+  const bases = ["black", "white"];
+  const accents = ["red", "green", "yellow", "blue", "magenta", "cyan"];
+
+  it("uses 'milk' parameter to drive lightness of accent colors", () => {
     const lessMilk = crunch({ milk: 5 });
     const moreMilk = crunch({ milk: 6 });
 
-    expect(lessMilk.red.l).toBeLessThan(moreMilk.red.l);
-    expect(lessMilk.brightCyan.l).toBeLessThan(moreMilk.brightCyan.l);
+    for (const accent of accents) {
+      expect(lessMilk[accent].l).toBeLessThan(moreMilk[accent].l);
+    }
+  });
+
+  it("ignores 'milk' parameter for lightness of base colors", () => {
+    const lessMilk = crunch({ milk: 5 });
+    const moreMilk = crunch({ milk: 6 });
+
+    for (const base of bases) {
+      expect(lessMilk[base].l).toBe(moreMilk[base].l);
+    }
   });
 });

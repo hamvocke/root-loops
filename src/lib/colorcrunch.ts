@@ -30,8 +30,28 @@ export type CrunchOptions = {
   milk?: number;
 };
 
+export type Cereals = {
+  black: Color;
+  red: Color;
+  green: Color;
+  yellow: Color;
+  blue: Color;
+  magenta: Color;
+  cyan: Color;
+  white: Color;
+
+  brightBlack: Color;
+  brightRed: Color;
+  brightGreen: Color;
+  brightYellow: Color;
+  brightBlue: Color;
+  brightMagenta: Color;
+  brightCyan: Color;
+  brightWhite: Color;
+};
+
 // TODO: find better name for 'crunch()'. 'pour'? 'prepare'? 'make'?
-export function crunch(options?: CrunchOptions) {
+export function crunch(options?: CrunchOptions): Cereals {
   const milk = options?.milk ? options.milk / 10 : 0.5;
   const baseColors = equalLightnessDistance(4, 0.02);
   const accentColors = equalHueDistance(6, milk, 0.2);
