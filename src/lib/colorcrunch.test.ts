@@ -179,4 +179,13 @@ describe("crunch", () => {
       expect(lessMilk[base].l).toBe(moreMilk[base].l);
     }
   });
+
+  it("uses 'flavors' parameter to drive chroma of accent colors", () => {
+    const lessFlavors = crunch({ flavors: 3 });
+    const moreFlavors = crunch({ flavors: 4 });
+
+    for (const accent of accents) {
+      expect(lessFlavors[accent].c).toBeLessThan(moreFlavors[accent].c);
+    }
+  });
 });
