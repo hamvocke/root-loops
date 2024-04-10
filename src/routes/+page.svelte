@@ -9,7 +9,7 @@
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   // $: cereals = crunch();
-  $: cereals = crunch({ milk: milk });
+  $: cereals = crunch({ milk: milk, flavors: flavor });
 </script>
 
 <svelte:head>
@@ -24,7 +24,10 @@
 
 <section class="bowl">
   {#each Object.entries(cereals) as [_key, color]}
-    <div class="cereal" style="--color: {color}"></div>
+    <div class="wrapper">
+      <div class="cereal" style="--color: {color}"></div>
+      <span>{color}</span>
+    </div>
   {/each}
 </section>
 
@@ -65,6 +68,12 @@
     grid-template-rows: auto;
     gap: 1rem;
     margin-bottom: 3rem;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .cereal {
