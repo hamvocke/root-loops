@@ -54,7 +54,7 @@ export type Cereals = {
 // TODO: find better name for 'crunch()'. 'pour'? 'prepare'? 'make'?
 export function crunch(options?: CrunchOptions): Cereals {
   const milk = options?.milk ? options.milk / 10 : 0.5;
-  const flavors = (options?.flavors ? options.flavors : 0.2) / 10;
+  const flavors = normalizeChroma(options?.flavors ? options.flavors : 0.2);
   const baseColors = equalLightnessDistance(4, flavors);
   const accentColors = equalHueDistance(6, milk, flavors);
   const brightAccentColors = equalHueDistance(6, milk + 0.1, flavors);
@@ -77,4 +77,18 @@ export function crunch(options?: CrunchOptions): Cereals {
     brightWhite: baseColors[3],
   };
   return cereals;
+}
+
+export function normalizeChroma(input: number): number {
+  const newMin = 0.01;
+  const newMax = 0.2;
+
+  const oldMin = 1;
+  const oldMax = 10;
+
+  const oldRange = oldMax - oldMin;
+  const newRange = newMax - newMin;
+
+  const newValue = ((input - oldMin) * newRange) / oldRange + newMin;
+  return Math.ceil(newValue * 100) / 100;
 }
