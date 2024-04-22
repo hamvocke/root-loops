@@ -5,7 +5,7 @@
 </script>
 
 <div class="slider">
-  <input type="range" {id} name={id} min="1" max="11" bind:value />
+  <input type="range" {id} name={id} min="1" max="10" bind:value />
   <label for={id}>{label}</label><span class="value">{value}</span>
 </div>
 

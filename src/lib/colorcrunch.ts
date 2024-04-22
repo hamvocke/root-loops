@@ -1,7 +1,12 @@
 import Color from "colorjs.io";
 
-export function equalHueDistance(count: number, l: number = 0.6, c: number = 0.2): Color[] {
-  const h = (i: number) => hue(i, count, 15);
+export function equalHueDistance(
+  count: number,
+  l: number = 0.6,
+  c: number = 0.2,
+  shift: number = 0,
+): Color[] {
+  const h = (i: number) => hue(i, count, shift);
 
   return new Array(count).fill(undefined).map((_color, i) => new Color("oklch", [l, c, h(i)]));
 }
@@ -29,6 +34,7 @@ function lightness(index: number, colorCount: number): number {
 export type CrunchOptions = {
   milk?: number;
   flavors?: number;
+  artificialColors?: number;
 };
 
 export type Cereals = {
@@ -54,10 +60,11 @@ export type Cereals = {
 // TODO: find better name for 'crunch()'. 'pour'? 'prepare'? 'make'?
 export function crunch(options?: CrunchOptions): Cereals {
   const milk = options?.milk ? options.milk / 10 : 0.5;
-  const flavors = normalizeChroma(options?.flavors ? options.flavors : 0.2);
+  const flavors = normalizeChroma(options?.flavors ?? 0.2);
+  const shift = options?.artificialColors ?? 0;
   const baseColors = equalLightnessDistance(4, flavors);
-  const accentColors = equalHueDistance(6, milk, flavors);
-  const brightAccentColors = equalHueDistance(6, milk + 0.1, flavors);
+  const accentColors = equalHueDistance(6, milk, flavors, shift);
+  const brightAccentColors = equalHueDistance(6, milk + 0.1, flavors, shift);
   const cereals = {
     black: baseColors[0],
     red: accentColors[0],

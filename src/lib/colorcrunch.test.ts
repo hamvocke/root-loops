@@ -14,7 +14,7 @@ describe("equalHueDistance", () => {
   });
 
   it("generates colors with equal hue distance", () => {
-    const colors = equalHueDistance(8, 0.6, 0.2);
+    const colors = equalHueDistance(8, 0.6, 0.2, 15);
 
     expect(colors[0].h).toBe(15);
     expect(colors[1].h).toBe(60);
@@ -187,6 +187,16 @@ describe("crunch", () => {
     for (const accent of accents) {
       expect(lessFlavors[accent].c).toBeLessThan(moreFlavors[accent].c);
     }
+  });
+
+  it("uses 'artificial colors' parameter to drive hue shift of accent colors", () => {
+    const negativeShift = crunch({ artificialColors: -15 });
+    const positiveShift = crunch({ artificialColors: 15 });
+
+    expect(negativeShift.red.h).toBe(-15);
+    expect(positiveShift.red.h).toBe(15);
+    expect(negativeShift.black.h).toBe(340);
+    expect(positiveShift.black.h).toBe(340);
   });
 });
 
