@@ -1,5 +1,6 @@
 <script lang="ts">
   import Slider from "./Slider.svelte";
+  import Code from "./Code.svelte";
   import { crunch } from "$lib/colorcrunch";
 
   let milk = 6;
@@ -30,6 +31,8 @@
     </div>
   {/each}
 </section>
+
+<Code />
 
 <section class="sliders">
   <Slider id="slider-milk" label="Milk" bind:value={milk} />

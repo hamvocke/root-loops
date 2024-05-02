@@ -6,3 +6,7 @@
 - CLI
 - dynamic favicon, changes according to first accent color
 - dynamic heading colors, using 4 accent colors for the "o" letters
+
+# TODO
+
+- [ ] trim down shiki bundle size, trim themes, only few languages
