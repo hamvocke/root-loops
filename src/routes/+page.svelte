@@ -11,7 +11,19 @@
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   // $: cereals = crunch();
   $: cereals = crunch({ milk: milk, flavors: flavor, artificialColors: colors * 3 });
-  $: cssColors = `--root-loops-foreground: ${cereals.white}; --root-loops-background: ${cereals.black};`;
+  $: cssColors = `
+--root-loops-foreground: ${cereals.white};
+--root-loops-background: ${cereals.black};
+--root-loops-token-constant: ${cereals.brightYellow};
+--root-loops-token-string: ${cereals.green};
+--root-loops-token-comment: ${cereals.brightBlack};
+--root-loops-token-keyword: ${cereals.magenta};
+--root-loops-token-parameter: ${cereals.red};
+--root-loops-token-function: ${cereals.blue};
+--root-loops-token-string-expression: ${cereals.cyan};
+--root-loops-token-punctuation: ${cereals.white};
+--root-loops-token-link: ${cereals.yellow};
+`;
 </script>
 
 <svelte:head>
@@ -94,5 +106,14 @@
     --my-color: red;
     --root-loops-foreground: purple;
     --root-loops-background: orange;
+    --root-loops-token-constant: #660000;
+    --root-loops-token-string: #770000;
+    --root-loops-token-comment: #880000;
+    --root-loops-token-keyword: #990000;
+    --root-loops-token-parameter: #aa0000;
+    --root-loops-token-function: #bb0000;
+    --root-loops-token-string-expression: #cc0000;
+    --root-loops-token-punctuation: #dd0000;
+    --root-loops-token-link: #ee0000;
   }
 </style>
