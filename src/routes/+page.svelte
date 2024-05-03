@@ -23,6 +23,39 @@
 --root-loops-token-string-expression: ${cereals.green};
 --root-loops-token-punctuation: ${cereals.red};
 --root-loops-token-link: ${cereals.yellow};
+
+--root-loops-ansi-black: ${cereals.black};
+--root-loops-ansi-black-dim: ${cereals.black};
+--root-loops-ansi-red: ${cereals.red};
+--root-loops-ansi-red-dim: ${cereals.red};
+--root-loops-ansi-green: ${cereals.green};
+--root-loops-ansi-green-dim: ${cereals.green};
+--root-loops-ansi-yellow: ${cereals.yellow};
+--root-loops-ansi-yellow-dim: ${cereals.yellow};
+--root-loops-ansi-blue: ${cereals.blue};
+--root-loops-ansi-blue-dim: ${cereals.blue};
+--root-loops-ansi-magenta: ${cereals.magenta};
+--root-loops-ansi-magenta-dim: ${cereals.magenta};
+--root-loops-ansi-cyan: ${cereals.cyan};
+--root-loops-ansi-cyan-dim: ${cereals.cyan};
+--root-loops-ansi-white: ${cereals.white};
+--root-loops-ansi-white-dim: ${cereals.white};
+--root-loops-ansi-bright-black: ${cereals.brightBlack};
+--root-loops-ansi-bright-black-dim: ${cereals.brightBlack};
+--root-loops-ansi-bright-red: ${cereals.brightRed};
+--root-loops-ansi-bright-red-dim: ${cereals.brightRed};
+--root-loops-ansi-bright-green: ${cereals.brightGreen};
+--root-loops-ansi-bright-green-dim: ${cereals.brightGreen};
+--root-loops-ansi-bright-yellow: ${cereals.brightYellow};
+--root-loops-ansi-bright-yellow-dim: ${cereals.brightYellow};
+--root-loops-ansi-bright-blue: ${cereals.brightBlue};
+--root-loops-ansi-bright-blue-dim: ${cereals.brightBlue};
+--root-loops-ansi-bright-magenta: ${cereals.brightMagenta};
+--root-loops-ansi-bright-magenta-dim: ${cereals.brightMagenta};
+--root-loops-ansi-bright-cyan: ${cereals.brightCyan};
+--root-loops-ansi-bright-cyan-dim: ${cereals.brightCyan};
+--root-loops-ansi-bright-white: ${cereals.brightWhite};
+--root-loops-ansi-bright-white-dim: ${cereals.brightWhite};
 `;
 
   const javascriptSnippet = `async function transfer(fromAccount: string, toAccount: string, amount: number) {
@@ -60,6 +93,23 @@ class GreetingWorkflow:
             start_to_close_timeout =timedelta(seconds=10),
             retry_policy=RetryPolicy(maximum_interval=timedelta(seconds=2)),
         )`;
+
+  const ansiSnippet = `\u001b[0;90m┌\u001b[0m  \u001b[0;36;1mWelcome to VitePress!\u001b[0m\u001b[0m
+\u001b[0;90m│\u001b[0m\u001b[0m
+\u001b[0;32m◇\u001b[0m  Where should VitePress initialize the config?\u001b[0m
+\u001b[0;90m│\u001b[0m  \u001b[0;2m./docs\u001b[0m\u001b[0m
+\u001b[0;90m│\u001b[0m\u001b[0m
+\u001b[0;32m◇\u001b[0m  Site title:\u001b[0m
+\u001b[0;90m│\u001b[0m  \u001b[0;2mMy Awesome Project\u001b[0m\u001b[0m
+\u001b[0;90m│\u001b[0m\u001b[0m
+\u001b[0;32m◇\u001b[0m  Site description:\u001b[0m
+\u001b[0;90m│\u001b[0m  \u001b[0;2mA VitePress Site\u001b[0m\u001b[0m
+\u001b[0;90m│\u001b[0m\u001b[0m
+\u001b[0;36m◆\u001b[0m  Theme:\u001b[0m
+\u001b[0;36m│\u001b[0m  \u001b[0;32m●\u001b[0m Default Theme \u001b[0;2m(Out of the box, good-looking docs)\u001b[0m\u001b[0m
+\u001b[0;36m│\u001b[0m  \u001b[0;2m○\u001b[0m \u001b[0;2mDefault Theme + Customization\u001b[0m\u001b[0m
+\u001b[0;36m│\u001b[0m  \u001b[0;2m○\u001b[0m \u001b[0;2mCustom Theme\u001b[0m\u001b[0m
+\u001b[0;36m└\u001b[0m`;
 </script>
 
 <svelte:head>
@@ -84,6 +134,7 @@ class GreetingWorkflow:
 <section class="samples" style={cssColors}>
   <Code source={javascriptSnippet} language="javascript" />
   <Code source={pythonSnippet} language="python" />
+  <Code source={ansiSnippet} language="ansi" />
 </section>
 
 <section class="sliders">
@@ -152,5 +203,38 @@ class GreetingWorkflow:
     --root-loops-token-string-expression: #cc0000;
     --root-loops-token-punctuation: #dd0000;
     --root-loops-token-link: #ee0000;
+
+    --root-loops-ansi-black: #000000;
+    --root-loops-ansi-black-dim: #00000080;
+    --root-loops-ansi-red: #bb0000;
+    --root-loops-ansi-red-dim: #bb000080;
+    --root-loops-ansi-green: #00bb00;
+    --root-loops-ansi-green-dim: #00bb0080;
+    --root-loops-ansi-yellow: #bbbb00;
+    --root-loops-ansi-yellow-dim: #bbbb0080;
+    --root-loops-ansi-blue: #0000bb;
+    --root-loops-ansi-blue-dim: #0000bb80;
+    --root-loops-ansi-magenta: #ff00ff;
+    --root-loops-ansi-magenta-dim: #ff00ff80;
+    --root-loops-ansi-cyan: #00bbbb;
+    --root-loops-ansi-cyan-dim: #00bbbb80;
+    --root-loops-ansi-white: #eeeeee;
+    --root-loops-ansi-white-dim: #eeeeee80;
+    --root-loops-ansi-bright-black: #555555;
+    --root-loops-ansi-bright-black-dim: #55555580;
+    --root-loops-ansi-bright-red: #ff5555;
+    --root-loops-ansi-bright-red-dim: #ff555580;
+    --root-loops-ansi-bright-green: #00ff00;
+    --root-loops-ansi-bright-green-dim: #00ff0080;
+    --root-loops-ansi-bright-yellow: #ffff55;
+    --root-loops-ansi-bright-yellow-dim: #ffff5580;
+    --root-loops-ansi-bright-blue: #5555ff;
+    --root-loops-ansi-bright-blue-dim: #5555ff80;
+    --root-loops-ansi-bright-magenta: #ff55ff;
+    --root-loops-ansi-bright-magenta-dim: #ff55ff80;
+    --root-loops-ansi-bright-cyan: #55ffff;
+    --root-loops-ansi-bright-cyan-dim: #55ffff80;
+    --root-loops-ansi-bright-white: #ffffff;
+    --root-loops-ansi-bright-white-dim: #ffffff80;
   }
 </style>
