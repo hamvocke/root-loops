@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { codeToHtml } from "shiki";
+  import { createCssVariablesTheme, getHighlighter } from "shiki";
 
   const code = `
 import { codeToTokens } from 'shiki'
@@ -9,21 +9,29 @@ const { tokens } = await codeToTokens ('<div class="foo">bar</div>', {
   theme : 'min-dark'
 })
   `;
-  const html = codeToHtml(code, {
-    lang: "javascript",
-    theme: "rose-pine-dawn",
+
+  const rootLoopsScheme = createCssVariablesTheme({
+    name: "root-loops",
+    variablePrefix: "--root-loops-",
+    variableDefaults: {},
+    fontStyle: true,
   });
+
+  const highlighter = getHighlighter({
+    langs: ["javascript"],
+    themes: [rootLoopsScheme],
+  }).then((highlighter) =>
+    highlighter.codeToHtml(code, {
+      lang: "javascript",
+      theme: "root-loops",
+    }),
+  );
 </script>
 
-<div class="code">
-  {#await html}
-    <p>Loading...</p>
-  {:then html}
-    {@html html}
-  {:catch error}
-    <p>Something went wrong. {error.message}</p>
-  {/await}
-</div>
-
-<style>
-</style>
+{#await highlighter}
+  <p>Loading...</p>
+{:then html}
+  {@html html}
+{:catch error}
+  <p>Something went wrong. {error.message}</p>
+{/await}

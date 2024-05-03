@@ -11,6 +11,7 @@
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   // $: cereals = crunch();
   $: cereals = crunch({ milk: milk, flavors: flavor, artificialColors: colors * 3 });
+  $: cssColors = `--root-loops-foreground: ${cereals.white}; --root-loops-background: ${cereals.black};`;
 </script>
 
 <svelte:head>
@@ -32,7 +33,9 @@
   {/each}
 </section>
 
-<Code />
+<section class="samples" style={cssColors}>
+  <Code />
+</section>
 
 <section class="sliders">
   <Slider id="slider-milk" label="Milk" bind:value={milk} />
@@ -85,5 +88,11 @@
     width: clamp(3rem, 9vw, 128px);
     border-radius: 50%;
     border: 3rem solid var(--color);
+  }
+
+  .samples {
+    --my-color: red;
+    --root-loops-foreground: purple;
+    --root-loops-background: orange;
   }
 </style>
