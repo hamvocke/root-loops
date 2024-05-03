@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createCssVariablesTheme, getHighlighter } from "shiki";
 
-  const code = `async function transfer(fromAccount: string, toAccount: string, amount: number) {
+  export let source = `async function transfer(fromAccount: string, toAccount: string, amount: number) {
 	// These are activities, not regular functions.
 	// Activities may run elsewhere, and their return value
 	// is automatically persisted by Temporal.
@@ -13,6 +13,8 @@
 	}
 }`;
 
+  export let language = "javascript";
+
   const rootLoopsScheme = createCssVariablesTheme({
     name: "root-loops",
     variablePrefix: "--root-loops-",
@@ -21,11 +23,11 @@
   });
 
   const highlighter = getHighlighter({
-    langs: ["javascript"],
+    langs: [language],
     themes: [rootLoopsScheme],
   }).then((highlighter) =>
-    highlighter.codeToHtml(code, {
-      lang: "javascript",
+    highlighter.codeToHtml(source, {
+      lang: language,
       theme: "root-loops",
     }),
   );
