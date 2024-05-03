@@ -14,14 +14,14 @@
   $: cssColors = `
 --root-loops-foreground: ${cereals.white};
 --root-loops-background: ${cereals.black};
---root-loops-token-constant: ${cereals.brightYellow};
+--root-loops-token-constant: ${cereals.yellow};
 --root-loops-token-string: ${cereals.green};
---root-loops-token-comment: ${cereals.brightBlack};
+--root-loops-token-comment: ${cereals.cyan};
 --root-loops-token-keyword: ${cereals.magenta};
 --root-loops-token-parameter: ${cereals.red};
 --root-loops-token-function: ${cereals.blue};
---root-loops-token-string-expression: ${cereals.cyan};
---root-loops-token-punctuation: ${cereals.white};
+--root-loops-token-string-expression: ${cereals.green};
+--root-loops-token-punctuation: ${cereals.red};
 --root-loops-token-link: ${cereals.yellow};
 `;
 
