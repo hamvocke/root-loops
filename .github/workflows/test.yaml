@@ -21,7 +21,7 @@ jobs:
     name: "Playwright Tests"
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.42.1-focal
+      image: mcr.microsoft.com/playwright:v1.43.1-focal
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
