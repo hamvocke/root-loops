@@ -20,9 +20,10 @@ describe("crunch()", () => {
   it("generates base tone cereals with increasing lightness", () => {
     const cereals = crunch();
 
-    expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
-    expect(cereals.white.l).toBeGreaterThan(cereals.brightBlack.l);
-    expect(cereals.brightBlack.l).toBeGreaterThan(cereals.black.l);
+    expect(cereals.brightWhite.l).toBe(1);
+    expect(cereals.white.l).toBe(0.8);
+    expect(cereals.brightBlack.l).toBe(0.4);
+    expect(cereals.black.l).toBe(0.2);
   });
 
   it("generates red tone cereals with right hue", () => {
@@ -98,34 +99,52 @@ describe("crunch()", () => {
     expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
   });
 
-  const bases = ["black", "white"];
-  const accents = ["red", "green", "yellow", "blue", "magenta", "cyan"];
-
   it("uses 'milk' parameter to drive lightness of accent colors", () => {
     const lessMilk = crunch({ milk: 5 });
     const moreMilk = crunch({ milk: 6 });
 
-    for (const accent of accents) {
-      expect(lessMilk[accent].l).toBeLessThan(moreMilk[accent].l);
-    }
+    expect(lessMilk.red.l).toBeLessThan(moreMilk.red.l);
+    expect(lessMilk.green.l).toBeLessThan(moreMilk.green.l);
+    expect(lessMilk.yellow.l).toBeLessThan(moreMilk.yellow.l);
+    expect(lessMilk.blue.l).toBeLessThan(moreMilk.blue.l);
+    expect(lessMilk.magenta.l).toBeLessThan(moreMilk.magenta.l);
+    expect(lessMilk.cyan.l).toBeLessThan(moreMilk.cyan.l);
+
+    expect(lessMilk.brightRed.l).toBeLessThan(moreMilk.brightRed.l);
+    expect(lessMilk.brightGreen.l).toBeLessThan(moreMilk.brightGreen.l);
+    expect(lessMilk.brightYellow.l).toBeLessThan(moreMilk.brightYellow.l);
+    expect(lessMilk.brightBlue.l).toBeLessThan(moreMilk.brightBlue.l);
+    expect(lessMilk.brightMagenta.l).toBeLessThan(moreMilk.brightMagenta.l);
+    expect(lessMilk.brightCyan.l).toBeLessThan(moreMilk.brightCyan.l);
   });
 
   it("ignores 'milk' parameter for lightness of base colors", () => {
     const lessMilk = crunch({ milk: 5 });
     const moreMilk = crunch({ milk: 6 });
 
-    for (const base of bases) {
-      expect(lessMilk[base].l).toBe(moreMilk[base].l);
-    }
+    expect(lessMilk.white.l).toBe(moreMilk.white.l);
+    expect(lessMilk.brightWhite.l).toBe(moreMilk.brightWhite.l);
+    expect(lessMilk.black.l).toBe(moreMilk.black.l);
+    expect(lessMilk.brightBlack.l).toBe(moreMilk.brightBlack.l);
   });
 
   it("uses 'flavors' parameter to drive chroma of accent colors", () => {
     const lessFlavors = crunch({ flavors: 3 });
     const moreFlavors = crunch({ flavors: 4 });
 
-    for (const accent of accents) {
-      expect(lessFlavors[accent].c).toBeLessThan(moreFlavors[accent].c);
-    }
+    expect(lessFlavors.red.c).toBeLessThan(moreFlavors.red.c);
+    expect(lessFlavors.green.c).toBeLessThan(moreFlavors.green.c);
+    expect(lessFlavors.yellow.c).toBeLessThan(moreFlavors.yellow.c);
+    expect(lessFlavors.blue.c).toBeLessThan(moreFlavors.blue.c);
+    expect(lessFlavors.magenta.c).toBeLessThan(moreFlavors.magenta.c);
+    expect(lessFlavors.cyan.c).toBeLessThan(moreFlavors.cyan.c);
+
+    expect(lessFlavors.brightRed.c).toBeLessThan(moreFlavors.brightRed.c);
+    expect(lessFlavors.brightGreen.c).toBeLessThan(moreFlavors.brightGreen.c);
+    expect(lessFlavors.brightYellow.c).toBeLessThan(moreFlavors.brightYellow.c);
+    expect(lessFlavors.brightBlue.c).toBeLessThan(moreFlavors.brightBlue.c);
+    expect(lessFlavors.brightMagenta.c).toBeLessThan(moreFlavors.brightMagenta.c);
+    expect(lessFlavors.brightCyan.c).toBeLessThan(moreFlavors.brightCyan.c);
   });
 
   it("uses 'artificial colors' parameter to drive hue shift of accent colors", () => {
