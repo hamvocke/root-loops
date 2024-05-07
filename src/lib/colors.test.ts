@@ -14,7 +14,7 @@ describe("equalHueDistance()", () => {
   });
 
   it("uses lightness parameter to determine lightness", () => {
-    const colors = equalHueDistance(2, 0.2,);
+    const colors = equalHueDistance(2, 0.2);
 
     expect(colors[0].l).toBe(0.2);
     expect(colors[1].l).toBe(0.2);

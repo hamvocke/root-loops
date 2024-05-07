@@ -17,6 +17,13 @@ export type Recipe = {
   artificialColors?: number;
 };
 
+enum MilkAmount {
+  None = 0,
+  Splash = 1,
+  Glug = 2,
+  Cup = 3,
+}
+
 export type Cereals = {
   black: Color;
   red: Color;
