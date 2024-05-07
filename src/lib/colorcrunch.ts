@@ -67,7 +67,6 @@ export type Cereals = {
   brightWhite: Color;
 };
 
-// TODO: find better name for 'crunch()'. 'pour'? 'prepare'? 'make'?
 // TODO: more mixers?
 // milk -> drives brightness of base colors
 // sugar -> drives brightness of cereals (accents)
@@ -75,10 +74,10 @@ export type Cereals = {
 // sogginess -> drives chroma of base colors
 // flavor -> drives hue shift of accent colors
 // juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
-export function crunch(options?: Recipe): Cereals {
-  const milk = options?.milk ? options.milk / 10 : 0.5;
-  const flavors = normalizeChroma(options?.flavors ?? 0.2);
-  const shift = options?.artificialColors ?? 0;
+export function prepare(recipe?: Recipe): Cereals {
+  const milk = recipe?.milk ? recipe.milk / 10 : 0.5;
+  const flavors = normalizeChroma(recipe?.flavors ?? 0.2);
+  const shift = recipe?.artificialColors ?? 0;
   const baseColors = equalLightnessDistance(6, flavors);
   const accentColors = equalHueDistance(6, milk, flavors, shift);
   const brightAccentColors = equalHueDistance(6, milk + 0.1, flavors, shift);

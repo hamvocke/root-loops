@@ -1,15 +1,15 @@
 import Color from "colorjs.io";
 import { describe, expect, it } from "vitest";
-import { crunch, normalizeChroma } from "./colorcrunch";
+import { prepare, normalizeChroma } from "./colorcrunch";
 
-describe("crunch()", () => {
+describe("prepare()", () => {
   it("generates colors in oklch space", () => {
-    const cereals = crunch();
+    const cereals = prepare();
     expect(Object.values(cereals).every((c) => c.space === Color.spaces.oklch)).toBeTruthy();
   });
 
   it("generates base tone cereals with low chroma", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.black.c).toBeLessThan(0.03);
     expect(cereals.white.c).toBeLessThan(0.03);
@@ -18,7 +18,7 @@ describe("crunch()", () => {
   });
 
   it("generates base tone cereals with increasing lightness", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.brightWhite.l).toBe(1);
     expect(cereals.white.l).toBe(0.8);
@@ -27,7 +27,7 @@ describe("crunch()", () => {
   });
 
   it("generates red tone cereals with right hue", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.red.h).toBeGreaterThanOrEqual(0);
     expect(cereals.red.h).toBeLessThanOrEqual(60);
@@ -37,7 +37,7 @@ describe("crunch()", () => {
   });
 
   it("generates yellow tone cereals with right hue", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.yellow.h).toBeGreaterThanOrEqual(60);
     expect(cereals.yellow.h).toBeLessThanOrEqual(120);
@@ -47,7 +47,7 @@ describe("crunch()", () => {
   });
 
   it("generates green tone cereals with right hue", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.green.h).toBeGreaterThanOrEqual(120);
     expect(cereals.green.h).toBeLessThanOrEqual(180);
@@ -57,7 +57,7 @@ describe("crunch()", () => {
   });
 
   it("generates cyan tone cereals with right hue", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.cyan.h).toBeGreaterThanOrEqual(180);
     expect(cereals.cyan.h).toBeLessThanOrEqual(240);
@@ -67,7 +67,7 @@ describe("crunch()", () => {
   });
 
   it("generates blue tone cereals with right hue", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.blue.h).toBeGreaterThanOrEqual(240);
     expect(cereals.blue.h).toBeLessThanOrEqual(300);
@@ -77,7 +77,7 @@ describe("crunch()", () => {
   });
 
   it("generates magenta tone cereals with right hue", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.magenta.h).toBeGreaterThanOrEqual(300);
     expect(cereals.magenta.h).toBeLessThanOrEqual(360);
@@ -87,7 +87,7 @@ describe("crunch()", () => {
   });
 
   it("generates bright colors with higher lightness than regular colors", () => {
-    const cereals = crunch();
+    const cereals = prepare();
 
     expect(cereals.brightBlack.l).toBeGreaterThan(cereals.black.l);
     expect(cereals.brightRed.l).toBeGreaterThan(cereals.red.l);
@@ -100,8 +100,8 @@ describe("crunch()", () => {
   });
 
   it("uses 'milk' parameter to drive lightness of accent colors", () => {
-    const lessMilk = crunch({ milk: 5 });
-    const moreMilk = crunch({ milk: 6 });
+    const lessMilk = prepare({ milk: 5 });
+    const moreMilk = prepare({ milk: 6 });
 
     expect(lessMilk.red.l).toBeLessThan(moreMilk.red.l);
     expect(lessMilk.green.l).toBeLessThan(moreMilk.green.l);
@@ -119,8 +119,8 @@ describe("crunch()", () => {
   });
 
   it("ignores 'milk' parameter for lightness of base colors", () => {
-    const lessMilk = crunch({ milk: 5 });
-    const moreMilk = crunch({ milk: 6 });
+    const lessMilk = prepare({ milk: 5 });
+    const moreMilk = prepare({ milk: 6 });
 
     expect(lessMilk.white.l).toBe(moreMilk.white.l);
     expect(lessMilk.brightWhite.l).toBe(moreMilk.brightWhite.l);
@@ -129,8 +129,8 @@ describe("crunch()", () => {
   });
 
   it("uses 'flavors' parameter to drive chroma of accent colors", () => {
-    const lessFlavors = crunch({ flavors: 3 });
-    const moreFlavors = crunch({ flavors: 4 });
+    const lessFlavors = prepare({ flavors: 3 });
+    const moreFlavors = prepare({ flavors: 4 });
 
     expect(lessFlavors.red.c).toBeLessThan(moreFlavors.red.c);
     expect(lessFlavors.green.c).toBeLessThan(moreFlavors.green.c);
@@ -148,8 +148,8 @@ describe("crunch()", () => {
   });
 
   it("uses 'artificial colors' parameter to drive hue shift of accent colors", () => {
-    const negativeShift = crunch({ artificialColors: -15 });
-    const positiveShift = crunch({ artificialColors: 15 });
+    const negativeShift = prepare({ artificialColors: -15 });
+    const positiveShift = prepare({ artificialColors: 15 });
 
     expect(negativeShift.red.h).toBe(-15);
     expect(positiveShift.red.h).toBe(15);
