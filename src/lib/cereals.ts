@@ -12,7 +12,6 @@ import Color from "colorjs.io";
  * juice: influences the hue of the base colors
  */
 export type Recipe = {
-  milk?: number;
   flavors?: number;
   artificialColors?: number;
   milkAmount?: MilkAmount;
@@ -53,7 +52,6 @@ export type Cereals = {
 // flavor -> drives hue shift of accent colors
 // juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
 export function prepare(recipe?: Recipe): Cereals {
-  const milk = recipe?.milk ? recipe.milk / 10 : 0.5;
   const flavors = normalizeChroma(recipe?.flavors ?? 0.2);
   const shift = recipe?.artificialColors ?? 0;
   const baseColors = pourMilk(recipe?.milkAmount ?? MilkAmount.None);

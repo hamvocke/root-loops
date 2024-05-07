@@ -3,14 +3,13 @@
   import Code from "./Code.svelte";
   import { prepare } from "$lib/cereals";
 
-  let milk = 6;
+  let milk = 0;
   let flavor = 5;
   let colors = 6;
 
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-  // $: cereals = crunch();
-  $: cereals = prepare({ milk: milk, flavors: flavor, artificialColors: colors * 3 });
+  $: cereals = prepare({ milkAmount: milk, flavors: flavor, artificialColors: colors * 3 });
   $: cssColors = `
 --root-loops-foreground: ${cereals.white};
 --root-loops-background: ${cereals.black};

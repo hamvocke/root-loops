@@ -129,8 +129,8 @@ describe("prepare()", () => {
   });
 
   it("ignores 'milk' parameter for accent colors", () => {
-    const lessMilk = prepare({ milk: 1 });
-    const moreMilk = prepare({ milk: 2 });
+    const lessMilk = prepare({ milkAmount: MilkAmount.Glug });
+    const moreMilk = prepare({ milkAmount: MilkAmount.Cup });
 
     expect(lessMilk.red.l).toBe(moreMilk.red.l);
     expect(lessMilk.green.l).toBe(moreMilk.green.l);
