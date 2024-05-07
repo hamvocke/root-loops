@@ -31,7 +31,17 @@ function equalLightnessDistance(count: number, chroma: number = 0.02): Color[] {
     .map((_color, i) => new Color("oklch", [l(i), chroma, 340]));
 }
 
-export type CrunchOptions = {
+/**
+ * Recipe to be use for preparing a delicious bowl of root loops.
+ *
+ * milk: more milk means brighter base colors
+ * sugar: more sugar means brighter cereal colors
+ * artificialColors: more artificial colors means more vibrant cereal colors
+ * sogginess: more sogginess means more vibrant base colors TODO: use 'juice' only instead?
+ * flavor: allows you to tweak the color spectrum of the cereal colors
+ * juice: influences the hue of the base colors
+ */
+export type Recipe = {
   milk?: number;
   flavors?: number;
   artificialColors?: number;
@@ -65,7 +75,7 @@ export type Cereals = {
 // sogginess -> drives chroma of base colors
 // flavor -> drives hue shift of accent colors
 // juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
-export function crunch(options?: CrunchOptions): Cereals {
+export function crunch(options?: Recipe): Cereals {
   const milk = options?.milk ? options.milk / 10 : 0.5;
   const flavors = normalizeChroma(options?.flavors ?? 0.2);
   const shift = options?.artificialColors ?? 0;
