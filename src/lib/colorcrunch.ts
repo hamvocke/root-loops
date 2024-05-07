@@ -64,7 +64,7 @@ export type Cereals = {
 // artificial colors -> drives chroma of accents
 // sogginess -> drives chroma of base colors
 // flavor -> drives hue shift of accent colors
-// liquid -> determines base hue of base colors (orange juice, water, milk, grape juice, energy drink)
+// juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
 export function crunch(options?: CrunchOptions): Cereals {
   const milk = options?.milk ? options.milk / 10 : 0.5;
   const flavors = normalizeChroma(options?.flavors ?? 0.2);
@@ -94,15 +94,13 @@ export function crunch(options?: CrunchOptions): Cereals {
 }
 
 export function normalizeChroma(input: number): number {
-  const newMin = 0.01;
-  const newMax = 0.2;
+  return normalize(input, 1, 10, 0.01, 0.2);
+}
 
-  const oldMin = 1;
-  const oldMax = 10;
-
+function normalize(number: number, oldMin = 0, oldMax = 10, newMin = 0, newMax = 10): number {
   const oldRange = oldMax - oldMin;
   const newRange = newMax - newMin;
 
-  const newValue = ((input - oldMin) * newRange) / oldRange + newMin;
+  const newValue = ((number - oldMin) * newRange) / oldRange + newMin;
   return Math.ceil(newValue * 100) / 100;
 }
