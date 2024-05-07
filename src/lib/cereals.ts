@@ -15,9 +15,10 @@ export type Recipe = {
   milk?: number;
   flavors?: number;
   artificialColors?: number;
+  milkAmount?: MilkAmount;
 };
 
-enum MilkAmount {
+export enum MilkAmount {
   None = 0,
   Splash = 1,
   Glug = 2,
@@ -51,36 +52,65 @@ export type Cereals = {
 // sogginess -> drives chroma of base colors
 // flavor -> drives hue shift of accent colors
 // juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
-//
-// milk calculation:
-//  0 -> 0/20/60/80
-//  1 -> 20/40/80/100
-//  2 -> 100/80/40/20
-//  3 -> 80/60/20/0
 export function prepare(recipe?: Recipe): Cereals {
   const milk = recipe?.milk ? recipe.milk / 10 : 0.5;
   const flavors = normalizeChroma(recipe?.flavors ?? 0.2);
   const shift = recipe?.artificialColors ?? 0;
-  const baseColors = equalLightnessDistance(6, flavors);
+  const baseColors = pourMilk(recipe?.milkAmount ?? MilkAmount.None);
   const accentColors = equalHueDistance(6, 0.5, flavors, shift);
   const brightAccentColors = equalHueDistance(6, 0.6, flavors, shift);
   const cereals = {
-    black: baseColors[1],
+    black: baseColors.black,
     red: accentColors[0],
     green: accentColors[2],
     yellow: accentColors[1],
     blue: accentColors[4],
     magenta: accentColors[5],
     cyan: accentColors[3],
-    white: baseColors[4],
-    brightBlack: baseColors[2],
+    white: baseColors.white,
+    brightBlack: baseColors.brightBlack,
     brightRed: brightAccentColors[0],
     brightGreen: brightAccentColors[2],
     brightYellow: brightAccentColors[1],
     brightBlue: brightAccentColors[4],
     brightMagenta: brightAccentColors[5],
     brightCyan: brightAccentColors[3],
-    brightWhite: baseColors[5],
+    brightWhite: baseColors.brightWhite,
   };
   return cereals;
+}
+
+function pourMilk(milkAmount: MilkAmount) {
+  const colors = equalLightnessDistance(6);
+
+  switch (milkAmount) {
+    case MilkAmount.None:
+      return {
+        black: colors[0],
+        brightBlack: colors[1],
+        white: colors[3],
+        brightWhite: colors[4],
+      };
+    case MilkAmount.Splash:
+      return {
+        black: colors[1],
+        brightBlack: colors[2],
+        white: colors[4],
+        brightWhite: colors[5],
+      };
+    case MilkAmount.Glug:
+      return {
+        black: colors[4],
+        brightBlack: colors[3],
+        white: colors[1],
+        brightWhite: colors[0],
+      };
+    case MilkAmount.Cup:
+      return {
+        black: colors[5],
+        brightBlack: colors[4],
+        white: colors[2],
+        brightWhite: colors[1],
+      };
+  }
 }
