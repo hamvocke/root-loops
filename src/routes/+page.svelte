@@ -1,7 +1,7 @@
 <script lang="ts">
   import Slider from "./Slider.svelte";
   import Code from "./Code.svelte";
-  import { crunch } from "$lib/colorcrunch";
+  import { prepare } from "$lib/cereals";
 
   let milk = 6;
   let flavor = 5;
@@ -10,7 +10,7 @@
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   // $: cereals = crunch();
-  $: cereals = crunch({ milk: milk, flavors: flavor, artificialColors: colors * 3 });
+  $: cereals = prepare({ milk: milk, flavors: flavor, artificialColors: colors * 3 });
   $: cssColors = `
 --root-loops-foreground: ${cereals.white};
 --root-loops-background: ${cereals.black};
