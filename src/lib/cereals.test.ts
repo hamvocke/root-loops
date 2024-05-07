@@ -99,33 +99,23 @@ describe("prepare()", () => {
     expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
   });
 
-  it("uses 'milk' parameter to drive lightness of accent colors", () => {
-    const lessMilk = prepare({ milk: 5 });
-    const moreMilk = prepare({ milk: 6 });
+  it("ignores 'milk' parameter for accent colors", () => {
+    const lessMilk = prepare({ milk: 1 });
+    const moreMilk = prepare({ milk: 2 });
 
-    expect(lessMilk.red.l).toBeLessThan(moreMilk.red.l);
-    expect(lessMilk.green.l).toBeLessThan(moreMilk.green.l);
-    expect(lessMilk.yellow.l).toBeLessThan(moreMilk.yellow.l);
-    expect(lessMilk.blue.l).toBeLessThan(moreMilk.blue.l);
-    expect(lessMilk.magenta.l).toBeLessThan(moreMilk.magenta.l);
-    expect(lessMilk.cyan.l).toBeLessThan(moreMilk.cyan.l);
+    expect(lessMilk.red.l).toBe(moreMilk.red.l);
+    expect(lessMilk.green.l).toBe(moreMilk.green.l);
+    expect(lessMilk.yellow.l).toBe(moreMilk.yellow.l);
+    expect(lessMilk.blue.l).toBe(moreMilk.blue.l);
+    expect(lessMilk.magenta.l).toBe(moreMilk.magenta.l);
+    expect(lessMilk.cyan.l).toBe(moreMilk.cyan.l);
 
-    expect(lessMilk.brightRed.l).toBeLessThan(moreMilk.brightRed.l);
-    expect(lessMilk.brightGreen.l).toBeLessThan(moreMilk.brightGreen.l);
-    expect(lessMilk.brightYellow.l).toBeLessThan(moreMilk.brightYellow.l);
-    expect(lessMilk.brightBlue.l).toBeLessThan(moreMilk.brightBlue.l);
-    expect(lessMilk.brightMagenta.l).toBeLessThan(moreMilk.brightMagenta.l);
-    expect(lessMilk.brightCyan.l).toBeLessThan(moreMilk.brightCyan.l);
-  });
-
-  it("ignores 'milk' parameter for lightness of base colors", () => {
-    const lessMilk = prepare({ milk: 5 });
-    const moreMilk = prepare({ milk: 6 });
-
-    expect(lessMilk.white.l).toBe(moreMilk.white.l);
-    expect(lessMilk.brightWhite.l).toBe(moreMilk.brightWhite.l);
-    expect(lessMilk.black.l).toBe(moreMilk.black.l);
-    expect(lessMilk.brightBlack.l).toBe(moreMilk.brightBlack.l);
+    expect(lessMilk.brightRed.l).toBe(moreMilk.brightRed.l);
+    expect(lessMilk.brightGreen.l).toBe(moreMilk.brightGreen.l);
+    expect(lessMilk.brightYellow.l).toBe(moreMilk.brightYellow.l);
+    expect(lessMilk.brightBlue.l).toBe(moreMilk.brightBlue.l);
+    expect(lessMilk.brightMagenta.l).toBe(moreMilk.brightMagenta.l);
+    expect(lessMilk.brightCyan.l).toBe(moreMilk.brightCyan.l);
   });
 
   it("uses 'flavors' parameter to drive chroma of accent colors", () => {

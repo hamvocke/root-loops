@@ -51,13 +51,19 @@ export type Cereals = {
 // sogginess -> drives chroma of base colors
 // flavor -> drives hue shift of accent colors
 // juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
+//
+// milk calculation:
+//  0 -> 0/20/60/80
+//  1 -> 20/40/80/100
+//  2 -> 100/80/40/20
+//  3 -> 80/60/20/0
 export function prepare(recipe?: Recipe): Cereals {
   const milk = recipe?.milk ? recipe.milk / 10 : 0.5;
   const flavors = normalizeChroma(recipe?.flavors ?? 0.2);
   const shift = recipe?.artificialColors ?? 0;
   const baseColors = equalLightnessDistance(6, flavors);
-  const accentColors = equalHueDistance(6, milk, flavors, shift);
-  const brightAccentColors = equalHueDistance(6, milk + 0.1, flavors, shift);
+  const accentColors = equalHueDistance(6, 0.5, flavors, shift);
+  const brightAccentColors = equalHueDistance(6, 0.6, flavors, shift);
   const cereals = {
     black: baseColors[1],
     red: accentColors[0],
