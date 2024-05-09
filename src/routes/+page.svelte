@@ -2,6 +2,7 @@
   import Slider from "./Slider.svelte";
   import Code from "./Code.svelte";
   import { prepare } from "$lib/cereals";
+  import "@fontsource/luckiest-guy";
 
   let milk = 0;
   let flavor = 5;
@@ -244,23 +245,35 @@ class GreetingWorkflow:
   }
 
   h1 {
-    color: var(--root-loops-ansi-black);
-    font-weight: 900;
+    font-family: "Luckiest Guy", system-ui;
+    color: white;
+    text-shadow:
+      -1px -1px 0 black,
+      0px -1px 0 black,
+      -1px 0px 0 black,
+      0px 1px 0 black,
+      1px 1px 0 black,
+      1px 1px 0 black,
+      2px 2px 0 black,
+      3px 3px 0 black,
+      4px 4px 0 black,
+      5px 5px 0 black,
+      6px 6px 0 black;
   }
 
   .green {
-    color: var(--root-loops-ansi-green);
+    color: var(--root-loops-ansi-bright-green);
   }
 
   .magenta {
-    color: var(--root-loops-ansi-magenta);
+    color: var(--root-loops-ansi-bright-magenta);
   }
 
   .cyan {
-    color: var(--root-loops-ansi-cyan);
+    color: var(--root-loops-ansi-bright-cyan);
   }
 
   .yellow {
-    color: var(--root-loops-ansi-yellow);
+    color: var(--root-loops-ansi-bright-yellow);
   }
 </style>
