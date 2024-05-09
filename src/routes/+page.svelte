@@ -10,6 +10,7 @@
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   $: cereals = prepare({ milkAmount: milk, flavors: flavor, artificialColors: colors * 3 });
+  // TODO: check if the colors below really make sense for the respective tokens
   $: cssColors = `
 --root-loops-foreground: ${cereals.white};
 --root-loops-background: ${cereals.black};
@@ -116,33 +117,39 @@ class GreetingWorkflow:
   <meta name="description" content="A code & terminal color scheme for cereal lovers." />
 </svelte:head>
 
-<header>
-  <h1>Root Loops</h1>
-  <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
-</header>
+<div class="colors" style={cssColors}>
+  <header>
+    <h1>
+      R<span class="green">o</span><span class="magenta">o</span>t L<span class="cyan">o</span><span
+        class="yellow">o</span
+      >ps
+    </h1>
+    <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
+  </header>
 
-<section class="bowl">
-  {#each Object.entries(cereals) as [_key, color]}
-    <div class="wrapper">
-      <div class="cereal" style="--color: {color}"></div>
-      <span>{color}</span>
-    </div>
-  {/each}
-</section>
+  <section class="bowl">
+    {#each Object.entries(cereals) as [_key, color]}
+      <div class="wrapper">
+        <div class="cereal" style="--color: {color}"></div>
+        <span>{color}</span>
+      </div>
+    {/each}
+  </section>
 
-<section class="samples" style={cssColors}>
-  <Code source={javascriptSnippet} language="javascript" />
-  <Code source={pythonSnippet} language="python" />
-  <Code source={ansiSnippet} language="ansi" />
-</section>
+  <section class="samples">
+    <Code source={javascriptSnippet} language="javascript" />
+    <Code source={pythonSnippet} language="python" />
+    <Code source={ansiSnippet} language="ansi" />
+  </section>
 
-<section class="sliders">
-  <Slider id="slider-milk" label="Milk" bind:value={milk} />
+  <section class="sliders">
+    <Slider id="slider-milk" label="Milk" bind:value={milk} />
 
-  <Slider id="slider-flavor" label="Flavor" bind:value={flavor} />
+    <Slider id="slider-flavor" label="Flavor" bind:value={flavor} />
 
-  <Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
-</section>
+    <Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
+  </section>
+</div>
 
 <style>
   header {
@@ -189,8 +196,7 @@ class GreetingWorkflow:
     border: 3rem solid var(--color);
   }
 
-  .samples {
-    --my-color: red;
+  .colors {
     --root-loops-foreground: purple;
     --root-loops-background: orange;
     --root-loops-token-constant: #660000;
@@ -235,5 +241,26 @@ class GreetingWorkflow:
     --root-loops-ansi-bright-cyan-dim: #55ffff80;
     --root-loops-ansi-bright-white: #ffffff;
     --root-loops-ansi-bright-white-dim: #ffffff80;
+  }
+
+  h1 {
+    color: var(--root-loops-ansi-black);
+    font-weight: 900;
+  }
+
+  .green {
+    color: var(--root-loops-ansi-green);
+  }
+
+  .magenta {
+    color: var(--root-loops-ansi-magenta);
+  }
+
+  .cyan {
+    color: var(--root-loops-ansi-cyan);
+  }
+
+  .yellow {
+    color: var(--root-loops-ansi-yellow);
   }
 </style>

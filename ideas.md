@@ -10,3 +10,4 @@
 # TODO
 
 - [ ] trim down shiki bundle size, trim themes, only few languages
+- [ ] store state in URL so that people can share / bookmark their config
