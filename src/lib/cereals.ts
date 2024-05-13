@@ -55,8 +55,8 @@ export function prepare(recipe: Recipe): Cereals {
   const flavors = normalizeChroma(recipe.flavors);
   const shift = recipe.artificialColors;
   const baseColors = pourMilk(recipe.milkAmount);
-  const accentColors = equalHueDistance(6, 0.5, flavors, shift);
-  const brightAccentColors = equalHueDistance(6, 0.6, flavors, shift);
+  const accentColors = equalHueDistance(6, 0.6, flavors, shift);
+  const brightAccentColors = equalHueDistance(6, 0.7, flavors, shift);
   const cereals = {
     black: baseColors.black,
     red: accentColors[0],

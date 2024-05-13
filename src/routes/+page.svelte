@@ -121,9 +121,9 @@ class GreetingWorkflow:
 <div class="colors" style={cssColors}>
   <header>
     <h1>
-      R<span class="green">o</span><span class="magenta">o</span>t L<span class="cyan">o</span><span
-        class="yellow">o</span
-      >ps
+      R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="cyan"
+        >o</span
+      ><span class="yellow">o</span>ps
     </h1>
     <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
   </header>
@@ -247,18 +247,22 @@ class GreetingWorkflow:
   h1 {
     font-family: "Luckiest Guy", system-ui;
     color: white;
+    letter-spacing: 3px;
+    line-height: 0.8em;
     text-shadow:
-      -1px -1px 0 black,
-      0px -1px 0 black,
-      -1px 0px 0 black,
-      0px 1px 0 black,
-      1px 1px 0 black,
-      1px 1px 0 black,
-      2px 2px 0 black,
-      3px 3px 0 black,
-      4px 4px 0 black,
-      5px 5px 0 black,
-      6px 6px 0 black;
+      -1px -1px 0 #444,
+      0px -1px 0 #444,
+      -1px 0px 0 #444,
+      0px 1px 0 #444,
+      1px 1px 0 #444,
+      2px 2px 0 #444,
+      3px 3px 0 #444,
+      4px 4px 0 #ddd,
+      5px 5px 0 #ddd,
+      6px 6px 0 #ddd,
+      7px 7px 0 #ddd,
+      8px 8px 0 #ddd,
+      0px 3px 10px #999a;
   }
 
   .green {
