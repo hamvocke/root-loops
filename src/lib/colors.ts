@@ -32,7 +32,7 @@ export function equalLightnessDistance(count: number, chroma: number = 0.02): Co
 }
 
 export function normalizeChroma(input: number): number {
-  return normalize(input, 1, 10, 0.01, 0.2);
+  return normalize(input, 1, 10, 0.01, 0.3);
 }
 
 function normalize(number: number, oldMin = 0, oldMax = 10, newMin = 0, newMax = 10): number {

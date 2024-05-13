@@ -133,6 +133,7 @@ class GreetingWorkflow:
       <div class="wrapper">
         <div class="cereal" style="--color: {color}"></div>
         <span>{color}</span>
+        {#if !color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
       </div>
     {/each}
   </section>
@@ -140,7 +141,7 @@ class GreetingWorkflow:
   <section class="sliders">
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
     <Slider id="slider-flavor" label="Flavor" min="-15" max="15" bind:value={flavor} />
-    <Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
+    <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
   </section>
 
   <section class="samples">
