@@ -156,9 +156,9 @@ describe("prepare(defaultRecipe)", () => {
     expect(lessMilk.brightCyan.l).toBe(moreMilk.brightCyan.l);
   });
 
-  it("uses 'flavors' parameter to drive chroma of accent colors", () => {
-    const lessFlavors = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 0 });
-    const moreFlavors = prepare({ milkAmount: MilkAmount.Glug, flavors: 4, artificialColors: 0 });
+  it("uses 'artificial colors' parameter to drive chroma of accent colors", () => {
+    const lessFlavors = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 3 });
+    const moreFlavors = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 4 });
 
     expect(lessFlavors.red.c).toBeLessThan(moreFlavors.red.c);
     expect(lessFlavors.green.c).toBeLessThan(moreFlavors.green.c);
@@ -175,13 +175,13 @@ describe("prepare(defaultRecipe)", () => {
     expect(lessFlavors.brightCyan.c).toBeLessThan(moreFlavors.brightCyan.c);
   });
 
-  it("uses 'artificial colors' parameter to drive hue shift of accent colors", () => {
+  it("uses 'flavors' parameter to drive hue shift of accent colors", () => {
     const negativeShift = prepare({
       milkAmount: MilkAmount.Cup,
-      flavors: 1,
-      artificialColors: -15,
+      flavors: -15,
+      artificialColors: 4,
     });
-    const positiveShift = prepare({ milkAmount: MilkAmount.Cup, flavors: 1, artificialColors: 15 });
+    const positiveShift = prepare({ milkAmount: MilkAmount.Cup, flavors: 15, artificialColors: 4 });
 
     expect(negativeShift.red.h).toBe(-15);
     expect(positiveShift.red.h).toBe(15);

@@ -5,12 +5,12 @@
   import "@fontsource/luckiest-guy";
 
   let milk = 0;
-  let flavor = 5;
+  let flavor = 0;
   let colors = 6;
 
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-  $: cereals = prepare({ milkAmount: milk, flavors: flavor, artificialColors: colors * 3 });
+  $: cereals = prepare({ milkAmount: milk, flavors: flavor, artificialColors: colors });
   // TODO: check if the colors below really make sense for the respective tokens
   $: cssColors = `
 --root-loops-foreground: ${cereals.white};
@@ -139,7 +139,7 @@ class GreetingWorkflow:
 
   <section class="sliders">
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
-    <Slider id="slider-flavor" label="Flavor" bind:value={flavor} />
+    <Slider id="slider-flavor" label="Flavor" min="-15" max="15" bind:value={flavor} />
     <Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
   </section>
 
