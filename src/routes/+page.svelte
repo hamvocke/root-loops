@@ -132,7 +132,7 @@ class GreetingWorkflow:
     {#each Object.entries(cereals) as [_key, color]}
       <div class="wrapper">
         <div class="cereal" style="--color: {color}"></div>
-        <span>{color}</span>
+        <span class="color-value">{color}</span>
         {#if !color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
       </div>
     {/each}
@@ -186,6 +186,7 @@ class GreetingWorkflow:
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    align-items: center;
   }
 
   .cereal {
@@ -278,5 +279,10 @@ class GreetingWorkflow:
 
   .yellow {
     color: var(--root-loops-ansi-bright-yellow);
+  }
+
+  .color-value {
+    font-family: monospace;
+    font-size: 0.9em;
   }
 </style>
