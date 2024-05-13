@@ -2,10 +2,12 @@
   export let label = "My Slider";
   export let id: string;
   export let value: number;
+  export let min = "1";
+  export let max = "10";
 </script>
 
 <div class="slider">
-  <input type="range" {id} name={id} min="1" max="10" bind:value />
+  <input type="range" {id} name={id} {min} {max} bind:value />
   <label for={id}>{label}</label><span class="value">{value}</span>
 </div>
 

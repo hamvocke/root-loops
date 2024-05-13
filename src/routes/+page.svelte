@@ -137,18 +137,16 @@ class GreetingWorkflow:
     {/each}
   </section>
 
+  <section class="sliders">
+    <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
+    <Slider id="slider-flavor" label="Flavor" bind:value={flavor} />
+    <Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
+  </section>
+
   <section class="samples">
     <Code source={javascriptSnippet} language="javascript" />
     <Code source={pythonSnippet} language="python" />
     <Code source={ansiSnippet} language="ansi" />
-  </section>
-
-  <section class="sliders">
-    <Slider id="slider-milk" label="Milk" bind:value={milk} />
-
-    <Slider id="slider-flavor" label="Flavor" bind:value={flavor} />
-
-    <Slider id="slider-colors" label="Artificial Colors" bind:value={colors} />
   </section>
 </div>
 
