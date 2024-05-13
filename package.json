@@ -14,7 +14,7 @@
     "test:integration": "playwright test",
     "test:integration-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.43.1-focal npm run test:integration",
     "test:unit": "vitest",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.1",
