@@ -78,24 +78,24 @@ describe("normalizeChroma()", () => {
 
 describe("normalizeLightness()", () => {
   it.each([
-    { val: 1, expected: 10 },
-    { val: 2, expected: 20 },
-    { val: 3, expected: 30 },
-    { val: 5, expected: 50 },
-    { val: 9, expected: 90 },
+    { val: 1, expected: 0.1 },
+    { val: 2, expected: 0.2 },
+    { val: 3, expected: 0.3 },
+    { val: 5, expected: 0.5 },
+    { val: 9, expected: 0.9 },
   ])("normalizes 1-9 to reasonable lightness values ($val to $expected)", ({ val, expected }) => {
     expect(normalizeLightness(val)).toBe(expected);
   });
 
   it("doesn't allow values below 1", () => {
-    expect(normalizeLightness(0)).toBe(10);
-    expect(normalizeLightness(-1)).toBe(10);
-    expect(normalizeLightness(-100)).toBe(10);
+    expect(normalizeLightness(0)).toBe(0.1);
+    expect(normalizeLightness(-1)).toBe(0.1);
+    expect(normalizeLightness(-100)).toBe(0.1);
   });
 
   it("doesn't allow values larger than 9", () => {
-    expect(normalizeLightness(10)).toBe(90);
-    expect(normalizeLightness(11)).toBe(90);
-    expect(normalizeLightness(100)).toBe(90);
+    expect(normalizeLightness(10)).toBe(0.9);
+    expect(normalizeLightness(11)).toBe(0.9);
+    expect(normalizeLightness(100)).toBe(0.9);
   });
 });

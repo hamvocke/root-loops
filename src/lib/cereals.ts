@@ -1,4 +1,9 @@
-import { equalHueDistance, equalLightnessDistance, normalizeChroma } from "./colors";
+import {
+  equalHueDistance,
+  equalLightnessDistance,
+  normalizeChroma,
+  normalizeLightness,
+} from "./colors";
 import Color from "colorjs.io";
 
 /**
@@ -54,10 +59,11 @@ export type Cereals = {
 // juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
 export function prepare(recipe: Recipe): Cereals {
   const colors = normalizeChroma(recipe.artificialColors);
+  const sugar = normalizeLightness(recipe.sugar);
   const shift = recipe.flavors;
   const baseColors = pourMilk(recipe.milkAmount);
-  const accentColors = equalHueDistance(6, 0.6, colors, shift);
-  const brightAccentColors = equalHueDistance(6, 0.7, colors, shift);
+  const accentColors = equalHueDistance(6, sugar, colors, shift);
+  const brightAccentColors = equalHueDistance(6, sugar + 0.1, colors, shift);
   const cereals = {
     black: baseColors.black,
     red: accentColors[0],

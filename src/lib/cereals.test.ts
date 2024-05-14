@@ -194,9 +194,11 @@ describe("prepare(defaultRecipe)", () => {
     const lessSugar = prepare(someRecipe({ sugar: 1 }));
     const moreSugar = prepare(someRecipe({ sugar: 2 }));
 
-    expect(lessSugar.red.l).toBe(11);
-    expect(moreSugar.red.l).toBe(15);
-    expect(lessSugar.black.l).toBe(10);
-    expect(moreSugar.black.l).toBe(10);
+    expect(lessSugar.red.l).toBe(0.1);
+    expect(lessSugar.brightRed.l).toBe(0.2);
+    expect(moreSugar.blue.l).toBe(0.2);
+    expect(moreSugar.brightBlue.l).toBeCloseTo(0.3, 4);
+    expect(lessSugar.black.l).toBe(0.8);
+    expect(moreSugar.black.l).toBe(0.8);
   });
 });

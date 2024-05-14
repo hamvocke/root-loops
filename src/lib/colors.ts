@@ -38,7 +38,7 @@ export function normalizeChroma(input: number): number {
 
 export function normalizeLightness(input: number): number {
   const sanitizedInput = clamp(input, 1, 9);
-  return normalize(sanitizedInput, 1, 10, 10, 100);
+  return normalize(sanitizedInput, 1, 10, 0.1, 1);
 }
 
 function clamp(actual: number, min: number, max: number) {
