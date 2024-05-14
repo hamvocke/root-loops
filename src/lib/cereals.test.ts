@@ -8,7 +8,12 @@ describe("prepare(defaultRecipe)", () => {
     milkAmount: MilkAmount.Glug,
     flavors: 3,
     artificialColors: 2,
+    sugar: 3,
   };
+
+  function someRecipe(recipe: object) {
+    return { ...defaultRecipe, ...recipe };
+  }
 
   it("generates colors in oklch space", () => {
     const cereals = prepare(defaultRecipe);
@@ -85,9 +90,7 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("generates bright colors with higher lightness than regular colors", () => {
-    const recipe = defaultRecipe;
-    recipe.milkAmount = MilkAmount.Splash;
-    const cereals = prepare(recipe);
+    const cereals = prepare(someRecipe({ milkAmount: MilkAmount.Splash }));
 
     expect(cereals.brightBlack.l).toBeGreaterThan(cereals.black.l);
     expect(cereals.brightRed.l).toBeGreaterThan(cereals.red.l);
@@ -99,10 +102,9 @@ describe("prepare(defaultRecipe)", () => {
     expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
   });
 
-  it.todo("uses 'sugar' parameter to drive lightness of accent colors");
-
   it("creates dark base colors for milk amount of 'None'", () => {
-    const cereals = prepare({ milkAmount: MilkAmount.None, flavors: 3, artificialColors: 0 });
+    const recipe = someRecipe({ milkAmount: MilkAmount.None });
+    const cereals = prepare(recipe);
 
     expect(cereals.black.l).toBe(0);
     expect(cereals.brightBlack.l).toBe(0.2);
@@ -111,7 +113,8 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("creates lighter base colors for milk amount of 'Splash'", () => {
-    const cereals = prepare({ milkAmount: MilkAmount.Splash, flavors: 3, artificialColors: 0 });
+    const recipe = someRecipe({ milkAmount: MilkAmount.Splash });
+    const cereals = prepare(recipe);
 
     expect(cereals.black.l).toBe(0.2);
     expect(cereals.brightBlack.l).toBe(0.4);
@@ -120,7 +123,8 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("creates light base colors for milk amount of 'Glug'", () => {
-    const cereals = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 0 });
+    const recipe = someRecipe({ milkAmount: MilkAmount.Glug });
+    const cereals = prepare(recipe);
 
     expect(cereals.black.l).toBe(0.8);
     expect(cereals.brightBlack.l).toBe(0.6);
@@ -129,7 +133,8 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("creates lightest base colors for milk amount of 'Cup'", () => {
-    const cereals = prepare({ milkAmount: MilkAmount.Cup, flavors: 3, artificialColors: 0 });
+    const recipe = someRecipe({ milkAmount: MilkAmount.Cup });
+    const cereals = prepare(recipe);
 
     expect(cereals.black.l).toBe(1);
     expect(cereals.brightBlack.l).toBe(0.8);
@@ -138,8 +143,8 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("ignores 'milk' parameter for accent colors", () => {
-    const lessMilk = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 0 });
-    const moreMilk = prepare({ milkAmount: MilkAmount.Cup, flavors: 3, artificialColors: 0 });
+    const lessMilk = prepare(someRecipe({ milkAmount: MilkAmount.Glug }));
+    const moreMilk = prepare(someRecipe({ milkAmount: MilkAmount.Cup }));
 
     expect(lessMilk.red.l).toBe(moreMilk.red.l);
     expect(lessMilk.green.l).toBe(moreMilk.green.l);
@@ -157,8 +162,8 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("uses 'artificial colors' parameter to drive chroma of accent colors", () => {
-    const lessFlavors = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 3 });
-    const moreFlavors = prepare({ milkAmount: MilkAmount.Glug, flavors: 3, artificialColors: 4 });
+    const lessFlavors = prepare(someRecipe({ artificialColors: 2 }));
+    const moreFlavors = prepare(someRecipe({ artificialColors: 3 }));
 
     expect(lessFlavors.red.c).toBeLessThan(moreFlavors.red.c);
     expect(lessFlavors.green.c).toBeLessThan(moreFlavors.green.c);
@@ -176,12 +181,8 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("uses 'flavors' parameter to drive hue shift of accent colors", () => {
-    const negativeShift = prepare({
-      milkAmount: MilkAmount.Cup,
-      flavors: -15,
-      artificialColors: 4,
-    });
-    const positiveShift = prepare({ milkAmount: MilkAmount.Cup, flavors: 15, artificialColors: 4 });
+    const negativeShift = prepare(someRecipe({ flavors: -15 }));
+    const positiveShift = prepare(someRecipe({ flavors: 15 }));
 
     expect(negativeShift.red.h).toBe(-15);
     expect(positiveShift.red.h).toBe(15);
