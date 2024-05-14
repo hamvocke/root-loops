@@ -15,6 +15,7 @@ export type Recipe = {
   milkAmount: MilkAmount;
   artificialColors: number;
   flavors: number;
+  sugar: number;
 };
 
 export enum MilkAmount {

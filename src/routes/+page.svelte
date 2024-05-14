@@ -10,7 +10,12 @@
 
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
-  $: cereals = prepare({ milkAmount: milk, flavors: flavor, artificialColors: colors });
+  $: cereals = prepare({
+    milkAmount: milk,
+    flavors: flavor,
+    artificialColors: colors,
+    sugar: 3,
+  });
   // TODO: check if the colors below really make sense for the respective tokens
   $: cssColors = `
 --root-loops-foreground: ${cereals.white};
@@ -128,6 +133,9 @@ class GreetingWorkflow:
     <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
   </header>
 
+  <div class="separator"></div>
+  <div class="separator-blocky"></div>
+
   <section class="bowl">
     {#each Object.entries(cereals) as [_key, color]}
       <div class="wrapper">
@@ -156,15 +164,35 @@ class GreetingWorkflow:
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-bottom: 3rem;
+
+    p {
+      margin-bottom: 0;
+    }
   }
 
   h1 {
     font-size: 7rem;
     text-transform: uppercase;
-    letter-spacing: -3px;
     font-weight: 900;
     margin-bottom: 0.5rem;
+    font-family: "Luckiest Guy", system-ui;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 0.8em;
+    text-shadow:
+      -1px -1px 0 #444,
+      0px -1px 0 #444,
+      -1px 0px 0 #444,
+      0px 1px 0 #444,
+      1px 1px 0 #444,
+      2px 2px 0 #444,
+      3px 3px 0 #444,
+      4px 4px 0 #ddd,
+      5px 5px 0 #ddd,
+      6px 6px 0 #ddd,
+      7px 7px 0 #ddd,
+      8px 8px 0 #ddd,
+      0px 3px 10px #999a;
   }
 
   .caption {
@@ -172,6 +200,36 @@ class GreetingWorkflow:
     font-size: 1.4rem;
     font-weight: 300;
     font-style: italic;
+  }
+
+  .separator {
+    height: 20px;
+    border-radius: 4px;
+    margin: 3rem 0;
+    background: linear-gradient(
+      to right,
+      var(--root-loops-ansi-red),
+      var(--root-loops-ansi-green),
+      var(--root-loops-ansi-yellow),
+      var(--root-loops-ansi-blue),
+      var(--root-loops-ansi-magenta),
+      var(--root-loops-ansi-cyan)
+    );
+  }
+
+  .separator-blocky {
+    height: 20px;
+    border-radius: 4px;
+    margin: 3rem 0;
+    background: linear-gradient(
+      to right,
+      var(--root-loops-ansi-red) 16%,
+      var(--root-loops-ansi-green) 16% 32%,
+      var(--root-loops-ansi-yellow) 32% 48%,
+      var(--root-loops-ansi-blue) 48% 64%,
+      var(--root-loops-ansi-magenta) 64% 80%,
+      var(--root-loops-ansi-cyan) 80% 100%
+    );
   }
 
   .bowl {
@@ -242,27 +300,6 @@ class GreetingWorkflow:
     --root-loops-ansi-bright-cyan-dim: #55ffff80;
     --root-loops-ansi-bright-white: #ffffff;
     --root-loops-ansi-bright-white-dim: #ffffff80;
-  }
-
-  h1 {
-    font-family: "Luckiest Guy", system-ui;
-    color: white;
-    letter-spacing: 3px;
-    line-height: 0.8em;
-    text-shadow:
-      -1px -1px 0 #444,
-      0px -1px 0 #444,
-      -1px 0px 0 #444,
-      0px 1px 0 #444,
-      1px 1px 0 #444,
-      2px 2px 0 #444,
-      3px 3px 0 #444,
-      4px 4px 0 #ddd,
-      5px 5px 0 #ddd,
-      6px 6px 0 #ddd,
-      7px 7px 0 #ddd,
-      8px 8px 0 #ddd,
-      0px 3px 10px #999a;
   }
 
   .green {
