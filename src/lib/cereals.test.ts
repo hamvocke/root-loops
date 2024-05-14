@@ -1,12 +1,12 @@
 import Color from "colorjs.io";
 import { describe, expect, it } from "vitest";
-import { prepare, MilkAmount } from "./cereals";
+import { prepare, MilkAmount, Flavor } from "./cereals";
 import { type Recipe } from "./cereals";
 
 describe("prepare(defaultRecipe)", () => {
   const defaultRecipe: Recipe = {
     milkAmount: MilkAmount.Glug,
-    flavors: 3,
+    flavor: Flavor.Classic,
     artificialColors: 2,
     sugar: 3,
   };
@@ -23,10 +23,10 @@ describe("prepare(defaultRecipe)", () => {
   it("generates base tone cereals with low chroma", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.black.c).toBeLessThan(0.03);
-    expect(cereals.white.c).toBeLessThan(0.03);
-    expect(cereals.brightBlack.c).toBeLessThan(0.03);
-    expect(cereals.brightWhite.c).toBeLessThan(0.03);
+    expect(cereals.black.c).toBeLessThan(0.06);
+    expect(cereals.white.c).toBeLessThan(0.06);
+    expect(cereals.brightBlack.c).toBeLessThan(0.06);
+    expect(cereals.brightWhite.c).toBeLessThan(0.06);
   });
 
   it("generates red tone cereals with right hue", () => {
@@ -162,32 +162,35 @@ describe("prepare(defaultRecipe)", () => {
   });
 
   it("uses 'artificial colors' parameter to drive chroma of accent colors", () => {
-    const lessFlavors = prepare(someRecipe({ artificialColors: 2 }));
-    const moreFlavors = prepare(someRecipe({ artificialColors: 3 }));
+    const lessColor = prepare(someRecipe({ artificialColors: 2 }));
+    const moreColor = prepare(someRecipe({ artificialColors: 3 }));
 
-    expect(lessFlavors.red.c).toBeLessThan(moreFlavors.red.c);
-    expect(lessFlavors.green.c).toBeLessThan(moreFlavors.green.c);
-    expect(lessFlavors.yellow.c).toBeLessThan(moreFlavors.yellow.c);
-    expect(lessFlavors.blue.c).toBeLessThan(moreFlavors.blue.c);
-    expect(lessFlavors.magenta.c).toBeLessThan(moreFlavors.magenta.c);
-    expect(lessFlavors.cyan.c).toBeLessThan(moreFlavors.cyan.c);
+    expect(lessColor.red.c).toBeLessThan(moreColor.red.c);
+    expect(lessColor.green.c).toBeLessThan(moreColor.green.c);
+    expect(lessColor.yellow.c).toBeLessThan(moreColor.yellow.c);
+    expect(lessColor.blue.c).toBeLessThan(moreColor.blue.c);
+    expect(lessColor.magenta.c).toBeLessThan(moreColor.magenta.c);
+    expect(lessColor.cyan.c).toBeLessThan(moreColor.cyan.c);
 
-    expect(lessFlavors.brightRed.c).toBeLessThan(moreFlavors.brightRed.c);
-    expect(lessFlavors.brightGreen.c).toBeLessThan(moreFlavors.brightGreen.c);
-    expect(lessFlavors.brightYellow.c).toBeLessThan(moreFlavors.brightYellow.c);
-    expect(lessFlavors.brightBlue.c).toBeLessThan(moreFlavors.brightBlue.c);
-    expect(lessFlavors.brightMagenta.c).toBeLessThan(moreFlavors.brightMagenta.c);
-    expect(lessFlavors.brightCyan.c).toBeLessThan(moreFlavors.brightCyan.c);
+    expect(lessColor.brightRed.c).toBeLessThan(moreColor.brightRed.c);
+    expect(lessColor.brightGreen.c).toBeLessThan(moreColor.brightGreen.c);
+    expect(lessColor.brightYellow.c).toBeLessThan(moreColor.brightYellow.c);
+    expect(lessColor.brightBlue.c).toBeLessThan(moreColor.brightBlue.c);
+    expect(lessColor.brightMagenta.c).toBeLessThan(moreColor.brightMagenta.c);
+    expect(lessColor.brightCyan.c).toBeLessThan(moreColor.brightCyan.c);
   });
 
-  it("uses 'flavors' parameter to drive hue shift of accent colors", () => {
-    const negativeShift = prepare(someRecipe({ flavors: -15 }));
-    const positiveShift = prepare(someRecipe({ flavors: 15 }));
+  it("uses 'flavor' parameter to drive hue shift of accent colors", () => {
+    const fruityFlavor = prepare(someRecipe({ flavor: Flavor.Fruity }));
+    const classicFlavor = prepare(someRecipe({ flavor: Flavor.Classic }));
+    const unicornFlavor = prepare(someRecipe({ flavor: Flavor.Unicorn }));
 
-    expect(negativeShift.red.h).toBe(-15);
-    expect(positiveShift.red.h).toBe(15);
-    expect(negativeShift.black.h).toBe(340);
-    expect(positiveShift.black.h).toBe(340);
+    expect(fruityFlavor.red.h).toBe(0);
+    expect(classicFlavor.red.h).toBe(15);
+    expect(unicornFlavor.red.h).toBe(30);
+    expect(fruityFlavor.black.h).toBe(340);
+    expect(classicFlavor.black.h).toBe(340);
+    expect(unicornFlavor.black.h).toBe(340);
   });
 
   it("uses 'sugar' parameter to drive lightness of accent colors", () => {

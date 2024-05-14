@@ -7,13 +7,13 @@
   let milk = 0;
   let flavor = 0;
   let colors = 6;
-  let sugar = 4;
+  let sugar = 7;
 
   // TODO: inGamut() checks
   // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   $: cereals = prepare({
     milkAmount: milk,
-    flavors: flavor,
+    flavor: flavor,
     artificialColors: colors,
     sugar: sugar,
   });
@@ -149,7 +149,7 @@ class GreetingWorkflow:
 
   <section class="sliders">
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
-    <Slider id="slider-flavor" label="Flavor" min="-15" max="15" bind:value={flavor} />
+    <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
     <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
     <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
   </section>

@@ -19,7 +19,7 @@ import Color from "colorjs.io";
 export type Recipe = {
   milkAmount: MilkAmount;
   artificialColors: number;
-  flavors: number;
+  flavor: Flavor;
   sugar: number;
 };
 
@@ -28,6 +28,12 @@ export enum MilkAmount {
   Splash = 1,
   Glug = 2,
   Cup = 3,
+}
+
+export enum Flavor {
+  Fruity = 0,
+  Classic = 1,
+  Unicorn = 2,
 }
 
 export type Cereals = {
@@ -60,7 +66,7 @@ export type Cereals = {
 export function prepare(recipe: Recipe): Cereals {
   const colors = normalizeChroma(recipe.artificialColors);
   const sugar = normalizeLightness(recipe.sugar);
-  const shift = recipe.flavors;
+  const shift = applyFlavor(recipe.flavor);
   const baseColors = pourMilk(recipe.milkAmount);
   const accentColors = equalHueDistance(6, sugar, colors, shift);
   const brightAccentColors = equalHueDistance(6, sugar + 0.1, colors, shift);
@@ -83,6 +89,17 @@ export function prepare(recipe: Recipe): Cereals {
     brightWhite: baseColors.brightWhite,
   };
   return cereals;
+}
+
+function applyFlavor(flavor: Flavor) {
+  switch (flavor) {
+    case Flavor.Fruity:
+      return 0;
+    case Flavor.Classic:
+      return 15;
+    case Flavor.Unicorn:
+      return 30;
+  }
 }
 
 function pourMilk(milkAmount: MilkAmount) {
