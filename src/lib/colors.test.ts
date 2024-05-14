@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { equalHueDistance, equalLightnessDistance, normalizeChroma } from "./colors";
+import {
+  equalHueDistance,
+  equalLightnessDistance,
+  normalizeChroma,
+  normalizeLightness,
+} from "./colors";
 
 describe("equalHueDistance()", () => {
   it("generates colors with equal hue distance", () => {
@@ -56,5 +61,41 @@ describe("normalizeChroma()", () => {
     { val: 10, expected: 0.3 },
   ])("normalizes 1-10 to reasonable chroma values ($val to $expected)", ({ val, expected }) => {
     expect(normalizeChroma(val)).toBe(expected);
+  });
+
+  it("doesn't allow values below 1", () => {
+    expect(normalizeChroma(0)).toBe(0.01);
+    expect(normalizeChroma(-1)).toBe(0.01);
+    expect(normalizeChroma(-100)).toBe(0.01);
+  });
+
+  it("doesn't allow values larger than 10", () => {
+    expect(normalizeChroma(11)).toBe(0.3);
+    expect(normalizeChroma(12)).toBe(0.3);
+    expect(normalizeChroma(100)).toBe(0.3);
+  });
+});
+
+describe("normalizeLightness()", () => {
+  it.each([
+    { val: 1, expected: 10 },
+    { val: 2, expected: 20 },
+    { val: 3, expected: 30 },
+    { val: 5, expected: 50 },
+    { val: 9, expected: 90 },
+  ])("normalizes 1-9 to reasonable lightness values ($val to $expected)", ({ val, expected }) => {
+    expect(normalizeLightness(val)).toBe(expected);
+  });
+
+  it("doesn't allow values below 1", () => {
+    expect(normalizeLightness(0)).toBe(10);
+    expect(normalizeLightness(-1)).toBe(10);
+    expect(normalizeLightness(-100)).toBe(10);
+  });
+
+  it("doesn't allow values larger than 9", () => {
+    expect(normalizeLightness(10)).toBe(90);
+    expect(normalizeLightness(11)).toBe(90);
+    expect(normalizeLightness(100)).toBe(90);
   });
 });

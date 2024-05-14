@@ -189,4 +189,14 @@ describe("prepare(defaultRecipe)", () => {
     expect(negativeShift.black.h).toBe(340);
     expect(positiveShift.black.h).toBe(340);
   });
+
+  it("uses 'sugar' parameter to drive lightness of accent colors", () => {
+    const lessSugar = prepare(someRecipe({ sugar: 1 }));
+    const moreSugar = prepare(someRecipe({ sugar: 2 }));
+
+    expect(lessSugar.red.l).toBe(11);
+    expect(moreSugar.red.l).toBe(15);
+    expect(lessSugar.black.l).toBe(10);
+    expect(moreSugar.black.l).toBe(10);
+  });
 });
