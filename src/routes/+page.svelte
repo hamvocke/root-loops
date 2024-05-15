@@ -38,9 +38,12 @@
     </header>
 
     <section class="bowl">
-      {#each Object.entries(cereals) as [_key, color]}
-        <Cereal export {color} />
-      {/each}
+      <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
+      <div class="cereals">
+        {#each Object.entries(cereals) as [_key, color]}
+          <Cereal {color} />
+        {/each}
+      </div>
     </section>
 
     <section class="sliders">
@@ -60,8 +63,7 @@
 
 <style>
   .app {
-    background: var(--root-loops-background);
-    color: var(--root-loops-foreground);
+    background: #eaeaea;
     width: 100%;
   }
 
@@ -110,11 +112,29 @@
   }
 
   .bowl {
+    position: relative;
+    border: 1px solid black;
+    padding: 1rem 0;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .milk {
+    background: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 1;
+    transition: height 0.5s ease-out;
+  }
+
+  .cereals {
+    position: relative;
+    z-index: 10;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
-    margin-bottom: 3rem;
   }
 
   .green {
