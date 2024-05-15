@@ -126,7 +126,7 @@ class GreetingWorkflow:
   <main>
     <header>
       <h1>
-        R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="cyan"
+        R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
           >o</span
         ><span class="yellow">o</span>ps
       </h1>
@@ -240,8 +240,8 @@ class GreetingWorkflow:
     color: var(--root-loops-ansi-bright-magenta);
   }
 
-  .cyan {
-    color: var(--root-loops-ansi-bright-cyan);
+  .blue {
+    color: var(--root-loops-ansi-bright-blue);
   }
 
   .yellow {
