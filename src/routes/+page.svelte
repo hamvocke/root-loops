@@ -1,6 +1,7 @@
 <script lang="ts">
   import Slider from "./Slider.svelte";
   import Code from "./Code.svelte";
+  import Cereal from "./Cereal.svelte";
   import { prepare } from "$lib/cereals";
   import { javascriptSnippet, pythonSnippet, ansiSnippet } from "$lib/snippets";
   import { generateCssColors } from "$lib/css";
@@ -38,11 +39,7 @@
 
     <section class="bowl">
       {#each Object.entries(cereals) as [_key, color]}
-        <div class="wrapper">
-          <div class="cereal" style="--color: {color}"></div>
-          <span class="color-value">{color}</span>
-          {#if !color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
-        </div>
+        <Cereal export {color} />
       {/each}
     </section>
 
@@ -120,21 +117,6 @@
     margin-bottom: 3rem;
   }
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .cereal {
-    box-sizing: border-box;
-    height: clamp(3rem, 9vw, 128px);
-    width: clamp(3rem, 9vw, 128px);
-    border-radius: 50%;
-    border: 3rem solid var(--color);
-  }
-
   .green {
     color: var(--root-loops-ansi-bright-green);
   }
@@ -149,10 +131,5 @@
 
   .yellow {
     color: var(--root-loops-ansi-bright-yellow);
-  }
-
-  .color-value {
-    font-family: monospace;
-    font-size: 0.9em;
   }
 </style>
