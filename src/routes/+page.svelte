@@ -9,8 +9,6 @@
   let colors = 6;
   let sugar = 7;
 
-  // TODO: inGamut() checks
-  // TODO: watch out, the colors land in css land in 'oklch' format, too, which might have compatibility issues
   $: cereals = prepare({
     milkAmount: milk,
     flavor: flavor,
@@ -135,9 +133,6 @@ class GreetingWorkflow:
       <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
     </header>
 
-    <div class="separator"></div>
-    <div class="separator-blocky"></div>
-
     <section class="bowl">
       {#each Object.entries(cereals) as [_key, color]}
         <div class="wrapper">
@@ -179,10 +174,7 @@ class GreetingWorkflow:
     display: flex;
     flex-direction: column;
     text-align: center;
-
-    p {
-      margin-bottom: 0;
-    }
+    margin-bottom: 2rem;
   }
 
   h1 {
@@ -215,36 +207,6 @@ class GreetingWorkflow:
     font-size: 1.4rem;
     font-weight: 300;
     font-style: italic;
-  }
-
-  .separator {
-    height: 20px;
-    border-radius: 4px;
-    margin: 3rem 0;
-    background: linear-gradient(
-      to right,
-      var(--root-loops-ansi-red),
-      var(--root-loops-ansi-green),
-      var(--root-loops-ansi-yellow),
-      var(--root-loops-ansi-blue),
-      var(--root-loops-ansi-magenta),
-      var(--root-loops-ansi-cyan)
-    );
-  }
-
-  .separator-blocky {
-    height: 20px;
-    border-radius: 4px;
-    margin: 3rem 0;
-    background: linear-gradient(
-      to right,
-      var(--root-loops-ansi-red) 16%,
-      var(--root-loops-ansi-green) 16% 32%,
-      var(--root-loops-ansi-yellow) 32% 48%,
-      var(--root-loops-ansi-blue) 48% 64%,
-      var(--root-loops-ansi-magenta) 64% 80%,
-      var(--root-loops-ansi-cyan) 80% 100%
-    );
   }
 
   .bowl {
