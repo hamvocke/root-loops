@@ -4,7 +4,7 @@
   import { prepare } from "$lib/cereals";
   import "@fontsource/luckiest-guy";
 
-  let milk = 0;
+  let milk = 3;
   let flavor = 0;
   let colors = 6;
   let sugar = 7;
@@ -124,44 +124,57 @@ class GreetingWorkflow:
   <meta name="description" content="A code & terminal color scheme for cereal lovers." />
 </svelte:head>
 
-<div class="colors" style={cssColors}>
-  <header>
-    <h1>
-      R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="cyan"
-        >o</span
-      ><span class="yellow">o</span>ps
-    </h1>
-    <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
-  </header>
+<div class="app" style={cssColors}>
+  <main>
+    <header>
+      <h1>
+        R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="cyan"
+          >o</span
+        ><span class="yellow">o</span>ps
+      </h1>
+      <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
+    </header>
 
-  <div class="separator"></div>
-  <div class="separator-blocky"></div>
+    <div class="separator"></div>
+    <div class="separator-blocky"></div>
 
-  <section class="bowl">
-    {#each Object.entries(cereals) as [_key, color]}
-      <div class="wrapper">
-        <div class="cereal" style="--color: {color}"></div>
-        <span class="color-value">{color}</span>
-        {#if !color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
-      </div>
-    {/each}
-  </section>
+    <section class="bowl">
+      {#each Object.entries(cereals) as [_key, color]}
+        <div class="wrapper">
+          <div class="cereal" style="--color: {color}"></div>
+          <span class="color-value">{color}</span>
+          {#if !color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
+        </div>
+      {/each}
+    </section>
 
-  <section class="sliders">
-    <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
-    <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
-    <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
-    <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
-  </section>
+    <section class="sliders">
+      <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
+      <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
+      <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
+      <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
+    </section>
 
-  <section class="samples">
-    <Code source={javascriptSnippet} language="javascript" />
-    <Code source={pythonSnippet} language="python" />
-    <Code source={ansiSnippet} language="ansi" />
-  </section>
+    <section class="samples">
+      <Code source={javascriptSnippet} language="javascript" />
+      <Code source={pythonSnippet} language="python" />
+      <Code source={ansiSnippet} language="ansi" />
+    </section>
+  </main>
 </div>
 
 <style>
+  .app {
+    background: var(--root-loops-background);
+    color: var(--root-loops-foreground);
+    width: 100%;
+  }
+
+  main {
+    margin: auto;
+    width: min(calc(100% - 2rem), 1200px);
+  }
+
   header {
     display: flex;
     flex-direction: column;
@@ -255,53 +268,6 @@ class GreetingWorkflow:
     width: clamp(3rem, 9vw, 128px);
     border-radius: 50%;
     border: 3rem solid var(--color);
-  }
-
-  .colors {
-    --root-loops-foreground: purple;
-    --root-loops-background: orange;
-    --root-loops-token-constant: #660000;
-    --root-loops-token-string: #770000;
-    --root-loops-token-comment: #880000;
-    --root-loops-token-keyword: #990000;
-    --root-loops-token-parameter: #aa0000;
-    --root-loops-token-function: #bb0000;
-    --root-loops-token-string-expression: #cc0000;
-    --root-loops-token-punctuation: #dd0000;
-    --root-loops-token-link: #ee0000;
-
-    --root-loops-ansi-black: #000000;
-    --root-loops-ansi-black-dim: #00000080;
-    --root-loops-ansi-red: #bb0000;
-    --root-loops-ansi-red-dim: #bb000080;
-    --root-loops-ansi-green: #00bb00;
-    --root-loops-ansi-green-dim: #00bb0080;
-    --root-loops-ansi-yellow: #bbbb00;
-    --root-loops-ansi-yellow-dim: #bbbb0080;
-    --root-loops-ansi-blue: #0000bb;
-    --root-loops-ansi-blue-dim: #0000bb80;
-    --root-loops-ansi-magenta: #ff00ff;
-    --root-loops-ansi-magenta-dim: #ff00ff80;
-    --root-loops-ansi-cyan: #00bbbb;
-    --root-loops-ansi-cyan-dim: #00bbbb80;
-    --root-loops-ansi-white: #eeeeee;
-    --root-loops-ansi-white-dim: #eeeeee80;
-    --root-loops-ansi-bright-black: #555555;
-    --root-loops-ansi-bright-black-dim: #55555580;
-    --root-loops-ansi-bright-red: #ff5555;
-    --root-loops-ansi-bright-red-dim: #ff555580;
-    --root-loops-ansi-bright-green: #00ff00;
-    --root-loops-ansi-bright-green-dim: #00ff0080;
-    --root-loops-ansi-bright-yellow: #ffff55;
-    --root-loops-ansi-bright-yellow-dim: #ffff5580;
-    --root-loops-ansi-bright-blue: #5555ff;
-    --root-loops-ansi-bright-blue-dim: #5555ff80;
-    --root-loops-ansi-bright-magenta: #ff55ff;
-    --root-loops-ansi-bright-magenta-dim: #ff55ff80;
-    --root-loops-ansi-bright-cyan: #55ffff;
-    --root-loops-ansi-bright-cyan-dim: #55ffff80;
-    --root-loops-ansi-bright-white: #ffffff;
-    --root-loops-ansi-bright-white-dim: #ffffff80;
   }
 
   .green {

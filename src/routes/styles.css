@@ -6,9 +6,14 @@
   color: var(--color-text);
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0;
+  display: flex;
 }
 
 h1,
