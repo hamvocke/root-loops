@@ -26,47 +26,40 @@
   <meta name="description" content="A code & terminal color scheme for cereal lovers." />
 </svelte:head>
 
-<div class="app" style={cssColors}>
-  <main>
-    <header>
-      <h1>
-        R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
-          >o</span
-        ><span class="yellow">o</span>ps
-      </h1>
-      <p class="caption">A code & terminal color scheme generator for cereal lovers.</p>
-    </header>
+<main style={cssColors}>
+  <header>
+    <h1>
+      R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
+        >o</span
+      ><span class="yellow">o</span>ps
+    </h1>
+    <p class="caption">A terminal color scheme generator for cereal lovers.</p>
+  </header>
 
-    <section class="bowl">
-      <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
-      <div class="cereals">
-        {#each Object.entries(cereals) as [_key, color]}
-          <Cereal {color} />
-        {/each}
-      </div>
-    </section>
+  <section class="bowl">
+    <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
+    <div class="cereals">
+      {#each Object.entries(cereals) as [_key, color]}
+        <Cereal {color} />
+      {/each}
+    </div>
+  </section>
 
-    <section class="sliders">
-      <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
-      <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
-      <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
-      <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
-    </section>
+  <section class="sliders">
+    <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
+    <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
+    <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
+    <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
+  </section>
 
-    <section class="samples">
-      <Code source={javascriptSnippet} language="javascript" />
-      <Code source={pythonSnippet} language="python" />
-      <Code source={ansiSnippet} language="ansi" />
-    </section>
-  </main>
-</div>
+  <section class="samples">
+    <Code source={javascriptSnippet} language="javascript" />
+    <Code source={pythonSnippet} language="python" />
+    <Code source={ansiSnippet} language="ansi" />
+  </section>
+</main>
 
 <style>
-  .app {
-    background: #eaeaea;
-    width: 100%;
-  }
-
   main {
     margin: auto;
     width: min(calc(100% - 2rem), 1200px);
@@ -113,10 +106,12 @@
 
   .bowl {
     position: relative;
-    border: 1px solid black;
-    padding: 1rem 0;
+    background: var(--color-slate-100);
+    border: 1px solid var(--color-slate-300);
+    padding: 1rem;
     border-radius: 1rem;
     overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem #0001;
   }
 
   .milk {
@@ -124,6 +119,7 @@
     width: 100%;
     position: absolute;
     bottom: 0px;
+    left: 0px;
     z-index: 1;
     transition: height 0.5s ease-out;
   }

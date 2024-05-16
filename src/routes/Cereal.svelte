@@ -17,6 +17,11 @@
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+
+    &:hover .cereal {
+      transform: scale(1.2);
+      outline-width: 0.8rem;
+    }
   }
 
   .cereal {
@@ -31,11 +36,6 @@
     align-items: center;
     justify-content: center;
     transition: all 0.1s ease-out;
-
-    &:hover {
-      transform: scale(1.2);
-      outline-width: 0.8rem;
-    }
   }
 
   .hole {
