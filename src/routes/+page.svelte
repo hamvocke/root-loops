@@ -36,17 +36,17 @@
     <p class="caption">A terminal color scheme generator for cereal lovers.</p>
   </header>
 
-  <div class="bowl-wrapper">
+  <section class="bowl">
     <div class="glow"></div>
-    <section class="bowl">
+    <div class="bowl-content">
       <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
       <div class="cereals">
         {#each Object.entries(cereals) as [_key, color]}
           <Cereal {color} />
         {/each}
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
   <section class="sliders">
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
@@ -107,7 +107,7 @@
     font-style: italic;
   }
 
-  .bowl-wrapper {
+  .bowl {
     position: relative;
   }
 
@@ -129,7 +129,7 @@
     opacity: 0.9;
   }
 
-  .bowl {
+  .bowl-content {
     position: relative;
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     border: 1px solid var(--color-slate-050);
