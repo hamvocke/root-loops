@@ -7,7 +7,7 @@
   import { generateCssColors } from "$lib/css";
   import "@fontsource/luckiest-guy";
 
-  let milk = 3;
+  let milk = 0;
   let flavor = 0;
   let colors = 6;
   let sugar = 7;
@@ -36,14 +36,17 @@
     <p class="caption">A terminal color scheme generator for cereal lovers.</p>
   </header>
 
-  <section class="bowl">
-    <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
-    <div class="cereals">
-      {#each Object.entries(cereals) as [_key, color]}
-        <Cereal {color} />
-      {/each}
-    </div>
-  </section>
+  <div class="bowl-wrapper">
+    <div class="glow"></div>
+    <section class="bowl">
+      <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
+      <div class="cereals">
+        {#each Object.entries(cereals) as [_key, color]}
+          <Cereal {color} />
+        {/each}
+      </div>
+    </section>
+  </div>
 
   <section class="sliders">
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
@@ -104,10 +107,32 @@
     font-style: italic;
   }
 
+  .bowl-wrapper {
+    position: relative;
+  }
+
+  .glow {
+    background: conic-gradient(
+      from -90deg,
+      var(--root-loops-ansi-bright-red),
+      var(--root-loops-ansi-bright-green),
+      var(--root-loops-ansi-bright-yellow),
+      var(--root-loops-ansi-bright-blue),
+      var(--root-loops-ansi-bright-magenta),
+      var(--root-loops-ansi-bright-cyan)
+    );
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    filter: blur(128px);
+    opacity: 0.9;
+  }
+
   .bowl {
     position: relative;
-    background: var(--color-slate-100);
-    border: 1px solid var(--color-slate-300);
+    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
+    border: 1px solid var(--color-slate-050);
     padding: 1rem;
     border-radius: 1rem;
     overflow: hidden;
@@ -120,17 +145,16 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
-    z-index: 1;
     transition: height 0.5s ease-out;
   }
 
   .cereals {
     position: relative;
-    z-index: 10;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
+    filter: none;
   }
 
   .green {
