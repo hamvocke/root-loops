@@ -8,8 +8,16 @@
       <span class="circle yellow"></span>
       <span class="circle green"></span>
     </div>
-    <span class="title">Root Loops Terminal</span>
+    <span>Root Loops Terminal</span>
   </div>
+  <nav class="tabs">
+    <ul>
+      <li class="active">bash</li>
+      <li>python</li>
+      <li>javascript</li>
+      <li>elixir</li>
+    </ul>
+  </nav>
   <div class="content">
     <p>
       <span class="green">loops@cereal-box</span><span class="normal">:</span><span class="blue"
@@ -23,9 +31,8 @@
 
 <style>
   .terminal {
-    font-family: monospace;
+    font-family: system-io, sans-serif;
     font-size: 1rem;
-    color: var(--root-loops-foreground);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -33,12 +40,11 @@
     border-radius: var(--border-radius);
     border: 1px solid var(--color-slate-300);
     overflow: hidden;
+    color: var(--color-slate-600);
   }
 
   .window-decoration {
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
-    color: var(--color-slate-500);
-    font-family: system-io, sans-serif;
     font-weight: bold;
     text-shadow: 0 1px 0 var(--color-slate-050);
     padding: 0.75rem 0.5rem;
@@ -77,10 +83,40 @@
     }
   }
 
+  .tabs {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    li {
+      padding: 0.5rem 0.5rem;
+      background: color-mix(in oklch, var(--color-slate-200) 40%, transparent);
+      display: block;
+      flex: 1 0 auto;
+      border-top: 1px solid var(--color-slate-050);
+      border-bottom: 1px solid var(--color-slate-300);
+      text-align: center;
+    }
+
+    li + li {
+      border-left: 1px solid var(--color-slate-300);
+    }
+
+    li.active {
+      background: var(--color-slate-100);
+      border-bottom: 4px solid var(--root-loops-ansi-bright-red);
+    }
+  }
+
   .content {
     background: var(--root-loops-background);
     padding: 0 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
+    font-family: monospace;
+    color: var(--root-loops-foreground);
   }
 
   .blue {
