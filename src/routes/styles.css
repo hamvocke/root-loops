@@ -27,6 +27,8 @@
 
   --color-text: var(--color-slate-800);
 
+  --border-radius: 0.5rem;
+
   font-family: var(--font-body);
   color: var(--color-text);
 }

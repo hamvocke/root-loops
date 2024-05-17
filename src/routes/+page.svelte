@@ -148,7 +148,7 @@
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     border: 1px solid var(--color-slate-050);
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 0.25rem 0.5rem #0001;
   }

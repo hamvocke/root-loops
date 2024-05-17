@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 12px #0001;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
     border: 1px solid var(--color-slate-300);
     overflow: hidden;
   }
@@ -42,7 +42,7 @@
     font-weight: bold;
     text-shadow: 0 1px 0 var(--color-slate-050);
     padding: 0.75rem 0.5rem;
-    border-radius: 1rem 1rem 0 0;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
     border: 1px solid var(--color-slate-050);
     border-bottom: 1px solid var(--color-slate-300);
     display: flex;
@@ -80,7 +80,7 @@
   .content {
     background: var(--root-loops-background);
     padding: 0 1rem;
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
   }
 
   .blue {
