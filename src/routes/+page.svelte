@@ -2,6 +2,7 @@
   import Slider from "./Slider.svelte";
   import Code from "./Code.svelte";
   import Cereal from "./Cereal.svelte";
+  import Terminal from "./Terminal.svelte";
   import { prepare } from "$lib/cereals";
   import { javascriptSnippet, pythonSnippet, ansiSnippet } from "$lib/snippets";
   import { generateCssColors } from "$lib/css";
@@ -54,6 +55,8 @@
     <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
     <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
   </section>
+
+  <Terminal />
 
   <section class="samples">
     <Code source={javascriptSnippet} language="javascript" />
