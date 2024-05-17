@@ -47,6 +47,13 @@
     <p class="caption">A terminal color scheme generator for cereal lovers.</p>
   </header>
 
+  <section class="sliders">
+    <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
+    <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
+    <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
+    <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
+  </section>
+
   <section class="bowl">
     <div class="glow"></div>
     <div class="bowl-content">
@@ -57,13 +64,6 @@
         {/each}
       </div>
     </div>
-  </section>
-
-  <section class="sliders">
-    <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
-    <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
-    <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
-    <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
   </section>
 
   <Terminal />
@@ -122,6 +122,7 @@
 
   .bowl {
     position: relative;
+    margin: 2rem 0;
   }
 
   .glow {
@@ -138,7 +139,7 @@
     display: block;
     height: 100%;
     width: 100%;
-    filter: blur(128px);
+    filter: blur(64px);
     opacity: 0.9;
   }
 

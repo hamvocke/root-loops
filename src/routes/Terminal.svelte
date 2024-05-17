@@ -36,11 +36,14 @@
   }
 
   .window-decoration {
-    background: var(--color-slate-200);
+    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     color: var(--color-slate-500);
+    font-family: system-io, sans-serif;
+    font-weight: bold;
+    text-shadow: 0 1px 0 var(--color-slate-050);
     padding: 0.75rem 0.5rem;
     border-radius: 1rem 1rem 0 0;
-    border: 1px solid var(--color-slate-100);
+    border: 1px solid var(--color-slate-050);
     border-bottom: 1px solid var(--color-slate-300);
     display: flex;
     align-items: center;
