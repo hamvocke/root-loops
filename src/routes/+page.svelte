@@ -20,11 +20,21 @@
     sugar: sugar,
   });
   $: cssColors = generateCssColors(cereals);
+
+  function favicon() {
+    return `
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+    <circle cx="100" cy="90" r="50" fill="${cereals.blue.toString()}" />
+    <circle cx="60" cy="50" r="50" fill="${cereals.red.toString()}" />
+  </svg>
+    `.replace('"', "%22");
+  }
 </script>
 
 <svelte:head>
   <title>Root Loops</title>
   <meta name="description" content="A code & terminal color scheme for cereal lovers." />
+  <link rel="icon" href="data:image/svg+xml,{favicon()}" />
 </svelte:head>
 
 <main style={cssColors}>
