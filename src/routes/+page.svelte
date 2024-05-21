@@ -96,21 +96,26 @@
   }
 
   header .label {
-    background: var(--color-red-500);
+    background: radial-gradient(
+      farthest-corner at 50% 20px,
+      var(--color-red-400) 0%,
+      var(--color-red-700) 70%,
+      var(--color-red-900) 100%
+    );
     display: inline-block;
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
     border: 4px solid var(--color-red-100);
-    outline: 6px solid var(--color-red-500);
+    outline: 6px solid var(--color-red-800);
     border-top: none;
     box-shadow: 0 8px 16px #0004;
   }
 
   h1 {
-    font-size: 7rem;
+    font-size: clamp(4rem, 8vw + 2rem, 7rem);
     text-transform: uppercase;
     font-weight: 900;
-    margin: 2rem 0 0.5rem 0;
+    margin: 1rem 0 0.5rem 0;
     font-family: "Luckiest Guy", system-ui;
     color: var(--color);
     letter-spacing: 1px;
@@ -124,7 +129,7 @@
   .yellow {
     color: var(--color);
     text-shadow:
-      0 -2px 0 var(--highlight),
+      0 -1px 0 var(--highlight),
       0 1px 0 var(--darker-shade),
       0 1px 0 var(--shade),
       0 2px 0 var(--shade),
@@ -133,17 +138,15 @@
       0 5px 0 var(--shade),
       0 6px 0 var(--shade),
       0 7px 0 var(--shade),
-      0 8px 0 var(--shade),
-      0 9px 0 var(--shade),
-      0 10px 10px #0004,
-      0 20px 30px #0002;
+      0 0.75rem 0.5rem #0008,
+      0 1rem 2rem #0006;
   }
 
   h1 {
     --color: var(--color-slate-050);
-    --shade: color-mix(in srgb, var(--color) 80%, black);
+    --shade: color-mix(in srgb, var(--color) 70%, black);
     --highlight: color-mix(in srgb, var(--color) 50%, white);
-    --darker-shade: color-mix(in srgb, var(--color) 90%, black);
+    --darker-shade: color-mix(in srgb, var(--color) 70%, black);
   }
 
   .green {
@@ -176,8 +179,9 @@
 
   .caption {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-style: italic;
+    line-height: 1em;
   }
 
   .bowl {
