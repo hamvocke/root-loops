@@ -21,6 +21,7 @@ export type Recipe = {
   artificialColors: number;
   flavor: Flavor;
   sugar: number;
+  juice: number;
 };
 
 export enum MilkAmount {
@@ -67,7 +68,7 @@ export function prepare(recipe: Recipe): Cereals {
   const colors = normalizeChroma(recipe.artificialColors);
   const sugar = normalizeLightness(recipe.sugar);
   const shift = applyFlavor(recipe.flavor);
-  const baseColors = pourMilk(recipe.milkAmount);
+  const baseColors = pourMilk(recipe);
   const accentColors = equalHueDistance(6, sugar, colors, shift);
   const brightAccentColors = equalHueDistance(6, sugar + 0.1, colors, shift);
   const cereals = {
@@ -102,10 +103,10 @@ function applyFlavor(flavor: Flavor) {
   }
 }
 
-function pourMilk(milkAmount: MilkAmount) {
-  const colors = equalLightnessDistance(6);
+function pourMilk(recipe: Recipe) {
+  const colors = equalLightnessDistance(6, 0.02, recipe.juice);
 
-  switch (milkAmount) {
+  switch (recipe.milkAmount) {
     case MilkAmount.None:
       return {
         black: colors[0],

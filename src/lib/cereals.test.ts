@@ -9,6 +9,7 @@ describe("prepare(defaultRecipe)", () => {
     flavor: Flavor.Classic,
     artificialColors: 2,
     sugar: 3,
+    juice: 340,
   };
 
   function someRecipe(recipe: object) {
@@ -203,5 +204,24 @@ describe("prepare(defaultRecipe)", () => {
     expect(moreSugar.brightBlue.l).toBeCloseTo(0.3, 4);
     expect(lessSugar.black.l).toBe(0.8);
     expect(moreSugar.black.l).toBe(0.8);
+  });
+
+  it("uses 'juice' parameter to drive hue of base colors", () => {
+    const juiceA = prepare(someRecipe({ juice: 30 }));
+    const juiceB = prepare(someRecipe({ juice: 90 }));
+
+    expect(juiceA.red.h).toBe(15);
+    expect(juiceA.brightRed.h).toBe(15);
+    expect(juiceB.red.h).toBe(15);
+    expect(juiceB.brightRed.h).toBe(15);
+
+    expect(juiceA.black.h).toBe(30);
+    expect(juiceA.brightBlack.h).toBe(30);
+    expect(juiceA.white.h).toBe(30);
+    expect(juiceA.brightWhite.h).toBe(30);
+    expect(juiceB.black.h).toBe(90);
+    expect(juiceB.brightBlack.h).toBe(90);
+    expect(juiceB.white.h).toBe(90);
+    expect(juiceB.brightWhite.h).toBe(90);
   });
 });

@@ -50,6 +50,13 @@ describe("equalLightnessDistance()", () => {
     expect(colors[0].c).toBe(0.15);
     expect(colors[1].c).toBe(0.15);
   });
+
+  it("uses hue parameter to determine hue", () => {
+    const colors = equalLightnessDistance(2, 0.15, 180);
+
+    expect(colors[0].h).toBe(180);
+    expect(colors[1].h).toBe(180);
+  });
 });
 
 describe("normalizeChroma()", () => {

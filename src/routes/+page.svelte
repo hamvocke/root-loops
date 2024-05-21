@@ -12,12 +12,14 @@
   let flavor = 0;
   let colors = 6;
   let sugar = 7;
+  let juice = 30;
 
   $: cereals = prepare({
     milkAmount: milk,
     flavor: flavor,
     artificialColors: colors,
     sugar: sugar,
+    juice: juice,
   });
   $: cssColors = generateCssColors(cereals);
 
@@ -51,7 +53,8 @@
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
     <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
     <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
-    <Slider id="slider-colors" label="Artificial Colors" min="0" max="10" bind:value={colors} />
+    <Slider id="slider-colors" label="Artificial Colors" min="1" max="10" bind:value={colors} />
+    <Slider id="slider-juice" label="Juice" min="0" max="360" bind:value={juice} />
   </section>
 
   <section class="bowl">

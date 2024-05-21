@@ -17,7 +17,11 @@ export function equalHueDistance(
   return new Array(count).fill(undefined).map((_color, i) => new Color("oklch", [l, c, h(i)]));
 }
 
-export function equalLightnessDistance(count: number, chroma: number = 0.05): Color[] {
+export function equalLightnessDistance(
+  count: number,
+  chroma: number = 0.05,
+  hue: number = 340,
+): Color[] {
   function lightness(index: number, colorCount: number): number {
     const maxLightness = 100;
     const step = maxLightness / (colorCount - 1);
@@ -28,7 +32,7 @@ export function equalLightnessDistance(count: number, chroma: number = 0.05): Co
 
   return new Array(count)
     .fill(undefined)
-    .map((_color, i) => new Color("oklch", [l(i), chroma, 340]));
+    .map((_color, i) => new Color("oklch", [l(i), chroma, hue]));
 }
 
 export function normalizeChroma(input: number): number {
