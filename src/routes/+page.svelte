@@ -4,7 +4,7 @@
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
   import { prepare } from "$lib/cereals";
-  import { javascriptSnippet, pythonSnippet, ansiSnippet } from "$lib/snippets";
+  import { javascriptSnippet, pythonSnippet, vitestSnippet, ansiSnippet } from "$lib/snippets";
   import { generateCssColors } from "$lib/css";
   import "@fontsource/luckiest-guy";
 
@@ -71,6 +71,7 @@
   <section class="samples">
     <Code source={javascriptSnippet} language="javascript" />
     <Code source={pythonSnippet} language="python" />
+    <Code source={vitestSnippet} language="ansi" />
     <Code source={ansiSnippet} language="ansi" />
   </section>
 </main>

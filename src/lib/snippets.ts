@@ -51,3 +51,18 @@ export const ansiSnippet = `\u001b[0;90m┌\u001b[0m  \u001b[0;36;1mWelcome to V
 \u001b[0;36m│\u001b[0m  \u001b[0;2m○\u001b[0m \u001b[0;2mDefault Theme + Customization\u001b[0m\u001b[0m
 \u001b[0;36m│\u001b[0m  \u001b[0;2m○\u001b[0m \u001b[0;2mCustom Theme\u001b[0m\u001b[0m
 \u001b[0;36m└\u001b[0m`;
+
+export const vitestSnippet = `
+> root-loops@0.0.1 test:unit
+> vitest cereals.test.ts --run --color
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.5.0[39m [90m/home/ham/dev/root-loops[39m
+
+ [32m✓[39m src/lib/cereals.test.ts [2m ([22m[2m17 tests[22m[2m)[22m[90m 13[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m17 passed[39m[22m[90m (17)[39m
+[2m   Start at [22m 10:14:09
+[2m   Duration [22m 451ms[2m (transform 79ms, setup 0ms, collect 93ms, tests 13ms, environment 0ms, prepare 87ms)[22m
+
+`;
