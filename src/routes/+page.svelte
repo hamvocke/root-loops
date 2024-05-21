@@ -112,7 +112,7 @@
   }
 
   h1 {
-    font-size: clamp(4rem, 8vw + 2rem, 7rem);
+    font-size: clamp(5rem, 8vw + 2rem, 7rem);
     text-transform: uppercase;
     font-weight: 900;
     margin: 1rem 0 0.5rem 0;
