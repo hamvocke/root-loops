@@ -43,12 +43,14 @@
 
 <main style={cssColors}>
   <header>
-    <h1>
-      R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
-        >o</span
-      ><span class="yellow">o</span>ps
-    </h1>
-    <p class="caption">A terminal color scheme generator for cereal lovers.</p>
+    <div class="label">
+      <h1>
+        R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
+          >o</span
+        ><span class="yellow">o</span>ps
+      </h1>
+      <p class="caption">A terminal color scheme generator for cereal lovers.</p>
+    </div>
   </header>
 
   <section class="sliders">
@@ -89,41 +91,92 @@
   }
 
   header {
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    margin-bottom: 2rem;
+    color: var(--color-slate-050);
+  }
+
+  header .label {
+    background: var(--color-red-500);
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
+    border: 4px solid var(--color-red-100);
+    outline: 6px solid var(--color-red-500);
+    border-top: none;
+    box-shadow: 0 8px 16px #0004;
   }
 
   h1 {
     font-size: 7rem;
     text-transform: uppercase;
     font-weight: 900;
-    margin-bottom: 0.5rem;
+    margin: 2rem 0 0.5rem 0;
     font-family: "Luckiest Guy", system-ui;
-    color: white;
+    color: var(--color);
     letter-spacing: 1px;
     line-height: 0.8em;
+  }
+
+  h1,
+  .green,
+  .magenta,
+  .blue,
+  .yellow {
+    color: var(--color);
     text-shadow:
-      -1px -1px 0 #444,
-      0px -1px 0 #444,
-      -1px 0px 0 #444,
-      0px 1px 0 #444,
-      1px 1px 0 #444,
-      2px 2px 0 #444,
-      3px 3px 0 #444,
-      4px 4px 0 #ddd,
-      5px 5px 0 #ddd,
-      6px 6px 0 #ddd,
-      7px 7px 0 #ddd,
-      8px 8px 0 #ddd,
-      0px 3px 10px #999a;
+      0 -2px 0 var(--highlight),
+      0 1px 0 var(--darker-shade),
+      0 1px 0 var(--shade),
+      0 2px 0 var(--shade),
+      0 3px 0 var(--shade),
+      0 4px 0 var(--shade),
+      0 5px 0 var(--shade),
+      0 6px 0 var(--shade),
+      0 7px 0 var(--shade),
+      0 8px 0 var(--shade),
+      0 9px 0 var(--shade),
+      0 10px 10px #0004,
+      0 20px 30px #0002;
+  }
+
+  h1 {
+    --color: var(--color-slate-050);
+    --shade: color-mix(in srgb, var(--color) 80%, black);
+    --highlight: color-mix(in srgb, var(--color) 50%, white);
+    --darker-shade: color-mix(in srgb, var(--color) 90%, black);
+  }
+
+  .green {
+    --color: var(--root-loops-ansi-bright-green);
+    --shade: color-mix(in oklch, var(--color) 80%, black);
+    --highlight: color-mix(in oklch, var(--color) 50%, white);
+    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+  }
+
+  .magenta {
+    --color: var(--root-loops-ansi-bright-magenta);
+    --shade: color-mix(in oklch, var(--color) 80%, black);
+    --highlight: color-mix(in oklch, var(--color) 50%, white);
+    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+  }
+
+  .blue {
+    --color: var(--root-loops-ansi-bright-blue);
+    --shade: color-mix(in oklch, var(--color) 80%, black);
+    --highlight: color-mix(in oklch, var(--color) 50%, white);
+    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+  }
+
+  .yellow {
+    --color: var(--root-loops-ansi-bright-yellow);
+    --shade: color-mix(in oklch, var(--color) 80%, black);
+    --highlight: color-mix(in oklch, var(--color) 50%, white);
+    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
   }
 
   .caption {
-    margin-top: 0;
+    margin: 0;
     font-size: 1.4rem;
-    font-weight: 300;
     font-style: italic;
   }
 
@@ -176,21 +229,5 @@
     grid-template-rows: auto;
     gap: 1rem;
     filter: none;
-  }
-
-  .green {
-    color: var(--root-loops-ansi-bright-green);
-  }
-
-  .magenta {
-    color: var(--root-loops-ansi-bright-magenta);
-  }
-
-  .blue {
-    color: var(--root-loops-ansi-bright-blue);
-  }
-
-  .yellow {
-    color: var(--root-loops-ansi-bright-yellow);
   }
 </style>
