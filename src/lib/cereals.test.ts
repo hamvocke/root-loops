@@ -10,6 +10,7 @@ describe("prepare(defaultRecipe)", () => {
     artificialColors: 2,
     sugar: 3,
     juice: 340,
+    sogginess: 0.02,
   };
 
   function someRecipe(recipe: object) {
@@ -223,5 +224,22 @@ describe("prepare(defaultRecipe)", () => {
     expect(juiceB.brightBlack.h).toBe(90);
     expect(juiceB.white.h).toBe(90);
     expect(juiceB.brightWhite.h).toBe(90);
+  });
+
+  it("uses 'sogginess' parameter to drive chroma of base colors", () => {
+    const notSoSoggy = prepare(someRecipe({ sogginess: 0.02 }));
+    const soggy = prepare(someRecipe({ sogginess: 0.1 }));
+
+    expect(notSoSoggy.red.c).toBe(0.05);
+    expect(soggy.red.c).toBe(0.05);
+
+    expect(notSoSoggy.black.c).toBe(0.02);
+    expect(notSoSoggy.brightBlack.c).toBe(0.02);
+    expect(notSoSoggy.white.c).toBe(0.02);
+    expect(notSoSoggy.brightWhite.c).toBe(0.02);
+    expect(soggy.black.c).toBe(0.1);
+    expect(soggy.brightBlack.c).toBe(0.1);
+    expect(soggy.white.c).toBe(0.1);
+    expect(soggy.brightWhite.c).toBe(0.1);
   });
 });

@@ -22,6 +22,7 @@ export type Recipe = {
   flavor: Flavor;
   sugar: number;
   juice: number;
+  sogginess: number;
 };
 
 export enum MilkAmount {
@@ -104,7 +105,7 @@ function applyFlavor(flavor: Flavor) {
 }
 
 function pourMilk(recipe: Recipe) {
-  const colors = equalLightnessDistance(6, 0.02, recipe.juice);
+  const colors = equalLightnessDistance(6, recipe.sogginess, recipe.juice);
 
   switch (recipe.milkAmount) {
     case MilkAmount.None:
