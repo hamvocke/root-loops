@@ -105,8 +105,8 @@
     display: inline-block;
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
-    border: 4px solid var(--color-red-100);
-    outline: 6px solid var(--color-red-800);
+    border: 0.2rem solid var(--color-red-100);
+    outline: 0.4rem solid var(--color-red-800);
     border-top: none;
     box-shadow: 0 8px 16px #0004;
   }
@@ -213,13 +213,13 @@
     border: 1px solid var(--color-slate-050);
     padding: 1rem;
     border-radius: var(--border-radius);
-    overflow: hidden;
     box-shadow: 0 0.25rem 0.5rem #0001;
   }
 
   .milk {
     background: white;
     width: 100%;
+    display: block;
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -229,9 +229,15 @@
   .cereals {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(8, 1fr);
+    grid-auto-flow: column;
     gap: 1rem;
-    filter: none;
+
+    @media screen and (min-width: 640px) {
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: auto;
+      grid-auto-flow: row;
+    }
   }
 </style>
