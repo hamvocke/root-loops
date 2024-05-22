@@ -1,4 +1,8 @@
 <script lang="ts">
+  import { neofetch } from "$lib/snippets";
+
+  type Tab = "vitest" | "pyton" | "javascript" | "elixir";
+  let currentTab: Tab = "vitest";
 </script>
 
 <div class="terminal">
@@ -8,27 +12,25 @@
       <span class="circle yellow"></span>
       <span class="circle green"></span>
     </div>
-    <span>Root Loops Terminal</span>
+    <h3 id="window-title">Root Loops Terminal</h3>
   </div>
-  <nav class="tabs">
-    <ul>
-      <li class="active">bash</li>
-      <li>python</li>
-      <li>javascript</li>
-      <li>elixir</li>
-    </ul>
-  </nav>
-  <div class="content">
-    <p>
-      <span class="green">loops@cereal-box</span><span class="normal">:</span><span class="blue"
-        >/home/loops</span
-      ><span class="normal">$</span>
-      npm run test
-    </p>
+  <div role="tablist" aria-labelledby="window-title">
+    <button id="tab-bash" type="button" role="tab" aria-selected="true" aria-controls="panel-bash"
+      >bash</button
+    >
+    <button id="tab-python" type="button" role="tab" aria-controls="panel-python">python</button>
+    <button id="tab-javascript" type="button" role="tab" aria-controls="panel-javascript"
+      >javascript</button
+    >
+    <button id="tab-elixir" type="button" role="tab" aria-controls="panel-elixir">elixir</button>
   </div>
 
-  <div class="content vitest">
+  <div id="panel-bash" role="tabpanel" tabindex="0" aria-labelledby="tab-bash">
     <pre>
+<span class="green">loops@cereal-box</span><span class="normal">:</span><span class="blue"
+        >/home/loops</span
+      ><span class="normal">$</span> npm run test
+
 <span class="bg-blue black bold"> RERUN </span> src/lib/cereals.ts <span class="blue">x3</span>
 
 <span class="green">✓</span> src/lib/cereals.test.ts (17)
@@ -92,6 +94,11 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     justify-content: center;
   }
 
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
   .circles {
     position: absolute;
     left: 1rem;
@@ -119,35 +126,32 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     }
   }
 
-  .tabs {
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    li {
-      padding: 0.5rem 0.5rem;
-      background: color-mix(in oklch, var(--color-slate-200) 40%, transparent);
-      display: block;
-      flex: 1 0 auto;
-      border-top: 1px solid var(--color-slate-050);
-      border-bottom: 1px solid var(--color-slate-300);
-      text-align: center;
-    }
-
-    li + li {
-      border-left: 1px solid var(--color-slate-300);
-    }
-
-    li.active {
-      background: var(--color-slate-100);
-      border-bottom: 4px solid var(--root-loops-ansi-bright-red);
-    }
+  [role="tablist"] {
+    display: flex;
   }
 
-  .content {
+  button[role="tab"] {
+    padding: 0.5rem 0.5rem;
+    background: color-mix(in oklch, var(--color-slate-200) 40%, transparent);
+    color: var(--color-slate-700);
+    display: block;
+    flex: 1 0 auto;
+    border-right: none;
+    border-top: 1px solid var(--color-slate-050);
+    border-bottom: 1px solid var(--color-slate-300);
+    text-align: center;
+  }
+
+  button[role="tab"] + button[role="tab"] {
+    border-left: 1px solid var(--color-slate-300);
+  }
+
+  button[aria-selected="true"] {
+    background: var(--color-slate-100);
+    border-bottom: 4px solid var(--root-loops-ansi-bright-red);
+  }
+
+  [role="tabpanel"] {
     background: var(--root-loops-background);
     padding: 0 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
