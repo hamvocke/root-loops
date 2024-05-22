@@ -193,6 +193,7 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     display: block;
     flex: 1 0 auto;
     border-right: none;
+    border-left: none;
     border-top: 1px solid var(--color-slate-050);
     border-bottom: 1px solid var(--color-slate-300);
     text-align: center;
