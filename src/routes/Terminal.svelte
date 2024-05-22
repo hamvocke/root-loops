@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { python, javascript, vitest, ansi } from "$lib/snippets";
+  import { python, javascript, vitest, ansi, screenfetch } from "$lib/snippets";
   import Code from "./Code.svelte";
 
   let activeTabId = "tab-bash";
@@ -55,7 +55,7 @@
     aria-labelledby="tab-bash"
     class:hidden={activeTabId !== "tab-bash"}
   >
-    <Code source={vitest} language="ansi" />
+    <Code source={screenfetch} language="ansi" />
   </div>
 
   <div
