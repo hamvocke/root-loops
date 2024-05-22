@@ -140,7 +140,7 @@ export const vitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ 
      [31m×[39m should always fail
      [90m↓[39m should be marked as todo [90m[skipped][39m
 
-[31m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ [7m[1m[31m Failed Tests 1 [39m[22m[27m[31m ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39m[0m
+[31m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7m[1m[31m Failed Tests 1 [39m[22m[27m[31m ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39m[0m
 
 
 [7m[1m[31m FAIL [39m[22m[27m[0m  src/lib/cereals.test.ts > prepare(defaultRecipe) > should always fail
@@ -160,12 +160,12 @@ export const vitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ 
     [90m247|[39m   it.todo("should be marked as todo");
     [90m248|[39m });
 
-[31m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39m
+[31m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39m
 
  Test Files  [31m1 failed[39m | [32m1 passed[39m [90m(2)[39m
       Tests  [31m1 failed[39m | [32m39 passed[39m | [90m1 todo (41)[39m
    Start at  12:06:05
-   Duration  337ms (transform 87ms, setup 0ms, collect 135ms, tests 30ms, environment 0ms, prepare 133ms)
+   Duration  337ms
 `;
 
 
