@@ -205,7 +205,7 @@
     height: 100%;
     width: 100%;
     filter: blur(64px);
-    opacity: 0.9;
+    opacity: 0.7;
   }
 
   .bowl-content {
