@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { neofetch } from "$lib/snippets";
+  import { python, javascript, vitest, ansi } from "$lib/snippets";
+  import Code from "./Code.svelte";
 
   let activeTabId = "tab-bash";
   function handleTabClick(event: MouseEvent) {
@@ -7,7 +8,7 @@
   }
 </script>
 
-<div class="terminal">
+<section class="terminal">
   <div class="window-decoration">
     <div class="circles">
       <span class="circle red"></span>
@@ -54,44 +55,7 @@
     aria-labelledby="tab-bash"
     class:hidden={activeTabId !== "tab-bash"}
   >
-    <pre>
-<span class="green">loops@cereal-box</span><span class="normal">:</span><span class="blue"
-        >/home/loops</span
-      ><span class="normal">$</span> npm run test
-
-<span class="bg-blue black bold"> RERUN </span> src/lib/cereals.ts <span class="blue">x3</span>
-
-<span class="green">✓</span> src/lib/cereals.test.ts (17)
- <span class="green">✓</span> prepare(defaultRecipe) (17)
-   <span class="green">✓</span> generates colors in oklch space
-   <span class="green">✓</span> generates base tone cereals with low chroma
-   <span class="green">✓</span> generates red tone cereals with right hue
-   <span class="green">✓</span> generates yellow tone cereals with right hue
-   <span class="green">✓</span> generates green tone cereals with right hue
-   <span class="green">✓</span> generates cyan tone cereals with right hue
-   <span class="green">✓</span> generates blue tone cereals with right hue
-   <span class="green">✓</span> generates magenta tone cereals with right hue
-   <span class="green">✓</span> generates bright colors with higher lightness than regular colors
-   <span class="green">✓</span> creates dark base colors for milk amount of 'None'
-   <span class="green">✓</span> creates lighter base colors for milk amount of 'Splash'
-   <span class="green">✓</span> creates light base colors for milk amount of 'Glug'
-   <span class="green">✓</span> creates lightest base colors for milk amount of 'Cup'
-   <span class="green">✓</span> ignores 'milk' parameter for accent colors
-   <span class="green">✓</span> uses 'artificial colors' parameter to drive chroma of accent colors
-   <span class="green">✓</span> uses 'flavor' parameter to drive hue shift of accent colors
-   <span class="green">✓</span> uses 'sugar' parameter to drive lightness of accent colors
-
-Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</span>
-     Tests  <span class="green">17 passed</span> <span class="bright-black">(17)</span>
-  Start at  12:54:53
-  Duration  60ms
-
-
-<span class="bg-green black bold"> PASS </span> <span class="green"
-        >Waiting for file changes...</span
-      >
-       press h to show help, press q to quit
-      </pre>
+    <Code source={vitest} language="ansi" />
   </div>
 
   <div
@@ -101,7 +65,7 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     aria-labelledby="tab-python"
     class:hidden={activeTabId !== "tab-python"}
   >
-    <pre>Hello python</pre>
+    <Code source={python} language="python" />
   </div>
   <div
     id="panel-javascript"
@@ -110,7 +74,7 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     aria-labelledby="tab-javascript"
     class:hidden={activeTabId !== "tab-javascript"}
   >
-    <pre>Hello javascript</pre>
+    <Code source={javascript} language="javascript" />
   </div>
   <div
     id="panel-elixir"
@@ -119,9 +83,9 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     aria-labelledby="tab-elixir"
     class:hidden={activeTabId !== "tab-elixir"}
   >
-    <pre>Hello elixir</pre>
+    <Code source={ansi} language="ansi" />
   </div>
-</div>
+</section>
 
 <style>
   .terminal {
@@ -135,6 +99,7 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     border: 1px solid var(--color-slate-300);
     overflow: hidden;
     color: var(--color-slate-600);
+    margin-bottom: 2rem;
   }
 
   .window-decoration {
@@ -188,6 +153,7 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
 
   button[role="tab"] {
     padding: 0.5rem 0.5rem;
+    font-size: 0.9rem;
     background: color-mix(in oklch, var(--color-slate-200) 40%, transparent);
     color: var(--color-slate-700);
     display: block;
@@ -221,41 +187,11 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     display: none;
   }
 
-  pre {
-    background: inherit;
-    color: inherit;
-  }
-
-  .blue {
-    color: var(--root-loops-ansi-blue);
-  }
-
-  .green {
-    color: var(--root-loops-ansi-green);
-  }
-
-  .black {
-    color: var(--root-loops-background);
-  }
-
-  .bright-black {
-    color: var(--root-loops-ansi-bright-black);
-  }
-
-  .normal {
-    color: var(--root-loops-foreground);
-    background: inherit;
-  }
-
-  .bg-blue {
-    background: var(--root-loops-ansi-blue);
-  }
-
-  .bg-green {
-    background: var(--root-loops-ansi-green);
-  }
-
-  .bold {
-    font-weight: bold;
+  :global(pre) {
+    font-size: 16px;
+    font-family: monospace;
+    padding: 0.5em;
+    overflow-x: auto;
+    line-height: 1.25rem;
   }
 </style>

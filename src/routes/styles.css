@@ -64,13 +64,6 @@ a:hover {
   text-decoration: underline;
 }
 
-pre {
-  font-size: 16px;
-  font-family: monospace;
-  padding: 0.5em;
-  overflow-x: auto;
-}
-
 input,
 button {
   font-size: inherit;
