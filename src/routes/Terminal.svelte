@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { python, typescript, moreElixir, screenfetch, vitest } from "$lib/snippets";
+  import {
+    pythonSnippet,
+    typescriptSnippet,
+    elixirSnippet,
+    vitestSnippet,
+    screenfetchSnippet,
+  } from "$lib/snippets";
   import Code from "./Code.svelte";
 
   let activeTabId = "tab-screenfetch";
@@ -61,7 +67,7 @@
     aria-labelledby="tab-screenfetch"
     class:hidden={activeTabId !== "tab-screenfetch"}
   >
-    <Code source={screenfetch} command="screenfetch" language="ansi" />
+    <Code source={screenfetchSnippet} command="screenfetch" language="ansi" />
   </div>
 
   <div
@@ -70,7 +76,7 @@
     aria-labelledby="tab-vitest"
     class:hidden={activeTabId !== "tab-vitest"}
   >
-    <Code source={vitest} command="npm run test:unit" language="ansi" />
+    <Code source={vitestSnippet} command="npm run test:unit" language="ansi" />
   </div>
 
   <div
@@ -79,7 +85,7 @@
     aria-labelledby="tab-python"
     class:hidden={activeTabId !== "tab-python"}
   >
-    <Code source={python} language="python" />
+    <Code source={pythonSnippet} command="bat -p --theme ansi python.py" language="ansi" />
   </div>
 
   <div
@@ -88,7 +94,7 @@
     aria-labelledby="tab-javascript"
     class:hidden={activeTabId !== "tab-javascript"}
   >
-    <Code source={typescript} language="typescript" />
+    <Code source={typescriptSnippet} command="bat -p --theme ansi typescript.ts" language="ansi" />
   </div>
 
   <div
@@ -97,7 +103,7 @@
     aria-labelledby="tab-elixir"
     class:hidden={activeTabId !== "tab-elixir"}
   >
-    <Code source={moreElixir} language="ansi" />
+    <Code source={elixirSnippet} command="bat -p --theme ansi elixir.ex" language="ansi" />
   </div>
 </section>
 

@@ -48,3 +48,18 @@ npm run test:integration-docker
 ```
 
 Playwright tests will start your application automatically.
+
+## (Re-)Generating Terminal Snippets
+
+To demonstrate what the root loops color scheme looks like in action, we provide a couple of sample terminal outputs in the `snippets/` directory. The `generate-ansi-snippets.js` script in the `snippets/` directory makes sure to generate a bunch of ANSI-colored terminal output, via different means:
+
+1. by runnig `bat` against the provided sample code files (e.g. `python.py`, `elixir.ex` or `typescript.ts`)
+2. by running `screenfetch` on the host OS
+3. by running a dummy test suite via `vitest`
+
+In order to run this script, make sure you've got `screenfetch` and `bat` installed on your host OS, and then run:
+
+    cd snippets/
+    node generate-ansi-snippets.js
+
+This will update the `src/lib/snippets.ts` file in place, which is the file we use to render terminal output samples in the root loops app.

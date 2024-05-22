@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { prepare, MilkAmount, Flavor } from "./cereals";
 import { type Recipe } from "./cereals";
 
-describe("prepare(defaultRecipe)", () => {
+describe("prepare()", () => {
   const defaultRecipe: Recipe = {
     milkAmount: MilkAmount.Glug,
     flavor: Flavor.Classic,
