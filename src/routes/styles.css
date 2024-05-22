@@ -35,13 +35,15 @@
 
 html {
   height: 100%;
-  background: var(--color-slate-200);
 }
 
 body {
   min-height: 100%;
   margin: 0;
   display: flex;
+  background: linear-gradient(to bottom, var(--color-slate-050) 0%, var(--color-slate-200) 10%);
+  background-color: var(--color-slate-200);
+  background-repeat: no-repeat;
 }
 
 h1,
@@ -49,8 +51,7 @@ h2,
 p {
   font-weight: 400;
 }
-
-p {
+:w p {
   line-height: 1.5;
 }
 
@@ -61,15 +62,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-h1 {
-  font-size: 2rem;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1rem;
 }
 
 pre {
@@ -87,12 +79,6 @@ button {
 
 button:focus:not(:focus-visible) {
   outline: none;
-}
-
-@media (min-width: 720px) {
-  h1 {
-    font-size: 2.4rem;
-  }
 }
 
 .visually-hidden {
