@@ -67,7 +67,7 @@
     aria-labelledby="tab-screenfetch"
     class:hidden={activeTabId !== "tab-screenfetch"}
   >
-    <Code source={screenfetchSnippet} command="screenfetch" language="ansi" />
+    <Code command="screenfetch">{@html screenfetchSnippet}</Code>
   </div>
 
   <div
@@ -76,7 +76,7 @@
     aria-labelledby="tab-vitest"
     class:hidden={activeTabId !== "tab-vitest"}
   >
-    <Code source={vitestSnippet} command="npm run test:unit" language="ansi" />
+    <Code command="npm run test:unit">{@html vitestSnippet}</Code>
   </div>
 
   <div
@@ -85,7 +85,7 @@
     aria-labelledby="tab-python"
     class:hidden={activeTabId !== "tab-python"}
   >
-    <Code source={pythonSnippet} command="bat -p --theme ansi python.py" language="ansi" />
+    <Code command="bat -p --theme ansi python.py">{@html pythonSnippet}</Code>
   </div>
 
   <div
@@ -94,7 +94,7 @@
     aria-labelledby="tab-javascript"
     class:hidden={activeTabId !== "tab-javascript"}
   >
-    <Code source={typescriptSnippet} command="bat -p --theme ansi typescript.ts" language="ansi" />
+    <Code command="bat -p --theme ansi typescript.ts">{@html typescriptSnippet}</Code>
   </div>
 
   <div
@@ -103,7 +103,7 @@
     aria-labelledby="tab-elixir"
     class:hidden={activeTabId !== "tab-elixir"}
   >
-    <Code source={elixirSnippet} command="bat -p --theme ansi elixir.ex" language="ansi" />
+    <Code command="bat -p --theme ansi elixir.ex">{@html elixirSnippet}</Code>
   </div>
 </section>
 

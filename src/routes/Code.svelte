@@ -1,51 +1,27 @@
 <script lang="ts">
-  import { createCssVariablesTheme, getHighlighter } from "shiki";
-
-  export let source: string;
-  export let language = "javascript";
-  export let command: string | undefined;
-
-  const prompt = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$`;
-
-  function sourceWithPrompt(command: string | undefined): string {
-    if (!command) {
-      return source;
-    }
-
-    return `${prompt} ${command}
-
-${source}`;
-  }
-
-  const rootLoopsScheme = createCssVariablesTheme({
-    name: "root-loops",
-    variablePrefix: "--root-loops-",
-    variableDefaults: {},
-    fontStyle: true,
-  });
-
-  const highlighter = getHighlighter({
-    langs: [language],
-    themes: [rootLoopsScheme],
-  }).then((highlighter) =>
-    highlighter.codeToHtml(sourceWithPrompt(command), {
-      lang: language,
-      theme: "root-loops",
-    }),
-  );
+  export let command: string;
 </script>
 
-{#await highlighter}
-  <pre>root@loops:~/dev/root-loops$ Loading code sample... <span class="blink">█</span></pre>
-{:then html}
-  {@html html}
-{:catch error}
-  <p>Something went wrong. {error.message}</p>
-{/await}
+<div class="prompt">
+  <span class="ansi-green-fg">loops@cereal</span>:<span class="ansi-blue-fg">~/dev/root-loops</span
+  >$ {command}
+</div>
+
+<pre>
+  <slot />
+</pre>
+
+<div class="prompt">
+  <span class="ansi-green-fg">loops@cereal</span>:<span class="ansi-blue-fg">~/dev/root-loops</span
+  >$ <span class="blink">█</span>
+</div>
 
 <style>
+  .prompt {
+    margin: 1rem 0;
+  }
   .blink {
-    animation: blink 300ms infinite alternate;
+    animation: blink 500ms infinite alternate;
   }
 
   @keyframes blink {
@@ -55,5 +31,102 @@ ${source}`;
     to {
       opacity: 1;
     }
+  }
+
+  :global(.ansi-black-fg) {
+    color: var(--root-loops-ansi-black);
+  }
+  :global(.ansi-red-fg) {
+    color: var(--root-loops-ansi-red);
+  }
+  :global(.ansi-green-fg) {
+    color: var(--root-loops-ansi-green);
+  }
+  :global(.ansi-yellow-fg) {
+    color: var(--root-loops-ansi-yellow);
+  }
+  :global(.ansi-blue-fg) {
+    color: var(--root-loops-ansi-blue);
+  }
+  :global(.ansi-magenta-fg) {
+    color: var(--root-loops-ansi-magenta);
+  }
+  :global(.ansi-cyan-fg) {
+    color: var(--root-loops-ansi-cyan);
+  }
+  :global(.ansi-white-fg) {
+    color: var(--root-loops-ansi-white);
+  }
+  :global(.ansi-bright-black-fg) {
+    color: var(--root-loops-ansi-bright-black);
+  }
+  :global(.ansi-bright-red-fg) {
+    color: var(--root-loops-ansi-bright-red);
+  }
+  :global(.ansi-bright-green-fg) {
+    color: var(--root-loops-ansi-bright-green);
+  }
+  :global(.ansi-bright-yellow-fg) {
+    color: var(--root-loops-ansi-bright-yellow);
+  }
+  :global(.ansi-bright-blue-fg) {
+    color: var(--root-loops-ansi-bright-blue);
+  }
+  :global(.ansi-bright-magenta-fg) {
+    color: var(--root-loops-ansi-bright-magenta);
+  }
+  :global(.ansi-bright-cyan-fg) {
+    color: var(--root-loops-ansi-bright-cyan);
+  }
+  :global(.ansi-bright-white-fg) {
+    color: var(--root-loops-ansi-bright-white);
+  }
+  :global(.ansi-black-bg) {
+    background-color: var(--root-loops-ansi-black);
+  }
+  :global(.ansi-red-bg) {
+    background-color: var(--root-loops-ansi-red);
+  }
+  :global(.ansi-green-bg) {
+    background-color: var(--root-loops-ansi-green);
+  }
+  :global(.ansi-yellow-bg) {
+    background-color: var(--root-loops-ansi-yellow);
+  }
+  :global(.ansi-blue-bg) {
+    background-color: var(--root-loops-ansi-blue);
+  }
+  :global(.ansi-magenta-bg) {
+    background-color: var(--root-loops-ansi-magenta);
+  }
+  :global(.ansi-cyan-bg) {
+    background-color: var(--root-loops-ansi-cyan);
+  }
+  :global(.ansi-white-bg) {
+    background-color: var(--root-loops-ansi-white);
+  }
+  :global(.ansi-bright-black-bg) {
+    background-color: var(--root-loops-ansi-bright-black);
+  }
+  :global(.ansi-bright-red-bg) {
+    background-color: var(--root-loops-ansi-bright-red);
+  }
+  :global(.ansi-bright-green-bg) {
+    background-color: var(--root-loops-ansi-bright-green);
+  }
+  :global(.ansi-bright-yellow-bg) {
+    background-color: var(--root-loops-ansi-bright-yellow);
+  }
+  :global(.ansi-bright-blue-bg) {
+    background-color: var(--root-loops-ansi-bright-blue);
+  }
+  :global(.ansi-bright-magenta-bg) {
+    background-color: var(--root-loops-ansi-bright-magenta);
+  }
+  :global(.ansi-bright-cyan-bg) {
+    background-color: var(--root-loops-ansi-bright-cyan);
+  }
+  :global(.ansi-bright-white-bg) {
+    background-color: var(--root-loops-ansi-bright-white);
   }
 </style>
