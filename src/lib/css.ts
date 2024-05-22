@@ -1,6 +1,5 @@
 import { type Cereals } from "$lib/cereals";
 
-// TODO: check if the colors below really make sense for the respective tokens
 export function generateCssColors(cereals: Cereals): string {
   return `
 --root-loops-foreground: ${cereals.white};

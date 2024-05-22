@@ -110,7 +110,7 @@ export const elixir = `defmodule Algorithms.Sorting.QuickSort do
   end
 end`;
 
-export const moreVitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ npm run test:unit
+export const vitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ npm run test:unit
 
 [7m[1m[36m RUN [39m[22m[27m [36mv1.5.0[39m [90m/home/ham/dev/root-loops[39m[0m
 
@@ -156,7 +156,7 @@ export const moreVitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[
     [90m244|[39m   });
     [90m245|[39m
     [90m246|[39m   [34mit[39m([32m"should always fail"[39m, () [33m=>[39m { [34mexpect[39m([35mtrue[39m).[34mtoBe[39m([35mfalse[39m); });
-       [90m|[39m                                                 ^
+       [90m|[39m                                                 [31m^[39m
     [90m247|[39m   it.todo("should be marked as todo");
     [90m248|[39m });
 
@@ -168,16 +168,6 @@ export const moreVitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[
    Duration  337ms (transform 87ms, setup 0ms, collect 135ms, tests 30ms, environment 0ms, prepare 133ms)
 `;
 
-export const vitest = `[7m[1m[36m RUN [39m[22m[27m [36mv1.5.0[39m [90m/home/ham/dev/root-loops[39m
-
- [32m✓[39m src/lib/cereals.test.ts [2m ([22m[2m17 tests[22m[2m)[22m[90m 13[2mms[22m[39m
-
-[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
-[2m      Tests [22m [1m[32m17 passed[39m[22m[90m (17)[39m
-[2m   Start at [22m 10:14:09
-[2m   Duration [22m 451ms[2m (transform 79ms, setup 0ms, collect 93ms, tests 13ms, environment 0ms, prepare 87ms)[22m
-
-`;
 
 export const screenfetch = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ screenfetch
 [0m[32m                               [0m

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { python, javascript, vitest, ansi, screenfetch } from "$lib/snippets";
+  import { python, typescript, elixir, screenfetch, vitest } from "$lib/snippets";
   import Code from "./Code.svelte";
 
-  let activeTabId = "tab-bash";
+  let activeTabId = "tab-screenfetch";
   function handleTabClick(event: MouseEvent) {
     activeTabId = (event.target as HTMLElement).id;
   }
@@ -19,11 +19,18 @@
   </div>
   <div role="tablist" aria-labelledby="window-title">
     <button
-      id="tab-bash"
+      id="tab-screenfetch"
       type="button"
       role="tab"
-      aria-selected={activeTabId == "tab-bash" ? "true" : "false"}
-      on:click={handleTabClick}>bash</button
+      aria-selected={activeTabId == "tab-screenfetch" ? "true" : "false"}
+      on:click={handleTabClick}>screenfetch</button
+    >
+    <button
+      id="tab-vitest"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-vitest" ? "true" : "false"}
+      on:click={handleTabClick}>vitest</button
     >
     <button
       id="tab-python"
@@ -37,7 +44,7 @@
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-javascript" ? "true" : "false"}
-      on:click={handleTabClick}>javascript</button
+      on:click={handleTabClick}>typescript</button
     >
     <button
       id="tab-elixir"
@@ -49,17 +56,24 @@
   </div>
 
   <div
-    id="panel-bash"
     role="tabpanel"
     tabindex="0"
-    aria-labelledby="tab-bash"
-    class:hidden={activeTabId !== "tab-bash"}
+    aria-labelledby="tab-screenfetch"
+    class:hidden={activeTabId !== "tab-screenfetch"}
   >
     <Code source={screenfetch} language="ansi" />
   </div>
 
   <div
-    id="panel-python"
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby="tab-vitest"
+    class:hidden={activeTabId !== "tab-vitest"}
+  >
+    <Code source={vitest} language="ansi" />
+  </div>
+
+  <div
     role="tabpanel"
     tabindex="0"
     aria-labelledby="tab-python"
@@ -67,23 +81,23 @@
   >
     <Code source={python} language="python" />
   </div>
+
   <div
-    id="panel-javascript"
     role="tabpanel"
     tabindex="0"
     aria-labelledby="tab-javascript"
     class:hidden={activeTabId !== "tab-javascript"}
   >
-    <Code source={javascript} language="javascript" />
+    <Code source={typescript} language="typescript" />
   </div>
+
   <div
-    id="panel-elixir"
     role="tabpanel"
     tabindex="0"
     aria-labelledby="tab-elixir"
     class:hidden={activeTabId !== "tab-elixir"}
   >
-    <Code source={ansi} language="ansi" />
+    <Code source={elixir} language="elixir" />
   </div>
 </section>
 
