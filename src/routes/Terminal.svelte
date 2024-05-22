@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { python, typescript, elixir, screenfetch, vitest } from "$lib/snippets";
+  import { python, typescript, moreElixir, screenfetch, vitest } from "$lib/snippets";
   import Code from "./Code.svelte";
 
   let activeTabId = "tab-screenfetch";
@@ -61,7 +61,7 @@
     aria-labelledby="tab-screenfetch"
     class:hidden={activeTabId !== "tab-screenfetch"}
   >
-    <Code source={screenfetch} language="ansi" />
+    <Code source={screenfetch} command="screenfetch" language="ansi" />
   </div>
 
   <div
@@ -70,7 +70,7 @@
     aria-labelledby="tab-vitest"
     class:hidden={activeTabId !== "tab-vitest"}
   >
-    <Code source={vitest} language="ansi" />
+    <Code source={vitest} command="npm run test:unit" language="ansi" />
   </div>
 
   <div
@@ -97,7 +97,7 @@
     aria-labelledby="tab-elixir"
     class:hidden={activeTabId !== "tab-elixir"}
   >
-    <Code source={elixir} language="elixir" />
+    <Code source={moreElixir} language="ansi" />
   </div>
 </section>
 

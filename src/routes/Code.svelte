@@ -3,6 +3,19 @@
 
   export let source: string;
   export let language = "javascript";
+  export let command: string | undefined;
+
+  const prompt = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$`;
+
+  function sourceWithPrompt(command: string | undefined): string {
+    if (!command) {
+      return source;
+    }
+
+    return `${prompt} ${command}
+
+${source}`;
+  }
 
   const rootLoopsScheme = createCssVariablesTheme({
     name: "root-loops",
@@ -15,7 +28,7 @@
     langs: [language],
     themes: [rootLoopsScheme],
   }).then((highlighter) =>
-    highlighter.codeToHtml(source, {
+    highlighter.codeToHtml(sourceWithPrompt(command), {
       lang: language,
       theme: "root-loops",
     }),

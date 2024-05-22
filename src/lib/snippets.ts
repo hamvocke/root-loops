@@ -89,10 +89,7 @@ export const elixir = `defmodule Algorithms.Sorting.QuickSort do
   end
 end`;
 
-export const vitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ npm run test:unit
-
-[7m[1m[36m RUN [39m[22m[27m [36mv1.5.0[39m [90m/home/ham/dev/root-loops[39m[0m
-
+export const vitest = `[7m[1m[36m RUN [39m[22m[27m [36mv1.5.0[39m [90m/home/ham/dev/root-loops[39m[0m
 
  [32m✓[39m src/lib/colors.test.ts (20)
  [33m❯[39m src/lib/cereals.test.ts (21)
@@ -148,8 +145,55 @@ export const vitest = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ 
 `;
 
 
-export const screenfetch = `[0m[32mloops@cereal[0m:[0m[34m~/dev/root-loops[0m$ screenfetch
-[0m[32m                               [0m
+export const moreElixir = `
+[35mdefmodule[0m [33mScorecard[0m [35mdo[0m
+  [35mdefstruct[0m [33mplayers[0m[33m:[0m [], [33mrounds[0m[33m:[0m []
+
+  [35mdef[0m [34mnew[0m(players) [35mwhen[0m [35mlength[0m(players) [35m==[0m [33m4[0m [35mdo[0m
+    %[33mScorecard[0m{[33mplayers[0m[33m:[0m players, [33mrounds[0m[33m:[0m []}
+  [35mend[0m
+
+  [35mdef[0m [34madd_round[0m(scorecard, points, winners) [35mdo[0m
+    results [35m=[0m
+      scorecard.players
+      [35m|>[0m [33mEnum[0m.map([35mfn[0m player [35m->[0m {player, calculate_points(player, winners, points)} [35mend[0m)
+      [35m|>[0m [33mMap[0m.new()
+
+    round [35m=[0m %{
+      [33mpoints[0m[33m:[0m points,
+      [33mwinners[0m[33m:[0m winners,
+      [33mresults[0m[33m:[0m results
+    }
+
+    rounds [35m=[0m [round [35m|[0m scorecard.rounds]
+    %[33mScorecard[0m{[33mplayers[0m[33m:[0m scorecard.players, [33mrounds[0m[33m:[0m rounds}
+  [35mend[0m
+
+  [35mdefp[0m [34mcalculate_points[0m(player, winners, points) [35mdo[0m
+    [35mif[0m [33mEnum[0m.any?(winners, [35mfn[0m winner [35m->[0m winner [35m==[0m player [35mend[0m) [35mdo[0m
+      points
+    [35melse[0m
+      [35m-[0mpoints
+    [35mend[0m
+  [35mend[0m
+
+  [35mdef[0m [34mget_round[0m(scorecard, round_number) [35mdo[0m
+    [33mEnum[0m.at(scorecard.rounds, length(scorecard.rounds) [35m-[0m (round_number [35m+[0m [33m1[0m))
+  [35mend[0m
+
+  [35mdef[0m [34mget_points[0m(scorecard, [33m0[0m), [33mdo:[0m get_round(scorecard, [33m0[0m).results
+
+  [35mdef[0m [34mget_points[0m(scorecard, round_number) [35mdo[0m
+    [33mMap[0m.merge(
+      get_round(scorecard, round_number).results,
+      get_points(scorecard, round_number [35m-[0m [33m1[0m),
+      [35mfn[0m _k, v1, v2 [35m->[0m v2 [35m+[0m v1 [35mend[0m
+    )
+  [35mend[0m
+[35mend[0m
+`;
+
+export const screenfetch = `
 [0m[32m                 -/+:.         [0m[1;34m ham[0m[1m@[0m[0m[1;34mhambook-2[0m
 [0m[32m                :++++.         [0m[1;34m OS:[0m Ubuntu 24.04 noble[0m
 [0m[32m               /+++/.          [0m[1;34m Kernel:[0m x86_64 Linux 6.8.0-31-generic[0m
