@@ -138,8 +138,9 @@
       0 5px 0 var(--shade),
       0 6px 0 var(--shade),
       0 7px 0 var(--shade),
-      0 0.75rem 0.5rem #0008,
-      0 1rem 2rem #0006;
+      0 0.75rem 0.5rem #0006,
+      0 1rem 2rem #0004,
+      0 1rem 3rem #0002;
   }
 
   h1 {
