@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("index page shows heading", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "Root Loops" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Root Loops", exact: true })).toBeVisible();
 });
 
 test("index page shows all range sliders", async ({ page }) => {
