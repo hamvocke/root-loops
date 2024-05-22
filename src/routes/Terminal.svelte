@@ -1,8 +1,10 @@
 <script lang="ts">
   import { neofetch } from "$lib/snippets";
 
-  type Tab = "vitest" | "pyton" | "javascript" | "elixir";
-  let currentTab: Tab = "vitest";
+  let activeTabId = "tab-bash";
+  function handleTabClick(event: MouseEvent) {
+    activeTabId = (event.target as HTMLElement).id;
+  }
 </script>
 
 <div class="terminal">
@@ -15,17 +17,43 @@
     <h3 id="window-title">Root Loops Terminal</h3>
   </div>
   <div role="tablist" aria-labelledby="window-title">
-    <button id="tab-bash" type="button" role="tab" aria-selected="true" aria-controls="panel-bash"
-      >bash</button
+    <button
+      id="tab-bash"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-bash" ? "true" : "false"}
+      on:click={handleTabClick}>bash</button
     >
-    <button id="tab-python" type="button" role="tab" aria-controls="panel-python">python</button>
-    <button id="tab-javascript" type="button" role="tab" aria-controls="panel-javascript"
-      >javascript</button
+    <button
+      id="tab-python"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-python" ? "true" : "false"}
+      on:click={handleTabClick}>python</button
     >
-    <button id="tab-elixir" type="button" role="tab" aria-controls="panel-elixir">elixir</button>
+    <button
+      id="tab-javascript"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-javascript" ? "true" : "false"}
+      on:click={handleTabClick}>javascript</button
+    >
+    <button
+      id="tab-elixir"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-elixir" ? "true" : "false"}
+      on:click={handleTabClick}>elixir</button
+    >
   </div>
 
-  <div id="panel-bash" role="tabpanel" tabindex="0" aria-labelledby="tab-bash">
+  <div
+    id="panel-bash"
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby="tab-bash"
+    class:hidden={activeTabId !== "tab-bash"}
+  >
     <pre>
 <span class="green">loops@cereal-box</span><span class="normal">:</span><span class="blue"
         >/home/loops</span
@@ -64,6 +92,34 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
       >
        press h to show help, press q to quit
       </pre>
+  </div>
+
+  <div
+    id="panel-python"
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby="tab-python"
+    class:hidden={activeTabId !== "tab-python"}
+  >
+    <pre>Hello python</pre>
+  </div>
+  <div
+    id="panel-javascript"
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby="tab-javascript"
+    class:hidden={activeTabId !== "tab-javascript"}
+  >
+    <pre>Hello javascript</pre>
+  </div>
+  <div
+    id="panel-elixir"
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby="tab-elixir"
+    class:hidden={activeTabId !== "tab-elixir"}
+  >
+    <pre>Hello elixir</pre>
   </div>
 </div>
 
@@ -140,6 +196,7 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     border-top: 1px solid var(--color-slate-050);
     border-bottom: 1px solid var(--color-slate-300);
     text-align: center;
+    cursor: pointer;
   }
 
   button[role="tab"] + button[role="tab"] {
@@ -157,6 +214,10 @@ Test Files  <span class="green">1 passed</span> <span class="bright-black">(1)</
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     font-family: monospace;
     color: var(--root-loops-foreground);
+  }
+
+  [role="tabpanel"].hidden {
+    display: none;
   }
 
   pre {
