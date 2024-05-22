@@ -21,27 +21,6 @@ function printImportant(key: LogLevelStrings, message: string) {
 }
 printImportant("ERROR", "This is a message");`;
 
-const morevitest = `
- FAIL  src/lib/cereals.test.ts > prepare(defaultRecipe) > should always fail
-AssertionError: expected true to be false // Object.is equality
-
-- Expected
-+ Received
-
-- false
-+ true
-
- ❯ src/lib/cereals.test.ts:246:49
-    244|   });
-    245|
-    246|   it("should always fail", () => { expect(true).toBe(false); });
-       |                                                 ^
-    247|   it.todo("should be marked as todo");
-    248| });
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
-`;
-
 export const python = `def fib_iterative(n: int) -> list[int]:
     """
     Calculates the first n (0-indexed) Fibonacci numbers using iteration
