@@ -49,7 +49,7 @@
           >o</span
         ><span class="yellow">o</span>ps
       </h1>
-      <p class="caption">A terminal color scheme generator for cereal lovers.</p>
+      <p class="caption">A color scheme generator for cereal lovers.</p>
     </div>
   </header>
 
