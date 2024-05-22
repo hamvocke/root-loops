@@ -23,9 +23,24 @@
 </script>
 
 {#await highlighter}
-  <p>Loading...</p>
+  <pre>root@loops:~/dev/root-loops$ Loading code sample... <span class="blink">█</span></pre>
 {:then html}
   {@html html}
 {:catch error}
   <p>Something went wrong. {error.message}</p>
 {/await}
+
+<style>
+  .blink {
+    animation: blink 300ms infinite alternate;
+  }
+
+  @keyframes blink {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
