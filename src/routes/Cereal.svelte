@@ -3,10 +3,10 @@
   export let cereal: Cereal;
 </script>
 
-<div class="wrapper" aria-label={cereal.name}>
-  <div class="cereal" style="--color: {cereal.color}">
+<div class="wrapper">
+  <button class="cereal" style="--color: {cereal.color}" aria-label={cereal.name}>
     <div class="hole"></div>
-  </div>
+  </button>
   <span class="color-value">{cereal.color}</span>
   {#if !cereal.color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
 </div>
@@ -18,7 +18,8 @@
     gap: 0.5rem;
     align-items: center;
 
-    &:hover .cereal {
+    &:hover .cereal,
+    .cereal:focus {
       transform: scale(1.2);
       outline-width: 0.8rem;
     }

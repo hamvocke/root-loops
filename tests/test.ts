@@ -14,3 +14,25 @@ test("index page shows all range sliders", async ({ page }) => {
   await expect(page.getByRole("slider", { name: "Juice" })).toBeVisible();
   await expect(page.getByRole("slider", { name: "Sogginess" })).toBeVisible();
 });
+
+test("index page has bowl with 16 cereals", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByRole("button", { name: "black", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "red", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "green", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "yellow", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "blue", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "magenta", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "cyan", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "white", exact: true })).toBeVisible();
+
+  await expect(page.getByRole("button", { name: "bright black", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright red", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright green", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright yellow", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright blue", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright magenta", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright cyan", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "bright white", exact: true })).toBeVisible();
+});
