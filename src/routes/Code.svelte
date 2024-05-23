@@ -8,6 +8,7 @@
 </div>
 
 <pre>
+  <!-- TODO: figure out why background styles don't work -->
   <slot />
 </pre>
 
@@ -17,9 +18,6 @@
 </div>
 
 <style>
-  .prompt {
-    margin: 1rem 0;
-  }
   .blink {
     animation: blink 500ms infinite alternate;
   }

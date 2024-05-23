@@ -197,10 +197,13 @@
 
   [role="tabpanel"] {
     background: var(--root-loops-background);
-    padding: 0 1rem;
+    padding: 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     font-family: monospace;
+    font-size: 16px;
+    line-height: 1rem;
     color: var(--root-loops-foreground);
+    overflow-x: auto;
   }
 
   [role="tabpanel"].hidden {
@@ -208,10 +211,7 @@
   }
 
   :global(pre) {
-    font-size: 16px;
-    font-family: monospace;
-    padding: 0.5em;
-    overflow-x: auto;
-    line-height: 1.25rem;
+    padding: 0;
+    margin: 0;
   }
 </style>
