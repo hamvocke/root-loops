@@ -37,8 +37,7 @@ export const elixirSnippet = `<span class="ansi-magenta-fg">defmodule</span> <sp
     product <span class="ansi-magenta-fg">=</span> <span class="ansi-yellow-fg">Catalog</span>.get_product!(id)
     render(conn, <span class="ansi-green-fg">:</span><span class="ansi-green-fg">show</span>, <span class="ansi-yellow-fg">product</span><span class="ansi-yellow-fg">:</span> product)
   <span class="ansi-magenta-fg">end</span>
-<span class="ansi-magenta-fg">end</span>
-`;
+<span class="ansi-magenta-fg">end</span>`;
 
 export const pythonSnippet = `<span class="ansi-magenta-fg">from</span> flask <span class="ansi-magenta-fg">import</span> Flask
 
@@ -61,8 +60,7 @@ app <span class="ansi-magenta-fg">=</span> Flask(__name__)
 @app.route(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">/users</span><span class="ansi-green-fg">&quot;</span>)
 <span class="ansi-magenta-fg">def</span> <span class="ansi-blue-fg">users_api</span>():
     users <span class="ansi-magenta-fg">=</span> get_all_users()
-    <span class="ansi-magenta-fg">return</span> [user.to_json() <span class="ansi-magenta-fg">for</span> user <span class="ansi-magenta-fg">in</span> users]
-`;
+    <span class="ansi-magenta-fg">return</span> [user.to_json() <span class="ansi-magenta-fg">for</span> user <span class="ansi-magenta-fg">in</span> users]`;
 
 export const typescriptSnippet = `<span class="ansi-magenta-fg">import</span> express, { Express, Request, Response } <span class="ansi-magenta-fg">from</span> <span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">express</span><span class="ansi-green-fg">&quot;</span>;
 
@@ -76,11 +74,9 @@ app.<span class="ansi-cyan-fg">get</span>(<span class="ansi-green-fg">&quot;</sp
 <span class="ansi-green-fg">//</span><span class="ansi-green-fg"> start the server</span>
 app.<span class="ansi-blue-fg">listen</span>(port, () <span class="ansi-magenta-fg">=&gt;</span> {
   <span class="ansi-yellow-fg">console</span>.<span class="ansi-cyan-fg">log</span>(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">[server]: Server is running at http://localhost:</span><span class="ansi-green-fg">&quot;</span> <span class="ansi-magenta-fg">+</span> port);
-});
-`;
+});`;
 
-export const vitestSnippet = `
-<span style="font-weight:bold" class="ansi-cyan-fg"> RUN </span> <span class="ansi-cyan-fg">v1.5.0</span> <span class="ansi-bright-black-fg">/home/ham/dev/root-loops/snippets</span>
+export const vitestSnippet = `<span style="font-weight:bold" class="ansi-cyan-fg"> RUN </span> <span class="ansi-cyan-fg">v1.5.0</span> <span class="ansi-bright-black-fg">/home/ham/dev/root-loops/snippets</span>
 
  <span class="ansi-green-fg">✓</span> test.js &gt; root loops color generator &gt; pours milk into the bowl
  <span class="ansi-green-fg">✓</span> test.js &gt; root loops color generator &gt; adds unhealthy amounts of sugar
@@ -91,9 +87,8 @@ export const vitestSnippet = `
 
  Test Files  <span style="font-weight:bold" class="ansi-red-fg">1 failed</span><span class="ansi-bright-black-fg"> (1)</span>
       Tests  <span style="font-weight:bold" class="ansi-red-fg">1 failed</span> | <span style="font-weight:bold" class="ansi-green-fg">4 passed</span> | <span class="ansi-bright-black-fg">1 todo</span><span class="ansi-bright-black-fg"> (6)</span>
-   Start at  18:45:54
-   Duration  251ms (transform 25ms, setup 0ms, collect 10ms, tests 8ms, environment 0ms, prepare 64ms)
-
+   Start at  08:19:56
+   Duration  308ms (transform 19ms, setup 0ms, collect 11ms, tests 9ms, environment 0ms, prepare 78ms)
 
 <span class="ansi-red-fg">⎯⎯⎯⎯⎯⎯⎯</span><span style="font-weight:bold" class="ansi-red-fg"> Failed Tests 1 </span><span class="ansi-red-fg">⎯⎯⎯⎯⎯⎯⎯</span>
 
@@ -114,15 +109,13 @@ export const vitestSnippet = `
     <span class="ansi-bright-black-fg"> 22| </span>  })<span class="ansi-yellow-fg">;</span>
     <span class="ansi-bright-black-fg"> 23| </span>
 
-<span style="opacity:0.7" class="ansi-red-fg">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯</span>
-
-`;
+<span style="opacity:0.7" class="ansi-red-fg">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯</span>`;
 
 export const screenfetchSnippet = `<span class="ansi-green-fg">                               </span>
 <span class="ansi-green-fg">                 -/+:.         </span><span style="font-weight:bold" class="ansi-blue-fg"> ham</span><span style="font-weight:bold">@</span><span style="font-weight:bold" class="ansi-blue-fg">hambook-2</span>
 <span class="ansi-green-fg">                :++++.         </span><span style="font-weight:bold" class="ansi-blue-fg"> OS:</span> Ubuntu 24.04 noble
 <span class="ansi-green-fg">               /+++/.          </span><span style="font-weight:bold" class="ansi-blue-fg"> Kernel:</span> x86_64 Linux 6.8.0-31-generic
-<span class="ansi-green-fg">       .:-::- .+/:-\`\`.::-      </span><span style="font-weight:bold" class="ansi-blue-fg"> Uptime:</span> 10d 4h 48m
+<span class="ansi-green-fg">       .:-::- .+/:-\`\`.::-      </span><span style="font-weight:bold" class="ansi-blue-fg"> Uptime:</span> 10d 18h 22m
 <span class="ansi-green-fg">    .:/++++++/::::/++++++/:\`   </span><span style="font-weight:bold" class="ansi-blue-fg"> Packages:</span> 2664
 <span class="ansi-yellow-fg">  .:///////////////////////:\`  </span><span style="font-weight:bold" class="ansi-blue-fg"> Shell:</span> node
 <span class="ansi-yellow-fg">  ////////////////////////\`    </span><span style="font-weight:bold" class="ansi-blue-fg"> Resolution:</span> 5142x3840
@@ -132,8 +125,7 @@ export const screenfetchSnippet = `<span class="ansi-green-fg">                 
 <span class="ansi-red-fg"> :ssssssssssssssssssssssss-    </span><span style="font-weight:bold" class="ansi-blue-fg"> GTK Theme:</span> Yaru-red-dark [GTK2/3]
 <span class="ansi-magenta-fg">  osssssssssssssssssssssssso/\` </span><span style="font-weight:bold" class="ansi-blue-fg"> Icon Theme:</span> Yaru-red
 <span class="ansi-magenta-fg">  \`syyyyyyyyyyyyyyyyyyyyyyyy+\` </span><span style="font-weight:bold" class="ansi-blue-fg"> Font:</span> Ubuntu 11
-<span class="ansi-blue-fg">   \`ossssssssssssssssssssss/   </span><span style="font-weight:bold" class="ansi-blue-fg"> Disk:</span> 385G / 469G (87%)
-<span class="ansi-blue-fg">     :ooooooooooooooooooo+.    </span><span style="font-weight:bold" class="ansi-blue-fg"> CPU:</span> Intel Core i7-1065G7 @ 8x 3.9GHz [64.0°C]
+<span class="ansi-blue-fg">   \`ossssssssssssssssssssss/   </span><span style="font-weight:bold" class="ansi-blue-fg"> Disk:</span> 387G / 469G (87%)
+<span class="ansi-blue-fg">     :ooooooooooooooooooo+.    </span><span style="font-weight:bold" class="ansi-blue-fg"> CPU:</span> Intel Core i7-1065G7 @ 8x 3.9GHz [70.0°C]
 <span class="ansi-blue-fg">      \`:+oo+/:-..-:/+o+/-      </span><span style="font-weight:bold" class="ansi-blue-fg"> GPU:</span> Intel Corporation Iris Plus Graphics G7 (rev 07)
-<span class="ansi-blue-fg">                               </span><span style="font-weight:bold" class="ansi-blue-fg"> RAM:</span> 11114MiB / 15573MiB
-`;
+<span class="ansi-blue-fg">                               </span><span style="font-weight:bold" class="ansi-blue-fg"> RAM:</span> 10303MiB / 15573MiB`;

@@ -7,9 +7,9 @@
   >$ {command}
 </div>
 
+<!-- TODO: figure out why background styles don't work -->
 <pre>
-  <!-- TODO: figure out why background styles don't work -->
-  <slot />
+<slot />
 </pre>
 
 <div class="prompt">
@@ -20,6 +20,11 @@
 <style>
   .blink {
     animation: blink 500ms infinite alternate;
+  }
+
+  pre {
+    padding: 1.5rem 0;
+    margin: 0;
   }
 
   @keyframes blink {
