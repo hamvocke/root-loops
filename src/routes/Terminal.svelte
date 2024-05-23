@@ -167,6 +167,16 @@
     border-bottom: 1px solid var(--color-slate-300);
     text-align: center;
     cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background: color-mix(in oklch, var(--color-slate-300) 40%, transparent);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--root-loops-ansi-blue);
+      outline-offset: -2px;
+    }
   }
 
   button[role="tab"] + button[role="tab"] {
