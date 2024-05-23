@@ -51,7 +51,7 @@
     </div>
   </header>
 
-  <section class="sliders">
+  <section class="sliders" aria-label="sliders">
     <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
     <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
     <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
@@ -60,7 +60,7 @@
     <Slider id="slider-sogginess" label="Sogginess" min="0" max="20" bind:value={sogginess} />
   </section>
 
-  <section class="bowl">
+  <section class="bowl" aria-label="cereal bowl">
     <div class="glow"></div>
     <div class="bowl-content">
       <div class="milk" style={`height: ${milk * 33.34}%;`}></div>

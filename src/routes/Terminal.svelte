@@ -14,14 +14,14 @@
   }
 </script>
 
-<section class="terminal">
+<section class="terminal" aria-labelledby="window-title">
   <div class="window-decoration">
     <div class="circles">
       <span class="circle red"></span>
       <span class="circle yellow"></span>
       <span class="circle green"></span>
     </div>
-    <h3 id="window-title">Root Loops Terminal</h3>
+    <h3 id="window-title">Terminal Preview</h3>
   </div>
   <div role="tablist" aria-labelledby="window-title">
     <button
@@ -63,46 +63,29 @@
 
   <div
     role="tabpanel"
-    tabindex="0"
     aria-labelledby="tab-screenfetch"
     class:hidden={activeTabId !== "tab-screenfetch"}
   >
     <Code command="screenfetch">{@html screenfetchSnippet}</Code>
   </div>
 
-  <div
-    role="tabpanel"
-    tabindex="0"
-    aria-labelledby="tab-vitest"
-    class:hidden={activeTabId !== "tab-vitest"}
-  >
+  <div role="tabpanel" aria-labelledby="tab-vitest" class:hidden={activeTabId !== "tab-vitest"}>
     <Code command="npm run test:unit">{@html vitestSnippet}</Code>
   </div>
 
-  <div
-    role="tabpanel"
-    tabindex="0"
-    aria-labelledby="tab-python"
-    class:hidden={activeTabId !== "tab-python"}
-  >
+  <div role="tabpanel" aria-labelledby="tab-python" class:hidden={activeTabId !== "tab-python"}>
     <Code command="bat -p --theme ansi python.py">{@html pythonSnippet}</Code>
   </div>
 
   <div
     role="tabpanel"
-    tabindex="0"
     aria-labelledby="tab-javascript"
     class:hidden={activeTabId !== "tab-javascript"}
   >
     <Code command="bat -p --theme ansi typescript.ts">{@html typescriptSnippet}</Code>
   </div>
 
-  <div
-    role="tabpanel"
-    tabindex="0"
-    aria-labelledby="tab-elixir"
-    class:hidden={activeTabId !== "tab-elixir"}
-  >
+  <div role="tabpanel" aria-labelledby="tab-elixir" class:hidden={activeTabId !== "tab-elixir"}>
     <Code command="bat -p --theme ansi elixir.ex">{@html elixirSnippet}</Code>
   </div>
 </section>

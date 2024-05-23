@@ -36,3 +36,18 @@ test("index page has bowl with 16 cereals", async ({ page }) => {
   await expect(page.getByRole("button", { name: "bright cyan", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "bright white", exact: true })).toBeVisible();
 });
+
+test("index page has terminal with different tabs", async ({ page }) => {
+  await page.goto("/");
+
+  const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
+  await expect(terminal).toBeVisible();
+
+  await expect(terminal.getByRole("tab")).toHaveCount(5);
+
+  await terminal.getByRole("tab").filter({ hasText: "vitest" }).click();
+
+  await expect(terminal.getByRole("tabpanel")).toContainText(
+    "test.js > root loops color generator > pours milk into the bowl",
+  );
+});
