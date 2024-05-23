@@ -50,4 +50,32 @@ test.describe("index", () => {
       "test.js > root loops color generator > pours milk into the bowl",
     );
   });
+
+  test("clicking terminal tabs switches content", async ({ page }) => {
+    const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
+
+    function getTab(tabName: string) {
+      return terminal.getByRole("tab").filter({ hasText: tabName });
+    }
+
+    await getTab("screenfetch").click();
+    // check that a part of that apple logo's ascii art is showing up
+    await expect(terminal.getByRole("tabpanel")).toContainText(".:/++++++/::::/++++++/:`");
+
+    await getTab("vitest").click();
+    await expect(terminal.getByRole("tabpanel")).toContainText(
+      "test.js > root loops color generator > pours milk into the bowl",
+    );
+
+    await getTab("python").click();
+    await expect(terminal.getByRole("tabpanel")).toContainText("from flask import Flask");
+
+    await getTab("typescript").click();
+    await expect(terminal.getByRole("tabpanel")).toContainText("const app: Express = express();");
+
+    await getTab("elixir").click();
+    await expect(terminal.getByRole("tabpanel")).toContainText(
+      "defmodule HelloWeb.ProductController do",
+    );
+  });
 });
