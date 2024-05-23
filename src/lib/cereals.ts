@@ -6,16 +6,6 @@ import {
 } from "./colors";
 import Color from "colorjs.io";
 
-/**
- * Recipe to be use for preparing a delicious bowl of root loops.
- *
- * milk: more milk means brighter base colors
- * sugar: more sugar means brighter cereal colors
- * artificialColors: more artificial colors means more vibrant cereal colors
- * sogginess: more sogginess means more vibrant base colors TODO: use 'juice' only instead?
- * flavor: allows you to tweak the color spectrum of the cereal colors
- * juice: influences the hue of the base colors
- */
 export type Recipe = {
   milkAmount: MilkAmount;
   artificialColors: number;
@@ -38,33 +28,31 @@ export enum Flavor {
   Unicorn = 2,
 }
 
-export type Cereals = {
-  black: Color;
-  red: Color;
-  green: Color;
-  yellow: Color;
-  blue: Color;
-  magenta: Color;
-  cyan: Color;
-  white: Color;
-
-  brightBlack: Color;
-  brightRed: Color;
-  brightGreen: Color;
-  brightYellow: Color;
-  brightBlue: Color;
-  brightMagenta: Color;
-  brightCyan: Color;
-  brightWhite: Color;
+export type Cereal = {
+  name: string;
+  color: Color;
 };
 
-// TODO: more mixers?
-// milk -> drives brightness of base colors
-// sugar -> drives brightness of cereals (accents)
-// artificial colors -> drives chroma of accents
-// sogginess -> drives chroma of base colors
-// flavor -> drives hue shift of accent colors
-// juice -> determines base hue of base colors (none, orange juice, grape juice, energy drink)
+export type Cereals = {
+  black: Cereal;
+  red: Cereal;
+  green: Cereal;
+  yellow: Cereal;
+  blue: Cereal;
+  magenta: Cereal;
+  cyan: Cereal;
+  white: Cereal;
+
+  brightBlack: Cereal;
+  brightRed: Cereal;
+  brightGreen: Cereal;
+  brightYellow: Cereal;
+  brightBlue: Cereal;
+  brightMagenta: Cereal;
+  brightCyan: Cereal;
+  brightWhite: Cereal;
+};
+
 export function prepare(recipe: Recipe): Cereals {
   const colors = normalizeChroma(recipe.artificialColors);
   const sugar = normalizeLightness(recipe.sugar);
@@ -73,22 +61,22 @@ export function prepare(recipe: Recipe): Cereals {
   const accentColors = equalHueDistance(6, sugar, colors, shift);
   const brightAccentColors = equalHueDistance(6, sugar + 0.1, colors, shift);
   const cereals = {
-    black: baseColors.black,
-    red: accentColors[0],
-    green: accentColors[2],
-    yellow: accentColors[1],
-    blue: accentColors[4],
-    magenta: accentColors[5],
-    cyan: accentColors[3],
-    white: baseColors.white,
-    brightBlack: baseColors.brightBlack,
-    brightRed: brightAccentColors[0],
-    brightGreen: brightAccentColors[2],
-    brightYellow: brightAccentColors[1],
-    brightBlue: brightAccentColors[4],
-    brightMagenta: brightAccentColors[5],
-    brightCyan: brightAccentColors[3],
-    brightWhite: baseColors.brightWhite,
+    black: { name: "black", color: baseColors.black },
+    red: { name: "red", color: accentColors[0] },
+    green: { name: "green", color: accentColors[2] },
+    yellow: { name: "yellow", color: accentColors[1] },
+    blue: { name: "blue", color: accentColors[4] },
+    magenta: { name: "magenta", color: accentColors[5] },
+    cyan: { name: "cyan", color: accentColors[3] },
+    white: { name: "white", color: baseColors.white },
+    brightBlack: { name: "bright black", color: baseColors.brightBlack },
+    brightRed: { name: "bright red", color: brightAccentColors[0] },
+    brightGreen: { name: "bright green", color: brightAccentColors[2] },
+    brightYellow: { name: "bright yellow", color: brightAccentColors[1] },
+    brightBlue: { name: "bright blue", color: brightAccentColors[4] },
+    brightMagenta: { name: "bright magenta", color: brightAccentColors[5] },
+    brightCyan: { name: "bright cyan", color: brightAccentColors[3] },
+    brightWhite: { name: "bright white", color: baseColors.brightWhite },
   };
   return cereals;
 }

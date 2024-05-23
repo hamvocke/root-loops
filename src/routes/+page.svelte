@@ -65,8 +65,8 @@
     <div class="bowl-content">
       <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
       <div class="cereals">
-        {#each Object.entries(cereals) as [_key, color]}
-          <Cereal {color} />
+        {#each Object.entries(cereals) as [_key, cereal]}
+          <Cereal {cereal} />
         {/each}
       </div>
     </div>

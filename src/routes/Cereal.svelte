@@ -1,14 +1,14 @@
 <script lang="ts">
-  import Color from "colorjs.io";
-  export let color: Color;
+  import { type Cereal } from "$lib/cereals";
+  export let cereal: Cereal;
 </script>
 
-<div class="wrapper">
-  <div class="cereal" style="--color: {color}">
+<div class="wrapper" aria-label={cereal.name}>
+  <div class="cereal" style="--color: {cereal.color}">
     <div class="hole"></div>
   </div>
-  <span class="color-value">{color}</span>
-  {#if !color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
+  <span class="color-value">{cereal.color}</span>
+  {#if !cereal.color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
 </div>
 
 <style>

@@ -19,167 +19,169 @@ describe("prepare()", () => {
 
   it("generates colors in oklch space", () => {
     const cereals = prepare(defaultRecipe);
-    expect(Object.values(cereals).every((c) => c.space === Color.spaces.oklch)).toBeTruthy();
+    expect(
+      Object.values(cereals).every((cereal) => cereal.color.space === Color.spaces.oklch),
+    ).toBeTruthy();
   });
 
   it("generates base tone cereals with low chroma", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.black.c).toBeLessThan(0.06);
-    expect(cereals.white.c).toBeLessThan(0.06);
-    expect(cereals.brightBlack.c).toBeLessThan(0.06);
-    expect(cereals.brightWhite.c).toBeLessThan(0.06);
+    expect(cereals.black.color.c).toBeLessThan(0.06);
+    expect(cereals.white.color.c).toBeLessThan(0.06);
+    expect(cereals.brightBlack.color.c).toBeLessThan(0.06);
+    expect(cereals.brightWhite.color.c).toBeLessThan(0.06);
   });
 
   it("generates red tone cereals with right hue", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.red.h).toBeGreaterThanOrEqual(0);
-    expect(cereals.red.h).toBeLessThanOrEqual(60);
+    expect(cereals.red.color.h).toBeGreaterThanOrEqual(0);
+    expect(cereals.red.color.h).toBeLessThanOrEqual(60);
 
-    expect(cereals.brightRed.h).toBeGreaterThanOrEqual(0);
-    expect(cereals.brightRed.h).toBeLessThanOrEqual(60);
+    expect(cereals.brightRed.color.h).toBeGreaterThanOrEqual(0);
+    expect(cereals.brightRed.color.h).toBeLessThanOrEqual(60);
   });
 
   it("generates yellow tone cereals with right hue", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.yellow.h).toBeGreaterThanOrEqual(60);
-    expect(cereals.yellow.h).toBeLessThanOrEqual(120);
+    expect(cereals.yellow.color.h).toBeGreaterThanOrEqual(60);
+    expect(cereals.yellow.color.h).toBeLessThanOrEqual(120);
 
-    expect(cereals.brightYellow.h).toBeGreaterThanOrEqual(60);
-    expect(cereals.brightYellow.h).toBeLessThanOrEqual(120);
+    expect(cereals.brightYellow.color.h).toBeGreaterThanOrEqual(60);
+    expect(cereals.brightYellow.color.h).toBeLessThanOrEqual(120);
   });
 
   it("generates green tone cereals with right hue", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.green.h).toBeGreaterThanOrEqual(120);
-    expect(cereals.green.h).toBeLessThanOrEqual(180);
+    expect(cereals.green.color.h).toBeGreaterThanOrEqual(120);
+    expect(cereals.green.color.h).toBeLessThanOrEqual(180);
 
-    expect(cereals.brightGreen.h).toBeGreaterThanOrEqual(120);
-    expect(cereals.brightGreen.h).toBeLessThanOrEqual(180);
+    expect(cereals.brightGreen.color.h).toBeGreaterThanOrEqual(120);
+    expect(cereals.brightGreen.color.h).toBeLessThanOrEqual(180);
   });
 
   it("generates cyan tone cereals with right hue", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.cyan.h).toBeGreaterThanOrEqual(180);
-    expect(cereals.cyan.h).toBeLessThanOrEqual(240);
+    expect(cereals.cyan.color.h).toBeGreaterThanOrEqual(180);
+    expect(cereals.cyan.color.h).toBeLessThanOrEqual(240);
 
-    expect(cereals.brightCyan.h).toBeGreaterThanOrEqual(180);
-    expect(cereals.brightCyan.h).toBeLessThanOrEqual(240);
+    expect(cereals.brightCyan.color.h).toBeGreaterThanOrEqual(180);
+    expect(cereals.brightCyan.color.h).toBeLessThanOrEqual(240);
   });
 
   it("generates blue tone cereals with right hue", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.blue.h).toBeGreaterThanOrEqual(240);
-    expect(cereals.blue.h).toBeLessThanOrEqual(300);
+    expect(cereals.blue.color.h).toBeGreaterThanOrEqual(240);
+    expect(cereals.blue.color.h).toBeLessThanOrEqual(300);
 
-    expect(cereals.brightBlue.h).toBeGreaterThanOrEqual(240);
-    expect(cereals.brightBlue.h).toBeLessThanOrEqual(300);
+    expect(cereals.brightBlue.color.h).toBeGreaterThanOrEqual(240);
+    expect(cereals.brightBlue.color.h).toBeLessThanOrEqual(300);
   });
 
   it("generates magenta tone cereals with right hue", () => {
     const cereals = prepare(defaultRecipe);
 
-    expect(cereals.magenta.h).toBeGreaterThanOrEqual(300);
-    expect(cereals.magenta.h).toBeLessThanOrEqual(360);
+    expect(cereals.magenta.color.h).toBeGreaterThanOrEqual(300);
+    expect(cereals.magenta.color.h).toBeLessThanOrEqual(360);
 
-    expect(cereals.brightMagenta.h).toBeGreaterThanOrEqual(300);
-    expect(cereals.brightMagenta.h).toBeLessThanOrEqual(360);
+    expect(cereals.brightMagenta.color.h).toBeGreaterThanOrEqual(300);
+    expect(cereals.brightMagenta.color.h).toBeLessThanOrEqual(360);
   });
 
   it("generates bright colors with higher lightness than regular colors", () => {
     const cereals = prepare(someRecipe({ milkAmount: MilkAmount.Splash }));
 
-    expect(cereals.brightBlack.l).toBeGreaterThan(cereals.black.l);
-    expect(cereals.brightRed.l).toBeGreaterThan(cereals.red.l);
-    expect(cereals.brightGreen.l).toBeGreaterThan(cereals.green.l);
-    expect(cereals.brightYellow.l).toBeGreaterThan(cereals.yellow.l);
-    expect(cereals.brightBlue.l).toBeGreaterThan(cereals.blue.l);
-    expect(cereals.brightMagenta.l).toBeGreaterThan(cereals.magenta.l);
-    expect(cereals.brightCyan.l).toBeGreaterThan(cereals.cyan.l);
-    expect(cereals.brightWhite.l).toBeGreaterThan(cereals.white.l);
+    expect(cereals.brightBlack.color.l).toBeGreaterThan(cereals.black.color.l);
+    expect(cereals.brightRed.color.l).toBeGreaterThan(cereals.red.color.l);
+    expect(cereals.brightGreen.color.l).toBeGreaterThan(cereals.green.color.l);
+    expect(cereals.brightYellow.color.l).toBeGreaterThan(cereals.yellow.color.l);
+    expect(cereals.brightBlue.color.l).toBeGreaterThan(cereals.blue.color.l);
+    expect(cereals.brightMagenta.color.l).toBeGreaterThan(cereals.magenta.color.l);
+    expect(cereals.brightCyan.color.l).toBeGreaterThan(cereals.cyan.color.l);
+    expect(cereals.brightWhite.color.l).toBeGreaterThan(cereals.white.color.l);
   });
 
   it("creates dark base colors for milk amount of 'None'", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.None });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.l).toBe(0);
-    expect(cereals.brightBlack.l).toBe(0.2);
-    expect(cereals.white.l).toBe(0.6);
-    expect(cereals.brightWhite.l).toBe(0.8);
+    expect(cereals.black.color.l).toBe(0);
+    expect(cereals.brightBlack.color.l).toBe(0.2);
+    expect(cereals.white.color.l).toBe(0.6);
+    expect(cereals.brightWhite.color.l).toBe(0.8);
   });
 
   it("creates lighter base colors for milk amount of 'Splash'", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Splash });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.l).toBe(0.2);
-    expect(cereals.brightBlack.l).toBe(0.4);
-    expect(cereals.white.l).toBe(0.8);
-    expect(cereals.brightWhite.l).toBe(1);
+    expect(cereals.black.color.l).toBe(0.2);
+    expect(cereals.brightBlack.color.l).toBe(0.4);
+    expect(cereals.white.color.l).toBe(0.8);
+    expect(cereals.brightWhite.color.l).toBe(1);
   });
 
   it("creates light base colors for milk amount of 'Glug'", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Glug });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.l).toBe(0.8);
-    expect(cereals.brightBlack.l).toBe(0.6);
-    expect(cereals.white.l).toBe(0.2);
-    expect(cereals.brightWhite.l).toBe(0);
+    expect(cereals.black.color.l).toBe(0.8);
+    expect(cereals.brightBlack.color.l).toBe(0.6);
+    expect(cereals.white.color.l).toBe(0.2);
+    expect(cereals.brightWhite.color.l).toBe(0);
   });
 
   it("creates lightest base colors for milk amount of 'Cup'", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Cup });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.l).toBe(1);
-    expect(cereals.brightBlack.l).toBe(0.8);
-    expect(cereals.white.l).toBe(0.4);
-    expect(cereals.brightWhite.l).toBe(0.2);
+    expect(cereals.black.color.l).toBe(1);
+    expect(cereals.brightBlack.color.l).toBe(0.8);
+    expect(cereals.white.color.l).toBe(0.4);
+    expect(cereals.brightWhite.color.l).toBe(0.2);
   });
 
   it("ignores 'milk' parameter for accent colors", () => {
     const lessMilk = prepare(someRecipe({ milkAmount: MilkAmount.Glug }));
     const moreMilk = prepare(someRecipe({ milkAmount: MilkAmount.Cup }));
 
-    expect(lessMilk.red.l).toBe(moreMilk.red.l);
-    expect(lessMilk.green.l).toBe(moreMilk.green.l);
-    expect(lessMilk.yellow.l).toBe(moreMilk.yellow.l);
-    expect(lessMilk.blue.l).toBe(moreMilk.blue.l);
-    expect(lessMilk.magenta.l).toBe(moreMilk.magenta.l);
-    expect(lessMilk.cyan.l).toBe(moreMilk.cyan.l);
+    expect(lessMilk.red.color.l).toBe(moreMilk.red.color.l);
+    expect(lessMilk.green.color.l).toBe(moreMilk.green.color.l);
+    expect(lessMilk.yellow.color.l).toBe(moreMilk.yellow.color.l);
+    expect(lessMilk.blue.color.l).toBe(moreMilk.blue.color.l);
+    expect(lessMilk.magenta.color.l).toBe(moreMilk.magenta.color.l);
+    expect(lessMilk.cyan.color.l).toBe(moreMilk.cyan.color.l);
 
-    expect(lessMilk.brightRed.l).toBe(moreMilk.brightRed.l);
-    expect(lessMilk.brightGreen.l).toBe(moreMilk.brightGreen.l);
-    expect(lessMilk.brightYellow.l).toBe(moreMilk.brightYellow.l);
-    expect(lessMilk.brightBlue.l).toBe(moreMilk.brightBlue.l);
-    expect(lessMilk.brightMagenta.l).toBe(moreMilk.brightMagenta.l);
-    expect(lessMilk.brightCyan.l).toBe(moreMilk.brightCyan.l);
+    expect(lessMilk.brightRed.color.l).toBe(moreMilk.brightRed.color.l);
+    expect(lessMilk.brightGreen.color.l).toBe(moreMilk.brightGreen.color.l);
+    expect(lessMilk.brightYellow.color.l).toBe(moreMilk.brightYellow.color.l);
+    expect(lessMilk.brightBlue.color.l).toBe(moreMilk.brightBlue.color.l);
+    expect(lessMilk.brightMagenta.color.l).toBe(moreMilk.brightMagenta.color.l);
+    expect(lessMilk.brightCyan.color.l).toBe(moreMilk.brightCyan.color.l);
   });
 
   it("uses 'artificial colors' parameter to drive chroma of accent colors", () => {
     const lessColor = prepare(someRecipe({ artificialColors: 2 }));
     const moreColor = prepare(someRecipe({ artificialColors: 3 }));
 
-    expect(lessColor.red.c).toBeLessThan(moreColor.red.c);
-    expect(lessColor.green.c).toBeLessThan(moreColor.green.c);
-    expect(lessColor.yellow.c).toBeLessThan(moreColor.yellow.c);
-    expect(lessColor.blue.c).toBeLessThan(moreColor.blue.c);
-    expect(lessColor.magenta.c).toBeLessThan(moreColor.magenta.c);
-    expect(lessColor.cyan.c).toBeLessThan(moreColor.cyan.c);
+    expect(lessColor.red.color.c).toBeLessThan(moreColor.red.color.c);
+    expect(lessColor.green.color.c).toBeLessThan(moreColor.green.color.c);
+    expect(lessColor.yellow.color.c).toBeLessThan(moreColor.yellow.color.c);
+    expect(lessColor.blue.color.c).toBeLessThan(moreColor.blue.color.c);
+    expect(lessColor.magenta.color.c).toBeLessThan(moreColor.magenta.color.c);
+    expect(lessColor.cyan.color.c).toBeLessThan(moreColor.cyan.color.c);
 
-    expect(lessColor.brightRed.c).toBeLessThan(moreColor.brightRed.c);
-    expect(lessColor.brightGreen.c).toBeLessThan(moreColor.brightGreen.c);
-    expect(lessColor.brightYellow.c).toBeLessThan(moreColor.brightYellow.c);
-    expect(lessColor.brightBlue.c).toBeLessThan(moreColor.brightBlue.c);
-    expect(lessColor.brightMagenta.c).toBeLessThan(moreColor.brightMagenta.c);
-    expect(lessColor.brightCyan.c).toBeLessThan(moreColor.brightCyan.c);
+    expect(lessColor.brightRed.color.c).toBeLessThan(moreColor.brightRed.color.c);
+    expect(lessColor.brightGreen.color.c).toBeLessThan(moreColor.brightGreen.color.c);
+    expect(lessColor.brightYellow.color.c).toBeLessThan(moreColor.brightYellow.color.c);
+    expect(lessColor.brightBlue.color.c).toBeLessThan(moreColor.brightBlue.color.c);
+    expect(lessColor.brightMagenta.color.c).toBeLessThan(moreColor.brightMagenta.color.c);
+    expect(lessColor.brightCyan.color.c).toBeLessThan(moreColor.brightCyan.color.c);
   });
 
   it("uses 'flavor' parameter to drive hue shift of accent colors", () => {
@@ -187,59 +189,59 @@ describe("prepare()", () => {
     const classicFlavor = prepare(someRecipe({ flavor: Flavor.Classic }));
     const unicornFlavor = prepare(someRecipe({ flavor: Flavor.Unicorn }));
 
-    expect(fruityFlavor.red.h).toBe(0);
-    expect(classicFlavor.red.h).toBe(15);
-    expect(unicornFlavor.red.h).toBe(30);
-    expect(fruityFlavor.black.h).toBe(340);
-    expect(classicFlavor.black.h).toBe(340);
-    expect(unicornFlavor.black.h).toBe(340);
+    expect(fruityFlavor.red.color.h).toBe(0);
+    expect(classicFlavor.red.color.h).toBe(15);
+    expect(unicornFlavor.red.color.h).toBe(30);
+    expect(fruityFlavor.black.color.h).toBe(340);
+    expect(classicFlavor.black.color.h).toBe(340);
+    expect(unicornFlavor.black.color.h).toBe(340);
   });
 
   it("uses 'sugar' parameter to drive lightness of accent colors", () => {
     const lessSugar = prepare(someRecipe({ sugar: 1 }));
     const moreSugar = prepare(someRecipe({ sugar: 2 }));
 
-    expect(lessSugar.red.l).toBe(0.1);
-    expect(lessSugar.brightRed.l).toBe(0.2);
-    expect(moreSugar.blue.l).toBe(0.2);
-    expect(moreSugar.brightBlue.l).toBeCloseTo(0.3, 4);
-    expect(lessSugar.black.l).toBe(0.8);
-    expect(moreSugar.black.l).toBe(0.8);
+    expect(lessSugar.red.color.l).toBe(0.1);
+    expect(lessSugar.brightRed.color.l).toBe(0.2);
+    expect(moreSugar.blue.color.l).toBe(0.2);
+    expect(moreSugar.brightBlue.color.l).toBeCloseTo(0.3, 4);
+    expect(lessSugar.black.color.l).toBe(0.8);
+    expect(moreSugar.black.color.l).toBe(0.8);
   });
 
   it("uses 'juice' parameter to drive hue of base colors", () => {
     const juiceA = prepare(someRecipe({ juice: 30 }));
     const juiceB = prepare(someRecipe({ juice: 90 }));
 
-    expect(juiceA.red.h).toBe(15);
-    expect(juiceA.brightRed.h).toBe(15);
-    expect(juiceB.red.h).toBe(15);
-    expect(juiceB.brightRed.h).toBe(15);
+    expect(juiceA.red.color.h).toBe(15);
+    expect(juiceA.brightRed.color.h).toBe(15);
+    expect(juiceB.red.color.h).toBe(15);
+    expect(juiceB.brightRed.color.h).toBe(15);
 
-    expect(juiceA.black.h).toBe(30);
-    expect(juiceA.brightBlack.h).toBe(30);
-    expect(juiceA.white.h).toBe(30);
-    expect(juiceA.brightWhite.h).toBe(30);
-    expect(juiceB.black.h).toBe(90);
-    expect(juiceB.brightBlack.h).toBe(90);
-    expect(juiceB.white.h).toBe(90);
-    expect(juiceB.brightWhite.h).toBe(90);
+    expect(juiceA.black.color.h).toBe(30);
+    expect(juiceA.brightBlack.color.h).toBe(30);
+    expect(juiceA.white.color.h).toBe(30);
+    expect(juiceA.brightWhite.color.h).toBe(30);
+    expect(juiceB.black.color.h).toBe(90);
+    expect(juiceB.brightBlack.color.h).toBe(90);
+    expect(juiceB.white.color.h).toBe(90);
+    expect(juiceB.brightWhite.color.h).toBe(90);
   });
 
   it("uses 'sogginess' parameter to drive chroma of base colors", () => {
     const notSoSoggy = prepare(someRecipe({ sogginess: 0.02 }));
     const soggy = prepare(someRecipe({ sogginess: 0.1 }));
 
-    expect(notSoSoggy.red.c).toBe(0.05);
-    expect(soggy.red.c).toBe(0.05);
+    expect(notSoSoggy.red.color.c).toBe(0.05);
+    expect(soggy.red.color.c).toBe(0.05);
 
-    expect(notSoSoggy.black.c).toBe(0.02);
-    expect(notSoSoggy.brightBlack.c).toBe(0.02);
-    expect(notSoSoggy.white.c).toBe(0.02);
-    expect(notSoSoggy.brightWhite.c).toBe(0.02);
-    expect(soggy.black.c).toBe(0.1);
-    expect(soggy.brightBlack.c).toBe(0.1);
-    expect(soggy.white.c).toBe(0.1);
-    expect(soggy.brightWhite.c).toBe(0.1);
+    expect(notSoSoggy.black.color.c).toBe(0.02);
+    expect(notSoSoggy.brightBlack.color.c).toBe(0.02);
+    expect(notSoSoggy.white.color.c).toBe(0.02);
+    expect(notSoSoggy.brightWhite.color.c).toBe(0.02);
+    expect(soggy.black.color.c).toBe(0.1);
+    expect(soggy.brightBlack.color.c).toBe(0.1);
+    expect(soggy.white.color.c).toBe(0.1);
+    expect(soggy.brightWhite.color.c).toBe(0.1);
   });
 });
