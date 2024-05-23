@@ -4,7 +4,6 @@
   import Terminal from "./Terminal.svelte";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
-  import "@fontsource/luckiest-guy";
 
   let milk = 0;
   let flavor = 0;

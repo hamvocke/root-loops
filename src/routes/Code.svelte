@@ -7,7 +7,6 @@
   >$ {command}
 </div>
 
-<!-- TODO: figure out why background styles don't work -->
 <pre>
 <slot />
 </pre>
@@ -25,6 +24,8 @@
   pre {
     padding: 1.5rem 0;
     margin: 0;
+    font-family: inherit;
+    line-height: 1.25rem;
   }
 
   @keyframes blink {

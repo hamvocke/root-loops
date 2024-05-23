@@ -192,8 +192,9 @@
     background: var(--root-loops-background);
     padding: 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    font-family: monospace;
+    font-family: "Fira Code", monospace;
     font-size: 16px;
+    font-weight: 400;
     line-height: 1rem;
     color: var(--root-loops-foreground);
     overflow-x: auto;
