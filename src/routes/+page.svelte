@@ -2,6 +2,7 @@
   import Slider from "./Slider.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
+  import MilkSlider from "./MilkSlider.svelte";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
 
@@ -57,6 +58,8 @@
     <Slider id="slider-colors" label="Artificial Colors" min="1" max="10" bind:value={colors} />
     <Slider id="slider-juice" label="Juice" min="0" max="360" bind:value={juice} />
     <Slider id="slider-sogginess" label="Sogginess" min="0" max="20" bind:value={sogginess} />
+
+    <MilkSlider />
   </section>
 
   <section class="bowl" aria-label="cereal bowl">
