@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ButtonSlider from "./ButtonSlider.svelte";
   import Slider from "./Slider.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
@@ -51,22 +50,7 @@
     </div>
   </header>
 
-  <section class="sliders" aria-label="sliders">
-    <ButtonSlider label="Milk" id="milk-slider" min={0} max={3} bind:value={milk} />
-    <ButtonSlider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
-    <ButtonSlider id="slider-flavor" label="Flavor" min={0} max={2} bind:value={flavor} />
-    <ButtonSlider
-      id="slider-colors"
-      label="Artificial Colors"
-      min={1}
-      max={10}
-      bind:value={colors}
-    />
-    <ButtonSlider id="slider-juice" label="Juice" min={0} max={360} bind:value={juice} />
-    <ButtonSlider id="slider-sogginess" label="Sogginess" min={0} max={20} bind:value={sogginess} />
-  </section>
-
-  <section class="new-sliders">
+  <section class="sliders glass-box">
     <Slider label="Milk" id="milk-slider" min={0} max={3} bind:value={milk} />
     <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
     <Slider id="slider-flavor" label="Flavor" min={0} max={2} bind:value={flavor} />
@@ -77,7 +61,7 @@
 
   <section class="bowl" aria-label="cereal bowl">
     <div class="glow"></div>
-    <div class="bowl-content">
+    <div class="bowl-content glass-box">
       <div class="milk" style={`height: ${milk * 33.34}%;`}></div>
       <div class="cereals">
         {#each Object.entries(cereals) as [_key, cereal]}
@@ -192,11 +176,7 @@
     line-height: 1em;
   }
 
-  .sliders {
-    margin: 2rem 0;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  .glass-box {
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     border: 1px solid var(--color-slate-050);
     padding: 1rem;
@@ -204,17 +184,12 @@
     box-shadow: 0 0.25rem 0.5rem #0001;
   }
 
-  .new-sliders {
+  .sliders {
     margin: 2rem 0;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
-    border: 1px solid var(--color-slate-050);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 0.25rem 0.5rem #0001;
   }
 
   .bowl {
@@ -242,11 +217,6 @@
 
   .bowl-content {
     position: relative;
-    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
-    border: 1px solid var(--color-slate-050);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 0.25rem 0.5rem #0001;
     overflow: hidden;
   }
 
