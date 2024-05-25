@@ -21,7 +21,7 @@
       <span class="circle yellow"></span>
       <span class="circle green"></span>
     </div>
-    <h3 id="window-title">Terminal Preview</h3>
+    <h2 id="window-title">Terminal Preview</h2>
   </div>
   <div role="tablist" aria-labelledby="window-title">
     <button
@@ -99,7 +99,7 @@
     flex-direction: column;
     box-shadow: 0 4px 12px #0001;
     border-radius: var(--border-radius);
-    border: 1px solid var(--color-slate-300);
+    border: 1px solid var(--color-slate-050);
     overflow: hidden;
     color: var(--color-slate-600);
     margin-bottom: 2rem;
@@ -111,16 +111,16 @@
     text-shadow: 0 1px 0 var(--color-slate-050);
     padding: 0.75rem 0.5rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    border: 1px solid var(--color-slate-050);
     border-bottom: 1px solid var(--color-slate-300);
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  h3 {
+  h2 {
     margin: 0;
     font-size: 1rem;
+    font-weight: bold;
   }
 
   .circles {
