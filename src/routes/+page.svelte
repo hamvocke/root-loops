@@ -209,6 +209,7 @@
     padding: 1rem;
     border-radius: var(--border-radius);
     box-shadow: 0 0.25rem 0.5rem #0001;
+    overflow: hidden;
   }
 
   .milk {
