@@ -1,8 +1,8 @@
 <script lang="ts">
   import Slider from "./Slider.svelte";
+  import ButtonSlider from "./ButtonSlider.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
-  import MilkSlider from "./MilkSlider.svelte";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
 
@@ -52,14 +52,12 @@
   </header>
 
   <section class="sliders" aria-label="sliders">
-    <Slider id="slider-milk" label="Milk" min="0" max="3" bind:value={milk} />
+    <ButtonSlider label="Milk" id="milk-slider" min="0" max="3" bind:value={milk} />
+    <ButtonSlider label="Sugar" id="sugar-slider" min="1" max="9" bind:value={sugar} />
     <Slider id="slider-flavor" label="Flavor" min="0" max="2" bind:value={flavor} />
-    <Slider id="slider-sugar" label="Sugar" min="1" max="9" bind:value={sugar} />
     <Slider id="slider-colors" label="Artificial Colors" min="1" max="10" bind:value={colors} />
     <Slider id="slider-juice" label="Juice" min="0" max="360" bind:value={juice} />
     <Slider id="slider-sogginess" label="Sogginess" min="0" max="20" bind:value={sogginess} />
-
-    <MilkSlider />
   </section>
 
   <section class="bowl" aria-label="cereal bowl">
@@ -177,6 +175,12 @@
     font-size: 1.2rem;
     font-style: italic;
     line-height: 1em;
+  }
+
+  .sliders {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .bowl {
