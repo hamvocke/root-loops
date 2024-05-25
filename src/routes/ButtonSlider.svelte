@@ -4,7 +4,7 @@
   export let value: number;
   export let min = 1;
   export let max = 10;
-  export let datalist: Array<any> | null;
+  export let datalist: Array<number | string> | null | undefined = null;
 
   function decrease() {
     value = Math.max(min, value - 1);
@@ -39,7 +39,6 @@
 <style>
   .slider {
     display: inline-flex;
-    margin: 1rem 0;
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     border: 1px solid var(--color-slate-050);
     box-shadow: 0 0.25rem 0.5rem #0001;

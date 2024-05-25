@@ -1,5 +1,5 @@
 <script lang="ts">
-  const values = ["Classic", "Fruity", "Unicorn"];
+  export let values: Array<number | string>;
 
   let current = values[0];
 </script>
@@ -8,7 +8,7 @@
   {#each values as value}
     <button
       type="button"
-      aria-selected={current === value ? "true" : "false"}
+      aria-pressed={current === value ? "true" : "false"}
       on:click={() => (current = value)}>{value}</button
     >
   {/each}
@@ -35,7 +35,7 @@
       background: color-mix(in oklch, var(--color-slate-200) 40%, transparent);
     }
 
-    &[aria-selected="true"] {
+    &[aria-pressed="true"] {
       background: color-mix(in oklch, var(--color-slate-400) 40%, transparent);
     }
   }
