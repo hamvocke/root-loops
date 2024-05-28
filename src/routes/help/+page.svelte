@@ -127,7 +127,7 @@
       <a href="https://github.com/hamvocke/root-loops/issues">On GitHub</a>.
     </p>
 
-    <h2>I'm missing a feature. Where can I request it?</h2>
+    <h2>I miss a feature. Where can I request it?</h2>
     <p>
       <a href="https://github.com/hamvocke/root-loops/issues">On GitHub</a>.
     </p>

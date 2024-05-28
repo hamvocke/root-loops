@@ -50,23 +50,24 @@
 <main style={cssColors}>
   <Header />
 
-  <section class="input glass-box">
-    <h2>Create your own terminal color scheme</h2>
-    <p>
-      Root Loops helps you generate custom terminal color schemes. Dark mode, light mode, vibrant or
-      pale, you decide. Play around with the ingredients below and find a recipe you like. Each
-      ingredient has a different effect on the color scheme being created. You can use the generated
-      colors for your personal terminal color scheme, for syntax highlighting, or anything you like.
-    </p>
-
-    <p><a href="/help" class="help-link">Learn more</a></p>
+  <section class="input">
+    <div class="text">
+      <h2>Your own terminal color scheme, as simple as making a bowl of cereals</h2>
+      <p>
+        Root Loops helps you generate tasty color schemes that you can use for terminal emulators,
+        syntax highlighting, or whatever else you fancy. Dark mode, light mode, vibrant or pale, you
+        decide. Play around with the ingredients below and find a recipe you like. Each ingredient
+        has a different effect on the color scheme being created.
+      </p>
+      <div class="links"><a href="/help">Learn more</a></div>
+    </div>
     <div class="sliders">
       <div>
         <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
         <Slider
           id="slider-colors"
           label="Artificial Colors"
-          min={1}
+          min={0}
           max={10}
           bind:value={artificialColors}
         />
@@ -103,13 +104,17 @@
 <style>
   main {
     margin: auto;
-    width: min(calc(100% - 1rem), 1200px);
+    width: min(calc(100% - 2rem), 1200px);
     accent-color: var(--root-loops-ansi-red);
   }
 
   .input {
-    margin: 2rem 0;
-    padding: 1rem;
+    margin: 3rem 0;
+
+    .text {
+      max-width: 90ch;
+      margin: auto;
+    }
 
     h2 {
       font-size: 1.1rem;
@@ -119,10 +124,10 @@
       text-shadow: 0 1px 0 var(--color-slate-050);
     }
 
-    .help-link {
-      display: block;
-      font-weight: bold;
+    .links {
+      width: 100%;
       text-align: right;
+      font-weight: bold;
     }
   }
 
@@ -141,11 +146,12 @@
   .sliders div {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    gap: 1rem;
+    gap: 1.5rem;
 
     @media screen and (min-width: 640px) {
       flex-direction: row;
+      gap: 4rem;
+      justify-content: center;
     }
   }
 

@@ -36,8 +36,8 @@ export function equalLightnessDistance(
 }
 
 export function normalizeChroma(input: number, maxChroma = 0.3): number {
-  const sanitizedInput = clamp(input, 1, 10);
-  return normalize(sanitizedInput, 1, 10, 0.01, maxChroma);
+  const sanitizedInput = clamp(input, 0, 10);
+  return normalize(sanitizedInput, 0, 10, 0.0, maxChroma);
 }
 
 export function normalizeLightness(input: number): number {

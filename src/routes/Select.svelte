@@ -30,8 +30,9 @@
   select {
     padding: 0.3rem 0.6rem;
     font-size: 1rem;
-    background-color: var(--color-slate-100);
-    border: 1px solid var(--color-slate-400);
+    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
+    border: 1px solid var(--color-slate-050);
+    box-shadow: 0 0.25rem 0.5rem #0001;
     border-radius: 0.2rem;
     min-width: 180px;
   }
