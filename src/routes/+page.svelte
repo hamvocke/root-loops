@@ -179,7 +179,6 @@
   .glass-box {
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     border: 1px solid var(--color-slate-050);
-    padding: 1rem;
     border-radius: var(--border-radius);
     box-shadow: 0 0.25rem 0.5rem #0001;
   }
@@ -190,6 +189,7 @@
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
+    padding: 1rem;
   }
 
   .bowl {
@@ -231,17 +231,12 @@
   }
 
   .cereals {
-    position: relative;
+    padding: 1rem;
+    overflow: auto;
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(8, 1fr);
-    grid-auto-flow: column;
-    gap: 1rem;
-
-    @media screen and (min-width: 640px) {
-      grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: auto;
-      grid-auto-flow: row;
-    }
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    gap: 1.5rem;
   }
 </style>

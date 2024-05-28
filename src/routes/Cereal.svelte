@@ -34,7 +34,7 @@
     &:hover .cereal,
     .cereal:focus-visible {
       transform: scale(1.2);
-      outline-width: 0.8rem;
+      outline-width: 6px;
     }
 
     @media screen and (min-width: 640px) {
@@ -44,12 +44,12 @@
 
   .cereal {
     box-sizing: border-box;
-    height: clamp(3.5rem, 9vw, 128px);
+    height: clamp(3rem, 9vw, 128px);
     aspect-ratio: 1/1;
     border-radius: 50%;
     background: var(--color);
     border: 3px solid color-mix(in oklch, var(--color) 90%, black);
-    outline: 0.4rem solid color-mix(in oklch, var(--color) 10%, transparent);
+    outline: 3px solid color-mix(in oklch, var(--color) 10%, transparent);
     display: flex;
     align-items: center;
     justify-content: center;
