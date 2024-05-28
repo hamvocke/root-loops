@@ -1,25 +1,38 @@
 <script lang="ts">
   import { type Cereal } from "$lib/cereals";
+  import { fade } from "svelte/transition";
   export let cereal: Cereal;
+
+  let notification: string | undefined;
+  function copyToClipboard(cereal: Cereal) {
+    const showNotification = () => {
+      notification = "Copied";
+      setTimeout(() => (notification = undefined), 2000);
+    };
+
+    navigator.clipboard.writeText(cereal.color.toString()).then(showNotification);
+  }
 </script>
 
-<div class="wrapper">
-  <button class="cereal" style="--color: {cereal.color}" aria-label={cereal.name}>
+<div class="wrapper" style="--color: {cereal.color}">
+  {#if notification}
+    <div class="notification" transition:fade={{ duration: 200 }}>{notification}</div>
+  {/if}
+  <button class="cereal" aria-label={cereal.name} on:click={() => copyToClipboard(cereal)}>
     <div class="hole"></div>
   </button>
-  <span class="color-value">{cereal.color}</span>
-  {#if !cereal.color.inGamut("srgb")}<span title="Not in srgb gamut">⚠️</span>{/if}
 </div>
 
 <style>
   .wrapper {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
 
     &:hover .cereal,
-    .cereal:focus {
+    .cereal:focus-visible {
       transform: scale(1.2);
       outline-width: 0.8rem;
     }
@@ -47,12 +60,20 @@
     height: clamp(1rem, 3vw, 32px);
     width: clamp(1rem, 3vw, 32px);
     border-radius: 50%;
-    background: white;
+    background: var(--color-slate-050);
     opacity: 75%;
   }
 
-  .color-value {
-    font-family: monospace;
-    font-size: 0.9em;
+  .notification {
+    position: absolute;
+    bottom: -0.5rem;
+    z-index: 1;
+    background: color-mix(in oklch, var(--color) 20%, white);
+    border: 2px solid color-mix(in oklch, var(--color) 30%, transparent);
+    color: color-mix(in oklch, var(--color) 50%, black);
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 4px #0003;
+    transform: rotate(-4deg);
   }
 </style>
