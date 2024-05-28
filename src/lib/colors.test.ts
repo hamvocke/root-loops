@@ -61,19 +61,19 @@ describe("equalLightnessDistance()", () => {
 
 describe("normalizeChroma()", () => {
   it.each([
-    { val: 1, expected: 0.01 },
-    { val: 2, expected: 0.05 },
-    { val: 3, expected: 0.08 },
-    { val: 5, expected: 0.14 },
+    { val: 1, expected: 0.03 },
+    { val: 2, expected: 0.06 },
+    { val: 3, expected: 0.09 },
+    { val: 5, expected: 0.15 },
     { val: 10, expected: 0.3 },
   ])("normalizes 1-10 to reasonable chroma values ($val to $expected)", ({ val, expected }) => {
     expect(normalizeChroma(val)).toBe(expected);
   });
 
-  it("doesn't allow values below 1", () => {
-    expect(normalizeChroma(0)).toBe(0.01);
-    expect(normalizeChroma(-1)).toBe(0.01);
-    expect(normalizeChroma(-100)).toBe(0.01);
+  it("doesn't allow values below 0", () => {
+    expect(normalizeChroma(0)).toBe(0.0);
+    expect(normalizeChroma(-1)).toBe(0.0);
+    expect(normalizeChroma(-100)).toBe(0.0);
   });
 
   it("doesn't allow values larger than 10", () => {
