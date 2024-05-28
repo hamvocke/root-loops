@@ -170,6 +170,7 @@
     width: 100%;
     filter: blur(64px);
     opacity: 1;
+    z-index: -1;
   }
 
   .bowl-content {
