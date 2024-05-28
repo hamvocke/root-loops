@@ -26,9 +26,9 @@
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
     border: 0.2rem solid var(--color-red-100);
-    outline: 0.4rem solid var(--color-red-800);
+    outline: 0.3rem solid var(--color-red-800);
     border-top: none;
-    box-shadow: 0 8px 16px #0004;
+    box-shadow: 0 0.5rem 2rem #0004;
   }
 
   h1 {
