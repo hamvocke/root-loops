@@ -112,8 +112,8 @@ describe("prepare()", () => {
 
     expect(cereals.black.color.l).toBe(0);
     expect(cereals.brightBlack.color.l).toBe(0.2);
-    expect(cereals.white.color.l).toBe(0.6);
-    expect(cereals.brightWhite.color.l).toBe(0.8);
+    expect(cereals.white.color.l).toBe(0.8);
+    expect(cereals.brightWhite.color.l).toBe(1);
   });
 
   it("creates lighter base colors for milk amount of 'Splash'", () => {
@@ -130,8 +130,8 @@ describe("prepare()", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Glug });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.color.l).toBe(0.8);
-    expect(cereals.brightBlack.color.l).toBe(0.6);
+    expect(cereals.black.color.l).toBe(1);
+    expect(cereals.brightBlack.color.l).toBe(0.8);
     expect(cereals.white.color.l).toBe(0.2);
     expect(cereals.brightWhite.color.l).toBe(0);
   });
@@ -205,8 +205,8 @@ describe("prepare()", () => {
     expect(lessSugar.brightRed.color.l).toBe(0.2);
     expect(moreSugar.blue.color.l).toBe(0.2);
     expect(moreSugar.brightBlue.color.l).toBeCloseTo(0.3, 4);
-    expect(lessSugar.black.color.l).toBe(0.8);
-    expect(moreSugar.black.color.l).toBe(0.8);
+    expect(lessSugar.black.color.l).toBe(1);
+    expect(moreSugar.black.color.l).toBe(1);
   });
 
   it("uses 'juice' parameter to drive hue of base colors", () => {

@@ -155,8 +155,8 @@ function pourMilk(milk: MilkAmount, sogginess: number, juice: number) {
       return {
         black: colors[0],
         brightBlack: colors[1],
-        white: colors[3],
-        brightWhite: colors[4],
+        white: colors[4],
+        brightWhite: colors[5],
       };
     case MilkAmount.Splash:
       return {
@@ -167,8 +167,8 @@ function pourMilk(milk: MilkAmount, sogginess: number, juice: number) {
       };
     case MilkAmount.Glug:
       return {
-        black: colors[4],
-        brightBlack: colors[3],
+        black: colors[5],
+        brightBlack: colors[4],
         white: colors[1],
         brightWhite: colors[0],
       };
