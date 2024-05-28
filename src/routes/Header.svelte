@@ -1,18 +1,18 @@
 <header>
-  <div class="label">
+  <a class="label" href="/">
     <h1>
       R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
         >o</span
       ><span class="yellow">o</span>ps
     </h1>
-    <p class="caption">Terminal color schemes for cereal lovers.</p>
-  </div>
+    <p>Terminal color schemes for cereal lovers.</p>
+  </a>
 </header>
 
 <style>
   header {
     text-align: center;
-    color: var(--color-slate-050);
+    margin-bottom: 2rem;
   }
 
   header .label {
@@ -98,10 +98,15 @@
     --darker-shade: color-mix(in oklch, var(--color) 90%, black);
   }
 
-  .caption {
+  p {
     margin: 0;
     font-size: 1.2rem;
     font-style: italic;
     line-height: 1em;
+    color: var(--color-slate-050);
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 </style>

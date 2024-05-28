@@ -5,6 +5,7 @@
   import Terminal from "./Terminal.svelte";
   import { prepare, defaultRecipe } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
+  import { faviconDataUrl } from "$lib/favicon";
 
   let milk = defaultRecipe.milkAmount;
   let flavor = defaultRecipe.flavor;
@@ -22,21 +23,12 @@
     sogginess: sogginess,
   });
   $: cssColors = generateCssColors(cereals);
-
-  function favicon() {
-    return `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
-    <circle cx="100" cy="90" r="50" fill="${cereals.blue.color.toString()}" />
-    <circle cx="60" cy="50" r="50" fill="${cereals.red.color.toString()}" />
-  </svg>
-    `.replace('"', "%22");
-  }
 </script>
 
 <svelte:head>
   <title>Root Loops</title>
   <meta name="description" content="Terminal color schemes for cereal lovers." />
-  <link rel="icon" href="data:image/svg+xml,{favicon()}" />
+  <link rel="icon" href={faviconDataUrl(cereals)} />
 </svelte:head>
 
 <main style={cssColors}>
@@ -104,16 +96,9 @@
 
     .help-link {
       display: block;
-      text-align: right;
       font-weight: bold;
+      text-align: right;
     }
-  }
-
-  .glass-box {
-    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
-    border: 1px solid var(--color-slate-050);
-    border-radius: var(--border-radius);
-    box-shadow: 0 0.25rem 0.5rem #0001;
   }
 
   .sliders {
