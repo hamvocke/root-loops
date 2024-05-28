@@ -33,6 +33,10 @@
   }
 
   input[type="range"] {
-    max-width: 160px;
+    max-width: 140px;
+
+    @media screen and (min-width: 640px) {
+      max-width: 160px;
+    }
   }
 </style>
