@@ -50,7 +50,8 @@ h2,
 p {
   font-weight: 400;
 }
-:w p {
+
+p {
   line-height: 1.5;
 }
 
