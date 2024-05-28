@@ -42,13 +42,24 @@
 <main style={cssColors}>
   <Header />
 
-  <section class="sliders glass-box">
-    <Slider label="Milk" id="milk-slider" min={0} max={3} bind:value={milk} />
-    <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
-    <Slider id="slider-flavor" label="Flavor" min={0} max={2} bind:value={flavor} />
-    <Slider id="slider-colors" label="Artificial Colors" min={1} max={10} bind:value={colors} />
-    <Slider id="slider-juice" label="Juice" min={0} max={360} bind:value={juice} />
-    <Slider id="slider-sogginess" label="Sogginess" min={0} max={20} bind:value={sogginess} />
+  <section class="input glass-box">
+    <h2>Create your own terminal color scheme</h2>
+    <p>
+      Root Loops helps you generate custom terminal color schemes. Dark mode, light mode, vibrant or
+      pale, you decide. Play around with the ingredients below and find a recipe you like. Each
+      ingredient has a different effect on the cereals being created. You can use the generated
+      colors for your personal terminal color scheme, for syntax highlighting, or anything you like.
+    </p>
+
+    <p><a href="/help" class="help-link">Learn more</a></p>
+    <div class="sliders">
+      <Slider label="Milk" id="milk-slider" min={0} max={3} bind:value={milk} />
+      <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
+      <Slider id="slider-flavor" label="Flavor" min={0} max={2} bind:value={flavor} />
+      <Slider id="slider-colors" label="Artificial Colors" min={1} max={10} bind:value={colors} />
+      <Slider id="slider-juice" label="Juice" min={0} max={360} bind:value={juice} />
+      <Slider id="slider-sogginess" label="Sogginess" min={0} max={20} bind:value={sogginess} />
+    </div>
   </section>
 
   <section class="bowl" aria-label="cereal bowl">
@@ -73,6 +84,25 @@
     accent-color: var(--root-loops-ansi-red);
   }
 
+  .input {
+    margin: 2rem 0;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0;
+      color: var(--color-slate-600);
+      text-shadow: 0 1px 0 var(--color-slate-050);
+    }
+
+    .help-link {
+      display: block;
+      text-align: right;
+      font-weight: bold;
+    }
+  }
+
   .glass-box {
     background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
     border: 1px solid var(--color-slate-050);
@@ -81,12 +111,11 @@
   }
 
   .sliders {
-    margin: 2rem 0;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    padding: 1rem;
   }
 
   .bowl {
@@ -109,7 +138,7 @@
     height: 100%;
     width: 100%;
     filter: blur(64px);
-    opacity: 0.9;
+    opacity: 1;
   }
 
   .bowl-content {
