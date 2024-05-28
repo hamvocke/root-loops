@@ -49,7 +49,7 @@ export const defaultRecipe: Recipe = {
   flavor: Flavor.Classic,
   sugar: 7,
   juice: Juice.Blackberry,
-  sogginess: 8,
+  sogginess: 2,
 };
 
 export type Cereal = {
@@ -81,7 +81,9 @@ export function prepare(recipe: Recipe): Cereals {
   const colors = normalizeChroma(recipe.artificialColors);
   const sugar = normalizeLightness(recipe.sugar);
   const shift = applyFlavor(recipe.flavor);
-  const baseColors = pourMilk(recipe);
+  const sogginess = normalizeChroma(recipe.sogginess, 0.2);
+  const juice = pickJuice(recipe.juice);
+  const baseColors = pourMilk(recipe.milkAmount, sogginess, juice);
   const accentColors = equalHueDistance(6, sugar, colors, shift);
   const brightAccentColors = equalHueDistance(6, sugar + 0.1, colors, shift);
   const cereals = {
@@ -116,7 +118,7 @@ function applyFlavor(flavor: Flavor) {
   }
 }
 
-function addJuice(juice: Juice) {
+function pickJuice(juice: Juice) {
   switch (juice) {
     case Juice.Cranberry:
       return 0;
@@ -145,10 +147,10 @@ function addJuice(juice: Juice) {
   }
 }
 
-function pourMilk(recipe: Recipe) {
-  const colors = equalLightnessDistance(6, recipe.sogginess / 100, addJuice(recipe.juice));
+function pourMilk(milk: MilkAmount, sogginess: number, juice: number) {
+  const colors = equalLightnessDistance(6, sogginess, juice);
 
-  switch (recipe.milkAmount) {
+  switch (milk) {
     case MilkAmount.None:
       return {
         black: colors[0],

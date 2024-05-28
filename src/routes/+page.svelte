@@ -70,7 +70,7 @@
           max={10}
           bind:value={artificialColors}
         />
-        <Slider id="slider-sogginess" label="Sogginess" min={0} max={20} bind:value={sogginess} />
+        <Slider id="slider-sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
       </div>
       <div>
         <Select

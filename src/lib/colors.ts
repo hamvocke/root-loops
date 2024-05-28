@@ -35,9 +35,9 @@ export function equalLightnessDistance(
     .map((_color, i) => new Color("oklch", [l(i), chroma, hue]));
 }
 
-export function normalizeChroma(input: number): number {
+export function normalizeChroma(input: number, maxChroma = 0.3): number {
   const sanitizedInput = clamp(input, 1, 10);
-  return normalize(sanitizedInput, 1, 10, 0.01, 0.3);
+  return normalize(sanitizedInput, 1, 10, 0.01, maxChroma);
 }
 
 export function normalizeLightness(input: number): number {
