@@ -19,7 +19,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.75rem;
   }
 
   .inputs {
@@ -33,10 +33,15 @@
   }
 
   input[type="range"] {
-    max-width: 140px;
+    max-width: 160px;
 
     @media screen and (min-width: 640px) {
-      max-width: 160px;
+      min-width: 180px;
+    }
+
+    &:focus {
+      outline: 2px solid var(--root-loops-ansi-red);
+      outline-offset: 2px;
     }
   }
 </style>
