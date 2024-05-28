@@ -18,7 +18,12 @@
   {#if notification}
     <div class="notification" role="alert" transition:fade={{ duration: 200 }}>{notification}</div>
   {/if}
-  <button class="cereal" aria-label={cereal.name} on:click={() => copyToClipboard(cereal)}>
+  <button
+    class="cereal"
+    aria-label={cereal.name}
+    title={cereal.name}
+    on:click={() => copyToClipboard(cereal)}
+  >
     <div class="hole"></div>
   </button>
 </div>
@@ -54,6 +59,7 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.1s ease-out;
+    cursor: pointer;
   }
 
   .hole {
