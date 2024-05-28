@@ -17,6 +17,7 @@
 <main style={cssColors}>
   <Header />
 
+  <a href="/">Go back</a>
   <div class="info glass-box">
     <h2>What is Root Loops?</h2>
     <p>
