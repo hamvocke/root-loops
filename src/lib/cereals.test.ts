@@ -229,8 +229,8 @@ describe("prepare()", () => {
   });
 
   it("uses 'sogginess' parameter to drive chroma of base colors", () => {
-    const notSoSoggy = prepare(someRecipe({ sogginess: 0.02 }));
-    const soggy = prepare(someRecipe({ sogginess: 0.1 }));
+    const notSoSoggy = prepare(someRecipe({ sogginess: 2 }));
+    const soggy = prepare(someRecipe({ sogginess: 10 }));
 
     expect(notSoSoggy.red.color.c).toBe(0.05);
     expect(soggy.red.color.c).toBe(0.05);

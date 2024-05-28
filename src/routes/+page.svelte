@@ -3,23 +3,23 @@
   import Slider from "./Slider.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
-  import { prepare } from "$lib/cereals";
+  import { prepare, defaultRecipe } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
 
-  let milk = 0;
-  let flavor = 0;
-  let colors = 6;
-  let sugar = 7;
-  let juice = 30;
-  let sogginess = 2;
+  let milk = defaultRecipe.milkAmount;
+  let flavor = defaultRecipe.flavor;
+  let artificialColors = defaultRecipe.artificialColors;
+  let sugar = defaultRecipe.sugar;
+  let juice = defaultRecipe.juice;
+  let sogginess = defaultRecipe.sogginess;
 
   $: cereals = prepare({
     milkAmount: milk,
     flavor: flavor,
-    artificialColors: colors,
+    artificialColors: artificialColors,
     sugar: sugar,
     juice: juice,
-    sogginess: sogginess / 100,
+    sogginess: sogginess,
   });
   $: cssColors = generateCssColors(cereals);
 
@@ -56,7 +56,13 @@
       <Slider label="Milk" id="milk-slider" min={0} max={3} bind:value={milk} />
       <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
       <Slider id="slider-flavor" label="Flavor" min={0} max={2} bind:value={flavor} />
-      <Slider id="slider-colors" label="Artificial Colors" min={1} max={10} bind:value={colors} />
+      <Slider
+        id="slider-colors"
+        label="Artificial Colors"
+        min={1}
+        max={10}
+        bind:value={artificialColors}
+      />
       <Slider id="slider-juice" label="Juice" min={0} max={360} bind:value={juice} />
       <Slider id="slider-sogginess" label="Sogginess" min={0} max={20} bind:value={sogginess} />
     </div>

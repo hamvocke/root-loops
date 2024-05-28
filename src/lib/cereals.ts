@@ -28,6 +28,15 @@ export enum Flavor {
   Unicorn = 2,
 }
 
+export const defaultRecipe: Recipe = {
+  milkAmount: MilkAmount.None,
+  artificialColors: 6,
+  flavor: Flavor.Classic,
+  sugar: 7,
+  juice: 270,
+  sogginess: 8,
+};
+
 export type Cereal = {
   name: string;
   color: Color;
@@ -93,7 +102,7 @@ function applyFlavor(flavor: Flavor) {
 }
 
 function pourMilk(recipe: Recipe) {
-  const colors = equalLightnessDistance(6, recipe.sogginess, recipe.juice);
+  const colors = equalLightnessDistance(6, recipe.sogginess / 100, recipe.juice);
 
   switch (recipe.milkAmount) {
     case MilkAmount.None:
