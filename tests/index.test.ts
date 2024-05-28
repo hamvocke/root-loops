@@ -9,13 +9,14 @@ test.describe("index", () => {
     await expect(page.getByRole("heading", { name: "Root Loops", exact: true })).toBeVisible();
   });
 
-  test("shows all range sliders", async ({ page }) => {
-    await expect(page.getByRole("slider", { name: "Milk" })).toBeVisible();
-    await expect(page.getByRole("slider", { name: "Flavor" })).toBeVisible();
+  test("shows all range inputs", async ({ page }) => {
     await expect(page.getByRole("slider", { name: "Sugar" })).toBeVisible();
     await expect(page.getByRole("slider", { name: "Artificial Colors" })).toBeVisible();
-    await expect(page.getByRole("slider", { name: "Juice" })).toBeVisible();
     await expect(page.getByRole("slider", { name: "Sogginess" })).toBeVisible();
+
+    await expect(page.getByRole("combobox", { name: "Cereal Flavor" })).toBeVisible();
+    await expect(page.getByRole("combobox", { name: "Juice" })).toBeVisible();
+    await expect(page.getByRole("combobox", { name: "Milk" })).toBeVisible();
   });
 
   test("has bowl with 16 cereals", async ({ page }) => {
