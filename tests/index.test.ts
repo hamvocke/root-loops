@@ -38,6 +38,20 @@ test.describe("index", () => {
     await expect(page.getByRole("button", { name: "bright white", exact: true })).toBeVisible();
   });
 
+  test("clicking a cereal copies color value to clipboard", async ({ page, context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    const blackCereal = page.getByRole("button", { name: "black", exact: true });
+
+    await blackCereal.click();
+
+    await expect(page.getByRole("alert")).toHaveText("Copied");
+
+    const handle = await page.evaluateHandle(() => navigator.clipboard.readText());
+    const clipboardContent = await handle.jsonValue();
+
+    expect(clipboardContent).toEqual("oklch(0% 0.02 30)");
+  });
+
   test("has terminal with different tabs", async ({ page }) => {
     const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
     await expect(terminal).toBeVisible();

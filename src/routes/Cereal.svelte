@@ -16,7 +16,7 @@
 
 <div class="wrapper" style="--color: {cereal.color}">
   {#if notification}
-    <div class="notification" transition:fade={{ duration: 200 }}>{notification}</div>
+    <div class="notification" role="alert" transition:fade={{ duration: 200 }}>{notification}</div>
   {/if}
   <button class="cereal" aria-label={cereal.name} on:click={() => copyToClipboard(cereal)}>
     <div class="hole"></div>
