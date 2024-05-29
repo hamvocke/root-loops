@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { PageData } from "./$types";
   import Header from "./Header.svelte";
   import Slider from "./Slider.svelte";
   import Select from "./Select.svelte";
@@ -10,12 +11,14 @@
   import Footer from "./Footer.svelte";
   import { HelpCircleIcon, ShareIcon } from "svelte-feather-icons";
 
-  let milk = defaultRecipe.milkAmount;
-  let flavor = defaultRecipe.flavor;
-  let artificialColors = defaultRecipe.artificialColors;
-  let sugar = defaultRecipe.sugar;
-  let juice = defaultRecipe.juice;
-  let sogginess = defaultRecipe.sogginess;
+  export let data: PageData;
+
+  let milk = data.milk ?? defaultRecipe.milkAmount;
+  let flavor = data.flavor ?? defaultRecipe.flavor;
+  let artificialColors = data.colors ?? defaultRecipe.artificialColors;
+  let sugar = data.sugar ?? defaultRecipe.sugar;
+  let juice = data.juice ?? defaultRecipe.juice;
+  let sogginess = data.sogginess ?? defaultRecipe.sogginess;
 
   $: cereals = prepare({
     milkAmount: milk,
