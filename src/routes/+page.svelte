@@ -15,7 +15,6 @@
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
-  import Footer from "./Footer.svelte";
   import { HelpCircleIcon, ShareIcon } from "svelte-feather-icons";
 
   export let data: PageData;
@@ -107,9 +106,9 @@
     </section>
 
     <Terminal />
-  </main>
 
-  <Footer />
+    <div class="credit"><a href="https://hamvocke.com">Made by Ham &lt;3</a></div>
+  </main>
 </div>
 
 <style>
@@ -191,6 +190,17 @@
     grid-template-rows: auto;
     grid-auto-flow: row;
     gap: 1rem;
+  }
+
+  .credit {
+    text-align: right;
+    margin: 3rem 0 1rem 0;
+    font-size: 0.9rem;
+    font-family: "Fira Code", monospace;
+
+    a {
+      color: var(--color-slate-800);
+    }
   }
 
   .buttons {
