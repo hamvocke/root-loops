@@ -5,6 +5,3 @@
 </script>
 
 <slot />
-
-<style>
-</style>

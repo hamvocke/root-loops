@@ -7,6 +7,7 @@
   import { prepare, defaultRecipe, Flavor, MilkAmount, Juice } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
+  import Footer from "./Footer.svelte";
 
   let milk = defaultRecipe.milkAmount;
   let flavor = defaultRecipe.flavor;
@@ -47,47 +48,55 @@
   <link rel="icon" href={faviconDataUrl(cereals)} />
 </svelte:head>
 
-<main style={cssColors}>
+<div class="color-scope" style={cssColors}>
   <Header />
 
-  <section class="input">
-    <div>
-      <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
-      <Slider
-        id="slider-colors"
-        label="Artificial Colors"
-        min={0}
-        max={10}
-        bind:value={artificialColors}
-      />
-      <Slider id="slider-sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
-    </div>
-    <div>
-      <Select
-        id="flavor"
-        label="Cereal Flavor"
-        values={Object.values(Flavor)}
-        bind:value={flavor}
-      />
-      <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
-      <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
-    </div>
-  </section>
-
-  <section class="bowl" aria-label="cereal bowl">
-    <div class="glow"></div>
-    <div class="bowl-content glass-box">
-      <div class="milk" style={calculateMilkHeight(milk)}></div>
-      <div class="cereals">
-        {#each Object.entries(cereals) as [_key, cereal]}
-          <Cereal {cereal} />
-        {/each}
+  <main>
+    <section class="input">
+      <div>
+        <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
+        <Slider
+          id="slider-colors"
+          label="Artificial Colors"
+          min={0}
+          max={10}
+          bind:value={artificialColors}
+        />
+        <Slider id="slider-sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
       </div>
-    </div>
-  </section>
+      <div>
+        <Select
+          id="flavor"
+          label="Cereal Flavor"
+          values={Object.values(Flavor)}
+          bind:value={flavor}
+        />
+        <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
+        <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
+      </div>
+    </section>
 
-  <Terminal />
-</main>
+    <section class="bowl" aria-label="cereal bowl">
+      <div class="glow"></div>
+      <div class="bowl-content glass-box">
+        <div class="milk" style={calculateMilkHeight(milk)}></div>
+        <div class="cereals">
+          {#each Object.entries(cereals) as [_key, cereal]}
+            <Cereal {cereal} />
+          {/each}
+        </div>
+      </div>
+    </section>
+
+    <Terminal />
+
+    <div class="buttons">
+      <a class="help-link" href="/help">What's going on here?</a>
+    </div>
+  </main>
+
+  <Footer />
+</div>
 
 <style>
   main {
@@ -121,6 +130,11 @@
     }
   }
 
+  .help-link {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
   .bowl {
     position: relative;
     margin: 2rem 0;
@@ -140,7 +154,7 @@
     display: block;
     height: 100%;
     width: 100%;
-    filter: blur(64px);
+    filter: blur(48px);
     opacity: 1;
     z-index: -1;
   }
