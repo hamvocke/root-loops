@@ -1,6 +1,7 @@
 <script lang="ts">
   import Header from "../Header.svelte";
-  import { prepare, defaultRecipe } from "$lib/cereals";
+  import { prepare } from "$lib/cereals";
+  import { defaultRecipe } from "$lib/ingredients";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
 
