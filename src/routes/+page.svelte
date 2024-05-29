@@ -8,6 +8,7 @@
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
   import Footer from "./Footer.svelte";
+  import { HelpCircleIcon, ShareIcon } from "svelte-feather-icons";
 
   let milk = defaultRecipe.milkAmount;
   let flavor = defaultRecipe.flavor;
@@ -76,6 +77,11 @@
       </div>
     </section>
 
+    <div class="buttons">
+      <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
+      <button class="primary"><ShareIcon size="20" /> Share</button>
+    </div>
+
     <section class="bowl" aria-label="cereal bowl">
       <div class="glow"></div>
       <div class="bowl-content glass-box">
@@ -89,10 +95,6 @@
     </section>
 
     <Terminal />
-
-    <div class="buttons">
-      <a class="help-link" href="/help">What's going on here?</a>
-    </div>
   </main>
 
   <Footer />
@@ -128,11 +130,6 @@
       gap: 4rem;
       justify-content: center;
     }
-  }
-
-  .help-link {
-    text-align: center;
-    margin-top: 1rem;
   }
 
   .bowl {
@@ -181,6 +178,53 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: auto;
     grid-auto-flow: row;
-    gap: 1.5rem;
+    gap: 1rem;
+  }
+
+  .buttons {
+    display: flex;
+    margin: 2rem 0;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  button,
+  .button {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--border-radius);
+    background: var(--color-slate-200);
+    font-weight: bold;
+    box-shadow: 0 0.25rem 0.5rem #0002;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+
+    &.primary {
+      background: var(--color-red-700);
+      border: 2px solid var(--color-red-800);
+      color: var(--color-red-050);
+
+      &:hover,
+      &:focus-visible {
+        border-color: var(--color-red-900);
+        background: var(--color-red-800);
+      }
+    }
+
+    &.plain {
+      color: var(--color-slate-700);
+      text-decoration: none;
+      background: transparent;
+      box-shadow: none;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--color-slate-800);
+        text-decoration: underline;
+      }
+    }
   }
 </style>

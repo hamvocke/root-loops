@@ -49,11 +49,6 @@ body {
   background: linear-gradient(to bottom, var(--color-slate-050) 0%, var(--color-slate-200) 10%);
   background-color: var(--color-slate-200);
   background-repeat: no-repeat;
-}
-
-h1,
-h2,
-p {
   font-weight: 400;
 }
 
