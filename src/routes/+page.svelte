@@ -51,38 +51,26 @@
   <Header />
 
   <section class="input">
-    <div class="text">
-      <h2>Your own terminal color scheme, as simple as making a bowl of cereals</h2>
-      <p>
-        Root Loops helps you generate tasty color schemes that you can use for terminal emulators,
-        syntax highlighting, or whatever else you fancy. Dark mode, light mode, vibrant or pale, you
-        decide. Play around with the ingredients below and find a recipe you like. Each ingredient
-        has a different effect on the color scheme being created.
-      </p>
-      <div class="links"><a href="/help">Learn more</a></div>
+    <div>
+      <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
+      <Slider
+        id="slider-colors"
+        label="Artificial Colors"
+        min={0}
+        max={10}
+        bind:value={artificialColors}
+      />
+      <Slider id="slider-sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
     </div>
-    <div class="sliders">
-      <div>
-        <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
-        <Slider
-          id="slider-colors"
-          label="Artificial Colors"
-          min={0}
-          max={10}
-          bind:value={artificialColors}
-        />
-        <Slider id="slider-sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
-      </div>
-      <div>
-        <Select
-          id="flavor"
-          label="Cereal Flavor"
-          values={Object.values(Flavor)}
-          bind:value={flavor}
-        />
-        <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
-        <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
-      </div>
+    <div>
+      <Select
+        id="flavor"
+        label="Cereal Flavor"
+        values={Object.values(Flavor)}
+        bind:value={flavor}
+      />
+      <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
+      <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
     </div>
   </section>
 
@@ -110,45 +98,23 @@
 
   .input {
     margin: 3rem 0 2rem 0;
-
-    .text {
-      max-width: 90ch;
-      margin: auto;
-    }
-
-    h2 {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin: 0;
-      color: var(--color-slate-600);
-      text-shadow: 0 1px 0 var(--color-slate-050);
-    }
-
-    .links {
-      width: 100%;
-      text-align: right;
-      font-weight: bold;
-    }
-  }
-
-  .sliders {
     margin-top: 3rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 1rem;
 
-    @media screen and (min-width: 640px) {
+    @media screen and (min-width: 768px) {
       flex-direction: column;
     }
   }
 
-  .sliders div {
+  .input div {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 
-    @media screen and (min-width: 640px) {
+    @media screen and (min-width: 768px) {
       flex-direction: row;
       gap: 4rem;
       justify-content: center;

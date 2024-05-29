@@ -15,7 +15,7 @@
     margin-bottom: 2rem;
   }
 
-  header .label {
+  .label {
     background: radial-gradient(
       farthest-corner at 50% 20px,
       var(--color-red-400) 0%,
@@ -28,7 +28,9 @@
     border: 0.2rem solid var(--color-red-100);
     outline: 0.3rem solid var(--color-red-800);
     border-top: none;
-    box-shadow: 0 0.5rem 2rem #0004;
+    box-shadow:
+      0 0.5rem 1rem #0004,
+      0 0.6rem 1.5rem #0001;
   }
 
   h1 {
