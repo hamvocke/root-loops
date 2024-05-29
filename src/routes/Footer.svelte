@@ -13,7 +13,7 @@
 <style>
   footer {
     position: relative;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   .footer-content {
