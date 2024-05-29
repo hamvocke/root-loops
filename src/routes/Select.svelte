@@ -7,7 +7,7 @@
 
 <div class="select">
   <label for={id}>{label}</label>
-  <select bind:value {id}>
+  <select bind:value {id} name={id}>
     {#each values as value}
       <option {value}>
         {value}

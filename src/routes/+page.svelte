@@ -53,36 +53,37 @@
   <Header />
 
   <main>
-    <section class="input">
-      <div>
-        <Slider label="Sugar" id="sugar-slider" min={1} max={9} bind:value={sugar} />
-        <Slider
-          id="slider-colors"
-          label="Artificial Colors"
-          min={0}
-          max={10}
-          bind:value={artificialColors}
-        />
-        <Slider id="slider-sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
+    <form>
+      <div class="input">
+        <div>
+          <Slider label="Sugar" id="sugar" min={1} max={9} bind:value={sugar} />
+          <Slider
+            id="colors"
+            label="Artificial Colors"
+            min={0}
+            max={10}
+            bind:value={artificialColors}
+          />
+          <Slider id="sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
+        </div>
+        <div>
+          <Select
+            id="flavor"
+            label="Cereal Flavor"
+            values={Object.values(Flavor)}
+            bind:value={flavor}
+          />
+          <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
+          <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
+        </div>
       </div>
-      <div>
-        <Select
-          id="flavor"
-          label="Cereal Flavor"
-          values={Object.values(Flavor)}
-          bind:value={flavor}
-        />
-        <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
-        <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
+      <div class="buttons">
+        <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
+        <button type="submit" class="primary"><ShareIcon size="20" /> Share</button>
       </div>
-    </section>
+    </form>
 
-    <div class="buttons">
-      <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
-      <button class="primary"><ShareIcon size="20" /> Share</button>
-    </div>
-
-    <section class="bowl" aria-label="cereal bowl">
+    <section class="bowl" aria-label="Cereal Bowl">
       <div class="glow"></div>
       <div class="bowl-content glass-box">
         <div class="milk" style={calculateMilkHeight(milk)}></div>
