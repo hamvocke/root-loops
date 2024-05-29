@@ -50,7 +50,7 @@ test.describe("index", () => {
     const handle = await page.evaluateHandle(() => navigator.clipboard.readText());
     const clipboardContent = await handle.jsonValue();
 
-    expect(clipboardContent).toEqual("oklch(0% 0.02 30)");
+    expect(clipboardContent).toEqual("oklch(0% 0.04 300)");
   });
 
   test("has terminal with different tabs", async ({ page }) => {
