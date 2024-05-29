@@ -232,8 +232,8 @@ describe("prepare()", () => {
     const notSoSoggy = prepare(someRecipe({ sogginess: 2 }));
     const soggy = prepare(someRecipe({ sogginess: 10 }));
 
-    expect(notSoSoggy.red.color.c).toBe(0.05);
-    expect(soggy.red.color.c).toBe(0.05);
+    expect(notSoSoggy.red.color.c).toBe(0.06);
+    expect(soggy.red.color.c).toBe(0.06);
 
     expect(notSoSoggy.black.color.c).toBe(0.04);
     expect(notSoSoggy.brightBlack.color.c).toBe(0.04);

@@ -41,7 +41,7 @@
     height: 100%;
     width: 100%;
     filter: blur(36px);
-    opacity: 0.4;
+    opacity: 0.6;
     z-index: -1;
   }
 </style>
