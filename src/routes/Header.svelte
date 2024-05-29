@@ -31,6 +31,11 @@
     box-shadow:
       0 0.5rem 1rem #0004,
       0 0.6rem 1.5rem #0001;
+
+    &:focus-visible {
+      outline-offset: 8px;
+      outline-color: var(--color-red-600);
+    }
   }
 
   h1 {
