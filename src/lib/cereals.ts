@@ -41,7 +41,8 @@ export function prepare(recipe: Recipe): Cereals {
   const baseColors = pourMilk(recipe.milkAmount, sogginess, juice);
   const accentColors = equalHueDistance(6, sugar, colors, shift);
   const brightAccentColors = equalHueDistance(6, sugar + 0.1, colors, shift);
-  const cereals = {
+
+  return {
     black: { name: "black", color: baseColors.black },
     red: { name: "red", color: accentColors[0] },
     green: { name: "green", color: accentColors[2] },
@@ -59,7 +60,6 @@ export function prepare(recipe: Recipe): Cereals {
     brightCyan: { name: "bright cyan", color: brightAccentColors[3] },
     brightWhite: { name: "bright white", color: baseColors.brightWhite },
   };
-  return cereals;
 }
 
 function applyFlavor(flavor: Flavor) {

@@ -38,18 +38,7 @@
   $: cssColors = generateCssColors(cereals);
 
   function calculateMilkHeight(amount: MilkAmount) {
-    const height = (amount: number) => `height: ${amount * 33.34}%;`;
-
-    switch (amount) {
-      case MilkAmount.None:
-        return height(0);
-      case MilkAmount.Splash:
-        return height(1);
-      case MilkAmount.Glug:
-        return height(2);
-      case MilkAmount.Cup:
-        return height(3);
-    }
+    return `height: ${amount * 33.34}%;`;
   }
 </script>
 
