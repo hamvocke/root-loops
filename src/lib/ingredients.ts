@@ -1,3 +1,5 @@
+import { clamp } from "$lib/math";
+
 export enum MilkAmount {
   None,
   Splash,
@@ -25,6 +27,33 @@ export enum Juice {
   Blackberry = 10,
   Raspberry = 11,
 }
+
+export const validationRules = {
+  sugar: {
+    minValue: 1,
+    maxValue: 9,
+  },
+  artificialColors: {
+    minValue: 0,
+    maxValue: 10,
+  },
+  sogginess: {
+    minValue: 0,
+    maxValue: 10,
+  },
+  juice: {
+    minValue: Juice.Cranberry,
+    maxValue: Juice.Raspberry,
+  },
+  flavor: {
+    minValue: Flavor.Fruity,
+    maxValue: Flavor.Unicorn,
+  },
+  milk: {
+    minValue: MilkAmount.None,
+    maxValue: MilkAmount.Cup,
+  },
+};
 
 export type SelectOption = {
   value: number;
@@ -76,3 +105,79 @@ export const defaultRecipe: Recipe = {
   juice: Juice.Blackberry,
   sogginess: 2,
 };
+
+function sanitize(
+  value: string | number | null,
+  min: number,
+  max: number,
+  fallback: number,
+): number {
+  if (!value) {
+    return fallback;
+  }
+
+  let n = value;
+  if (typeof n === "string") {
+    n = parseInt(n);
+  }
+
+  if (isNaN(n)) {
+    return fallback;
+  }
+
+  return clamp(n, min, max);
+}
+
+export function sanitizeSugar(value: string | number | null) {
+  return sanitize(
+    value,
+    validationRules.sugar.minValue,
+    validationRules.sugar.maxValue,
+    defaultRecipe.sugar,
+  );
+}
+
+export function sanitizeArtificialColors(value: string | number | null) {
+  return sanitize(
+    value,
+    validationRules.artificialColors.minValue,
+    validationRules.artificialColors.maxValue,
+    defaultRecipe.artificialColors,
+  );
+}
+
+export function sanitizeFlavor(value: string | number | null) {
+  return sanitize(
+    value,
+    validationRules.flavor.minValue,
+    validationRules.flavor.maxValue,
+    defaultRecipe.flavor,
+  );
+}
+
+export function sanitizeSogginess(value: string | number | null) {
+  return sanitize(
+    value,
+    validationRules.sogginess.minValue,
+    validationRules.sogginess.maxValue,
+    defaultRecipe.sogginess,
+  );
+}
+
+export function sanitizeJuice(value: string | number | null) {
+  return sanitize(
+    value,
+    validationRules.juice.minValue,
+    validationRules.juice.maxValue,
+    defaultRecipe.juice,
+  );
+}
+
+export function sanitizeMilk(value: string | number | null) {
+  return sanitize(
+    value,
+    validationRules.milk.minValue,
+    validationRules.milk.maxValue,
+    defaultRecipe.milkAmount,
+  );
+}

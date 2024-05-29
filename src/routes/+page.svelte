@@ -10,6 +10,7 @@
     milkSelectOptions,
     juiceSelectOptions,
     flavorSelectOptions,
+    validationRules,
   } from "$lib/ingredients";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
@@ -65,15 +66,27 @@
     <form>
       <div class="input">
         <div>
-          <Slider label="Sugar" id="sugar" min={1} max={9} bind:value={sugar} />
+          <Slider
+            label="Sugar"
+            id="sugar"
+            min={validationRules.sugar.minValue}
+            max={validationRules.sugar.maxValue}
+            bind:value={sugar}
+          />
           <Slider
             id="colors"
             label="Artificial Colors"
-            min={0}
-            max={10}
+            min={validationRules.artificialColors.minValue}
+            max={validationRules.artificialColors.maxValue}
             bind:value={artificialColors}
           />
-          <Slider id="sogginess" label="Sogginess" min={0} max={10} bind:value={sogginess} />
+          <Slider
+            id="sogginess"
+            label="Sogginess"
+            min={validationRules.sogginess.minValue}
+            max={validationRules.sogginess.maxValue}
+            bind:value={sogginess}
+          />
         </div>
         <div>
           <Select

@@ -33,7 +33,7 @@ export type Cereals = {
 };
 
 export function prepare(recipe: Recipe): Cereals {
-  const colors = normalizeChroma(recipe.artificialColors);
+  const colors = normalizeChroma(recipe.artificialColors, 0.3);
   const sugar = normalizeLightness(recipe.sugar);
   const shift = applyFlavor(recipe.flavor);
   const sogginess = normalizeChroma(recipe.sogginess, 0.2);
@@ -63,43 +63,11 @@ export function prepare(recipe: Recipe): Cereals {
 }
 
 function applyFlavor(flavor: Flavor) {
-  switch (flavor) {
-    case Flavor.Fruity:
-      return 0;
-    case Flavor.Classic:
-      return 15;
-    case Flavor.Unicorn:
-      return 30;
-  }
+  return flavor * 15;
 }
 
 function pickJuice(juice: Juice) {
-  switch (juice) {
-    case Juice.Cranberry:
-      return 0;
-    case Juice.Tomato:
-      return 30;
-    case Juice.Orange:
-      return 60;
-    case Juice.Pineapple:
-      return 90;
-    case Juice.Apple:
-      return 120;
-    case Juice.Kiwi:
-      return 150;
-    case Juice.Kale:
-      return 180;
-    case Juice.Blueberry:
-      return 210;
-    case Juice.Plum:
-      return 240;
-    case Juice.Elderberry:
-      return 270;
-    case Juice.Blackberry:
-      return 300;
-    case Juice.Raspberry:
-      return 330;
-  }
+  return juice * 30;
 }
 
 function pourMilk(milk: MilkAmount, sogginess: number, juice: number) {
