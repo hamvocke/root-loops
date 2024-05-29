@@ -17,55 +17,45 @@
 <main style={cssColors}>
   <Header />
 
-  <a href="/">Go back</a>
+  <a href="/" class="back-link">&lt; Go back</a>
   <div class="info glass-box">
+    <h2 class="large">Your own terminal color scheme, as simple as making a bowl of cereals</h2>
+    <p class="lead">
+      Root Loops helps you generate tasty color schemes that you can use for terminal emulators,
+      syntax highlighting, or whatever else you fancy. Dark mode, light mode, vibrant or pale, you
+      decide.
+    </p>
     <h2>What is Root Loops?</h2>
     <p>
-      Root Loops is a terminal color scheme generator. It allows you to generate beautiful color
-      schemes by mixing a few ingredients. The generated color schemes are <a
+      Root Loops is a terminal color scheme generator. It allows you to generate color schemes by
+      mixing a few ingredients. The generated color schemes are <a
         href="https://en.wikipedia.org/wiki/ANSI_escape_code">ANSI color code</a
       > compliant and can be used in most terminal emulators and syntax highlighting engines.
     </p>
 
     <p>
-      Root Loops generates a 4-bit color scheme consisting of 16 colors. You get 4 base colors (<em
+      Root Loops generates a color scheme resembling <a
+        href="https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit">4-bit color scheme</a
+      >
+      conventions, consisting of 16 colors in total. You get <strong>4 base colors</strong> (<em
         >black</em
-      >, <em>white</em>, <em>bright black</em> and <em>bright white</em>) and 12 accent colors (<em
-        >red</em
-      >, <em>green</em>, <em>yellow</em>, <em>blue</em>, <em>magenta</em>, <em>cyan</em>, and their
-      respective <em>bright</em> versions). You don't have to use the <em>bright</em> versions of the
-      color scheme if you don't want to or your terminal emulator doesn't support this, leaving you with
-      a 3-bit color scheme.
+      >,
+      <em>white</em>, <em>bright black</em> and <em>bright white</em>) and
+      <strong>12 accent colors</strong>
+      (<em>red</em>, <em>green</em>, <em>yellow</em>, <em>blue</em>, <em>magenta</em>,
+      <em>cyan</em>, and their respective <em>bright</em> versions). You don't have to use the
+      <em>bright</em> versions of the color scheme if you don't want to or your terminal emulator doesn't
+      support this, leaving you with a 3-bit color scheme.
     </p>
 
     <h2>Why should I use Root Loops?</h2>
     <p>
-      Designing a terminal color scheme merely means picking a few colors and plugging them into
-      your terminal emulator. What's the big deal?
+      Designing a terminal color scheme sounds easier than it is. You only need a few base colors
+      and a few accents, but chosing your colors so that they have a consistent tone, good
+      legibility, reasonable contrast, semantic colors, and most importantly ✨the right vibe ✨ can
+      be tedious. Root Loops tries to make it fun and easy to generate color schemes by giving you a
+      few ingredients you can play with until you found something you like.
     </p>
-
-    <p>
-      Root Loops makes it easy to generate colors schemes that look great and put an emphasis on
-      accessibility:
-    </p>
-
-    <ul>
-      <li>
-        Root Loops ensures that the generated colors are easy to distinguish and have consistent
-        contrast.
-      </li>
-      <li>
-        By using the <a href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl"
-          >oklch color space</a
-        > under the hood we use perceptual lightness, leading to better predictability when doing color
-        manipulation.
-      </li>
-      <li>
-        Root Loops respects color semantics. Red (often used for errors) will always be some kind of
-        red, green (often used for success messages) will always be some kind of green.
-      </li>
-      <li>It's fun and just as easy as pouring yourself a bowl of cereals.</li>
-    </ul>
 
     <h2>How does it work?</h2>
     <p>
@@ -151,6 +141,11 @@
     width: min(calc(100% - 1rem), 90ch);
   }
 
+  .back-link {
+    margin-left: 0.5rem;
+    font-weight: bold;
+  }
+
   .info {
     padding: 1rem;
     margin: 2rem 0;
@@ -172,5 +167,13 @@
   p + h2,
   ul + h2 {
     margin-top: 2rem;
+  }
+
+  .large {
+    font-size: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
   }
 </style>
