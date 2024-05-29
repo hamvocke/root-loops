@@ -20,12 +20,12 @@
 
   export let data: PageData;
 
-  let milk = data.milk ?? defaultRecipe.milkAmount;
-  let flavor = data.flavor ?? defaultRecipe.flavor;
-  let artificialColors = data.colors ?? defaultRecipe.artificialColors;
-  let sugar = data.sugar ?? defaultRecipe.sugar;
-  let juice = data.juice ?? defaultRecipe.juice;
-  let sogginess = data.sogginess ?? defaultRecipe.sogginess;
+  let milk = data.milk;
+  let flavor = data.flavor;
+  let artificialColors = data.colors;
+  let sugar = data.sugar;
+  let juice = data.juice;
+  let sogginess = data.sogginess;
 
   $: cereals = prepare({
     milkAmount: milk,

@@ -7,6 +7,11 @@ function parseNumber(value: string | null, min: number, max: number, fallback: n
     return fallback;
   }
   const n = parseInt(value);
+
+  if (isNaN(n)) {
+    return fallback;
+  }
+
   return clamp(n, min, max);
 }
 
