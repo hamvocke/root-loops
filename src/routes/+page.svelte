@@ -10,7 +10,6 @@
     milkSelectOptions,
     juiceSelectOptions,
     flavorSelectOptions,
-    defaultRecipe,
   } from "$lib/ingredients";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";

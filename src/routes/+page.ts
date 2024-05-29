@@ -2,7 +2,7 @@ import type { PageLoad } from "./$types";
 import { clamp } from "$lib/math";
 import { Flavor, Juice, MilkAmount, defaultRecipe } from "$lib/ingredients";
 
-function parseNumber(value: string | null, min: number, max: number, fallback: number) {
+function parseNumber(value: string | null, min: number, max: number, fallback: number): number {
   if (!value) {
     return fallback;
   }
