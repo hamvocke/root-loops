@@ -1,4 +1,5 @@
 import Color from "colorjs.io";
+import { clamp, normalize } from "$lib/math";
 
 export function equalHueDistance(
   count: number,
@@ -43,16 +44,4 @@ export function normalizeChroma(input: number, maxChroma = 0.3): number {
 export function normalizeLightness(input: number): number {
   const sanitizedInput = clamp(input, 1, 9);
   return normalize(sanitizedInput, 0, 10, 0, 1);
-}
-
-function clamp(actual: number, min: number, max: number) {
-  return Math.max(min, Math.min(actual, max));
-}
-
-function normalize(number: number, oldMin = 0, oldMax = 10, newMin = 0, newMax = 10): number {
-  const oldRange = oldMax - oldMin;
-  const newRange = newMax - newMin;
-
-  const newValue = ((number - oldMin) * newRange) / oldRange + newMin;
-  return Math.ceil(newValue * 100) / 100;
 }

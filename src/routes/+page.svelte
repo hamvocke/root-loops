@@ -5,7 +5,14 @@
   import Select from "./Select.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
-  import { prepare, defaultRecipe, Flavor, MilkAmount, Juice } from "$lib/cereals";
+  import {
+    MilkAmount,
+    milkSelectOptions,
+    juiceSelectOptions,
+    flavorSelectOptions,
+    defaultRecipe,
+  } from "$lib/ingredients";
+  import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
   import Footer from "./Footer.svelte";
@@ -73,11 +80,11 @@
           <Select
             id="flavor"
             label="Cereal Flavor"
-            values={Object.values(Flavor)}
+            options={flavorSelectOptions}
             bind:value={flavor}
           />
-          <Select id="juice" label="Juice" values={Object.values(Juice)} bind:value={juice} />
-          <Select id="milk" label="Milk" values={Object.values(MilkAmount)} bind:value={milk} />
+          <Select id="juice" label="Juice" options={juiceSelectOptions} bind:value={juice} />
+          <Select id="milk" label="Milk" options={milkSelectOptions} bind:value={milk} />
         </div>
       </div>
       <div class="buttons">

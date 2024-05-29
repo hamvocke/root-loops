@@ -1,6 +1,8 @@
 <script lang="ts">
-  export let values: string[];
-  export let value: string;
+  import type { SelectOption } from "$lib/ingredients";
+
+  export let options: SelectOption[];
+  export let value: number;
   export let id: string;
   export let label: string;
 </script>
@@ -8,9 +10,9 @@
 <div class="select">
   <label for={id}>{label}</label>
   <select bind:value {id} name={id}>
-    {#each values as value}
-      <option {value}>
-        {value}
+    {#each options as option}
+      <option value={option.value}>
+        {option.label}
       </option>
     {/each}
   </select>

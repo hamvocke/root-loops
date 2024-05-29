@@ -4,53 +4,8 @@ import {
   normalizeChroma,
   normalizeLightness,
 } from "./colors";
+import { MilkAmount, Flavor, Juice, type Recipe } from "./ingredients";
 import Color from "colorjs.io";
-
-export type Recipe = {
-  milkAmount: MilkAmount;
-  artificialColors: number;
-  flavor: Flavor;
-  sugar: number;
-  juice: Juice;
-  sogginess: number;
-};
-
-export enum MilkAmount {
-  None = "No Milk",
-  Splash = "Just a splash",
-  Glug = "A good glug",
-  Cup = "Go all in!",
-}
-
-export enum Flavor {
-  Fruity = "Fruity",
-  Classic = "Classic",
-  Unicorn = "Unicorn",
-}
-
-export enum Juice {
-  Cranberry = "Cranberry",
-  Tomato = "Tomato",
-  Orange = "Orange",
-  Pineapple = "Pineapple",
-  Apple = "Apple",
-  Kiwi = "Kiwi",
-  Kale = "Kale",
-  Blueberry = "Blueberry",
-  Plum = "Plum",
-  Elderberry = "Elderberry",
-  Blackberry = "Blackberry",
-  Raspberry = "Raspberry",
-}
-
-export const defaultRecipe: Recipe = {
-  milkAmount: MilkAmount.None,
-  artificialColors: 6,
-  flavor: Flavor.Classic,
-  sugar: 7,
-  juice: Juice.Blackberry,
-  sogginess: 2,
-};
 
 export type Cereal = {
   name: string;
