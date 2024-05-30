@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 test.describe("index", () => {
   test.beforeEach(async ({ page }) => {
@@ -9,7 +9,7 @@ test.describe("index", () => {
     await expect(page.getByRole("heading", { name: "Root Loops", exact: true })).toBeVisible();
   });
 
-  test("shows all range inputs", async ({ page }) => {
+  test("shows all inputs", async ({ page }) => {
     await expect(page.getByRole("slider", { name: "Sugar" })).toBeVisible();
     await expect(page.getByRole("slider", { name: "Artificial Colors" })).toBeVisible();
     await expect(page.getByRole("slider", { name: "Sogginess" })).toBeVisible();
@@ -51,6 +51,26 @@ test.describe("index", () => {
     const clipboardContent = await handle.jsonValue();
 
     expect(clipboardContent).toEqual("oklch(0% 0.04 300)");
+  });
+
+  test("changing an input changes cereal color", async ({ page, context }) => {
+    async function getClipboardContent(page: Page) {
+      const handle = await page.evaluateHandle(() => navigator.clipboard.readText());
+      return await handle.jsonValue();
+    }
+
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+
+    const redCereal = page.getByRole("button", { name: "red", exact: true });
+    await redCereal.click();
+    expect(await getClipboardContent(page)).toEqual("oklch(70% 0.18 15)");
+
+    // change sugar slider via keyboard navigation
+    const sugarSlider = page.getByRole("slider", { name: "Sugar" });
+    await sugarSlider.press("ArrowRight");
+
+    await redCereal.click();
+    expect(await getClipboardContent(page)).toEqual("oklch(80% 0.18 15)");
   });
 
   test("has terminal with different tabs", async ({ page }) => {
