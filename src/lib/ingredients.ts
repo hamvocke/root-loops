@@ -42,8 +42,8 @@ export const validationRules = {
     maxValue: 10,
   },
   juice: {
-    minValue: Juice.Cherry,
-    maxValue: Juice.Raspberry,
+    minValue: Juice.Tomato,
+    maxValue: Juice.Cherry,
   },
   flavor: {
     minValue: Flavor.Fruity,

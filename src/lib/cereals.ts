@@ -26,6 +26,7 @@ export type Cereals = {
   brightCyan: Cereal;
   brightWhite: Cereal;
 };
+
 export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentLightness = getAccentLightness(recipe);
@@ -36,10 +37,8 @@ export function prepare(recipe: Recipe): Cereals {
   const numberOfAccentColors = 6;
   for (let i = 0; i <= numberOfAccentColors; i++) {
     const hue = Math.round(360 / numberOfAccentColors) * i + accentHueShift;
-    accentColors.push(new Color("hsluv", [hue, accentSaturation, accentLightness]).to("hsl"));
-    brightAccentColors.push(
-      new Color("hsluv", [hue, accentSaturation, accentLightness + 10]).to("hsl"),
-    );
+    accentColors.push(new Color("hsluv", [hue, accentSaturation, accentLightness]));
+    brightAccentColors.push(new Color("hsluv", [hue, accentSaturation, accentLightness + 10]));
   }
 
   const baseColors = getBaseColors(recipe);
@@ -109,14 +108,14 @@ function getBaseHue(recipe: Recipe): number {
 
 function getBaseColors(recipe: Recipe) {
   const baseColor = (lightness: number) =>
-    new Color("hsluv", [getBaseHue(recipe), getBaseSaturation(recipe), lightness]).to("hsl");
+    new Color("hsluv", [getBaseHue(recipe), getBaseSaturation(recipe), lightness]);
 
   switch (recipe.milkAmount) {
     case MilkAmount.None:
       return {
-        black: baseColor(0),
-        brightBlack: baseColor(10),
-        white: baseColor(80),
+        black: baseColor(5),
+        brightBlack: baseColor(15),
+        white: baseColor(75),
         brightWhite: baseColor(90),
       };
     case MilkAmount.Splash:
