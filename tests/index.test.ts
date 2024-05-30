@@ -113,4 +113,14 @@ test.describe("index", () => {
       "defmodule HelloWeb.ProductController do",
     );
   });
+
+  test("clicking 'save' button stores state in URL", async ({ page }) => {
+    expect(page.url()).toBe("http://localhost:4173/");
+
+    await page.getByRole("button", { name: "Save" }).click();
+
+    expect(page.url()).toBe(
+      "http://localhost:4173/?sugar=7&colors=6&sogginess=2&flavor=1&juice=10&milk=0",
+    );
+  });
 });
