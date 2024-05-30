@@ -26,6 +26,7 @@
   >
     <div class="hole"></div>
   </button>
+  <div>{cereal.color.toString()}</div>
 </div>
 
 <style>
