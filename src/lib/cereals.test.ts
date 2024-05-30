@@ -1,6 +1,6 @@
 import Color from "colorjs.io";
 import { describe, expect, it } from "vitest";
-import { prepare } from "./cereals";
+import { prepare, prepareHsl } from "./cereals";
 import { MilkAmount, Juice, Flavor, type Recipe } from "./ingredients";
 
 describe("prepare()", () => {
@@ -243,5 +243,46 @@ describe("prepare()", () => {
     expect(soggy.brightBlack.color.c).toBe(0.2);
     expect(soggy.white.color.c).toBe(0.2);
     expect(soggy.brightWhite.color.c).toBe(0.2);
+  });
+});
+
+describe("prepareHsl()", () => {
+  const defaultRecipe: Recipe = {
+    milkAmount: MilkAmount.Glug,
+    flavor: Flavor.Classic,
+    artificialColors: 2,
+    sugar: 3,
+    juice: Juice.Elderberry,
+    sogginess: 0.02,
+  };
+
+  function someRecipe(recipe: object) {
+    return { ...defaultRecipe, ...recipe };
+  }
+
+  it("generates colors in hsluv space", () => {
+    const cereals = prepareHsl(defaultRecipe);
+
+    expect(
+      Object.values(cereals).every((cereal) => cereal.color.space === Color.spaces.hsluv),
+    ).toBeTruthy();
+  });
+
+  it("generates 4 base colors with increasing lightness", () => {
+    const cereals = prepareHsl(defaultRecipe);
+
+    expect(cereals.black.color.hsluv.l).toBe(10);
+    expect(cereals.brightBlack.color.hsluv.l).toBe(20);
+    expect(cereals.white.color.hsluv.l).toBe(80);
+    expect(cereals.brightWhite.color.hsluv.l).toBe(90);
+  });
+
+  it("generates 12 accent colors", () => {
+    const cereals = prepareHsl(defaultRecipe);
+
+    expect(cereals.red.color.hsluv.h).toBe(10);
+    expect(cereals.red.color.hsluv.s).toBe(20);
+    expect(cereals.red.color.hsluv.l).toBe(80);
+    expect(cereals.brightRed.color.hsluv.h).toBe(90);
   });
 });

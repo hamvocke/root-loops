@@ -104,3 +104,106 @@ function pourMilk(milk: MilkAmount, sogginess: number, juice: number) {
       };
   }
 }
+
+function getHueShift(flavor: Flavor) {
+  switch (flavor) {
+    case Flavor.Fruity:
+      return -15;
+    case Flavor.Classic:
+      return 0;
+    case Flavor.Intense:
+      return 15;
+  }
+}
+
+export function prepareHsl(recipe: Recipe): Cereals {
+  // TODO: no magic numbers
+
+  const accentHueShift = getHueShift(recipe.flavor);
+  const accentLightness = recipe.sugar * 10;
+  const accentSaturation = recipe.artificialColors * 10;
+
+  const baseHue = recipe.juice * 30;
+  const baseSaturation = recipe.sogginess * 10;
+
+  const accentColors = [];
+  const brightAccentColors = [];
+  const numberOfAccentColors = 6;
+  for (let i = 0; i <= numberOfAccentColors; i++) {
+    const hue = Math.round(360 / numberOfAccentColors) * i + accentHueShift;
+    accentColors.push(new Color("hsluv", [hue, accentSaturation, accentLightness]).to("hsl"));
+    brightAccentColors.push(
+      new Color("hsluv", [hue, accentSaturation, accentLightness + 10]).to("hsl"),
+    );
+  }
+
+  const baseColor = (lightness: number) =>
+    new Color("hsl", [baseHue, baseSaturation, lightness]).to("hsl");
+
+  return {
+    black: {
+      name: "black",
+      color: baseColor(5),
+    },
+    red: {
+      name: "red",
+      color: accentColors[0],
+    },
+    green: {
+      name: "green",
+      color: accentColors[2],
+    },
+    yellow: {
+      name: "yellow",
+      color: accentColors[1],
+    },
+    blue: {
+      name: "blue",
+      color: accentColors[4],
+    },
+    magenta: {
+      name: "magenta",
+      color: accentColors[5],
+    },
+    cyan: {
+      name: "cyan",
+      color: accentColors[3],
+    },
+    white: {
+      name: "white",
+      color: baseColor(70),
+    },
+    brightBlack: {
+      name: "bright black",
+      color: baseColor(20),
+    },
+    brightRed: {
+      name: "bright red",
+      color: brightAccentColors[0],
+    },
+    brightGreen: {
+      name: "bright green",
+      color: brightAccentColors[2],
+    },
+    brightYellow: {
+      name: "bright yellow",
+      color: brightAccentColors[1],
+    },
+    brightBlue: {
+      name: "bright blue",
+      color: brightAccentColors[4],
+    },
+    brightMagenta: {
+      name: "bright magenta",
+      color: brightAccentColors[5],
+    },
+    brightCyan: {
+      name: "bright cyan",
+      color: brightAccentColors[3],
+    },
+    brightWhite: {
+      name: "bright white",
+      color: baseColor(90),
+    },
+  };
+}

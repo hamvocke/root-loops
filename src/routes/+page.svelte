@@ -12,7 +12,7 @@
     flavorSelectOptions,
     validationRules,
   } from "$lib/ingredients";
-  import { prepare } from "$lib/cereals";
+  import { prepareHsl } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
   import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
@@ -29,7 +29,7 @@
 
   let toast: string | undefined;
 
-  $: cereals = prepare({
+  $: cereals = prepareHsl({
     milkAmount: milk,
     flavor: flavor,
     artificialColors: artificialColors,
