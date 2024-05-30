@@ -98,7 +98,7 @@ describe("ingredient sanitization", () => {
     });
 
     it("returns given value when in right range", () => {
-      expect(sanitizeFlavor(Flavor.Unicorn)).toBe(Flavor.Unicorn);
+      expect(sanitizeFlavor(Flavor.Classic)).toBe(Flavor.Classic);
     });
   });
 

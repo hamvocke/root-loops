@@ -1,6 +1,6 @@
 import Color from "colorjs.io";
 import { describe, expect, it } from "vitest";
-import { prepare, prepareHsl } from "./cereals";
+import { prepare } from "./cereals";
 import { MilkAmount, Juice, Flavor, type Recipe } from "./ingredients";
 
 describe("prepare()", () => {
