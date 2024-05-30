@@ -21,6 +21,10 @@
     animation: blink 500ms infinite alternate;
   }
 
+  .prompt {
+    text-wrap: nowrap;
+  }
+
   pre {
     padding: 1.5rem 0;
     margin: 0;
