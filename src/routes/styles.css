@@ -25,6 +25,18 @@
   --color-red-900: #7f1d1d;
   --color-red-950: #450a0a;
 
+  --color-emerald-050: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+  --color-emerald-950: #022c22;
+
   --color-text: var(--color-slate-800);
 
   --border-radius: 0.5rem;

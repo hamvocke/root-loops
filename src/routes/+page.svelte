@@ -15,7 +15,8 @@
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
-  import { HelpCircleIcon, ShareIcon } from "svelte-feather-icons";
+  import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
+  import { fade } from "svelte/transition";
 
   export let data: PageData;
 
@@ -25,6 +26,8 @@
   let sugar = data.sugar;
   let juice = data.juice;
   let sogginess = data.sogginess;
+
+  let toast: string | undefined;
 
   $: cereals = prepare({
     milkAmount: milk,
@@ -39,6 +42,21 @@
   function calculateMilkHeight(amount: MilkAmount) {
     return `height: ${amount * 33.34}%;`;
   }
+
+  function saveUrl(event: SubmitEvent) {
+    const showNotification = () => {
+      toast = "Recipe saved. You can now bookmark and share this URL.";
+      setTimeout(() => (toast = undefined), 4000);
+    };
+
+    const formData = new FormData(event.currentTarget as HTMLFormElement);
+    const queryParams = new URLSearchParams(
+      formData as unknown as Record<string, string>,
+    ).toString();
+    const url = `${document.location.origin}?${queryParams}`;
+
+    navigator.clipboard.writeText(url).then(showNotification);
+  }
 </script>
 
 <svelte:head>
@@ -50,8 +68,17 @@
 <div class="color-scope" style={cssColors}>
   <Header />
 
+  <div class="toasts" aria-live="polite">
+    {#if toast}
+      <div class="notification" role="alert" transition:fade={{ duration: 200 }}>
+        <CheckCircleIcon size="20" />
+        {toast}
+      </div>
+    {/if}
+  </div>
+
   <main>
-    <form>
+    <form on:submit={saveUrl} data-sveltekit-replacestate>
       <div class="input">
         <div>
           <Slider
@@ -87,9 +114,12 @@
           <Select id="milk" label="Milk" options={milkSelectOptions} bind:value={milk} />
         </div>
       </div>
+
       <div class="buttons">
         <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
-        <button type="submit" class="primary"><ShareIcon size="20" /> Share</button>
+        <button type="submit" class="primary">
+          <ExternalLinkIcon size="20" /> Save
+        </button>
       </div>
     </form>
 
@@ -116,6 +146,24 @@
     margin: auto;
     width: min(calc(100% - 2rem), 1200px);
     accent-color: var(--root-loops-ansi-red);
+  }
+
+  .toasts {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .notification {
+    background: var(--color-emerald-400);
+    padding: 0.5rem 0.75rem;
+    color: var(--color-emerald-950);
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-emerald-500);
+    box-shadow: 0 0.25rem 0.5rem #0003;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .input {
