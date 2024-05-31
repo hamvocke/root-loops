@@ -1,4 +1,3 @@
-import Color from "colorjs.io";
 import { describe, expect, it } from "vitest";
 import { prepare } from "./cereals";
 import { MilkAmount, Juice, Flavor, type Recipe } from "./ingredients";
@@ -17,11 +16,9 @@ describe("prepare()", () => {
     return { ...defaultRecipe, ...recipe };
   }
 
-  it("generates colors in hsluv color space", () => {
+  it("generates colors in okhsl color space", () => {
     const cereals = prepare(defaultRecipe);
-    expect(
-      Object.values(cereals).every((cereal) => cereal.color.space === Color.spaces.hsluv),
-    ).toBeTruthy();
+    expect(Object.values(cereals).every((cereal) => cereal.color.mode === "okhsl")).toBeTruthy();
   });
 
   it("generates red tone cereals with right hue", () => {
@@ -101,29 +98,29 @@ describe("prepare()", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.None });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.color.l).toBe(5);
-    expect(cereals.brightBlack.color.l).toBe(15);
-    expect(cereals.white.color.l).toBe(75);
-    expect(cereals.brightWhite.color.l).toBe(90);
+    expect(cereals.black.color.l).toBe(0.05);
+    expect(cereals.brightBlack.color.l).toBe(0.15);
+    expect(cereals.white.color.l).toBe(0.75);
+    expect(cereals.brightWhite.color.l).toBe(0.9);
   });
 
   it("creates lighter base colors for milk amount of 'Splash'", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Splash });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.color.l).toBe(10);
-    expect(cereals.brightBlack.color.l).toBe(20);
-    expect(cereals.white.color.l).toBe(90);
-    expect(cereals.brightWhite.color.l).toBe(95);
+    expect(cereals.black.color.l).toBe(0.1);
+    expect(cereals.brightBlack.color.l).toBe(0.2);
+    expect(cereals.white.color.l).toBe(0.9);
+    expect(cereals.brightWhite.color.l).toBe(0.95);
   });
 
   it("creates light base colors for milk amount of 'Glug'", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Glug });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.color.l).toBe(90);
-    expect(cereals.brightBlack.color.l).toBe(95);
-    expect(cereals.white.color.l).toBe(10);
+    expect(cereals.black.color.l).toBe(0.9);
+    expect(cereals.brightBlack.color.l).toBe(0.95);
+    expect(cereals.white.color.l).toBe(0.1);
     expect(cereals.brightWhite.color.l).toBe(0);
   });
 
@@ -131,10 +128,10 @@ describe("prepare()", () => {
     const recipe = someRecipe({ milkAmount: MilkAmount.Cup });
     const cereals = prepare(recipe);
 
-    expect(cereals.black.color.l).toBe(95);
-    expect(cereals.brightBlack.color.l).toBe(100);
-    expect(cereals.white.color.l).toBe(20);
-    expect(cereals.brightWhite.color.l).toBe(10);
+    expect(cereals.black.color.l).toBe(0.95);
+    expect(cereals.brightBlack.color.l).toBe(1);
+    expect(cereals.white.color.l).toBe(0.2);
+    expect(cereals.brightWhite.color.l).toBe(0.1);
   });
 
   it("ignores 'milk' parameter for accent colors", () => {
@@ -180,9 +177,9 @@ describe("prepare()", () => {
     const classicFlavor = prepare(someRecipe({ flavor: Flavor.Classic }));
     const unicornFlavor = prepare(someRecipe({ flavor: Flavor.Intense }));
 
-    expect(fruityFlavor.red.color.h).toBe(-15);
-    expect(classicFlavor.red.color.h).toBe(0);
-    expect(unicornFlavor.red.color.h).toBe(15);
+    expect(fruityFlavor.red.color.h).toBe(0);
+    expect(classicFlavor.red.color.h).toBe(15);
+    expect(unicornFlavor.red.color.h).toBe(30);
     expect(fruityFlavor.black.color.h).toBe(240);
     expect(classicFlavor.black.color.h).toBe(240);
     expect(unicornFlavor.black.color.h).toBe(240);
@@ -192,22 +189,22 @@ describe("prepare()", () => {
     const lessSugar = prepare(someRecipe({ sugar: 1 }));
     const moreSugar = prepare(someRecipe({ sugar: 2 }));
 
-    expect(lessSugar.red.color.l).toBe(10);
-    expect(lessSugar.brightRed.color.l).toBe(20);
-    expect(moreSugar.blue.color.l).toBe(20);
-    expect(moreSugar.brightBlue.color.l).toBe(30);
-    expect(lessSugar.black.color.l).toBe(90);
-    expect(moreSugar.black.color.l).toBe(90);
+    expect(lessSugar.red.color.l).toBe(0.1);
+    expect(lessSugar.brightRed.color.l).toBe(0.2);
+    expect(moreSugar.blue.color.l).toBe(0.2);
+    expect(moreSugar.brightBlue.color.l).toBeCloseTo(0.3);
+    expect(lessSugar.black.color.l).toBe(0.9);
+    expect(moreSugar.black.color.l).toBe(0.9);
   });
 
   it("uses 'juice' parameter to drive hue of base colors", () => {
     const juiceA = prepare(someRecipe({ juice: Juice.Kale }));
     const juiceB = prepare(someRecipe({ juice: Juice.Kiwi }));
 
-    expect(juiceA.red.color.h).toBe(0);
-    expect(juiceA.brightRed.color.h).toBe(0);
-    expect(juiceB.red.color.h).toBe(0);
-    expect(juiceB.brightRed.color.h).toBe(0);
+    expect(juiceA.red.color.h).toBe(15);
+    expect(juiceA.brightRed.color.h).toBe(15);
+    expect(juiceB.red.color.h).toBe(15);
+    expect(juiceB.brightRed.color.h).toBe(15);
 
     expect(juiceA.black.color.h).toBe(150);
     expect(juiceA.brightBlack.color.h).toBe(150);
@@ -223,16 +220,16 @@ describe("prepare()", () => {
     const notSoSoggy = prepare(someRecipe({ sogginess: 2 }));
     const soggy = prepare(someRecipe({ sogginess: 10 }));
 
-    expect(notSoSoggy.red.color.s).toBe(20);
-    expect(soggy.red.color.s).toBe(20);
+    expect(notSoSoggy.red.color.s).toBe(0.2);
+    expect(soggy.red.color.s).toBe(0.2);
 
-    expect(notSoSoggy.black.color.s).toBe(20);
-    expect(notSoSoggy.brightBlack.color.s).toBe(20);
-    expect(notSoSoggy.white.color.s).toBe(20);
-    expect(notSoSoggy.brightWhite.color.s).toBe(20);
-    expect(soggy.black.color.s).toBe(100);
-    expect(soggy.brightBlack.color.s).toBe(100);
-    expect(soggy.white.color.s).toBe(100);
-    expect(soggy.brightWhite.color.s).toBe(100);
+    expect(notSoSoggy.black.color.s).toBe(0.2);
+    expect(notSoSoggy.brightBlack.color.s).toBe(0.2);
+    expect(notSoSoggy.white.color.s).toBe(0.2);
+    expect(notSoSoggy.brightWhite.color.s).toBe(0.2);
+    expect(soggy.black.color.s).toBe(1);
+    expect(soggy.brightBlack.color.s).toBe(1);
+    expect(soggy.white.color.s).toBe(1);
+    expect(soggy.brightWhite.color.s).toBe(1);
   });
 });

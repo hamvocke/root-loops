@@ -1,10 +1,18 @@
 import { MilkAmount, Flavor, Juice, type Recipe } from "./ingredients";
-import Color from "colorjs.io";
+import { toGamut, formatCss } from "culori";
 import { normalize } from "./math";
+
+type Color = {
+  mode: string;
+  h: number;
+  s: number;
+  l: number;
+};
 
 export type Cereal = {
   name: string;
   color: Color;
+  color_css: string;
 };
 
 export type Cereals = {
@@ -27,8 +35,6 @@ export type Cereals = {
   brightWhite: Cereal;
 };
 
-const colorSpace = "hsluv";
-
 export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentLightness = getAccentLightness(recipe);
@@ -39,29 +45,100 @@ export function prepare(recipe: Recipe): Cereals {
   const numberOfAccentColors = 6;
   for (let i = 0; i <= numberOfAccentColors; i++) {
     const hue = Math.round(360 / numberOfAccentColors) * i + accentHueShift;
-    accentColors.push(new Color(colorSpace, [hue, accentSaturation, accentLightness]));
-    brightAccentColors.push(new Color(colorSpace, [hue, accentSaturation, accentLightness + 10]));
+    accentColors.push({ mode: "okhsl", h: hue, s: accentSaturation, l: accentLightness });
+    brightAccentColors.push({
+      mode: "okhsl",
+      h: hue,
+      s: accentSaturation,
+      l: accentLightness + 0.1,
+    });
   }
 
   const baseColors = getBaseColors(recipe);
 
+  const toHsl = toGamut("hsl");
+
   return {
-    black: { name: "black", color: baseColors.black },
-    red: { name: "red", color: accentColors[0] },
-    green: { name: "green", color: accentColors[2] },
-    yellow: { name: "yellow", color: accentColors[1] },
-    blue: { name: "blue", color: accentColors[4] },
-    magenta: { name: "magenta", color: accentColors[5] },
-    cyan: { name: "cyan", color: accentColors[3] },
-    white: { name: "white", color: baseColors.white },
-    brightBlack: { name: "bright black", color: baseColors.brightBlack },
-    brightRed: { name: "bright red", color: brightAccentColors[0] },
-    brightGreen: { name: "bright green", color: brightAccentColors[2] },
-    brightYellow: { name: "bright yellow", color: brightAccentColors[1] },
-    brightBlue: { name: "bright blue", color: brightAccentColors[4] },
-    brightMagenta: { name: "bright magenta", color: brightAccentColors[5] },
-    brightCyan: { name: "bright cyan", color: brightAccentColors[3] },
-    brightWhite: { name: "bright white", color: baseColors.brightWhite },
+    black: {
+      name: "black",
+      color: baseColors.black,
+      color_css: formatCss(toHsl(baseColors.black)),
+    },
+    red: {
+      name: "red",
+      color: accentColors[0],
+      color_css: formatCss(toHsl(accentColors[0])),
+    },
+    green: {
+      name: "green",
+      color: accentColors[2],
+      color_css: formatCss(toHsl(accentColors[2])),
+    },
+    yellow: {
+      name: "yellow",
+      color: accentColors[1],
+      color_css: formatCss(toHsl(accentColors[1])),
+    },
+    blue: {
+      name: "blue",
+      color: accentColors[4],
+      color_css: formatCss(toHsl(accentColors[4])),
+    },
+    magenta: {
+      name: "magenta",
+      color: accentColors[5],
+      color_css: formatCss(toHsl(accentColors[5])),
+    },
+    cyan: {
+      name: "cyan",
+      color: accentColors[3],
+      color_css: formatCss(toHsl(accentColors[3])),
+    },
+    white: {
+      name: "white",
+      color: baseColors.white,
+      color_css: formatCss(toHsl(baseColors.white)),
+    },
+    brightBlack: {
+      name: "bright black",
+      color: baseColors.brightBlack,
+      color_css: formatCss(toHsl(baseColors.brightBlack)),
+    },
+    brightRed: {
+      name: "bright red",
+      color: brightAccentColors[0],
+      color_css: formatCss(toHsl(brightAccentColors[0])),
+    },
+    brightGreen: {
+      name: "bright green",
+      color: brightAccentColors[2],
+      color_css: formatCss(toHsl(brightAccentColors[2])),
+    },
+    brightYellow: {
+      name: "bright yellow",
+      color: brightAccentColors[1],
+      color_css: formatCss(toHsl(brightAccentColors[1])),
+    },
+    brightBlue: {
+      name: "bright blue",
+      color: brightAccentColors[4],
+      color_css: formatCss(toHsl(brightAccentColors[4])),
+    },
+    brightMagenta: {
+      name: "bright magenta",
+      color: brightAccentColors[5],
+      color_css: formatCss(toHsl(brightAccentColors[5])),
+    },
+    brightCyan: {
+      name: "bright cyan",
+      color: brightAccentColors[3],
+      color_css: formatCss(toHsl(brightAccentColors[3])),
+    },
+    brightWhite: {
+      name: "bright white",
+      color: baseColors.brightWhite,
+      color_css: formatCss(toHsl(baseColors.brightWhite)),
+    },
   };
 }
 
@@ -69,7 +146,7 @@ function getAccentLightness(recipe: Recipe): number {
   const minSugar = 0;
   const maxSugar = 10;
   const minHslLightness = 0;
-  const maxHslLightness = 100;
+  const maxHslLightness = 1;
 
   return normalize(recipe.sugar, minSugar, maxSugar, minHslLightness, maxHslLightness);
 }
@@ -77,11 +154,11 @@ function getAccentLightness(recipe: Recipe): number {
 function getAccentHueShift(recipe: Recipe): number {
   switch (recipe.flavor) {
     case Flavor.Fruity:
-      return -15;
-    case Flavor.Classic:
       return 0;
-    case Flavor.Intense:
+    case Flavor.Classic:
       return 15;
+    case Flavor.Intense:
+      return 30;
   }
 }
 
@@ -97,7 +174,7 @@ function getSaturation(saturation: number): number {
   const minSaturation = 0;
   const maxSaturation = 10;
   const minHslSaturation = 0;
-  const maxHslSaturation = 100;
+  const maxHslSaturation = 1;
 
   return normalize(saturation, minSaturation, maxSaturation, minHslSaturation, maxHslSaturation);
 }
@@ -109,8 +186,14 @@ function getBaseHue(recipe: Recipe): number {
 }
 
 function getBaseColors(recipe: Recipe) {
-  const baseColor = (lightness: number) =>
-    new Color(colorSpace, [getBaseHue(recipe), getBaseSaturation(recipe), lightness]);
+  const baseColor = (lightness: number): Color => {
+    return {
+      mode: "okhsl",
+      h: getBaseHue(recipe),
+      s: getBaseSaturation(recipe),
+      l: lightness / 100,
+    };
+  };
 
   switch (recipe.milkAmount) {
     case MilkAmount.None:

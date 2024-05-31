@@ -14,7 +14,7 @@
   }
 </script>
 
-<div class="wrapper" style="--color: {cereal.color.to('hsl')}">
+<div class="wrapper" style="--color: {cereal.color_css}">
   {#if notification}
     <div class="notification" role="alert" transition:fade={{ duration: 200 }}>{notification}</div>
   {/if}
@@ -26,7 +26,7 @@
   >
     <div class="hole"></div>
   </button>
-  <div>{cereal.color.toString()}</div>
+  <div>{cereal.color_css}</div>
 </div>
 
 <style>
