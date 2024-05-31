@@ -26,7 +26,6 @@
   >
     <div class="hole"></div>
   </button>
-  <div>{cereal.color_css}</div>
 </div>
 
 <style>

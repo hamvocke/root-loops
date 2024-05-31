@@ -14,7 +14,8 @@ export enum Flavor {
 }
 
 export enum Juice {
-  Tomato = 0,
+  Cherry = 0,
+  Tomato,
   Orange,
   Pineapple,
   Apple,
@@ -25,7 +26,6 @@ export enum Juice {
   Elderberry,
   Blackberry,
   Raspberry,
-  Cherry,
 }
 
 export const validationRules = {
@@ -42,8 +42,8 @@ export const validationRules = {
     maxValue: 10,
   },
   juice: {
-    minValue: Juice.Tomato,
-    maxValue: Juice.Cherry,
+    minValue: Juice.Cherry,
+    maxValue: Juice.Raspberry,
   },
   flavor: {
     minValue: Flavor.Fruity,
@@ -74,6 +74,7 @@ export const flavorSelectOptions: SelectOption[] = [
 ];
 
 export const juiceSelectOptions: SelectOption[] = [
+  { value: Juice.Cherry, label: "Cherry" },
   { value: Juice.Tomato, label: "Tomato" },
   { value: Juice.Orange, label: "Orange" },
   { value: Juice.Pineapple, label: "Pineapple" },
@@ -85,7 +86,6 @@ export const juiceSelectOptions: SelectOption[] = [
   { value: Juice.Elderberry, label: "Elderberry" },
   { value: Juice.Blackberry, label: "Blackberry" },
   { value: Juice.Raspberry, label: "Raspberry" },
-  { value: Juice.Cherry, label: "Cherry" },
 ];
 
 export type Recipe = {
