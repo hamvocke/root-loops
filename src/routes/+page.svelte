@@ -55,7 +55,9 @@
     ).toString();
     const url = `${document.location.origin}?${queryParams}`;
 
-    navigator.clipboard.writeText(url).then(showNotification);
+    navigator.clipboard.writeText(url);
+
+    showNotification();
   }
 </script>
 
