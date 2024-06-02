@@ -1,5 +1,5 @@
 import { MilkAmount, Flavor, Juice, type Recipe } from "./ingredients";
-import { toGamut, formatCss } from "culori";
+import { toGamut, formatHex } from "culori";
 import { normalize } from "./math";
 
 type Color = {
@@ -62,82 +62,82 @@ export function prepare(recipe: Recipe): Cereals {
     black: {
       name: "black",
       color: baseColors.black,
-      color_css: formatCss(toHsl(baseColors.black)),
+      color_css: formatHex(toHsl(baseColors.black)),
     },
     red: {
       name: "red",
       color: accentColors[0],
-      color_css: formatCss(toHsl(accentColors[0])),
+      color_css: formatHex(toHsl(accentColors[0])),
     },
     green: {
       name: "green",
       color: accentColors[2],
-      color_css: formatCss(toHsl(accentColors[2])),
+      color_css: formatHex(toHsl(accentColors[2])),
     },
     yellow: {
       name: "yellow",
       color: accentColors[1],
-      color_css: formatCss(toHsl(accentColors[1])),
+      color_css: formatHex(toHsl(accentColors[1])),
     },
     blue: {
       name: "blue",
       color: accentColors[4],
-      color_css: formatCss(toHsl(accentColors[4])),
+      color_css: formatHex(toHsl(accentColors[4])),
     },
     magenta: {
       name: "magenta",
       color: accentColors[5],
-      color_css: formatCss(toHsl(accentColors[5])),
+      color_css: formatHex(toHsl(accentColors[5])),
     },
     cyan: {
       name: "cyan",
       color: accentColors[3],
-      color_css: formatCss(toHsl(accentColors[3])),
+      color_css: formatHex(toHsl(accentColors[3])),
     },
     white: {
       name: "white",
       color: baseColors.white,
-      color_css: formatCss(toHsl(baseColors.white)),
+      color_css: formatHex(toHsl(baseColors.white)),
     },
     brightBlack: {
       name: "bright black",
       color: baseColors.brightBlack,
-      color_css: formatCss(toHsl(baseColors.brightBlack)),
+      color_css: formatHex(toHsl(baseColors.brightBlack)),
     },
     brightRed: {
       name: "bright red",
       color: brightAccentColors[0],
-      color_css: formatCss(toHsl(brightAccentColors[0])),
+      color_css: formatHex(toHsl(brightAccentColors[0])),
     },
     brightGreen: {
       name: "bright green",
       color: brightAccentColors[2],
-      color_css: formatCss(toHsl(brightAccentColors[2])),
+      color_css: formatHex(toHsl(brightAccentColors[2])),
     },
     brightYellow: {
       name: "bright yellow",
       color: brightAccentColors[1],
-      color_css: formatCss(toHsl(brightAccentColors[1])),
+      color_css: formatHex(toHsl(brightAccentColors[1])),
     },
     brightBlue: {
       name: "bright blue",
       color: brightAccentColors[4],
-      color_css: formatCss(toHsl(brightAccentColors[4])),
+      color_css: formatHex(toHsl(brightAccentColors[4])),
     },
     brightMagenta: {
       name: "bright magenta",
       color: brightAccentColors[5],
-      color_css: formatCss(toHsl(brightAccentColors[5])),
+      color_css: formatHex(toHsl(brightAccentColors[5])),
     },
     brightCyan: {
       name: "bright cyan",
       color: brightAccentColors[3],
-      color_css: formatCss(toHsl(brightAccentColors[3])),
+      color_css: formatHex(toHsl(brightAccentColors[3])),
     },
     brightWhite: {
       name: "bright white",
       color: baseColors.brightWhite,
-      color_css: formatCss(toHsl(baseColors.brightWhite)),
+      color_css: formatHex(toHsl(baseColors.brightWhite)),
     },
   };
 }

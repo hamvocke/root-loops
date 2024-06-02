@@ -180,9 +180,9 @@ describe("prepare()", () => {
     expect(fruityFlavor.red.color.h).toBe(0);
     expect(classicFlavor.red.color.h).toBe(15);
     expect(unicornFlavor.red.color.h).toBe(30);
-    expect(fruityFlavor.black.color.h).toBe(240);
-    expect(classicFlavor.black.color.h).toBe(240);
-    expect(unicornFlavor.black.color.h).toBe(240);
+    expect(fruityFlavor.black.color.h).toBe(270);
+    expect(classicFlavor.black.color.h).toBe(270);
+    expect(unicornFlavor.black.color.h).toBe(270);
   });
 
   it("uses 'sugar' parameter to drive lightness of accent colors", () => {
@@ -206,14 +206,14 @@ describe("prepare()", () => {
     expect(juiceB.red.color.h).toBe(15);
     expect(juiceB.brightRed.color.h).toBe(15);
 
-    expect(juiceA.black.color.h).toBe(150);
-    expect(juiceA.brightBlack.color.h).toBe(150);
-    expect(juiceA.white.color.h).toBe(150);
-    expect(juiceA.brightWhite.color.h).toBe(150);
-    expect(juiceB.black.color.h).toBe(120);
-    expect(juiceB.brightBlack.color.h).toBe(120);
-    expect(juiceB.white.color.h).toBe(120);
-    expect(juiceB.brightWhite.color.h).toBe(120);
+    expect(juiceA.black.color.h).toBe(180);
+    expect(juiceA.brightBlack.color.h).toBe(180);
+    expect(juiceA.white.color.h).toBe(180);
+    expect(juiceA.brightWhite.color.h).toBe(180);
+    expect(juiceB.black.color.h).toBe(150);
+    expect(juiceB.brightBlack.color.h).toBe(150);
+    expect(juiceB.white.color.h).toBe(150);
+    expect(juiceB.brightWhite.color.h).toBe(150);
   });
 
   it("uses 'sogginess' parameter to drive saturation of base colors", () => {

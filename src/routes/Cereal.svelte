@@ -10,7 +10,7 @@
       setTimeout(() => (notification = undefined), 2000);
     };
 
-    navigator.clipboard.writeText(cereal.color.toString()).then(showNotification);
+    navigator.clipboard.writeText(cereal.color_css).then(showNotification);
   }
 </script>
 

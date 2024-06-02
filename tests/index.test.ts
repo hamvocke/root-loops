@@ -50,7 +50,7 @@ test.describe("index", () => {
     const handle = await page.evaluateHandle(() => navigator.clipboard.readText());
     const clipboardContent = await handle.jsonValue();
 
-    expect(clipboardContent).toEqual("oklch(0% 0.04 300)");
+    expect(clipboardContent).toEqual("#09080d");
   });
 
   test("changing an input changes cereal color", async ({ page, context }) => {
@@ -63,14 +63,14 @@ test.describe("index", () => {
 
     const redCereal = page.getByRole("button", { name: "red", exact: true });
     await redCereal.click();
-    expect(await getClipboardContent(page)).toEqual("oklch(70% 0.18 15)");
+    expect(await getClipboardContent(page)).toEqual("#e49097");
 
     // change sugar slider via keyboard navigation
     const sugarSlider = page.getByRole("slider", { name: "Sugar" });
     await sugarSlider.press("ArrowRight");
 
     await redCereal.click();
-    expect(await getClipboardContent(page)).toEqual("oklch(80% 0.18 15)");
+    expect(await getClipboardContent(page)).toEqual("#efb6b9");
   });
 
   test("has terminal with different tabs", async ({ page }) => {
