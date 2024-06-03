@@ -182,8 +182,7 @@
   }
 
   .input {
-    margin: 3rem 0 2rem 0;
-    margin-top: 3rem;
+    margin: 3rem 0 1rem 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -208,25 +207,26 @@
 
   .bowl {
     position: relative;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 
   .glow {
-    background: conic-gradient(
-      from -90deg,
-      var(--root-loops-ansi-bright-red),
-      var(--root-loops-ansi-bright-green),
-      var(--root-loops-ansi-bright-yellow),
-      var(--root-loops-ansi-bright-blue),
-      var(--root-loops-ansi-bright-magenta),
-      var(--root-loops-ansi-bright-cyan)
+    background: linear-gradient(
+      to right,
+      var(--root-loops-ansi-bright-black),
+      var(--root-loops-ansi-red),
+      var(--root-loops-ansi-green),
+      var(--root-loops-ansi-yellow),
+      var(--root-loops-ansi-blue),
+      var(--root-loops-ansi-magenta),
+      var(--root-loops-ansi-cyan),
+      var(--root-loops-ansi-white)
     );
     position: absolute;
     display: block;
     height: 100%;
     width: 100%;
-    filter: blur(48px);
-    opacity: 1;
+    filter: blur(64px);
     z-index: -1;
   }
 
@@ -268,7 +268,7 @@
 
   .buttons {
     display: flex;
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     justify-content: flex-end;
     align-items: center;
     gap: 1rem;
