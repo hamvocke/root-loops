@@ -8,6 +8,8 @@ import {
   sanitizeMilk,
 } from "$lib/ingredients";
 
+export const prerender = true;
+
 export const load: PageLoad = ({ url }) => {
   return {
     sugar: sanitizeSugar(url.searchParams.get("sugar")),
