@@ -88,21 +88,21 @@
         <div>
           <Slider
             label="Sugar"
-            id="sugar"
+            id={validationRules.sugar.name}
             min={validationRules.sugar.minValue}
             max={validationRules.sugar.maxValue}
             bind:value={sugar}
           />
           <Slider
-            id="colors"
             label="Artificial Colors"
+            id={validationRules.artificialColors.name}
             min={validationRules.artificialColors.minValue}
             max={validationRules.artificialColors.maxValue}
             bind:value={artificialColors}
           />
           <Slider
-            id="sogginess"
             label="Sogginess"
+            id={validationRules.sogginess.name}
             min={validationRules.sogginess.minValue}
             max={validationRules.sogginess.maxValue}
             bind:value={sogginess}
@@ -110,13 +110,23 @@
         </div>
         <div>
           <Select
-            id="flavor"
             label="Cereal Flavor"
+            id={validationRules.flavor.name}
             options={flavorSelectOptions}
             bind:value={flavor}
           />
-          <Select id="juice" label="Juice" options={juiceSelectOptions} bind:value={juice} />
-          <Select id="milk" label="Milk" options={milkSelectOptions} bind:value={milkAmount} />
+          <Select
+            label="Juice"
+            id={validationRules.juice.name}
+            options={juiceSelectOptions}
+            bind:value={juice}
+          />
+          <Select
+            label="Milk"
+            id={validationRules.milk.name}
+            options={milkSelectOptions}
+            bind:value={milkAmount}
+          />
         </div>
       </div>
 

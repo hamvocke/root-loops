@@ -30,26 +30,32 @@ export enum Juice {
 
 export const validationRules = {
   sugar: {
+    name: "sugar",
     minValue: 1,
     maxValue: 9,
   },
   artificialColors: {
+    name: "colors",
     minValue: 0,
     maxValue: 10,
   },
   sogginess: {
+    name: "sogginess",
     minValue: 0,
     maxValue: 10,
   },
   juice: {
+    name: "juice",
     minValue: Juice.Cherry,
     maxValue: Juice.Raspberry,
   },
   flavor: {
+    name: "flavor",
     minValue: Flavor.Fruity,
     maxValue: Flavor.Intense,
   },
   milk: {
+    name: "milk",
     minValue: MilkAmount.None,
     maxValue: MilkAmount.Cup,
   },
@@ -188,11 +194,13 @@ export function parseRecipeFromQueryString(searchParams: URLSearchParams): Recip
   }
 
   return {
-    sugar: sanitizeSugar(searchParams.get("sugar")),
-    artificialColors: sanitizeArtificialColors(searchParams.get("colors")),
-    sogginess: sanitizeSogginess(searchParams.get("sogginess")),
-    milkAmount: sanitizeMilk(searchParams.get("milk")),
-    juice: sanitizeJuice(searchParams.get("juice")),
-    flavor: sanitizeFlavor(searchParams.get("flavor")),
+    sugar: sanitizeSugar(searchParams.get(validationRules.sugar.name)),
+    artificialColors: sanitizeArtificialColors(
+      searchParams.get(validationRules.artificialColors.name),
+    ),
+    sogginess: sanitizeSogginess(searchParams.get(validationRules.sogginess.name)),
+    milkAmount: sanitizeMilk(searchParams.get(validationRules.milk.name)),
+    juice: sanitizeJuice(searchParams.get(validationRules.juice.name)),
+    flavor: sanitizeFlavor(searchParams.get(validationRules.flavor.name)),
   };
 }
