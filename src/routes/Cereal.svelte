@@ -10,11 +10,11 @@
       setTimeout(() => (notification = undefined), 2000);
     };
 
-    navigator.clipboard.writeText(cereal.color_css).then(showNotification);
+    navigator.clipboard.writeText(cereal.color_hex).then(showNotification);
   }
 </script>
 
-<div class="wrapper" style="--color: {cereal.color_css}">
+<div class="wrapper" style="--color: {cereal.color_hsl}">
   {#if notification}
     <div class="notification" role="alert" transition:fade={{ duration: 200 }}>{notification}</div>
   {/if}
