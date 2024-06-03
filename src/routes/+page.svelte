@@ -1,16 +1,19 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
+  import { onMount } from "svelte";
+  import { page } from "$app/stores";
   import Header from "./Header.svelte";
   import Slider from "./Slider.svelte";
   import Select from "./Select.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
   import {
+    defaultRecipe,
     MilkAmount,
     milkSelectOptions,
     juiceSelectOptions,
     flavorSelectOptions,
     validationRules,
+    parseRecipeFromQueryString,
   } from "$lib/ingredients";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
@@ -18,19 +21,19 @@
   import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
   import { fade } from "svelte/transition";
 
-  export let data: PageData;
+  let { milkAmount, flavor, artificialColors, sugar, juice, sogginess } = defaultRecipe;
 
-  let milk = data.milk;
-  let flavor = data.flavor;
-  let artificialColors = data.colors;
-  let sugar = data.sugar;
-  let juice = data.juice;
-  let sogginess = data.sogginess;
+  onMount(() => {
+    ({ milkAmount, flavor, artificialColors, sugar, juice, sogginess } = parseRecipeFromQueryString(
+      // eslint-disable-next-line svelte/valid-compile
+      $page.url.searchParams,
+    ));
+  });
 
   let toast: string | undefined;
 
   $: cereals = prepare({
-    milkAmount: milk,
+    milkAmount: milkAmount,
     flavor: flavor,
     artificialColors: artificialColors,
     sugar: sugar,
@@ -113,7 +116,7 @@
             bind:value={flavor}
           />
           <Select id="juice" label="Juice" options={juiceSelectOptions} bind:value={juice} />
-          <Select id="milk" label="Milk" options={milkSelectOptions} bind:value={milk} />
+          <Select id="milk" label="Milk" options={milkSelectOptions} bind:value={milkAmount} />
         </div>
       </div>
 
@@ -128,7 +131,7 @@
     <section class="bowl" aria-label="Cereal Bowl">
       <div class="glow"></div>
       <div class="bowl-content glass-box">
-        <div class="milk" style={calculateMilkHeight(milk)}></div>
+        <div class="milk" style={calculateMilkHeight(milkAmount)}></div>
         <div class="cereals">
           {#each Object.entries(cereals) as [_key, cereal]}
             <Cereal {cereal} />

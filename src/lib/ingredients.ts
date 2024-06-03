@@ -128,7 +128,7 @@ function sanitize(
   return clamp(n, min, max);
 }
 
-export function sanitizeSugar(value: string | number | null) {
+function sanitizeSugar(value: string | number | null) {
   return sanitize(
     value,
     validationRules.sugar.minValue,
@@ -137,7 +137,7 @@ export function sanitizeSugar(value: string | number | null) {
   );
 }
 
-export function sanitizeArtificialColors(value: string | number | null) {
+function sanitizeArtificialColors(value: string | number | null) {
   return sanitize(
     value,
     validationRules.artificialColors.minValue,
@@ -146,7 +146,7 @@ export function sanitizeArtificialColors(value: string | number | null) {
   );
 }
 
-export function sanitizeFlavor(value: string | number | null) {
+function sanitizeFlavor(value: string | number | null) {
   return sanitize(
     value,
     validationRules.flavor.minValue,
@@ -155,7 +155,7 @@ export function sanitizeFlavor(value: string | number | null) {
   );
 }
 
-export function sanitizeSogginess(value: string | number | null) {
+function sanitizeSogginess(value: string | number | null) {
   return sanitize(
     value,
     validationRules.sogginess.minValue,
@@ -164,7 +164,7 @@ export function sanitizeSogginess(value: string | number | null) {
   );
 }
 
-export function sanitizeJuice(value: string | number | null) {
+function sanitizeJuice(value: string | number | null) {
   return sanitize(
     value,
     validationRules.juice.minValue,
@@ -173,11 +173,26 @@ export function sanitizeJuice(value: string | number | null) {
   );
 }
 
-export function sanitizeMilk(value: string | number | null) {
+function sanitizeMilk(value: string | number | null) {
   return sanitize(
     value,
     validationRules.milk.minValue,
     validationRules.milk.maxValue,
     defaultRecipe.milkAmount,
   );
+}
+
+export function parseRecipeFromQueryString(searchParams: URLSearchParams): Recipe {
+  if (searchParams.size === 0) {
+    return defaultRecipe;
+  }
+
+  return {
+    sugar: sanitizeSugar(searchParams.get("sugar")),
+    artificialColors: sanitizeArtificialColors(searchParams.get("colors")),
+    sogginess: sanitizeSogginess(searchParams.get("sogginess")),
+    milkAmount: sanitizeMilk(searchParams.get("milk")),
+    juice: sanitizeJuice(searchParams.get("juice")),
+    flavor: sanitizeFlavor(searchParams.get("flavor")),
+  };
 }
