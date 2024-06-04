@@ -213,20 +213,21 @@
   .glow {
     background: linear-gradient(
       to right,
-      var(--root-loops-ansi-bright-black),
+      color-mix(in hsl, var(--root-loops-ansi-bright-black) 30%, transparent),
       var(--root-loops-ansi-red),
       var(--root-loops-ansi-green),
       var(--root-loops-ansi-yellow),
       var(--root-loops-ansi-blue),
       var(--root-loops-ansi-magenta),
       var(--root-loops-ansi-cyan),
-      var(--root-loops-ansi-white)
+      color-mix(in hsl, var(--root-loops-ansi-white) 30%, transparent)
     );
     position: absolute;
     display: block;
     height: 100%;
     width: 100%;
     filter: blur(64px);
+    opacity: 1;
     z-index: -1;
   }
 

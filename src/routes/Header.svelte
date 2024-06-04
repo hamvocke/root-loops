@@ -12,7 +12,6 @@
 <style>
   header {
     text-align: center;
-    margin-bottom: 2rem;
   }
 
   .label {
