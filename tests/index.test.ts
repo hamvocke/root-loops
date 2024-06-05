@@ -50,7 +50,7 @@ test.describe("index", () => {
     const handle = await page.evaluateHandle(() => navigator.clipboard.readText());
     const clipboardContent = await handle.jsonValue();
 
-    expect(clipboardContent).toEqual("#09080d");
+    expect(clipboardContent).toEqual("#0a0611");
   });
 
   test("changing an input changes cereal color", async ({ page, context }) => {
@@ -63,14 +63,14 @@ test.describe("index", () => {
 
     const redCereal = page.getByRole("button", { name: "red", exact: true });
     await redCereal.click();
-    expect(await getClipboardContent(page)).toEqual("#e49097");
+    expect(await getClipboardContent(page)).toEqual("#d97780");
 
     // change sugar slider via keyboard navigation
     const sugarSlider = page.getByRole("slider", { name: "Sugar" });
     await sugarSlider.press("ArrowRight");
 
     await redCereal.click();
-    expect(await getClipboardContent(page)).toEqual("#efb6b9");
+    expect(await getClipboardContent(page)).toEqual("#e6949a");
   });
 
   test("has terminal with different tabs", async ({ page }) => {
@@ -120,7 +120,7 @@ test.describe("index", () => {
     await page.getByRole("button", { name: "Save" }).click();
 
     expect(page.url()).toBe(
-      "http://localhost:4173/?sugar=7&colors=6&sogginess=2&flavor=1&juice=10&milk=0",
+      "http://localhost:4173/?sugar=7&colors=6&sogginess=4&flavor=1&juice=10&milk=0",
     );
   });
 });
