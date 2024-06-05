@@ -97,7 +97,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0.25rem 1rem #0002;
+    box-shadow: 0 0.25rem 1rem #0003;
     border-radius: var(--border-radius);
     border: 1px solid var(--color-slate-050);
     overflow: hidden;

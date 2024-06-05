@@ -54,7 +54,7 @@
     border-radius: 50%;
     background: var(--color);
     border: 3px solid color-mix(in hsl, var(--color) 90%, black);
-    outline: 4px solid color-mix(in hsl, var(--color) 10%, transparent);
+    outline: 4px solid color-mix(in hsl, var(--color) 30%, transparent);
     display: flex;
     align-items: center;
     justify-content: center;

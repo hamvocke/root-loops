@@ -216,7 +216,7 @@
     height: 100%;
     width: 100%;
     filter: blur(64px);
-    opacity: 0.8;
+    opacity: 1;
     z-index: -1;
   }
 
