@@ -53,8 +53,8 @@
     aspect-ratio: 1/1;
     border-radius: 50%;
     background: var(--color);
-    border: 3px solid color-mix(in oklch, var(--color) 90%, black);
-    outline: 4px solid color-mix(in oklch, var(--color) 10%, transparent);
+    border: 3px solid color-mix(in hsl, var(--color) 90%, black);
+    outline: 4px solid color-mix(in hsl, var(--color) 10%, transparent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,9 +74,9 @@
     position: absolute;
     bottom: -0.5rem;
     z-index: 1;
-    background: color-mix(in oklch, var(--color) 20%, white);
-    border: 2px solid color-mix(in oklch, var(--color) 30%, transparent);
-    color: color-mix(in oklch, var(--color) 50%, black);
+    background: color-mix(in hsl, var(--color) 40%, white);
+    border: 2px solid color-mix(in hsl, var(--color) 80%, transparent);
+    color: color-mix(in hsl, var(--color) 30%, black);
     padding: 0.4rem 0.6rem;
     border-radius: 0.25rem;
     box-shadow: 0 0 4px #0003;
