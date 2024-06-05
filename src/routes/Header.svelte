@@ -79,30 +79,30 @@
 
   .green {
     --color: var(--root-loops-ansi-bright-green);
-    --shade: color-mix(in oklch, var(--color) 80%, black);
-    --highlight: color-mix(in oklch, var(--color) 50%, white);
-    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+    --shade: color-mix(in hsl, var(--color) 80%, black);
+    --highlight: color-mix(in hsl, var(--color) 50%, white);
+    --darker-shade: color-mix(in hsl, var(--color) 90%, black);
   }
 
   .magenta {
     --color: var(--root-loops-ansi-bright-magenta);
-    --shade: color-mix(in oklch, var(--color) 80%, black);
-    --highlight: color-mix(in oklch, var(--color) 50%, white);
-    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+    --shade: color-mix(in hsl, var(--color) 80%, black);
+    --highlight: color-mix(in hsl, var(--color) 50%, white);
+    --darker-shade: color-mix(in hsl, var(--color) 90%, black);
   }
 
   .blue {
     --color: var(--root-loops-ansi-bright-blue);
-    --shade: color-mix(in oklch, var(--color) 80%, black);
-    --highlight: color-mix(in oklch, var(--color) 50%, white);
-    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+    --shade: color-mix(in hsl, var(--color) 80%, black);
+    --highlight: color-mix(in hsl, var(--color) 50%, white);
+    --darker-shade: color-mix(in hsl, var(--color) 90%, black);
   }
 
   .yellow {
     --color: var(--root-loops-ansi-bright-yellow);
-    --shade: color-mix(in oklch, var(--color) 80%, black);
-    --highlight: color-mix(in oklch, var(--color) 50%, white);
-    --darker-shade: color-mix(in oklch, var(--color) 90%, black);
+    --shade: color-mix(in hsl, var(--color) 80%, black);
+    --highlight: color-mix(in hsl, var(--color) 50%, white);
+    --darker-shade: color-mix(in hsl, var(--color) 90%, black);
   }
 
   p {
