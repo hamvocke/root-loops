@@ -38,7 +38,6 @@ export type Cereals = {
 
 export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
-  const accentLightness = getAccentLightness(recipe);
   const accentSaturation = getAccentSaturation(recipe);
 
   const accentColors = [];
@@ -46,12 +45,17 @@ export function prepare(recipe: Recipe): Cereals {
   const numberOfAccentColors = 6;
   for (let i = 0; i <= numberOfAccentColors; i++) {
     const hue = Math.round(360 / numberOfAccentColors) * i + accentHueShift;
-    accentColors.push({ mode: "okhsl", h: hue, s: accentSaturation, l: accentLightness });
+    accentColors.push({
+      mode: "okhsl",
+      h: hue,
+      s: accentSaturation,
+      l: getAccentLightness(recipe.sugar),
+    });
     brightAccentColors.push({
       mode: "okhsl",
       h: hue,
       s: accentSaturation,
-      l: accentLightness + 0.1,
+      l: getAccentLightness(recipe.sugar + 1),
     });
   }
 
@@ -159,13 +163,13 @@ export function prepare(recipe: Recipe): Cereals {
   };
 }
 
-function getAccentLightness(recipe: Recipe): number {
+function getAccentLightness(sugar: number): number {
   const minSugar = 0;
   const maxSugar = 10;
   const minHslLightness = 0;
   const maxHslLightness = 1;
 
-  return normalize(recipe.sugar, minSugar, maxSugar, minHslLightness, maxHslLightness);
+  return normalize(sugar, minSugar, maxSugar, minHslLightness, maxHslLightness);
 }
 
 function getAccentHueShift(recipe: Recipe): number {
