@@ -85,49 +85,46 @@
   <main>
     <form on:submit={saveUrl} data-sveltekit-replacestate>
       <div class="input">
-        <div>
-          <Slider
-            label="Sugar"
-            id={validationRules.sugar.name}
-            min={validationRules.sugar.minValue}
-            max={validationRules.sugar.maxValue}
-            bind:value={sugar}
-          />
-          <Slider
-            label="Artificial Colors"
-            id={validationRules.artificialColors.name}
-            min={validationRules.artificialColors.minValue}
-            max={validationRules.artificialColors.maxValue}
-            bind:value={artificialColors}
-          />
-          <Slider
-            label="Sogginess"
-            id={validationRules.sogginess.name}
-            min={validationRules.sogginess.minValue}
-            max={validationRules.sogginess.maxValue}
-            bind:value={sogginess}
-          />
-        </div>
-        <div>
-          <Select
-            label="Cereal Flavor"
-            id={validationRules.flavor.name}
-            options={flavorSelectOptions}
-            bind:value={flavor}
-          />
-          <Select
-            label="Juice"
-            id={validationRules.juice.name}
-            options={juiceSelectOptions}
-            bind:value={juice}
-          />
-          <Select
-            label="Milk"
-            id={validationRules.milk.name}
-            options={milkSelectOptions}
-            bind:value={milkAmount}
-          />
-        </div>
+        <Slider
+          label="Sugar"
+          id={validationRules.sugar.name}
+          min={validationRules.sugar.minValue}
+          max={validationRules.sugar.maxValue}
+          bind:value={sugar}
+        />
+        <Slider
+          label="Artificial Colors"
+          id={validationRules.artificialColors.name}
+          min={validationRules.artificialColors.minValue}
+          max={validationRules.artificialColors.maxValue}
+          bind:value={artificialColors}
+        />
+        <Slider
+          label="Sogginess"
+          id={validationRules.sogginess.name}
+          min={validationRules.sogginess.minValue}
+          max={validationRules.sogginess.maxValue}
+          bind:value={sogginess}
+        />
+
+        <Select
+          label="Cereal Flavor"
+          id={validationRules.flavor.name}
+          options={flavorSelectOptions}
+          bind:value={flavor}
+        />
+        <Select
+          label="Juice"
+          id={validationRules.juice.name}
+          options={juiceSelectOptions}
+          bind:value={juice}
+        />
+        <Select
+          label="Milk"
+          id={validationRules.milk.name}
+          options={milkSelectOptions}
+          bind:value={milkAmount}
+        />
       </div>
 
       <div class="buttons">
@@ -182,26 +179,18 @@
   }
 
   .input {
-    margin: 3rem 0 1rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    max-width: 900px;
+    margin: 3rem auto 1rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-flow: column;
     gap: 1rem;
 
     @media screen and (min-width: 768px) {
-      flex-direction: column;
-    }
-  }
-
-  .input div {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    @media screen and (min-width: 768px) {
-      flex-direction: row;
-      gap: 4rem;
-      justify-content: center;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      grid-template-rows: 1fr 1fr;
+      grid-auto-flow: row;
     }
   }
 

@@ -36,7 +36,7 @@
     border: 1px solid var(--color-slate-050);
     box-shadow: 0 0.25rem 0.5rem #0001;
     border-radius: 0.2rem;
-    min-width: 180px;
+    width: 100%;
   }
 
   select:focus {

@@ -16,10 +16,10 @@
 
 <style>
   .slider {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
   .inputs {
@@ -33,11 +33,7 @@
   }
 
   input[type="range"] {
-    max-width: 160px;
-
-    @media screen and (min-width: 640px) {
-      min-width: 180px;
-    }
+    width: 100%;
 
     &:focus {
       outline: 2px solid var(--root-loops-ansi-red);
