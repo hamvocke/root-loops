@@ -109,7 +109,7 @@ export const defaultRecipe: Recipe = {
   flavor: Flavor.Classic,
   sugar: 7,
   juice: Juice.Blackberry,
-  sogginess: 2,
+  sogginess: 4,
 };
 
 function sanitize(
