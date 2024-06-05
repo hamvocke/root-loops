@@ -106,7 +106,7 @@
   }
 
   .window-decoration {
-    background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
+    background: color-mix(in hsl, var(--color-slate-100) 40%, transparent);
     font-weight: bold;
     text-shadow: 0 1px 0 var(--color-slate-050);
     padding: 0.75rem 0.5rem;
@@ -157,7 +157,7 @@
   button[role="tab"] {
     padding: 0.5rem 0.5rem;
     font-size: 0.9rem;
-    background: color-mix(in oklch, var(--color-slate-200) 40%, transparent);
+    background: color-mix(in hsl, var(--color-slate-200) 40%, transparent);
     color: var(--color-slate-700);
     display: block;
     flex: 1 0 auto;
@@ -170,7 +170,7 @@
 
     &:hover,
     &:focus-visible {
-      background: color-mix(in oklch, var(--color-slate-300) 40%, transparent);
+      background: color-mix(in hsl, var(--color-slate-300) 40%, transparent);
     }
 
     &:focus-visible {
