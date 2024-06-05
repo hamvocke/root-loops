@@ -66,8 +66,8 @@
     height: clamp(1rem, 3vw, 32px);
     width: clamp(1rem, 3vw, 32px);
     border-radius: 50%;
-    background: var(--color-slate-050);
-    opacity: 75%;
+    background: color-mix(in hsl, var(--color) 40%, white);
+    border: 3px solid color-mix(in hsl, var(--color) 90%, black);
   }
 
   .notification {
