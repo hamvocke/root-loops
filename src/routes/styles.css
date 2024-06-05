@@ -97,7 +97,7 @@ button {
 }
 
 .glass-box {
-  background: color-mix(in oklch, var(--color-slate-100) 40%, transparent);
+  background: color-mix(in hsl, var(--color-slate-100) 40%, transparent);
   border: 1px solid var(--color-slate-050);
   border-radius: var(--border-radius);
   box-shadow: 0 0.25rem 1rem #0002;
