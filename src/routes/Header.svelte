@@ -12,6 +12,7 @@
 <style>
   header {
     text-align: center;
+    padding: 0 1rem 1rem 1rem;
   }
 
   .label {
