@@ -32,7 +32,7 @@ export const validationRules = {
   sugar: {
     name: "sugar",
     minValue: 1,
-    maxValue: 9,
+    maxValue: 10,
   },
   artificialColors: {
     name: "colors",

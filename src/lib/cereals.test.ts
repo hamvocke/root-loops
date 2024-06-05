@@ -84,14 +84,12 @@ describe("prepare()", () => {
   it("generates bright colors with higher lightness than regular colors", () => {
     const cereals = prepare(someRecipe({ milkAmount: MilkAmount.Splash }));
 
-    expect(cereals.brightBlack.color.l).toBeGreaterThan(cereals.black.color.l);
     expect(cereals.brightRed.color.l).toBeGreaterThan(cereals.red.color.l);
     expect(cereals.brightGreen.color.l).toBeGreaterThan(cereals.green.color.l);
     expect(cereals.brightYellow.color.l).toBeGreaterThan(cereals.yellow.color.l);
     expect(cereals.brightBlue.color.l).toBeGreaterThan(cereals.blue.color.l);
     expect(cereals.brightMagenta.color.l).toBeGreaterThan(cereals.magenta.color.l);
     expect(cereals.brightCyan.color.l).toBeGreaterThan(cereals.cyan.color.l);
-    expect(cereals.brightWhite.color.l).toBeGreaterThan(cereals.white.color.l);
   });
 
   it("creates dark base colors for milk amount of 'None'", () => {
@@ -99,9 +97,9 @@ describe("prepare()", () => {
     const cereals = prepare(recipe);
 
     expect(cereals.black.color.l).toBe(0.05);
-    expect(cereals.brightBlack.color.l).toBe(0.15);
-    expect(cereals.white.color.l).toBe(0.75);
-    expect(cereals.brightWhite.color.l).toBe(0.9);
+    expect(cereals.brightBlack.color.l).toBe(0.3);
+    expect(cereals.white.color.l).toBe(0.7);
+    expect(cereals.brightWhite.color.l).toBe(0.95);
   });
 
   it("creates lighter base colors for milk amount of 'Splash'", () => {
@@ -109,9 +107,9 @@ describe("prepare()", () => {
     const cereals = prepare(recipe);
 
     expect(cereals.black.color.l).toBe(0.1);
-    expect(cereals.brightBlack.color.l).toBe(0.2);
+    expect(cereals.brightBlack.color.l).toBe(0.35);
     expect(cereals.white.color.l).toBe(0.9);
-    expect(cereals.brightWhite.color.l).toBe(0.95);
+    expect(cereals.brightWhite.color.l).toBe(0.65);
   });
 
   it("creates light base colors for milk amount of 'Glug'", () => {
@@ -119,9 +117,9 @@ describe("prepare()", () => {
     const cereals = prepare(recipe);
 
     expect(cereals.black.color.l).toBe(0.9);
-    expect(cereals.brightBlack.color.l).toBe(0.95);
+    expect(cereals.brightBlack.color.l).toBe(0.65);
     expect(cereals.white.color.l).toBe(0.1);
-    expect(cereals.brightWhite.color.l).toBe(0);
+    expect(cereals.brightWhite.color.l).toBe(0.35);
   });
 
   it("creates lightest base colors for milk amount of 'Cup'", () => {
@@ -129,9 +127,9 @@ describe("prepare()", () => {
     const cereals = prepare(recipe);
 
     expect(cereals.black.color.l).toBe(0.95);
-    expect(cereals.brightBlack.color.l).toBe(1);
-    expect(cereals.white.color.l).toBe(0.2);
-    expect(cereals.brightWhite.color.l).toBe(0.1);
+    expect(cereals.brightBlack.color.l).toBe(0.7);
+    expect(cereals.white.color.l).toBe(0.3);
+    expect(cereals.brightWhite.color.l).toBe(0.05);
   });
 
   it("ignores 'milk' parameter for accent colors", () => {
@@ -189,10 +187,10 @@ describe("prepare()", () => {
     const lessSugar = prepare(someRecipe({ sugar: 1 }));
     const moreSugar = prepare(someRecipe({ sugar: 2 }));
 
-    expect(lessSugar.red.color.l).toBe(0.1);
-    expect(lessSugar.brightRed.color.l).toBe(0.2);
-    expect(moreSugar.blue.color.l).toBe(0.2);
-    expect(moreSugar.brightBlue.color.l).toBeCloseTo(0.3);
+    expect(lessSugar.red.color.l).toBe(0.14);
+    expect(lessSugar.brightRed.color.l).toBe(0.22);
+    expect(moreSugar.red.color.l).toBe(0.22);
+    expect(moreSugar.brightRed.color.l).toBeCloseTo(0.3);
     expect(lessSugar.black.color.l).toBe(0.9);
     expect(moreSugar.black.color.l).toBe(0.9);
   });

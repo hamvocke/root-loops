@@ -165,9 +165,9 @@ export function prepare(recipe: Recipe): Cereals {
 
 function getAccentLightness(sugar: number): number {
   const minSugar = 0;
-  const maxSugar = 10;
-  const minHslLightness = 0;
-  const maxHslLightness = 1;
+  const maxSugar = 11; // we allow the 'sugar' input to go to 10, but we use 10 + 1 for the 'bright' shades
+  const minHslLightness = 0.05;
+  const maxHslLightness = 0.95;
 
   return normalize(sugar, minSugar, maxSugar, minHslLightness, maxHslLightness);
 }
