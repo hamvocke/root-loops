@@ -18,7 +18,7 @@ describe("ingredient parsing", () => {
     expect(recipe.sogginess).toBe(7);
     expect(recipe.milkAmount).toBe(defaultRecipe.milkAmount);
     expect(recipe.artificialColors).toBe(defaultRecipe.artificialColors);
-    expect(recipe.juice).toBe(defaultRecipe.juice);
+    expect(recipe.fruit).toBe(defaultRecipe.fruit);
     expect(recipe.flavor).toBe(defaultRecipe.flavor);
   });
 
@@ -110,25 +110,25 @@ describe("ingredient parsing", () => {
     });
   });
 
-  describe("for juice ingredient", () => {
+  describe("for fruit ingredient", () => {
     it("returns default value when string is given", () => {
-      const recipe = parseRecipeFromQueryString(new URLSearchParams("?juice=some"));
-      expect(recipe.juice).toBe(defaultRecipe.juice);
+      const recipe = parseRecipeFromQueryString(new URLSearchParams("?fruit=some"));
+      expect(recipe.fruit).toBe(defaultRecipe.fruit);
     });
 
     it("returns max value when value is too large", () => {
-      const recipe = parseRecipeFromQueryString(new URLSearchParams("?juice=15"));
-      expect(recipe.juice).toBe(validationRules.juice.maxValue);
+      const recipe = parseRecipeFromQueryString(new URLSearchParams("?fruit=15"));
+      expect(recipe.fruit).toBe(validationRules.fruit.maxValue);
     });
 
     it("returns min value when value is too small", () => {
-      const recipe = parseRecipeFromQueryString(new URLSearchParams("?juice=-1"));
-      expect(recipe.juice).toBe(validationRules.juice.minValue);
+      const recipe = parseRecipeFromQueryString(new URLSearchParams("?fruit=-1"));
+      expect(recipe.fruit).toBe(validationRules.fruit.minValue);
     });
 
     it("parses valid value correctly", () => {
-      const recipe = parseRecipeFromQueryString(new URLSearchParams("?juice=5"));
-      expect(recipe.juice).toBe(5);
+      const recipe = parseRecipeFromQueryString(new URLSearchParams("?fruit=5"));
+      expect(recipe.fruit).toBe(5);
     });
   });
 

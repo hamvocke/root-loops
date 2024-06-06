@@ -13,7 +13,7 @@ export enum Flavor {
   Intense = 2,
 }
 
-export enum Juice {
+export enum Fruit {
   Cherry = 0,
   Tomato,
   Orange,
@@ -44,10 +44,10 @@ export const validationRules = {
     minValue: 0,
     maxValue: 10,
   },
-  juice: {
-    name: "juice",
-    minValue: Juice.Cherry,
-    maxValue: Juice.Raspberry,
+  fruit: {
+    name: "fruit",
+    minValue: Fruit.Cherry,
+    maxValue: Fruit.Raspberry,
   },
   flavor: {
     name: "flavor",
@@ -79,19 +79,19 @@ export const flavorSelectOptions: SelectOption[] = [
   { value: Flavor.Intense, label: "Intense" },
 ];
 
-export const juiceSelectOptions: SelectOption[] = [
-  { value: Juice.Cherry, label: "Cherry" },
-  { value: Juice.Tomato, label: "Tomato" },
-  { value: Juice.Orange, label: "Orange" },
-  { value: Juice.Pineapple, label: "Pineapple" },
-  { value: Juice.Apple, label: "Apple" },
-  { value: Juice.Kiwi, label: "Kiwi" },
-  { value: Juice.Kale, label: "Kale" },
-  { value: Juice.Blueberry, label: "Blueberry" },
-  { value: Juice.Plum, label: "Plum" },
-  { value: Juice.Elderberry, label: "Elderberry" },
-  { value: Juice.Blackberry, label: "Blackberry" },
-  { value: Juice.Raspberry, label: "Raspberry" },
+export const fruitSelectOptions: SelectOption[] = [
+  { value: Fruit.Cherry, label: "Cherry" },
+  { value: Fruit.Tomato, label: "Tomato" },
+  { value: Fruit.Orange, label: "Orange" },
+  { value: Fruit.Pineapple, label: "Pineapple" },
+  { value: Fruit.Apple, label: "Apple" },
+  { value: Fruit.Kiwi, label: "Kiwi" },
+  { value: Fruit.Kale, label: "Kale" },
+  { value: Fruit.Blueberry, label: "Blueberry" },
+  { value: Fruit.Plum, label: "Plum" },
+  { value: Fruit.Elderberry, label: "Elderberry" },
+  { value: Fruit.Blackberry, label: "Blackberry" },
+  { value: Fruit.Raspberry, label: "Raspberry" },
 ];
 
 export type Recipe = {
@@ -99,7 +99,7 @@ export type Recipe = {
   artificialColors: number;
   flavor: Flavor;
   sugar: number;
-  juice: Juice;
+  fruit: Fruit;
   sogginess: number;
 };
 
@@ -108,7 +108,7 @@ export const defaultRecipe: Recipe = {
   artificialColors: 6,
   flavor: Flavor.Classic,
   sugar: 7,
-  juice: Juice.Blackberry,
+  fruit: Fruit.Blackberry,
   sogginess: 4,
 };
 
@@ -170,12 +170,12 @@ function sanitizeSogginess(value: string | number | null) {
   );
 }
 
-function sanitizeJuice(value: string | number | null) {
+function sanitizeFruit(value: string | number | null) {
   return sanitize(
     value,
-    validationRules.juice.minValue,
-    validationRules.juice.maxValue,
-    defaultRecipe.juice,
+    validationRules.fruit.minValue,
+    validationRules.fruit.maxValue,
+    defaultRecipe.fruit,
   );
 }
 
@@ -200,7 +200,7 @@ export function parseRecipeFromQueryString(searchParams: URLSearchParams): Recip
     ),
     sogginess: sanitizeSogginess(searchParams.get(validationRules.sogginess.name)),
     milkAmount: sanitizeMilk(searchParams.get(validationRules.milk.name)),
-    juice: sanitizeJuice(searchParams.get(validationRules.juice.name)),
+    fruit: sanitizeFruit(searchParams.get(validationRules.fruit.name)),
     flavor: sanitizeFlavor(searchParams.get(validationRules.flavor.name)),
   };
 }

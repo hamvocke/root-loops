@@ -10,7 +10,7 @@
     defaultRecipe,
     MilkAmount,
     milkSelectOptions,
-    juiceSelectOptions,
+    fruitSelectOptions,
     flavorSelectOptions,
     validationRules,
     parseRecipeFromQueryString,
@@ -21,10 +21,10 @@
   import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
   import { fade } from "svelte/transition";
 
-  let { milkAmount, flavor, artificialColors, sugar, juice, sogginess } = defaultRecipe;
+  let { milkAmount, flavor, artificialColors, sugar, fruit, sogginess } = defaultRecipe;
 
   onMount(() => {
-    ({ milkAmount, flavor, artificialColors, sugar, juice, sogginess } = parseRecipeFromQueryString(
+    ({ milkAmount, flavor, artificialColors, sugar, fruit, sogginess } = parseRecipeFromQueryString(
       // eslint-disable-next-line svelte/valid-compile
       $page.url.searchParams,
     ));
@@ -37,7 +37,7 @@
     flavor: flavor,
     artificialColors: artificialColors,
     sugar: sugar,
-    juice: juice,
+    fruit: fruit,
     sogginess: sogginess,
   });
   $: cssColors = generateCssColors(cereals);
@@ -114,10 +114,10 @@
           bind:value={flavor}
         />
         <Select
-          label="Juice"
-          id={validationRules.juice.name}
-          options={juiceSelectOptions}
-          bind:value={juice}
+          label="Fruit"
+          id={validationRules.fruit.name}
+          options={fruitSelectOptions}
+          bind:value={fruit}
         />
         <Select
           label="Milk"

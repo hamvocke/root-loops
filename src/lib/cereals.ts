@@ -1,4 +1,4 @@
-import { MilkAmount, Flavor, Juice, type Recipe } from "./ingredients";
+import { MilkAmount, Flavor, Fruit, type Recipe } from "./ingredients";
 import { toGamut, formatHex, formatCss } from "culori";
 import { normalize } from "./math";
 
@@ -202,8 +202,8 @@ function getSaturation(saturation: number): number {
 
 function getBaseHue(recipe: Recipe): number {
   const hueRange = 360;
-  const numberOfJuices = Object.keys(Juice).length / 2; // divide by 2, since numeric enums get reverse mappings
-  return recipe.juice * (hueRange / numberOfJuices);
+  const numberOfFruits = Object.keys(Fruit).length / 2; // divide by 2, since numeric enums get reverse mappings
+  return recipe.fruit * (hueRange / numberOfFruits);
 }
 
 function getBaseColors(recipe: Recipe) {

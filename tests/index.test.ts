@@ -15,7 +15,7 @@ test.describe("index", () => {
     await expect(page.getByRole("slider", { name: "Sogginess" })).toBeVisible();
 
     await expect(page.getByRole("combobox", { name: "Cereal Flavor" })).toBeVisible();
-    await expect(page.getByRole("combobox", { name: "Juice" })).toBeVisible();
+    await expect(page.getByRole("combobox", { name: "Fruit" })).toBeVisible();
     await expect(page.getByRole("combobox", { name: "Milk" })).toBeVisible();
   });
 
@@ -120,7 +120,7 @@ test.describe("index", () => {
     await page.getByRole("button", { name: "Save" }).click();
 
     expect(page.url()).toBe(
-      "http://localhost:4173/?sugar=7&colors=6&sogginess=4&flavor=1&juice=10&milk=0",
+      "http://localhost:4173/?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0",
     );
   });
 });

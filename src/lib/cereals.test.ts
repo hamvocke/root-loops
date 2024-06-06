@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { prepare } from "./cereals";
-import { MilkAmount, Juice, Flavor, type Recipe } from "./ingredients";
+import { MilkAmount, Fruit, Flavor, type Recipe } from "./ingredients";
 
 describe("prepare()", () => {
   const defaultRecipe: Recipe = {
@@ -8,7 +8,7 @@ describe("prepare()", () => {
     flavor: Flavor.Classic,
     artificialColors: 2,
     sugar: 3,
-    juice: Juice.Elderberry,
+    fruit: Fruit.Elderberry,
     sogginess: 0.02,
   };
 
@@ -195,23 +195,23 @@ describe("prepare()", () => {
     expect(moreSugar.black.color.l).toBe(0.9);
   });
 
-  it("uses 'juice' parameter to drive hue of base colors", () => {
-    const juiceA = prepare(someRecipe({ juice: Juice.Kale }));
-    const juiceB = prepare(someRecipe({ juice: Juice.Kiwi }));
+  it("uses 'fruit' parameter to drive hue of base colors", () => {
+    const fruitA = prepare(someRecipe({ fruit: Fruit.Kale }));
+    const fruitB = prepare(someRecipe({ fruit: Fruit.Kiwi }));
 
-    expect(juiceA.red.color.h).toBe(15);
-    expect(juiceA.brightRed.color.h).toBe(15);
-    expect(juiceB.red.color.h).toBe(15);
-    expect(juiceB.brightRed.color.h).toBe(15);
+    expect(fruitA.red.color.h).toBe(15);
+    expect(fruitA.brightRed.color.h).toBe(15);
+    expect(fruitB.red.color.h).toBe(15);
+    expect(fruitB.brightRed.color.h).toBe(15);
 
-    expect(juiceA.black.color.h).toBe(180);
-    expect(juiceA.brightBlack.color.h).toBe(180);
-    expect(juiceA.white.color.h).toBe(180);
-    expect(juiceA.brightWhite.color.h).toBe(180);
-    expect(juiceB.black.color.h).toBe(150);
-    expect(juiceB.brightBlack.color.h).toBe(150);
-    expect(juiceB.white.color.h).toBe(150);
-    expect(juiceB.brightWhite.color.h).toBe(150);
+    expect(fruitA.black.color.h).toBe(180);
+    expect(fruitA.brightBlack.color.h).toBe(180);
+    expect(fruitA.white.color.h).toBe(180);
+    expect(fruitA.brightWhite.color.h).toBe(180);
+    expect(fruitB.black.color.h).toBe(150);
+    expect(fruitB.brightBlack.color.h).toBe(150);
+    expect(fruitB.white.color.h).toBe(150);
+    expect(fruitB.brightWhite.color.h).toBe(150);
   });
 
   it("uses 'sogginess' parameter to drive saturation of base colors", () => {
