@@ -7,7 +7,7 @@ app.get("/", (_req: Request, res: Response) => {
   res.send("Hello, World!");
 });
 
-// start the server
+// we can have comments, too
 app.listen(port, () => {
   console.log("[server]: Server is running at http://localhost:" + port);
 });

@@ -2,11 +2,11 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# just a dummy route
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
 
+# we can have comments, too
 @app.route("/me")
 def me_api():
     user = get_current_user()

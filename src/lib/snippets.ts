@@ -10,7 +10,7 @@ export const elixirSnippet = `<span class="ansi-magenta-fg">defmodule</span> <sp
   <span class="ansi-magenta-fg">alias</span> <span class="ansi-yellow-fg">Hello</span>.<span class="ansi-yellow-fg">Catalog</span>
   <span class="ansi-magenta-fg">alias</span> <span class="ansi-yellow-fg">Hello</span>.<span class="ansi-yellow-fg">Catalog</span>.<span class="ansi-yellow-fg">Product</span>
 
-<span class="ansi-green-fg">  </span><span class="ansi-green-fg">#</span><span class="ansi-green-fg"> list all products</span>
+<span class="ansi-green-fg">  </span><span class="ansi-green-fg">#</span><span class="ansi-green-fg"> we can have comments, too</span>
   <span class="ansi-magenta-fg">def</span> <span class="ansi-blue-fg">index</span>(conn, _params) <span class="ansi-magenta-fg">do</span>
     products <span class="ansi-magenta-fg">=</span> <span class="ansi-yellow-fg">Catalog</span>.list_products()
     render(conn, <span class="ansi-green-fg">:</span><span class="ansi-green-fg">index</span>, <span class="ansi-yellow-fg">products</span><span class="ansi-yellow-fg">:</span> products)
@@ -43,11 +43,11 @@ export const pythonSnippet = `<span class="ansi-magenta-fg">from</span> flask <s
 
 app <span class="ansi-magenta-fg">=</span> Flask(__name__)
 
-<span class="ansi-green-fg">#</span><span class="ansi-green-fg"> just a dummy route</span>
 @app.route(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">/</span><span class="ansi-green-fg">&quot;</span>)
 <span class="ansi-magenta-fg">def</span> <span class="ansi-blue-fg">hello_world</span>():
     <span class="ansi-magenta-fg">return</span> <span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">&lt;p&gt;Hello, World!&lt;/p&gt;</span><span class="ansi-green-fg">&quot;</span>
 
+<span class="ansi-green-fg">#</span><span class="ansi-green-fg"> we can have comments, too</span>
 @app.route(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">/me</span><span class="ansi-green-fg">&quot;</span>)
 <span class="ansi-magenta-fg">def</span> <span class="ansi-blue-fg">me_api</span>():
     user <span class="ansi-magenta-fg">=</span> get_current_user()
@@ -71,7 +71,7 @@ app.<span class="ansi-cyan-fg">get</span>(<span class="ansi-green-fg">&quot;</sp
   res.<span class="ansi-cyan-fg">send</span>(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">Hello, World!</span><span class="ansi-green-fg">&quot;</span>);
 });
 
-<span class="ansi-green-fg">//</span><span class="ansi-green-fg"> start the server</span>
+<span class="ansi-green-fg">//</span><span class="ansi-green-fg"> we can have comments, too</span>
 app.<span class="ansi-blue-fg">listen</span>(port, () <span class="ansi-magenta-fg">=&gt;</span> {
   <span class="ansi-yellow-fg">console</span>.<span class="ansi-cyan-fg">log</span>(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">[server]: Server is running at http://localhost:</span><span class="ansi-green-fg">&quot;</span> <span class="ansi-magenta-fg">+</span> port);
 });`;
@@ -87,8 +87,8 @@ export const vitestSnippet = `<span style="font-weight:bold" class="ansi-cyan-fg
 
  Test Files  <span style="font-weight:bold" class="ansi-red-fg">1 failed</span><span class="ansi-bright-black-fg"> (1)</span>
       Tests  <span style="font-weight:bold" class="ansi-red-fg">1 failed</span> | <span style="font-weight:bold" class="ansi-green-fg">4 passed</span> | <span class="ansi-bright-black-fg">1 todo</span><span class="ansi-bright-black-fg"> (6)</span>
-   Start at  08:19:56
-   Duration  308ms (transform 19ms, setup 0ms, collect 11ms, tests 9ms, environment 0ms, prepare 78ms)
+   Start at  18:38:40
+   Duration  237ms (transform 19ms, setup 0ms, collect 10ms, tests 8ms, environment 0ms, prepare 54ms)
 
 <span class="ansi-red-fg">⎯⎯⎯⎯⎯⎯⎯</span><span style="font-weight:bold" class="ansi-red-fg"> Failed Tests 1 </span><span class="ansi-red-fg">⎯⎯⎯⎯⎯⎯⎯</span>
 
@@ -115,8 +115,8 @@ export const screenfetchSnippet = `<span class="ansi-green-fg">                 
 <span class="ansi-green-fg">                 -/+:.         </span><span style="font-weight:bold" class="ansi-blue-fg"> ham</span><span style="font-weight:bold">@</span><span style="font-weight:bold" class="ansi-blue-fg">hambook-2</span>
 <span class="ansi-green-fg">                :++++.         </span><span style="font-weight:bold" class="ansi-blue-fg"> OS:</span> Ubuntu 24.04 noble
 <span class="ansi-green-fg">               /+++/.          </span><span style="font-weight:bold" class="ansi-blue-fg"> Kernel:</span> x86_64 Linux 6.8.0-31-generic
-<span class="ansi-green-fg">       .:-::- .+/:-\`\`.::-      </span><span style="font-weight:bold" class="ansi-blue-fg"> Uptime:</span> 10d 18h 22m
-<span class="ansi-green-fg">    .:/++++++/::::/++++++/:\`   </span><span style="font-weight:bold" class="ansi-blue-fg"> Packages:</span> 2664
+<span class="ansi-green-fg">       .:-::- .+/:-\`\`.::-      </span><span style="font-weight:bold" class="ansi-blue-fg"> Uptime:</span> 25d 4h 41m
+<span class="ansi-green-fg">    .:/++++++/::::/++++++/:\`   </span><span style="font-weight:bold" class="ansi-blue-fg"> Packages:</span> 2672
 <span class="ansi-yellow-fg">  .:///////////////////////:\`  </span><span style="font-weight:bold" class="ansi-blue-fg"> Shell:</span> node
 <span class="ansi-yellow-fg">  ////////////////////////\`    </span><span style="font-weight:bold" class="ansi-blue-fg"> Resolution:</span> 5142x3840
 <span style="font-weight:bold" class="ansi-red-fg"> -+++++++++++++++++++++++\`     </span><span style="font-weight:bold" class="ansi-blue-fg"> DE:</span> GNOME 46.0.1
@@ -125,7 +125,27 @@ export const screenfetchSnippet = `<span class="ansi-green-fg">                 
 <span class="ansi-red-fg"> :ssssssssssssssssssssssss-    </span><span style="font-weight:bold" class="ansi-blue-fg"> GTK Theme:</span> Yaru-red-dark [GTK2/3]
 <span class="ansi-magenta-fg">  osssssssssssssssssssssssso/\` </span><span style="font-weight:bold" class="ansi-blue-fg"> Icon Theme:</span> Yaru-red
 <span class="ansi-magenta-fg">  \`syyyyyyyyyyyyyyyyyyyyyyyy+\` </span><span style="font-weight:bold" class="ansi-blue-fg"> Font:</span> Ubuntu 11
-<span class="ansi-blue-fg">   \`ossssssssssssssssssssss/   </span><span style="font-weight:bold" class="ansi-blue-fg"> Disk:</span> 387G / 469G (87%)
-<span class="ansi-blue-fg">     :ooooooooooooooooooo+.    </span><span style="font-weight:bold" class="ansi-blue-fg"> CPU:</span> Intel Core i7-1065G7 @ 8x 3.9GHz [70.0°C]
+<span class="ansi-blue-fg">   \`ossssssssssssssssssssss/   </span><span style="font-weight:bold" class="ansi-blue-fg"> Disk:</span> 391G / 469G (88%)
+<span class="ansi-blue-fg">     :ooooooooooooooooooo+.    </span><span style="font-weight:bold" class="ansi-blue-fg"> CPU:</span> Intel Core i7-1065G7 @ 8x 3.9GHz [64.0°C]
 <span class="ansi-blue-fg">      \`:+oo+/:-..-:/+o+/-      </span><span style="font-weight:bold" class="ansi-blue-fg"> GPU:</span> Intel Corporation Iris Plus Graphics G7 (rev 07)
-<span class="ansi-blue-fg">                               </span><span style="font-weight:bold" class="ansi-blue-fg"> RAM:</span> 10303MiB / 15573MiB`;
+<span class="ansi-blue-fg">                               </span><span style="font-weight:bold" class="ansi-blue-fg"> RAM:</span> 9889MiB / 15573MiB`;
+export const rustSnippet = `<span class="ansi-magenta-fg">use</span> actix_web::{get, web, App, HttpServer, Responder};
+
+#[get(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">/</span><span class="ansi-green-fg">&quot;</span>)]
+async <span class="ansi-magenta-fg">fn</span> <span class="ansi-blue-fg">index</span>() -&gt; impl Responder {
+    <span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">Hello, World!</span><span class="ansi-green-fg">&quot;</span>
+}
+
+<span class="ansi-green-fg">//</span><span class="ansi-green-fg"> we can have comments, too</span>
+#[get(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">/{name}</span><span class="ansi-green-fg">&quot;</span>)]
+async <span class="ansi-magenta-fg">fn</span> <span class="ansi-blue-fg">hello</span>(name: web::Path&lt;String&gt;) -&gt; impl Responder {
+    format!(<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">Hello </span><span class="ansi-yellow-fg">{}</span><span class="ansi-green-fg">!</span><span class="ansi-green-fg">&quot;</span>, <span class="ansi-magenta-fg">&amp;</span>name)
+}
+
+#[actix_web::main]
+async <span class="ansi-magenta-fg">fn</span> <span class="ansi-blue-fg">main</span>() -&gt; std::io::Result&lt;()&gt; {
+    HttpServer::new(|| App::new().<span class="ansi-cyan-fg">service</span>(index).<span class="ansi-cyan-fg">service</span>(hello))
+        .<span class="ansi-cyan-fg">bind</span>((<span class="ansi-green-fg">&quot;</span><span class="ansi-green-fg">127.0.0.1</span><span class="ansi-green-fg">&quot;</span>, <span class="ansi-yellow-fg">8080</span>))<span class="ansi-magenta-fg">?</span>
+        .<span class="ansi-cyan-fg">run</span>()
+        .await
+}`;

@@ -5,6 +5,7 @@
     elixirSnippet,
     vitestSnippet,
     screenfetchSnippet,
+    rustSnippet,
   } from "$lib/snippets";
   import Code from "./Code.svelte";
 
@@ -29,14 +30,14 @@
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-screenfetch" ? "true" : "false"}
-      on:click={handleTabClick}>screenfetch</button
+      on:click={handleTabClick}>fetch</button
     >
     <button
       id="tab-vitest"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-vitest" ? "true" : "false"}
-      on:click={handleTabClick}>vitest</button
+      on:click={handleTabClick}>test</button
     >
     <button
       id="tab-python"
@@ -58,6 +59,13 @@
       role="tab"
       aria-selected={activeTabId == "tab-elixir" ? "true" : "false"}
       on:click={handleTabClick}>elixir</button
+    >
+    <button
+      id="tab-rust"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-rust" ? "true" : "false"}
+      on:click={handleTabClick}>rust</button
     >
   </div>
 
@@ -87,6 +95,10 @@
 
   <div role="tabpanel" aria-labelledby="tab-elixir" class:hidden={activeTabId !== "tab-elixir"}>
     <Code command="bat -p --theme ansi elixir.ex">{@html elixirSnippet}</Code>
+  </div>
+
+  <div role="tabpanel" aria-labelledby="tab-rust" class:hidden={activeTabId !== "tab-rust"}>
+    <Code command="bat -p --theme ansi rust.rs">{@html rustSnippet}</Code>
   </div>
 </section>
 

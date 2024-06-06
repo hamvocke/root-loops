@@ -9,13 +9,6 @@
 
 # TODO
 
-- [x] trim down shiki bundle size, trim themes, only few languages
-- [x] store state in URL so that people can share / bookmark their config
-
-* rename "juice" to "fruit"
-* update docs
-* tweak full-white/full-black color clipping
-* tree shaking for culori
-* plausible tracking
-* add rust code sample
-* publish that thing!
+- tree shaking for culori
+- plausible tracking
+- publish that thing!
