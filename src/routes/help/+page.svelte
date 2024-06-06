@@ -58,6 +58,23 @@
       few ingredients you can play with until you found something you like.
     </p>
 
+    <p>
+      Under the hood, Root Loops uses the <a href="https://bottosson.github.io/posts/colorpicker/"
+        >Okhsl</a
+      >
+      color space which is based on the increasingly popular
+      <a href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl">Oklch</a> color space
+      but a little easier to use in tools like Root Loops. Using this color space makes it easy to generate
+      a consistent color palette that respects how your eyes perceive the hue and lightness of colors.
+    </p>
+
+    <p>
+      This color model isn't perfect but it generates better results than a more tried-and-trusted
+      models like <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSL</a> which often leads to a
+      color palette that looks like it's got uneven saturation. The result is a more harmonic, even,
+      and maybe even accessible color palette.
+    </p>
+
     <h2>How does it work?</h2>
     <p>
       At the top of the page you find a bunch of ingredients you can mix to create a recipe for your
@@ -68,17 +85,8 @@
     <p>Each of the ingredients drives a different aspect of the resulting color scheme:</p>
     <ul>
       <li>
-        <strong>Milk</strong>: Determines the lightness of your base colors. Use this to switch from
-        a dark theme to a light theme. More milk means more brightness.
-      </li>
-      <li>
         <strong>Sugar</strong>: Drives the lightness of your accent colors. More sugar results in
         brighter colors.
-      </li>
-      <li>
-        <strong>Flavor</strong>: You can pick from one of three flavors: <em>Classic</em>,
-        <em>Fruity</em>, and <em>Unicorn</em>. Each flavor shifts the hue of all accent colors a bit
-        while still ensuring consistent hue distance and color semantics among all accent colors.
       </li>
       <li>
         <strong>Artificial Colors</strong>: Add more artificial colors to make your accent colors
@@ -86,15 +94,24 @@
         cardboard? Simply reduce the amount of artificial colors!
       </li>
       <li>
-        <strong>Juice</strong>: If you want to tweak the overall hue of your base colors, you can
-        add some extra juice to your bowl of cereals. A dash of orange juice will turn your milk
-        more orange, a bit of grape juice will result in a beautiful purple.
+        <strong>Milk</strong>: Determines the lightness of your base colors. Use this to switch from
+        a dark theme to a light theme. More milk means more brightness.
+      </li>
+      <li>
+        <strong>Cereal Flavor</strong>: You can pick from one of three flavors: <em>Classic</em>,
+        <em>Fruity</em>, and <em>Unicorn</em>. Each flavor shifts the hue of all accent colors a bit
+        while still ensuring consistent hue distance and color semantics among all accent colors.
+      </li>
+      <li>
+        <strong>Fruit</strong>: Feeling fancy? Add some fresh fruit to your bowl of cereal to tweak
+        the overall hue of your base colors. Paired with the "Sogginess" option this will lead to
+        nice and colorful base tones.
       </li>
       <li>
         <strong>Sogginess</strong>: Let your bowl sit for a while and you'll see how your milk turns
         more vibrant. The "sogginess" ingredient determines how vibrant the color of your milk is
-        going to be. If you didn't add any juice, this ingredient won't have any effect. If you
-        added some juice, the sogginess is going to make the color you chose more or less vibrant.
+        going to be. If you didn't add any fruit, this ingredient won't have any effect. If you
+        added some fruit, the sogginess is going to make the color you chose more or less vibrant.
       </li>
     </ul>
 
@@ -102,8 +119,20 @@
     <p>
       You can click on a cereal to copy its color value to your clipboard. Depending on the terminal
       emulator you use, you can then paste this color into a configuration file or pass it to the
-      graphical user interface to define your new color scheme. The colors should map to the default
-      ANSI colors your terminal emulator is asking for.
+      graphical user interface of your terminal emulator to define your new color scheme. The colors
+      should map to the default ANSI colors your terminal emulator is asking for.
+    </p>
+
+    <h2>Can I use these colors for something else?</h2>
+    <p>
+      You can use the generated color schemes for whatever you like. You could use them to define a
+      custom code highlighting color scheme for your blog, use them in your next design, or whatever
+      else you fancy.
+    </p>
+
+    <p>
+      If you ended up finding this tool useful, I'd love to hear from you. You find my contact
+      details on <a href="https://hamvocke.com">my website</a>
     </p>
 
     <h2>Why do some of the recipes generate ugly-ass color schemes?</h2>
@@ -128,9 +157,6 @@
       You guessed it: <a href="https://github.com/hamvocke/root-loops">On GitHub</a>.
     </p>
 
-    <h2>Who built this?</h2>
-    <p><a href="https://hamvocke.com">Ham</a></p>
-
     <h2>What's up with all the cereal puns?</h2>
     <p>I think it's fun ¯\_(ツ)_/¯</p>
   </div>
@@ -148,7 +174,7 @@
   }
 
   .info {
-    padding: 1rem;
+    padding: 1.5rem;
     margin: 2rem 0;
   }
 
@@ -161,8 +187,7 @@
     font-size: 1.1rem;
     font-weight: bold;
     margin: 0;
-    color: var(--color-slate-600);
-    text-shadow: 0 1px 0 var(--color-slate-050);
+    color: var(--color-slate-700);
   }
 
   p + h2,
