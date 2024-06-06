@@ -105,7 +105,7 @@
 <style>
   .terminal {
     font-family: system-io, sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -168,7 +168,7 @@
 
   button[role="tab"] {
     padding: 0.5rem 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background: color-mix(in hsl, var(--color-slate-200) 40%, transparent);
     color: var(--color-slate-700);
     display: block;
@@ -205,11 +205,15 @@
     padding: 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     font-family: "Fira Code", monospace;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1rem;
     color: var(--root-loops-foreground);
     overflow-x: auto;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   [role="tabpanel"].hidden {
