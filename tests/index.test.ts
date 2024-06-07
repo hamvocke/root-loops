@@ -77,13 +77,7 @@ test.describe("index", () => {
     const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
     await expect(terminal).toBeVisible();
 
-    await expect(terminal.getByRole("tab")).toHaveCount(5);
-
-    await terminal.getByRole("tab").filter({ hasText: "vitest" }).click();
-
-    await expect(terminal.getByRole("tabpanel")).toContainText(
-      "test.js > root loops color generator > pours milk into the bowl",
-    );
+    await expect(terminal.getByRole("tab")).toHaveCount(6);
   });
 
   test("clicking terminal tabs switches content", async ({ page }) => {
@@ -93,11 +87,11 @@ test.describe("index", () => {
       return terminal.getByRole("tab").filter({ hasText: tabName });
     }
 
-    await getTab("screenfetch").click();
+    await getTab("fetch").click();
     // check that a part of that apple logo's ascii art is showing up
     await expect(terminal.getByRole("tabpanel")).toContainText(".:/++++++/::::/++++++/:`");
 
-    await getTab("vitest").click();
+    await getTab("test").click();
     await expect(terminal.getByRole("tabpanel")).toContainText(
       "test.js > root loops color generator > pours milk into the bowl",
     );
@@ -112,6 +106,9 @@ test.describe("index", () => {
     await expect(terminal.getByRole("tabpanel")).toContainText(
       "defmodule HelloWeb.ProductController do",
     );
+
+    await getTab("rust").click();
+    await expect(terminal.getByRole("tabpanel")).toContainText("use actix_web::");
   });
 
   test("clicking 'save' button stores state in URL", async ({ page }) => {
