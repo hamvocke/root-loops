@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   import Header from "./Header.svelte";
+  import Footer from "./Footer.svelte";
   import Slider from "./Slider.svelte";
   import Select from "./Select.svelte";
   import Cereal from "./Cereal.svelte";
@@ -149,7 +150,7 @@
 
     <Terminal />
 
-    <div class="credit"><a href="https://hamvocke.com">Made by Ham &lt;3</a></div>
+    <Footer />
   </main>
 </div>
 
@@ -243,17 +244,6 @@
     grid-template-rows: auto;
     grid-auto-flow: row;
     gap: 1rem;
-  }
-
-  .credit {
-    text-align: right;
-    margin: 3rem 0 1rem 0;
-    font-size: 0.9rem;
-    font-family: "Fira Code", monospace;
-
-    a {
-      color: var(--color-slate-800);
-    }
   }
 
   .buttons {
