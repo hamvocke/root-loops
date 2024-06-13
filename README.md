@@ -1,8 +1,24 @@
 # Root Loops
 
+_Spiffy terminal color schemes, as simple as pouring a bowl of cereal_
+
+---
+
 [![Tests](https://github.com/hamvocke/root-loops/actions/workflows/test.yaml/badge.svg)](https://github.com/hamvocke/root-loops/actions/workflows/test.yaml)
 
-## Developing
+---
+
+## What is this?
+
+Beautiful terminal color schemes are a proven way to increase your productivity by a huge margin †. In the past, developers had to rely on ordinary, off-the-shelf color schemes to spice up their terminal experience. Root Loops allows you to generate your very own beautiful color schemes according to your personal taste. Bland or vibrant, dark or light, you decide!
+
+[![assets/root-loops-screenshot.webp]](https://rootloops.sh)
+
+[**Create your own terminal color scheme**](https://rootloops.sh)
+
+<small>†: I totally made this up. Any actual productivity gain from using Root Loops is purely coincidental. You get to flex with your own color scheme in front of your nerd friends, though.</small>
+
+## Development
 
 Install dependencies via `npm install`.
 
@@ -15,7 +31,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 
@@ -25,7 +41,7 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-## Testing
+### Testing
 
 Unit tests run locally using vitest:
 
@@ -49,7 +65,7 @@ npm run test:integration-docker
 
 Playwright tests will start your application automatically.
 
-## (Re-)Generating Terminal Snippets
+### (Re-)Generating Terminal Snippets
 
 To demonstrate what the root loops color scheme looks like in action, we provide a couple of sample terminal outputs in the `snippets/` directory. The `generate-ansi-snippets.js` script in the `snippets/` directory makes sure to generate a bunch of ANSI-colored terminal output, via different means:
 
