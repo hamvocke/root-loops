@@ -1,10 +1,8 @@
-# Root Loops
-
-_Spiffy terminal color schemes, as simple as pouring a bowl of cereal_
-
 [![Tests](https://github.com/hamvocke/root-loops/actions/workflows/test.yaml/badge.svg)](https://github.com/hamvocke/root-loops/actions/workflows/test.yaml)
 
----
+# Root Loops 🔴🔵
+
+_Spiffy terminal color schemes, as simple as pouring a bowl of cereal_
 
 ## What is this?
 
@@ -12,7 +10,7 @@ Beautiful terminal color schemes are a proven way to increase your productivity 
 
 [![Root Loops preview](assets/root-loops-screenshot.webp)](https://rootloops.sh)
 
-[**Create your own terminal color scheme**](https://rootloops.sh)
+<p align="center"><strong><a href="https://rootloops.sh">👉 Create your own terminal color scheme here</a></strong></p>
 
 > [!CAUTION]
 > Any actual productivity gains from using Root Loops are purely coincidental. You get to flex with your own color scheme in front of your nerd friends, though.
