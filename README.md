@@ -4,9 +4,9 @@
 
 _Spiffy terminal color schemes, as simple as pouring a bowl of cereal_
 
-## What is this?
+## Did you ever want to create your own terminal color scheme?
 
-Beautiful terminal color schemes are a proven way to increase your productivity by a huge margin. In the past, developers had to rely on ordinary, off-the-shelf color schemes to spice up their terminal experience. Root Loops allows you to generate your very own beautiful color schemes according to your personal taste. Bland or vibrant, dark or light, you decide!
+Beautiful terminal color schemes are a proven way to increase your productivity by a huge margin. Fact. In the past, developers often had to rely on ordinary, off-the-shelf color schemes to spice up their terminal experience. Root Loops allows you to generate your very own beautiful color schemes according to your personal taste. Bland or vibrant, dark or light, you decide!
 
 [![Root Loops preview](assets/root-loops-screenshot.webp)](https://rootloops.sh)
 
