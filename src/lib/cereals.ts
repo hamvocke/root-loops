@@ -220,14 +220,14 @@ function getBaseColors(recipe: Recipe) {
     case MilkAmount.None:
       return {
         black: baseColor(5),
-        brightBlack: baseColor(30),
+        brightBlack: baseColor(35),
         white: baseColor(70),
         brightWhite: baseColor(95),
       };
     case MilkAmount.Splash:
       return {
         black: baseColor(10),
-        brightBlack: baseColor(35),
+        brightBlack: baseColor(40),
         white: baseColor(90),
         brightWhite: baseColor(65),
       };
@@ -236,13 +236,13 @@ function getBaseColors(recipe: Recipe) {
         black: baseColor(90),
         brightBlack: baseColor(65),
         white: baseColor(10),
-        brightWhite: baseColor(35),
+        brightWhite: baseColor(40),
       };
     case MilkAmount.Cup:
       return {
         black: baseColor(95),
         brightBlack: baseColor(70),
-        white: baseColor(30),
+        white: baseColor(35),
         brightWhite: baseColor(5),
       };
   }

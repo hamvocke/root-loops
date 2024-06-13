@@ -97,7 +97,7 @@ describe("prepare()", () => {
     const cereals = prepare(recipe);
 
     expect(cereals.black.color.l).toBe(0.05);
-    expect(cereals.brightBlack.color.l).toBe(0.3);
+    expect(cereals.brightBlack.color.l).toBe(0.35);
     expect(cereals.white.color.l).toBe(0.7);
     expect(cereals.brightWhite.color.l).toBe(0.95);
   });
@@ -107,7 +107,7 @@ describe("prepare()", () => {
     const cereals = prepare(recipe);
 
     expect(cereals.black.color.l).toBe(0.1);
-    expect(cereals.brightBlack.color.l).toBe(0.35);
+    expect(cereals.brightBlack.color.l).toBe(0.4);
     expect(cereals.white.color.l).toBe(0.9);
     expect(cereals.brightWhite.color.l).toBe(0.65);
   });
@@ -119,7 +119,7 @@ describe("prepare()", () => {
     expect(cereals.black.color.l).toBe(0.9);
     expect(cereals.brightBlack.color.l).toBe(0.65);
     expect(cereals.white.color.l).toBe(0.1);
-    expect(cereals.brightWhite.color.l).toBe(0.35);
+    expect(cereals.brightWhite.color.l).toBe(0.4);
   });
 
   it("creates lightest base colors for milk amount of 'Cup'", () => {
@@ -128,7 +128,7 @@ describe("prepare()", () => {
 
     expect(cereals.black.color.l).toBe(0.95);
     expect(cereals.brightBlack.color.l).toBe(0.7);
-    expect(cereals.white.color.l).toBe(0.3);
+    expect(cereals.white.color.l).toBe(0.35);
     expect(cereals.brightWhite.color.l).toBe(0.05);
   });
 
