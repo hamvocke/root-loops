@@ -12,7 +12,7 @@ Beautiful terminal color schemes are a proven way to increase your productivity 
 
 [![Root Loops preview](assets/root-loops-screenshot.webp)](https://rootloops.sh)
 
-<p align="center"><h3><a href="https://rootloops.sh">👉 Create your own terminal color scheme here</a></h3></p>
+<h3 align="center"><a href="https://rootloops.sh">👉 Create your own terminal color scheme here</a></h3>
 
 ## Development
 
