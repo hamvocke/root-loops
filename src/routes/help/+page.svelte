@@ -123,7 +123,7 @@
       should map to the default ANSI colors your terminal emulator is asking for.
     </p>
 
-    <h2>Can I use these colors for something else?</h2>
+    <h2>Can I use these colors for anything else?</h2>
     <p>
       You can use the generated color schemes for whatever you like. You could use them to define a
       custom code highlighting color scheme for your blog, use them in your next design, or whatever
@@ -155,6 +155,13 @@
     <h2>Where can I find the source code?</h2>
     <p>
       You guessed it: <a href="https://github.com/hamvocke/root-loops">On GitHub</a>.
+    </p>
+
+    <h2>How can I learn more about what's happening behind the scenes?</h2>
+    <p>
+      I wrote a <a href="https://hamvocke.com/blog/lets-create-a-terminal-color-scheme/"
+        >pretty elaborate blog post</a
+      > explaining the things I discovered while building Root Loops. This would be your best destination.
     </p>
 
     <h2>What's up with all the cereal puns?</h2>
