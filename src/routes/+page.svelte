@@ -66,8 +66,6 @@
 </script>
 
 <svelte:head>
-  <title>Root Loops</title>
-  <meta name="description" content="Terminal color schemes for cereal lovers." />
   <link rel="icon" href={faviconDataUrl(cereals)} />
 </svelte:head>
 
