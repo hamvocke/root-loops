@@ -20,7 +20,7 @@
 
   <a href="/" class="back-link">&lt; Go back</a>
   <div class="info glass-box">
-    <h2 class="large">Your own terminal color scheme, as simple as making a bowl of cereals</h2>
+    <h2 class="large">Your own terminal color scheme, as simple as making a bowl of cereal</h2>
     <p class="lead">
       Root Loops helps you generate tasty color schemes that you can use for terminal emulators,
       syntax highlighting, or whatever else you fancy. Dark mode, light mode, vibrant or pale, you
@@ -78,8 +78,8 @@
     <h2>How does it work?</h2>
     <p>
       At the top of the page you find a bunch of ingredients you can mix to create a recipe for your
-      bowl of cereals. Root loops will use these ingredients to generate a color scheme consisting
-      of 16 colors - 4 base colors and 12 accent colors.
+      bowl of cereal. Root loops will use these ingredients to generate a color scheme consisting of
+      16 colors - 4 base colors and 12 accent colors.
     </p>
 
     <p>Each of the ingredients drives a different aspect of the resulting color scheme:</p>
@@ -110,8 +110,8 @@
       <li>
         <strong>Sogginess</strong>: Let your bowl sit for a while and you'll see how your milk turns
         more vibrant. The "sogginess" ingredient determines how vibrant the color of your milk is
-        going to be. If you didn't add any fruit, this ingredient won't have any effect. If you
-        added some fruit, the sogginess is going to make the color you chose more or less vibrant.
+        going to be. Based on the fruit you chose the sogginess is going to add a more or less
+        intense hue of that fruit's color to your base colors.
       </li>
     </ul>
 
@@ -137,8 +137,8 @@
 
     <h2>Why do some of the recipes generate ugly-ass color schemes?</h2>
     <p>
-      Well... it's just like when you make yourself a bowl of cereals: It's hard to screw this up,
-      but if you really insist you can create a bowl of cereals that's hardly edible. That's on you,
+      Well... it's just like when you make yourself a bowl of cereal: It's hard to screw this up,
+      but if you really insist you can create a bowl of cereal that's hardly edible. That's on you,
       my friend.
     </p>
 
