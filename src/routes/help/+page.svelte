@@ -99,7 +99,7 @@
       </li>
       <li>
         <strong>Cereal Flavor</strong>: You can pick from one of three flavors: <em>Classic</em>,
-        <em>Fruity</em>, and <em>Unicorn</em>. Each flavor shifts the hue of all accent colors a bit
+        <em>Fruity</em>, and <em>Intense</em>. Each flavor shifts the hue of all accent colors a bit
         while still ensuring consistent hue distance and color semantics among all accent colors.
       </li>
       <li>

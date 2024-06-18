@@ -173,14 +173,14 @@ describe("prepare()", () => {
   it("uses 'flavor' parameter to drive hue shift of accent colors", () => {
     const fruityFlavor = prepare(someRecipe({ flavor: Flavor.Fruity }));
     const classicFlavor = prepare(someRecipe({ flavor: Flavor.Classic }));
-    const unicornFlavor = prepare(someRecipe({ flavor: Flavor.Intense }));
+    const intenseFlavor = prepare(someRecipe({ flavor: Flavor.Intense }));
 
     expect(fruityFlavor.red.color.h).toBe(0);
     expect(classicFlavor.red.color.h).toBe(15);
-    expect(unicornFlavor.red.color.h).toBe(30);
+    expect(intenseFlavor.red.color.h).toBe(30);
     expect(fruityFlavor.black.color.h).toBe(270);
     expect(classicFlavor.black.color.h).toBe(270);
-    expect(unicornFlavor.black.color.h).toBe(270);
+    expect(intenseFlavor.black.color.h).toBe(270);
   });
 
   it("uses 'sugar' parameter to drive lightness of accent colors", () => {
