@@ -9,7 +9,7 @@ describe("prepare()", () => {
     artificialColors: 2,
     sugar: 3,
     fruit: Fruit.Elderberry,
-    sogginess: 0.02,
+    sogginess: 2,
   };
 
   function someRecipe(recipe: object) {
