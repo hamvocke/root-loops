@@ -66,7 +66,7 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" href={faviconDataUrl(cereals)} />
+  <link rel="icon" href={faviconDataUrl(cereals)} type="image/svg+xml" />
 </svelte:head>
 
 <div class="color-scope" style={cssColors}>
