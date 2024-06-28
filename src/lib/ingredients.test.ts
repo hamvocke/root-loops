@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { parseRecipeFromQueryString, defaultRecipe, validationRules } from "$lib/ingredients";
+import {
+  parseRecipeFromQueryString,
+  defaultRecipe,
+  validationRules,
+  toQueryString,
+} from "$lib/ingredients";
 
 describe("ingredient parsing", () => {
   it("returns default recipe if no query params are given", () => {
@@ -152,5 +157,17 @@ describe("ingredient parsing", () => {
       const recipe = parseRecipeFromQueryString(new URLSearchParams("?flavor=2"));
       expect(recipe.flavor).toBe(2);
     });
+  });
+});
+
+describe("recipe serialization", () => {
+  it("should convert to URL params", () => {
+    const recipe = defaultRecipe;
+
+    const queryString = toQueryString(recipe);
+
+    const expected = `sugar=${recipe.sugar}&colors=${recipe.artificialColors}&sogginess=${recipe.sogginess}&flavor=${recipe.flavor}&fruit=${recipe.fruit}&milk=${recipe.milkAmount}`;
+
+    expect(queryString).toBe(expected);
   });
 });

@@ -188,6 +188,19 @@ function sanitizeMilk(value: string | number | null) {
   );
 }
 
+export function toQueryString(recipe: Recipe): string {
+  const urlParams = new URLSearchParams({
+    [validationRules.sugar.name]: `${recipe.sugar}`,
+    [validationRules.artificialColors.name]: `${recipe.artificialColors}`,
+    [validationRules.sogginess.name]: `${recipe.sogginess}`,
+    [validationRules.flavor.name]: `${recipe.flavor}`,
+    [validationRules.fruit.name]: `${recipe.fruit}`,
+    [validationRules.milk.name]: `${recipe.milkAmount}`,
+  });
+
+  return urlParams.toString();
+}
+
 export function parseRecipeFromQueryString(searchParams: URLSearchParams): Recipe {
   if (searchParams.size === 0) {
     return defaultRecipe;
