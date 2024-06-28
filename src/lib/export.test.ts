@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { exportToAlacritty } from "$lib/export";
+import { exportToAlacritty, exportToJson } from "$lib/export";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
 describe("export", () => {
@@ -12,9 +12,43 @@ describe("export", () => {
     sogginess: 2,
   };
 
+  describe("to JSON", () => {
+    it("generates JSON format", () => {
+      const config = exportToJson(someRecipe);
+      const expected = {
+        source: "rootloops.sh",
+        hex: {
+          background: "#dfe2eb",
+          foreground: "#13161e",
+          text: "#dfe2eb",
+          cursor: "#565d73",
+          black: "#dfe2eb",
+          red: "#55403c",
+          green: "#3c4a3e",
+          yellow: "#4b4536",
+          blue: "#3f4557",
+          magenta: "#50404e",
+          cyan: "#374a4d",
+          white: "#13161e",
+          brightBlack: "#959eb5",
+          brightRed: "#6b524e",
+          brightGreen: "#4d5e50",
+          brightYellow: "#5f5946",
+          brightBlue: "#51586e",
+          brightMagenta: "#655263",
+          brightCyan: "#475e62",
+          brightWhite: "#565d73",
+        },
+      };
+
+      expect(config).toBe(JSON.stringify(expected, null, 2));
+    });
+  });
+
   describe("to Alacritty", () => {
     it("generates TOML format", () => {
       const config = exportToAlacritty(someRecipe);
+      // prettier-ignore
       const expected = `
 # Copy the configuration below and add it to your
 # ~/.config/alacritty/alacritty.toml file

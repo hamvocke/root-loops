@@ -15,49 +15,43 @@
     flavorSelectOptions,
     validationRules,
     parseRecipeFromQueryString,
+    toQueryString,
+    type Recipe,
   } from "$lib/ingredients";
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
-  import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
+  import {
+    HelpCircleIcon,
+    CheckCircleIcon,
+    ExternalLinkIcon,
+    DownloadIcon,
+  } from "svelte-feather-icons";
   import { fade } from "svelte/transition";
 
-  let { milkAmount, flavor, artificialColors, sugar, fruit, sogginess } = defaultRecipe;
+  let recipe = defaultRecipe;
 
   onMount(() => {
-    ({ milkAmount, flavor, artificialColors, sugar, fruit, sogginess } = parseRecipeFromQueryString(
-      // eslint-disable-next-line svelte/valid-compile
-      $page.url.searchParams,
-    ));
+    // eslint-disable-next-line svelte/valid-compile
+    recipe = parseRecipeFromQueryString($page.url.searchParams);
   });
 
   let toast: string | undefined;
 
-  $: cereals = prepare({
-    milkAmount: milkAmount,
-    flavor: flavor,
-    artificialColors: artificialColors,
-    sugar: sugar,
-    fruit: fruit,
-    sogginess: sogginess,
-  });
+  $: cereals = prepare(recipe);
   $: cssColors = generateCssColors(cereals);
 
   function calculateMilkHeight(amount: MilkAmount) {
     return `height: ${amount * 33.34}%;`;
   }
 
-  function saveUrl(event: SubmitEvent) {
+  function saveUrl() {
     const showNotification = () => {
       toast = "Recipe saved. You can now bookmark and share this URL.";
       setTimeout(() => (toast = undefined), 4000);
     };
 
-    const formData = new FormData(event.currentTarget as HTMLFormElement);
-    const queryParams = new URLSearchParams(
-      formData as unknown as Record<string, string>,
-    ).toString();
-    const url = `${document.location.origin}?${queryParams}`;
+    const url = `${document.location.origin}?${toQueryString(recipe)}`;
 
     navigator.clipboard.writeText(url);
 
@@ -89,45 +83,48 @@
           id={validationRules.sugar.name}
           min={validationRules.sugar.minValue}
           max={validationRules.sugar.maxValue}
-          bind:value={sugar}
+          bind:value={recipe.sugar}
         />
         <Slider
           label="Artificial Colors"
           id={validationRules.artificialColors.name}
           min={validationRules.artificialColors.minValue}
           max={validationRules.artificialColors.maxValue}
-          bind:value={artificialColors}
+          bind:value={recipe.artificialColors}
         />
         <Slider
           label="Sogginess"
           id={validationRules.sogginess.name}
           min={validationRules.sogginess.minValue}
           max={validationRules.sogginess.maxValue}
-          bind:value={sogginess}
+          bind:value={recipe.sogginess}
         />
 
         <Select
           label="Cereal Flavor"
           id={validationRules.flavor.name}
           options={flavorSelectOptions}
-          bind:value={flavor}
+          bind:value={recipe.flavor}
         />
         <Select
           label="Fruit"
           id={validationRules.fruit.name}
           options={fruitSelectOptions}
-          bind:value={fruit}
+          bind:value={recipe.fruit}
         />
         <Select
           label="Milk"
           id={validationRules.milk.name}
           options={milkSelectOptions}
-          bind:value={milkAmount}
+          bind:value={recipe.milkAmount}
         />
       </div>
 
       <div class="buttons">
         <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
+        <a class="button secondary" href={`/export?${toQueryString(recipe)}`}>
+          <DownloadIcon size="20" /> Export
+        </a>
         <button type="submit" class="primary">
           <ExternalLinkIcon size="20" /> Save
         </button>
@@ -137,7 +134,7 @@
     <section class="bowl" aria-label="Cereal Bowl">
       <div class="glow"></div>
       <div class="bowl-content glass-box">
-        <div class="milk" style={calculateMilkHeight(milkAmount)}></div>
+        <div class="milk" style={calculateMilkHeight(recipe.milkAmount)}></div>
         <div class="cereals">
           {#each Object.entries(cereals) as [_key, cereal]}
             <Cereal {cereal} />
@@ -179,7 +176,7 @@
 
   .input {
     max-width: 900px;
-    margin: 3rem auto 1rem auto;
+    margin: 3rem auto 2rem auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
@@ -261,7 +258,7 @@
     border-radius: var(--border-radius);
     background: var(--color-slate-200);
     font-weight: bold;
-    box-shadow: 0 0.25rem 0.5rem #0002;
+    box-shadow: 0 0.25rem 0.3rem #0002;
     cursor: pointer;
     transition: all 0.1s ease-out;
 
@@ -274,6 +271,18 @@
       &:focus-visible {
         border-color: var(--color-red-900);
         background: var(--color-red-800);
+      }
+    }
+
+    &.secondary {
+      background: var(--color-slate-200);
+      border: 1px solid var(--color-slate-400);
+      color: var(--color-slate-800);
+
+      &:hover,
+      &:focus-visible {
+        border-color: var(--color-slate-300);
+        background: var(--color-slate-100);
       }
     }
 
