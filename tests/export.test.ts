@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("export", () => {
-  test("exports json format by default", async ({ page }) => {
+  test("navigates to export page from main page", async ({ page }) => {
     await page.goto("/");
 
     const responsePromise = page.waitForResponse(
@@ -40,5 +40,14 @@ test.describe("export", () => {
 
     expect(await response.headerValue("Content-Type")).toBe("application/json");
     expect(await response.json()).toEqual(expectedResponseBody);
+  });
+
+  test("exports to json when format is not specified", async ({ page }) => {
+    const response = await page.goto(
+      "/export?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0",
+    );
+
+    expect(response).not.toBeNull();
+    expect(await response!.headerValue("Content-Type")).toBe("application/json");
   });
 });
