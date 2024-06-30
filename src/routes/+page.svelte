@@ -122,7 +122,7 @@
 
       <div class="buttons">
         <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
-        <a class="button secondary" href={`/export?${toQueryString(recipe)}`}>
+        <a class="button" href={`/export?${toQueryString(recipe)}`}>
           <DownloadIcon size="20" /> Export
         </a>
         <button type="submit" class="primary">
@@ -247,56 +247,5 @@
     justify-content: flex-end;
     align-items: center;
     gap: 1rem;
-  }
-
-  button,
-  .button {
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
-    padding: 0.6rem 0.8rem;
-    border-radius: var(--border-radius);
-    background: var(--color-slate-200);
-    font-weight: bold;
-    box-shadow: 0 0.25rem 0.3rem #0002;
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-
-    &.primary {
-      background: var(--color-red-700);
-      border: 2px solid var(--color-red-800);
-      color: var(--color-red-050);
-
-      &:hover,
-      &:focus-visible {
-        border-color: var(--color-red-900);
-        background: var(--color-red-800);
-      }
-    }
-
-    &.secondary {
-      background: var(--color-slate-200);
-      border: 1px solid var(--color-slate-400);
-      color: var(--color-slate-800);
-
-      &:hover,
-      &:focus-visible {
-        border-color: var(--color-slate-300);
-        background: var(--color-slate-100);
-      }
-    }
-
-    &.plain {
-      color: var(--color-slate-700);
-      text-decoration: none;
-      background: transparent;
-      box-shadow: none;
-
-      &:hover,
-      &:focus-visible {
-        color: var(--color-slate-800);
-        text-decoration: underline;
-      }
-    }
   }
 </style>

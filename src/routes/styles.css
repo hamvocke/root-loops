@@ -104,3 +104,52 @@ button {
   box-shadow: 0 0.25rem 1rem #0002;
   backdrop-filter: blur(24px);
 }
+
+button,
+.button {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--border-radius);
+  background: var(--color-slate-200);
+  font-weight: bold;
+  box-shadow: 0 0.25rem 0.3rem #0002;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+  background: color-mix(in hsl, var(--color-slate-100) 40%, transparent);
+  border: 1px solid var(--color-slate-050);
+  color: var(--color-slate-800);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-slate-200);
+    text-decoration: none;
+  }
+
+  &.primary {
+    background: var(--color-red-700);
+    border: 2px solid var(--color-red-800);
+    color: var(--color-red-050);
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--color-red-900);
+      background: var(--color-red-800);
+    }
+  }
+
+  &.plain {
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-slate-800);
+      text-decoration: underline;
+    }
+  }
+}
