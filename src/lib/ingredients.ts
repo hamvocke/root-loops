@@ -201,7 +201,7 @@ export function toQueryString(recipe: Recipe): string {
   return urlParams.toString();
 }
 
-export function parseRecipeFromQueryString(searchParams: URLSearchParams): Recipe {
+export function fromQueryString(searchParams: URLSearchParams): Recipe {
   if (searchParams.size === 0) {
     return defaultRecipe;
   }

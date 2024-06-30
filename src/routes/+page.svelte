@@ -14,7 +14,7 @@
     fruitSelectOptions,
     flavorSelectOptions,
     validationRules,
-    parseRecipeFromQueryString,
+    fromQueryString,
     toQueryString,
     type Recipe,
   } from "$lib/ingredients";
@@ -33,7 +33,7 @@
 
   onMount(() => {
     // eslint-disable-next-line svelte/valid-compile
-    recipe = parseRecipeFromQueryString($page.url.searchParams);
+    recipe = fromQueryString($page.url.searchParams);
   });
 
   let toast: string | undefined;
