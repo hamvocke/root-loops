@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { test } from "@playwright/test";
 
 test.describe("export", () => {
   test("can export json format", async ({ page }) => {
@@ -7,6 +7,6 @@ test.describe("export", () => {
     const exportLink = page.getByRole("link", { name: "Export" });
     await exportLink.click();
 
-    await page.waitForURL("**/export?*");
+    await page.waitForURL("**/export?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0");
   });
 });
