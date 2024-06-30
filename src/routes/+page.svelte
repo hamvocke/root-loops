@@ -125,7 +125,7 @@
         <a class="button" href={`/export?${toQueryString(recipe)}`}>
           <DownloadIcon size="20" /> Export
         </a>
-        <button type="submit" class="primary">
+        <button type="submit" class="button primary">
           <ExternalLinkIcon size="20" /> Save
         </button>
       </div>
