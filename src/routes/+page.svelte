@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { dev } from "$app/environment";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
   import Slider from "./Slider.svelte";
@@ -22,12 +21,7 @@
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
-  import {
-    HelpCircleIcon,
-    CheckCircleIcon,
-    ExternalLinkIcon,
-    DownloadIcon,
-  } from "svelte-feather-icons";
+  import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
   import { fade } from "svelte/transition";
 
   let recipe = defaultRecipe;
@@ -41,6 +35,7 @@
 
   $: cereals = prepare(recipe);
   $: cssColors = generateCssColors(cereals);
+  $: queryString = toQueryString(recipe);
 
   function calculateMilkHeight(amount: MilkAmount) {
     return `height: ${amount * 33.34}%;`;
@@ -52,7 +47,7 @@
       setTimeout(() => (toast = undefined), 4000);
     };
 
-    const url = `${document.location.origin}?${toQueryString(recipe)}`;
+    const url = `${document.location.origin}?${queryString}`;
 
     navigator.clipboard.writeText(url);
 
@@ -123,12 +118,7 @@
 
       <div class="buttons">
         <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
-        <a class="button" href={`/export?format=json&${toQueryString(recipe)}`}>
-          <DownloadIcon size="20" /> Export
-        </a>
-        {#if dev}
-          <DropdownButton id="export-dropdown" />
-        {/if}
+        <DropdownButton id="export-dropdown" params={queryString} />
         <button type="submit" class="button primary">
           <ExternalLinkIcon size="20" /> Save
         </button>

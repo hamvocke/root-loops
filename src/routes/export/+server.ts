@@ -1,5 +1,5 @@
 import { fromQueryString } from "$lib/ingredients";
-import { exportToAlacritty, exportToJson } from "$lib/export";
+import { exportToAlacritty, exportToJson, exportToWindowsTerminal } from "$lib/export";
 import type { RequestHandler } from "./$types";
 
 export const GET: RequestHandler = ({ url }) => {
@@ -11,6 +11,8 @@ export const GET: RequestHandler = ({ url }) => {
       return jsonResponse(exportToJson(recipe));
     case "alacritty":
       return textResponse(exportToAlacritty(recipe));
+    case "windows-terminal":
+      return jsonResponse(exportToWindowsTerminal(recipe));
   }
 
   return jsonResponse(exportToJson(recipe));

@@ -2,6 +2,7 @@
   import { ChevronDownIcon } from "svelte-feather-icons";
 
   export let id: string;
+  export let params: string;
 </script>
 
 <div class="dropdown">
@@ -10,9 +11,9 @@
     <ChevronDownIcon size="20" />
   </button>
   <ul {id} class="dropdown-menu glass-box" popover="auto">
-    <li><a href="/export">JSON</a></li>
-    <li><a href="/export">Alacritty</a></li>
-    <li><a href="/export">Windows Terminal</a></li>
+    <li><a href="/export?format=json&{params}">JSON</a></li>
+    <li><a href="/export?format=alacritty&{params}">Alacritty</a></li>
+    <li><a href="/export?format=windows-terminal&{params}">Windows Terminal</a></li>
   </ul>
 </div>
 

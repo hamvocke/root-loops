@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { exportToAlacritty, exportToJson } from "$lib/export";
+import { exportToAlacritty, exportToJson, exportToWindowsTerminal } from "$lib/export";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
 describe("export", () => {
@@ -42,6 +42,39 @@ describe("export", () => {
       };
 
       expect(config).toBe(JSON.stringify(expected, null, 2));
+    });
+  });
+
+  describe("to Windows Terminal", () => {
+    it("generates JSON format", () => {
+      const config = exportToWindowsTerminal(someRecipe);
+      const expected = {
+        name: "Root Loops",
+
+        cursorColor: "#565d73",
+        selectionBackground: "#959eb5",
+
+        background: "#dfe2eb",
+        foreground: "#13161e",
+
+        black: "#dfe2eb",
+        red: "#55403c",
+        green: "#3c4a3e",
+        yellow: "#4b4536",
+        blue: "#3f4557",
+        purple: "#50404e",
+        cyan: "#374a4d",
+        white: "#13161e",
+        brightBlack: "#959eb5",
+        brightRed: "#6b524e",
+        brightGreen: "#4d5e50",
+        brightYellow: "#5f5946",
+        brightBlue: "#51586e",
+        brightPurple: "#655263",
+        brightCyan: "#475e62",
+        brightWhite: "#565d73",
+      };
+      expect(JSON.parse(config)).toStrictEqual(expected);
     });
   });
 
