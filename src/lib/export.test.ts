@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { exportToAlacritty, exportToJson, exportToWindowsTerminal } from "$lib/export";
+import {
+  exportToAlacritty,
+  exportToJson,
+  exportToWindowsTerminal,
+  exportToXresources,
+} from "$lib/export";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
 describe("export", () => {
@@ -116,6 +121,40 @@ blue = '#51586e'
 magenta = '#655263'
 cyan = '#475e62'
 white = '#565d73'
+`;
+
+      expect(config).toBe(expected);
+    });
+  });
+
+  describe("to xterm", () => {
+    it("generates Xresources format", () => {
+      const config = exportToXresources(someRecipe);
+      // prettier-ignore
+      const expected = `
+! Copy the configuration below to your ~/.Xresources file
+! Root Loops (via rootloops.sh)
+
+*.foreground:  #13161e
+*.background:  #dfe2eb
+*.cursorColor: #565d73
+
+*.color0: #dfe2eb
+*.color1: #55403c
+*.color2: #3c4a3e
+*.color3: #4b4536
+*.color4: #3f4557
+*.color5: #50404e
+*.color6: #374a4d
+*.color7: #13161e
+*.color8: #959eb5
+*.color9: #6b524e
+*.color10: #4d5e50
+*.color11: #5f5946
+*.color12: #51586e
+*.color13: #655263
+*.color14: #475e62
+*.color15: #565d73
 `;
 
       expect(config).toBe(expected);
