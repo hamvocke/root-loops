@@ -19,6 +19,7 @@
 <style>
   .blink {
     animation: blink 500ms infinite alternate;
+    color: var(--root-loops-cursor);
   }
 
   .prompt {
