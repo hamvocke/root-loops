@@ -7,7 +7,7 @@
     screenfetchSnippet,
     rustSnippet,
   } from "$lib/snippets";
-  import Code from "./Code.svelte";
+  import TerminalContent from "./TerminalContent.svelte";
 
   let activeTabId = "tab-screenfetch";
   function handleTabClick(event: MouseEvent) {
@@ -74,15 +74,15 @@
     aria-labelledby="tab-screenfetch"
     class:hidden={activeTabId !== "tab-screenfetch"}
   >
-    <Code command="screenfetch">{@html screenfetchSnippet}</Code>
+    <TerminalContent command="screenfetch">{@html screenfetchSnippet}</TerminalContent>
   </div>
 
   <div role="tabpanel" aria-labelledby="tab-vitest" class:hidden={activeTabId !== "tab-vitest"}>
-    <Code command="npm run test:unit">{@html vitestSnippet}</Code>
+    <TerminalContent command="npm run test:unit">{@html vitestSnippet}</TerminalContent>
   </div>
 
   <div role="tabpanel" aria-labelledby="tab-python" class:hidden={activeTabId !== "tab-python"}>
-    <Code command="bat -p --theme ansi python.py">{@html pythonSnippet}</Code>
+    <TerminalContent command="bat -p --theme ansi python.py">{@html pythonSnippet}</TerminalContent>
   </div>
 
   <div
@@ -90,15 +90,17 @@
     aria-labelledby="tab-javascript"
     class:hidden={activeTabId !== "tab-javascript"}
   >
-    <Code command="bat -p --theme ansi typescript.ts">{@html typescriptSnippet}</Code>
+    <TerminalContent command="bat -p --theme ansi typescript.ts"
+      >{@html typescriptSnippet}</TerminalContent
+    >
   </div>
 
   <div role="tabpanel" aria-labelledby="tab-elixir" class:hidden={activeTabId !== "tab-elixir"}>
-    <Code command="bat -p --theme ansi elixir.ex">{@html elixirSnippet}</Code>
+    <TerminalContent command="bat -p --theme ansi elixir.ex">{@html elixirSnippet}</TerminalContent>
   </div>
 
   <div role="tabpanel" aria-labelledby="tab-rust" class:hidden={activeTabId !== "tab-rust"}>
-    <Code command="bat -p --theme ansi rust.rs">{@html rustSnippet}</Code>
+    <TerminalContent command="bat -p --theme ansi rust.rs">{@html rustSnippet}</TerminalContent>
   </div>
 </section>
 
@@ -204,7 +206,7 @@
     background: var(--root-loops-background);
     padding: 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    font-family: "Fira Code", monospace;
+    font-family: "Fira TerminalContent", monospace;
     font-size: 14px;
     font-weight: 400;
     line-height: 1rem;
