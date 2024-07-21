@@ -24,7 +24,7 @@ describe("export", () => {
         source: "rootloops.sh",
         hex: {
           background: "#dfe2eb",
-          foreground: "#13161e",
+          foreground: "#1e222d",
           text: "#dfe2eb",
           cursor: "#565d73",
           black: "#dfe2eb",
@@ -34,15 +34,15 @@ describe("export", () => {
           blue: "#3f4557",
           magenta: "#50404e",
           cyan: "#374a4d",
-          white: "#13161e",
-          brightBlack: "#959eb5",
+          white: "#565d73",
+          brightBlack: "#a3abc1",
           brightRed: "#6b524e",
           brightGreen: "#4d5e50",
           brightYellow: "#5f5946",
           brightBlue: "#51586e",
           brightMagenta: "#655263",
           brightCyan: "#475e62",
-          brightWhite: "#565d73",
+          brightWhite: "#1e222d",
         },
       };
 
@@ -57,10 +57,10 @@ describe("export", () => {
         name: "Root Loops",
 
         cursorColor: "#565d73",
-        selectionBackground: "#959eb5",
+        selectionBackground: "#dfe2eb",
 
         background: "#dfe2eb",
-        foreground: "#13161e",
+        foreground: "#1e222d",
 
         black: "#dfe2eb",
         red: "#55403c",
@@ -69,15 +69,15 @@ describe("export", () => {
         blue: "#3f4557",
         purple: "#50404e",
         cyan: "#374a4d",
-        white: "#13161e",
-        brightBlack: "#959eb5",
+        white: "#565d73",
+        brightBlack: "#a3abc1",
         brightRed: "#6b524e",
         brightGreen: "#4d5e50",
         brightYellow: "#5f5946",
         brightBlue: "#51586e",
         brightPurple: "#655263",
         brightCyan: "#475e62",
-        brightWhite: "#565d73",
+        brightWhite: "#1e222d",
       };
       expect(JSON.parse(config)).toStrictEqual(expected);
     });
@@ -96,7 +96,7 @@ describe("export", () => {
 
 [colors.primary]
 background = '#dfe2eb'
-foreground = '#13161e'
+foreground = '#1e222d'
 
 [colors.cursor]
 text = '#dfe2eb'
@@ -110,17 +110,17 @@ yellow = '#4b4536'
 blue = '#3f4557'
 magenta = '#50404e'
 cyan = '#374a4d'
-white = '#13161e'
+white = '#565d73'
 
 [colors.bright]
-black = '#959eb5'
+black = '#a3abc1'
 red = '#6b524e'
 green = '#4d5e50'
 yellow = '#5f5946'
 blue = '#51586e'
 magenta = '#655263'
 cyan = '#475e62'
-white = '#565d73'
+white = '#1e222d'
 `;
 
       expect(config).toBe(expected);
@@ -135,7 +135,7 @@ white = '#565d73'
 ! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via rootloops.sh)
 
-*.foreground:  #13161e
+*.foreground:  #1e222d
 *.background:  #dfe2eb
 *.cursorColor: #565d73
 
@@ -146,15 +146,15 @@ white = '#565d73'
 *.color4: #3f4557
 *.color5: #50404e
 *.color6: #374a4d
-*.color7: #13161e
-*.color8: #959eb5
+*.color7: #565d73
+*.color8: #a3abc1
 *.color9: #6b524e
 *.color10: #4d5e50
 *.color11: #5f5946
 *.color12: #51586e
 *.color13: #655263
 *.color14: #475e62
-*.color15: #565d73
+*.color15: #1e222d
 `;
 
       expect(config).toBe(expected);

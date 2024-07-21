@@ -7,9 +7,9 @@ export function exportToJson(recipe: Recipe): string {
     source: "rootloops.sh",
     hex: {
       background: cereals.black.color_hex,
-      foreground: cereals.white.color_hex,
+      foreground: cereals.brightWhite.color_hex,
       text: cereals.black.color_hex,
-      cursor: cereals.brightWhite.color_hex,
+      cursor: cereals.white.color_hex,
       black: cereals.black.color_hex,
       red: cereals.red.color_hex,
       green: cereals.green.color_hex,
@@ -43,11 +43,11 @@ export function exportToAlacritty(recipe: Recipe): string {
 
 [colors.primary]
 background = '${cereals.black.color_hex}'
-foreground = '${cereals.white.color_hex}'
+foreground = '${cereals.brightWhite.color_hex}'
 
 [colors.cursor]
 text = '${cereals.black.color_hex}'
-cursor = '${cereals.brightWhite.color_hex}'
+cursor = '${cereals.white.color_hex}'
 
 [colors.normal]
 black = '${cereals.black.color_hex}'
@@ -76,11 +76,11 @@ export function exportToWindowsTerminal(recipe: Recipe): string {
   const colors = {
     name: "Root Loops",
 
-    cursorColor: cereals.brightWhite.color_hex,
-    selectionBackground: cereals.brightBlack.color_hex,
+    cursorColor: cereals.white.color_hex,
+    selectionBackground: cereals.black.color_hex,
 
     background: cereals.black.color_hex,
-    foreground: cereals.white.color_hex,
+    foreground: cereals.brightWhite.color_hex,
 
     black: cereals.black.color_hex,
     blue: cereals.blue.color_hex,
@@ -108,9 +108,9 @@ export function exportToXresources(recipe: Recipe): string {
 ! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via rootloops.sh)
 
-*.foreground:  ${cereals.white.color_hex}
+*.foreground:  ${cereals.brightWhite.color_hex}
 *.background:  ${cereals.black.color_hex}
-*.cursorColor: ${cereals.brightWhite.color_hex}
+*.cursorColor: ${cereals.white.color_hex}
 
 *.color0: ${cereals.black.color_hex}
 *.color1: ${cereals.red.color_hex}

@@ -16,9 +16,9 @@ test.describe("export", () => {
       source: "rootloops.sh",
       hex: {
         background: "#0a0611",
-        foreground: "#b2a2d1",
+        foreground: "#f2eff8",
         text: "#0a0611",
-        cursor: "#f2eff8",
+        cursor: "#beb1da",
         black: "#0a0611",
         red: "#d97780",
         green: "#7aa860",
@@ -26,7 +26,7 @@ test.describe("export", () => {
         blue: "#6b9bd9",
         magenta: "#b77ed1",
         cyan: "#52a9a9",
-        white: "#b2a2d1",
+        white: "#beb1da",
         brightBlack: "#584875",
         brightRed: "#e6949a",
         brightGreen: "#8ebf73",
@@ -73,11 +73,11 @@ test.describe("export", () => {
 
 [colors.primary]
 background = '#0a0611'
-foreground = '#b2a2d1'
+foreground = '#f2eff8'
 
 [colors.cursor]
 text = '#0a0611'
-cursor = '#f2eff8'
+cursor = '#beb1da'
 
 [colors.normal]
 black = '#0a0611'
@@ -87,7 +87,7 @@ yellow = '#bc904f'
 blue = '#6b9bd9'
 magenta = '#b77ed1'
 cyan = '#52a9a9'
-white = '#b2a2d1'
+white = '#beb1da'
 
 [colors.bright]
 black = '#584875'
@@ -119,17 +119,17 @@ white = '#f2eff8'
 
     const expectedResponseBody = {
       name: "Root Loops",
-      cursorColor: "#f2eff8",
-      selectionBackground: "#584875",
+      cursorColor: "#beb1da",
+      selectionBackground: "#0a0611",
       background: "#0a0611",
-      foreground: "#b2a2d1",
+      foreground: "#f2eff8",
       black: "#0a0611",
       blue: "#6b9bd9",
       cyan: "#52a9a9",
       green: "#7aa860",
       purple: "#b77ed1",
       red: "#d97780",
-      white: "#b2a2d1",
+      white: "#beb1da",
       yellow: "#bc904f",
       brightBlack: "#584875",
       brightBlue: "#88b1e5",
