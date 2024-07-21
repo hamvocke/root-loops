@@ -1,23 +1,21 @@
 import { expect, test, type Page } from "@playwright/test";
 
-test.describe("index", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto("/");
-  });
+test.beforeEach(async ({ page }) => {
+  await page.goto("/");
+});
 
-  test("shows heading", async ({ page }) => {
-    await expect(page.getByRole("heading", { name: "Root Loops", exact: true })).toBeVisible();
-  });
+test("shows heading", async ({ page }) => {
+  await expect(page.getByRole("heading", { name: "Root Loops", exact: true })).toBeVisible();
+});
 
-  test("shows all inputs", async ({ page }) => {
-    await expect(page.getByRole("slider", { name: "Sugar" })).toBeVisible();
-    await expect(page.getByRole("slider", { name: "Artificial Colors" })).toBeVisible();
-    await expect(page.getByRole("slider", { name: "Sogginess" })).toBeVisible();
+test("shows all inputs", async ({ page }) => {
+  await expect(page.getByRole("slider", { name: "Sugar" })).toBeVisible();
+  await expect(page.getByRole("slider", { name: "Artificial Colors" })).toBeVisible();
+  await expect(page.getByRole("slider", { name: "Sogginess" })).toBeVisible();
 
-    await expect(page.getByRole("combobox", { name: "Cereal Flavor" })).toBeVisible();
-    await expect(page.getByRole("combobox", { name: "Fruit" })).toBeVisible();
-    await expect(page.getByRole("combobox", { name: "Milk" })).toBeVisible();
-  });
+  await expect(page.getByRole("combobox", { name: "Cereal Flavor" })).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Fruit" })).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Milk" })).toBeVisible();
 });
 
 test.describe("cereals", () => {
