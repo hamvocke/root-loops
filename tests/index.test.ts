@@ -18,8 +18,10 @@ test.describe("index", () => {
     await expect(page.getByRole("combobox", { name: "Fruit" })).toBeVisible();
     await expect(page.getByRole("combobox", { name: "Milk" })).toBeVisible();
   });
+});
 
-  test("has bowl with 16 cereals", async ({ page }) => {
+test.describe("cereals", () => {
+  test("page has bowl with 16 cereals", async ({ page }) => {
     await expect(page.getByRole("button", { name: "black", exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: "red", exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: "green", exact: true })).toBeVisible();
@@ -72,8 +74,10 @@ test.describe("index", () => {
     await redCereal.click();
     expect(await getClipboardContent(page)).toEqual("#e6949a");
   });
+});
 
-  test("has terminal with different tabs", async ({ page }) => {
+test.describe("terminal", () => {
+  test("page as terminal with different tabs", async ({ page }) => {
     const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
     await expect(terminal).toBeVisible();
 
@@ -110,7 +114,9 @@ test.describe("index", () => {
     await getTab("rust").click();
     await expect(terminal.getByRole("tabpanel")).toContainText("use actix_web::");
   });
+});
 
+test.describe("saving", () => {
   test("clicking 'save' button stores state in URL", async ({ page }) => {
     expect(page.url()).toBe("http://localhost:4173/");
 
