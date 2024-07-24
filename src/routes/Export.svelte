@@ -2,18 +2,30 @@
   import { exportToJson } from "$lib/export";
   import type { Recipe } from "$lib/ingredients";
   import { ClipboardIcon } from "svelte-feather-icons";
+  import { CheckIcon } from "svelte-feather-icons";
 
   export let recipe: Recipe;
   $: code = exportToJson(recipe);
+  let icon = ClipboardIcon;
+  let buttonText = "Copy";
 
   function copyToClipboard() {
     navigator.clipboard.writeText(code);
+
+    icon = CheckIcon;
+    buttonText = "Copied";
+
+    setTimeout(() => {
+      icon = ClipboardIcon;
+      buttonText = "Copy";
+    }, 2000);
   }
 </script>
 
 <section class="glass-box" aria-labelledby="export-title">
   <h2 id="export-title">Export</h2>
-  <button class="button primary" on:click={copyToClipboard}><ClipboardIcon size="20" /> Copy</button
+  <button class="button primary" on:click={copyToClipboard}
+    ><svelte:component this={icon} size="20" /> {buttonText}</button
   >
   <pre><code>{code}</code></pre>
 </section>
