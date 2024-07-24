@@ -209,7 +209,6 @@
     font-family: "Fira TerminalContent", monospace;
     font-size: 14px;
     font-weight: 400;
-    line-height: 1rem;
     color: var(--root-loops-foreground);
     overflow-x: auto;
 

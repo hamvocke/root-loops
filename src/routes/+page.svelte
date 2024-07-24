@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { page } from "$app/stores";
+  import { dev } from "$app/environment";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
   import Slider from "./Slider.svelte";
@@ -8,6 +9,7 @@
   import DropdownButton from "./DropdownButton.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
+  import Export from "./Export.svelte";
   import {
     defaultRecipe,
     MilkAmount,
@@ -138,6 +140,10 @@
     </section>
 
     <Terminal />
+
+    {#if dev}
+      <Export {recipe} />
+    {/if}
 
     <Footer />
   </main>
