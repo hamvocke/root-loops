@@ -106,8 +106,7 @@
 
 <style>
   .terminal {
-    font-family: system-io, sans-serif;
-    font-size: 0.9rem;
+    font-family: system-ui, sans-serif;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -133,7 +132,8 @@
 
   h2 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
     font-weight: bold;
   }
 
@@ -170,7 +170,7 @@
 
   button[role="tab"] {
     padding: 0.5rem 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     background: color-mix(in hsl, var(--color-slate-200) 40%, transparent);
     color: var(--color-slate-700);
     display: block;
