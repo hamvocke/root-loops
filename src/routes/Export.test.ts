@@ -4,6 +4,7 @@ import { describe, expect, test, vi } from "vitest";
 
 import Export from "./Export.svelte";
 import { defaultRecipe } from "$lib/ingredients";
+import { ExportFormat } from "$lib/export";
 
 describe("Export component", () => {
   test("export region shows code", () => {
@@ -37,6 +38,46 @@ describe("Export component", () => {
     await fireEvent.click(button);
 
     expect(button).toHaveTextContent("Copied");
+  });
+
+  test("generates json snippet when chosing JSON option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.JSON } });
+
+    expect(code).toHaveTextContent(`"source": "rootloops.sh",`);
+  });
+
+  test("generates windows terminal snippet when chosing windows terminal option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.WindowsTerminal } });
+
+    expect(code).toHaveTextContent(`"name": "Root Loops",`);
+  });
+
+  test("generates alacritty snippet when chosing alacritty option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.Alacritty } });
+
+    expect(code).toHaveTextContent(`# ~/.config/alacritty/alacritty.toml file`);
+  });
+
+  test("generates XResources snippet when chosing XResources option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.XResources } });
+
+    expect(code).toHaveTextContent(`! Copy the configuration below to your ~/.Xresources file`);
   });
 });
 

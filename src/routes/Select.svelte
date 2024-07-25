@@ -4,11 +4,13 @@
   export let options: SelectOption[];
   export let value: number;
   export let id: string;
-  export let label: string;
+  export let label: string | undefined;
 </script>
 
 <div class="select">
-  <label for={id}>{label}</label>
+  {#if label}
+    <label for={id}>{label}</label>
+  {/if}
   <select bind:value {id} name={id}>
     {#each options as option}
       <option value={option.value}>
@@ -20,7 +22,7 @@
 
 <style>
   .select {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     gap: 0.4rem;
   }
@@ -36,7 +38,6 @@
     border: 1px solid var(--color-slate-050);
     box-shadow: 0 0.25rem 0.5rem #0001;
     border-radius: 0.2rem;
-    width: 100%;
   }
 
   select:focus {
