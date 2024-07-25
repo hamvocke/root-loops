@@ -7,6 +7,7 @@
     screenfetchSnippet,
     rustSnippet,
   } from "$lib/snippets";
+  import Window from "./Window.svelte";
   import TerminalContent from "./TerminalContent.svelte";
 
   let activeTabId = "tab-screenfetch";
@@ -15,15 +16,7 @@
   }
 </script>
 
-<section class="terminal" aria-labelledby="window-title">
-  <div class="window-decoration">
-    <div class="circles">
-      <span class="circle red"></span>
-      <span class="circle yellow"></span>
-      <span class="circle green"></span>
-    </div>
-    <h2 id="window-title">Terminal Preview</h2>
-  </div>
+<Window id="terminal-window" title="Terminal Preview">
   <div role="tablist" aria-labelledby="window-title">
     <button
       id="tab-screenfetch"
@@ -102,68 +95,9 @@
   <div role="tabpanel" aria-labelledby="tab-rust" class:hidden={activeTabId !== "tab-rust"}>
     <TerminalContent command="bat -p --theme ansi rust.rs">{@html rustSnippet}</TerminalContent>
   </div>
-</section>
+</Window>
 
 <style>
-  .terminal {
-    font-family: system-ui, sans-serif;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0.25rem 1rem #0003;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--color-slate-050);
-    overflow: hidden;
-    color: var(--color-slate-600);
-    margin-bottom: 2rem;
-  }
-
-  .window-decoration {
-    background: color-mix(in hsl, var(--color-slate-100) 40%, transparent);
-    font-weight: bold;
-    text-shadow: 0 1px 0 var(--color-slate-050);
-    padding: 0.75rem 0.5rem;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    border-bottom: 1px solid var(--color-slate-300);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.4rem;
-    font-weight: bold;
-  }
-
-  .circles {
-    position: absolute;
-    left: 1rem;
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .circle {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    display: block;
-    background: var(--circle-color);
-
-    &.red {
-      --circle-color: var(--root-loops-ansi-red);
-    }
-
-    &.yellow {
-      --circle-color: var(--root-loops-ansi-yellow);
-    }
-
-    &.green {
-      --circle-color: var(--root-loops-ansi-green);
-    }
-  }
-
   [role="tablist"] {
     display: flex;
   }
