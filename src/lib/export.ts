@@ -1,5 +1,20 @@
 import { type Recipe } from "$lib/ingredients";
+import { type SelectOption } from "./selectOptions";
 import { prepare } from "$lib/cereals";
+
+export enum ExportFormat {
+  JSON = 0,
+  WindowsTerminal = 1,
+  Alacritty = 2,
+  XResources = 3,
+}
+
+export const exportSelectOptions: SelectOption[] = [
+  { value: ExportFormat.JSON, label: "JSON" },
+  { value: ExportFormat.WindowsTerminal, label: "Windows Terminal" },
+  { value: ExportFormat.Alacritty, label: "Alacritty" },
+  { value: ExportFormat.XResources, label: "XResources" },
+];
 
 export function exportToJson(recipe: Recipe): string {
   const cereals = prepare(recipe);

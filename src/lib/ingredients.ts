@@ -1,4 +1,5 @@
 import { clamp } from "$lib/math";
+import { type SelectOption } from "./selectOptions";
 
 export enum MilkAmount {
   None,
@@ -59,11 +60,6 @@ export const validationRules = {
     minValue: MilkAmount.None,
     maxValue: MilkAmount.Cup,
   },
-};
-
-export type SelectOption = {
-  value: number;
-  label: string;
 };
 
 export const milkSelectOptions: SelectOption[] = [
