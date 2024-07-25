@@ -1,12 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { dev } from "$app/environment";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
   import Slider from "./Slider.svelte";
   import Select from "./Select.svelte";
-  import DropdownButton from "./DropdownButton.svelte";
   import Cereal from "./Cereal.svelte";
   import Terminal from "./Terminal.svelte";
   import Export from "./Export.svelte";
@@ -120,7 +118,6 @@
 
       <div class="buttons">
         <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
-        <DropdownButton id="export-dropdown" params={queryString} />
         <button type="submit" class="button primary">
           <ExternalLinkIcon size="20" /> Save
         </button>
@@ -141,9 +138,7 @@
 
     <Terminal />
 
-    {#if dev}
-      <Export {recipe} />
-    {/if}
+    <Export {recipe} />
 
     <Footer />
   </main>

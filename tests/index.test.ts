@@ -127,8 +127,10 @@ test.describe("saving", () => {
 });
 
 test.describe("exporting", () => {
-  test.skip("page has export widget", async ({ page }) => {
+  test("page has export widget", async ({ page }) => {
     const exportWidget = page.getByRole("region", { name: "Export" });
+    const exportSnippet = exportWidget.getByRole("code");
     await expect(exportWidget).toBeVisible();
+    await expect(exportSnippet).toBeVisible();
   });
 });
