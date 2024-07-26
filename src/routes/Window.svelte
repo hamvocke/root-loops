@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .window-decoration {

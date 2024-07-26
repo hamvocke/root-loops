@@ -77,7 +77,7 @@
 
 <style>
   .content {
-    background: color-mix(in hsl, var(--color-slate-300) 60%, transparent);
+    background: color-mix(in hsl, var(--color-slate-200) 60%, transparent);
     border-top: 1px solid var(--color-slate-100);
     padding: 2rem;
     font-size: 1rem;
@@ -104,7 +104,7 @@
   .export-snippet {
     margin: 0;
     background: var(--root-loops-background);
-    padding: 1rem;
+    padding: 0 1rem;
     border-top: 1px solid var(--color-slate-050);
     position: relative;
   }
@@ -114,7 +114,8 @@
     font-size: 14px;
     line-height: 1.25rem;
     color: var(--root-loops-foreground);
-    overflow-x: auto;
+    overflow: auto;
+    max-height: 400px;
 
     @media screen and (min-width: 768px) {
       font-size: 16px;

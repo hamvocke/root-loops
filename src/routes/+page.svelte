@@ -126,7 +126,7 @@
       </div>
     </form>
 
-    <section class="bowl" aria-label="Cereal Bowl">
+    <section class="bowl feature" aria-label="Cereal Bowl">
       <div class="glow"></div>
       <div class="bowl-content glass-box">
         <div class="milk" style={calculateMilkHeight(recipe.milkAmount)}></div>
@@ -138,19 +138,47 @@
       </div>
     </section>
 
-    <Terminal />
-
-    <Export {recipe} />
-
-    <Footer />
+    <div class="loops-background full">
+      <div class="content">
+        <Terminal />
+        <Export {recipe} />
+        <Footer />
+      </div>
+    </div>
   </main>
 </div>
 
 <style>
   main {
-    margin: auto;
-    width: min(calc(100% - 2rem), 1200px);
+    --gap: clamp(1rem, 6vw, 3rem);
+    --full: minmax(var(--gap), 1fr);
+    --content: min(1000px, 100% - var(--gap) * 2);
+    --feature: minmax(0, 5rem);
+
+    display: grid;
+    grid-template-columns:
+      [full-start] var(--full)
+      [feature-start] var(--feature)
+      [content-start] var(--content) [content-end]
+      var(--feature) [feature-end]
+      var(--full) [full-end];
     accent-color: var(--root-loops-ansi-red);
+  }
+
+  main > *,
+  .content,
+  .full .content {
+    grid-column: content;
+  }
+
+  main > .full {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  main > .feature {
+    grid-column: feature;
   }
 
   .toasts {
@@ -172,7 +200,6 @@
   }
 
   .input {
-    max-width: 900px;
     margin: 3rem auto 2rem auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,7 +216,7 @@
 
   .bowl {
     position: relative;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
   }
 
   .glow {
@@ -244,5 +271,88 @@
     justify-content: flex-end;
     align-items: center;
     gap: 1rem;
+  }
+
+  .loops-background {
+    --yellow-border: color-mix(in hsl, var(--root-loops-ansi-yellow) 95%, black);
+    --bright-yellow-border: color-mix(in hsl, var(--root-loops-ansi-bright-yellow) 90%, black);
+    --red-border: color-mix(in hsl, var(--root-loops-ansi-red) 95%, black);
+    --blue-border: color-mix(in hsl, var(--root-loops-ansi-blue) 94%, black);
+    --magenta-border: color-mix(in hsl, var(--root-loops-ansi-magenta) 95%, black);
+    --bright-cyan-border: color-mix(in hsl, var(--root-loops-ansi-bright-cyan) 95%, black);
+
+    background: red;
+    background: radial-gradient(
+        circle at 14% 44%,
+        transparent 0,
+        transparent 40px,
+        var(--red-border) 41px,
+        var(--red-border) 44px,
+        var(--root-loops-ansi-red) 45px,
+        var(--root-loops-ansi-red) 120px,
+        var(--red-border) 121px,
+        var(--red-border) 124px,
+        transparent 125px
+      ),
+      radial-gradient(
+        circle at 91% 9%,
+        transparent 0,
+        transparent 30px,
+        var(--blue-border) 31px,
+        var(--blue-border) 34px,
+        var(--root-loops-ansi-blue) 35px,
+        var(--root-loops-ansi-blue) 90px,
+        var(--blue-border) 91px,
+        var(--blue-border) 94px,
+        transparent 95px
+      ),
+      radial-gradient(
+        circle at 84% 49%,
+        transparent 0,
+        transparent 40px,
+        var(--bright-cyan-border) 41px,
+        var(--bright-cyan-border) 44px,
+        var(--root-loops-ansi-bright-cyan) 45px,
+        var(--root-loops-ansi-bright-cyan) 130px,
+        var(--bright-cyan-border) 131px,
+        var(--bright-cyan-border) 134px,
+        transparent 135px
+      ),
+      radial-gradient(
+        circle at 44% 44%,
+        transparent 0,
+        transparent 20px,
+        var(--bright-yellow-border) 21px,
+        var(--bright-yellow-border) 24px,
+        var(--root-loops-ansi-bright-yellow) 25px,
+        var(--root-loops-ansi-bright-yellow) 70px,
+        var(--bright-yellow-border) 71px,
+        var(--bright-yellow-border) 74px,
+        transparent 75px
+      ),
+      radial-gradient(
+        circle at 94% 80%,
+        transparent 0,
+        transparent 30px,
+        var(--magenta-border) 31px,
+        var(--magenta-border) 34px,
+        var(--root-loops-ansi-magenta) 35px,
+        var(--root-loops-ansi-magenta) 90px,
+        var(--magenta-border) 91px,
+        var(--magenta-border) 94px,
+        transparent 95px
+      ),
+      radial-gradient(
+        circle at 10% 90%,
+        transparent 0,
+        transparent 30px,
+        var(--yellow-border) 31px,
+        var(--yellow-border) 34px,
+        var(--root-loops-ansi-yellow) 35px,
+        var(--root-loops-ansi-yellow) 90px,
+        var(--yellow-border) 91px,
+        var(--yellow-border) 94px,
+        transparent 95px
+      );
   }
 </style>
