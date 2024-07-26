@@ -117,7 +117,9 @@
       </div>
 
       <div class="buttons">
-        <a class="button plain" href="/help"><HelpCircleIcon size="20" /> Help</a>
+        <a class="button plain" href="/help" data-sveltekit-replacestate="false"
+          ><HelpCircleIcon size="20" /> Help</a
+        >
         <button type="submit" class="button primary">
           <ExternalLinkIcon size="20" /> Save
         </button>
