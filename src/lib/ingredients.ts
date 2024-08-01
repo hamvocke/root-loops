@@ -199,7 +199,7 @@ export function toQueryString(recipe: Recipe): string {
 
 export function fromQueryString(searchParams: URLSearchParams): Recipe {
   if (searchParams.size === 0) {
-    return defaultRecipe;
+    return structuredClone(defaultRecipe);
   }
 
   return {

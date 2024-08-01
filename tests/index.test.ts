@@ -1,3 +1,4 @@
+import { defaultRecipe } from "$lib/ingredients";
 import { expect, test, type Page } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
@@ -114,7 +115,7 @@ test.describe("terminal", () => {
   });
 });
 
-test.describe("saving", () => {
+test.describe("saving and resetting", () => {
   test("clicking 'save' button stores state in URL", async ({ page }) => {
     expect(page.url()).toBe("http://localhost:4173/");
 
@@ -123,6 +124,34 @@ test.describe("saving", () => {
     expect(page.url()).toBe(
       "http://localhost:4173/?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0",
     );
+  });
+
+  test("clicking 'reset' button without saved recipe restores default recipe", async ({ page }) => {
+    const sugarSlider = page.getByRole("slider", { name: "Sugar" });
+    expect(sugarSlider).toHaveValue(`${defaultRecipe.sugar}`);
+
+    await sugarSlider.press("ArrowRight");
+    await expect(sugarSlider).toHaveValue(`${defaultRecipe.sugar + 1}`);
+
+    await page.getByRole("button", { name: "Reset" }).click();
+
+    await expect(sugarSlider).toHaveValue(`${defaultRecipe.sugar}`);
+  });
+
+  test("clicking 'reset' button with a saved recipe restores previously saved recipe", async ({
+    page,
+  }) => {
+    const sugarSlider = page.getByRole("slider", { name: "Sugar" });
+    await sugarSlider.press("ArrowRight");
+    await page.getByRole("button", { name: "Save" }).click();
+
+    await sugarSlider.press("ArrowRight");
+    await sugarSlider.press("ArrowRight");
+    await expect(sugarSlider).toHaveValue(`${defaultRecipe.sugar + 3}`);
+
+    await page.getByRole("button", { name: "Reset" }).click();
+
+    await expect(sugarSlider).toHaveValue(`${defaultRecipe.sugar + 1}`);
   });
 });
 
