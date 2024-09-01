@@ -79,6 +79,16 @@ describe("Export component", () => {
 
     expect(code).toHaveTextContent(`! Copy the configuration below to your ~/.Xresources file`);
   });
+
+  test("generates Kitty snippet when chosing Kitty option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.Kitty } });
+
+    expect(code).toHaveTextContent(`# ~/.config/kitty/kitty.conf file`);
+  });
 });
 
 // testing-library offers a better way to interact with the clipboard, but this seems good enough

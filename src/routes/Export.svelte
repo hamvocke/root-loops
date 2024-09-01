@@ -5,6 +5,7 @@
     exportToWindowsTerminal,
     exportToAlacritty,
     exportToXresources,
+    exportToKitty,
     exportSelectOptions,
   } from "$lib/export";
   import type { Recipe } from "$lib/ingredients";
@@ -31,6 +32,8 @@
         return exportToAlacritty(recipe);
       case ExportFormat.XResources:
         return exportToXresources(recipe);
+      case ExportFormat.Kitty:
+        return exportToKitty(recipe);
       default:
         return exportToJson(recipe);
     }

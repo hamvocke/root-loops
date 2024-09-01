@@ -4,6 +4,7 @@ import {
   exportToJson,
   exportToWindowsTerminal,
   exportToXresources,
+  exportToKitty,
 } from "$lib/export";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
@@ -158,6 +159,94 @@ white = '#1e222d'
 `;
 
       expect(config).toBe(expected);
+    });
+
+    describe("to Kitty", () => {
+      it("generates conf format", () => {
+        const config = exportToKitty(someRecipe);
+        // prettier-ignore
+        const expected = `
+# Copy the configuration below and add it to your
+# ~/.config/kitty/kitty.conf file
+
+## name:   Root Loops
+## blurb:  Terminal color schemes for cereal lovers
+## url:    https://rootloops.sh
+
+# The basic colors
+background              #dfe2eb
+foreground              #1e222d
+selection_background    #1e222d
+selection_foreground    #dfe2eb
+
+# Cursor colors
+cursor_text_color       #dfe2eb
+cursor                  #565d73
+
+# URL underline color when hovering with mouse
+url_color               #5f5946
+
+# Kitty window border colors
+active_border_color     #565d73
+inactive_border_color   #a3abc1
+bell_border_color       #55403c
+
+# OS Window titlebar colors
+wayland_titlebar_color system
+macos_titlebar_color system
+
+# Tab bar colors
+active_tab_foreground   #1e222d
+active_tab_background   #a3abc1
+inactive_tab_foreground #565d73
+inactive_tab_background #a3abc1
+tab_bar_background      #dfe2eb
+
+# Colors for marks (marked text in the terminal)
+mark1_foreground #dfe2eb
+mark1_background #6b524e
+mark2_foreground #dfe2eb
+mark2_background #5f5946
+mark3_foreground #dfe2eb
+mark3_background #4d5e50
+
+# The 16 terminal colors
+
+# black
+color0 #dfe2eb
+color8 #a3abc1
+
+# red
+color1 #55403c
+color9 #6b524e
+
+# green
+color2  #3c4a3e
+color10 #4d5e50
+
+# yellow
+color3  #4b4536
+color11 #5f5946
+
+# blue
+color4  #3f4557
+color12 #51586e
+
+# magenta
+color5  #50404e
+color13 #655263
+
+# cyan
+color6  #374a4d
+color14 #475e62
+
+# white
+color7  #565d73
+color15 #1e222d
+`;
+
+        expect(config).toBe(expected);
+      });
     });
   });
 });
