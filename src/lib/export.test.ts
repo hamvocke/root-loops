@@ -5,6 +5,7 @@ import {
   exportToWindowsTerminal,
   exportToXresources,
   exportToKitty,
+  exportToWezTerm,
 } from "$lib/export";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
@@ -169,9 +170,8 @@ white = '#1e222d'
 # Copy the configuration below and add it to your
 # ~/.config/kitty/kitty.conf file
 
-## name:   Root Loops
-## blurb:  Terminal color schemes for cereal lovers
-## url:    https://rootloops.sh
+## Root Loops color scheme
+## via https://rootloops.sh
 
 # The basic colors
 background              #dfe2eb
@@ -243,6 +243,54 @@ color14 #475e62
 # white
 color7  #565d73
 color15 #1e222d
+`;
+
+        expect(config).toBe(expected);
+      });
+    });
+
+    describe("to WezTerm", () => {
+      it("generates JSON format", () => {
+        const config = exportToWezTerm(someRecipe);
+        // prettier-ignore
+        const expected = `
+-- Copy the configuration below and add it to your
+-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
+
+-- NOTE: make sure to *not* use any config.color_scheme option
+--       if you want to define your own root loops color scheme
+
+-- Root Loops color scheme
+-- via https://rootloops.sh
+config.colors = {
+  foreground = "#1e222d",
+  background = "#dfe2eb",
+  cursor_bg = "#565d73",
+  cursor_border = "#1e222d",
+  cursor_fg = "#dfe2eb",
+  selection_bg = "#1e222d",
+  selection_fg = "#dfe2eb",
+  ansi = {
+    "#dfe2eb",
+    "#55403c",
+    "#3c4a3e",
+    "#4b4536",
+    "#3f4557",
+    "#50404e",
+    "#374a4d",
+    "#565d73"
+  },
+  brights = {
+    "#a3abc1",
+    "#6b524e",
+    "#4d5e50",
+    "#5f5946",
+    "#51586e",
+    "#655263",
+    "#475e62",
+    "#1e222d"
+  },
+}
 `;
 
         expect(config).toBe(expected);

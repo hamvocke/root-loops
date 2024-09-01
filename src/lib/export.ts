@@ -8,6 +8,7 @@ export enum ExportFormat {
   Alacritty = 2,
   XResources = 3,
   Kitty = 4,
+  WezTerm = 5,
 }
 
 export const exportSelectOptions: SelectOption[] = [
@@ -16,6 +17,7 @@ export const exportSelectOptions: SelectOption[] = [
   { value: ExportFormat.Alacritty, label: "Alacritty" },
   { value: ExportFormat.XResources, label: "XResources" },
   { value: ExportFormat.Kitty, label: "Kitty" },
+  { value: ExportFormat.WezTerm, label: "WezTerm" },
 ];
 
 export function exportToJson(recipe: Recipe): string {
@@ -154,9 +156,8 @@ export function exportToKitty(recipe: Recipe): string {
 # Copy the configuration below and add it to your
 # ~/.config/kitty/kitty.conf file
 
-## name:   Root Loops
-## blurb:  Terminal color schemes for cereal lovers
-## url:    https://rootloops.sh
+## Root Loops color scheme
+## via https://rootloops.sh
 
 # The basic colors
 background              ${cereals.black.color_hex}
@@ -228,5 +229,48 @@ color14 ${cereals.brightCyan.color_hex}
 # white
 color7  ${cereals.white.color_hex}
 color15 ${cereals.brightWhite.color_hex}
+`;
+}
+
+export function exportToWezTerm(recipe: Recipe): string {
+  const cereals = prepare(recipe);
+  return `
+-- Copy the configuration below and add it to your
+-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
+
+-- NOTE: make sure to *not* use any config.color_scheme option
+--       if you want to define your own root loops color scheme
+
+-- Root Loops color scheme
+-- via https://rootloops.sh
+config.colors = {
+  foreground = "${cereals.brightWhite.color_hex}",
+  background = "${cereals.black.color_hex}",
+  cursor_bg = "${cereals.white.color_hex}",
+  cursor_border = "${cereals.brightWhite.color_hex}",
+  cursor_fg = "${cereals.black.color_hex}",
+  selection_bg = "${cereals.brightWhite.color_hex}",
+  selection_fg = "${cereals.black.color_hex}",
+  ansi = {
+    "${cereals.black.color_hex}",
+    "${cereals.red.color_hex}",
+    "${cereals.green.color_hex}",
+    "${cereals.yellow.color_hex}",
+    "${cereals.blue.color_hex}",
+    "${cereals.magenta.color_hex}",
+    "${cereals.cyan.color_hex}",
+    "${cereals.white.color_hex}"
+  },
+  brights = {
+    "${cereals.brightBlack.color_hex}",
+    "${cereals.brightRed.color_hex}",
+    "${cereals.brightGreen.color_hex}",
+    "${cereals.brightYellow.color_hex}",
+    "${cereals.brightBlue.color_hex}",
+    "${cereals.brightMagenta.color_hex}",
+    "${cereals.brightCyan.color_hex}",
+    "${cereals.brightWhite.color_hex}"
+  },
+}
 `;
 }
