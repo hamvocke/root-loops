@@ -104,6 +104,14 @@ button {
   box-shadow: 0 0.25rem 1rem #0002;
   backdrop-filter: blur(16px);
   overflow: hidden;
+
+  &.gradient-bg {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in hsl, var(--color-slate-100) 5%, transparent),
+      color-mix(in hsl, var(--color-slate-100) 60%, transparent)
+    );
+  }
 }
 
 .button {
