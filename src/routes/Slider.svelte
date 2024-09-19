@@ -19,7 +19,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
+    justify-content: space-between;
+    gap: 0.3rem;
   }
 
   .inputs {
