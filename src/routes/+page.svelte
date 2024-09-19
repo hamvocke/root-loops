@@ -155,7 +155,7 @@
 
 <style>
   main {
-    --gap: clamp(1rem, 6vw, 3rem);
+    --gap: clamp(0.2rem, 2vw, 1rem);
     --full: minmax(var(--gap), 1fr);
     --content: min(1000px, 100% - var(--gap) * 2);
     --feature: minmax(0, 5rem);
