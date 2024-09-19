@@ -29,8 +29,8 @@
     outline: 0.3rem solid var(--color-red-800);
     border-top: none;
     box-shadow:
-      0 0.5rem 1rem #0004,
-      0 0.6rem 1.5rem #0001;
+      0 0.5rem 1rem #0006,
+      0 0.6rem 1.5rem #0004;
 
     &:focus-visible {
       outline-offset: 8px;
