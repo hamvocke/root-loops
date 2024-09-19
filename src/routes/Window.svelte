@@ -25,13 +25,13 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .window-decoration {
     font-weight: bold;
     text-shadow: 0 1px 0 var(--color-slate-050);
-    color: var(--color-slate-600);
+    color: var(--color-slate-800);
     padding: 0.75rem 0.5rem;
     border-bottom: 1px solid var(--color-slate-300);
     display: flex;
