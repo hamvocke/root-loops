@@ -106,7 +106,7 @@
     padding: 0.5rem 0.5rem;
     font-size: 0.9rem;
     background: color-mix(in hsl, var(--color-slate-200) 40%, transparent);
-    color: var(--color-slate-700);
+    color: var(--color-slate-800);
     display: block;
     flex: 1 0 auto;
     border-right: none;
