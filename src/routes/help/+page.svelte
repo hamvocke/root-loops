@@ -18,8 +18,8 @@
 <main style={cssColors}>
   <Header />
 
-  <a href="/" class="back-link">&lt; Go back</a>
   <div class="info glass-box">
+    <a href="/" class="back-link">&lt; Go back</a>
     <h2 class="large">Your own terminal color scheme, as simple as making a bowl of cereal</h2>
     <p class="lead">
       Root Loops helps you generate tasty color schemes that you can use for terminal emulators,
@@ -166,6 +166,13 @@
 
     <h2>What's up with all the cereal puns?</h2>
     <p>I think it's fun ¯\_(ツ)_/¯</p>
+
+    <h2>Credits</h2>
+    <p>
+      Thank you to Alex Tretina for the plaid background image, found via <a
+        href="http://thepatternlibrary.com/#plaid">thepatternlibrary.com</a
+      >
+    </p>
   </div>
 </main>
 
@@ -176,7 +183,9 @@
   }
 
   .back-link {
+    display: inline-block;
     margin-left: 0.5rem;
+    margin-bottom: 2rem;
     font-weight: bold;
   }
 
@@ -191,7 +200,7 @@
   }
 
   h2 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
     color: var(--color-slate-700);
