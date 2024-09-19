@@ -32,12 +32,29 @@
   }
 
   select {
-    padding: 0.3rem 0.6rem;
+    padding: 0.5rem 0.6rem;
     font-size: 1rem;
-    background: color-mix(in hsl, var(--color-slate-050) 30%, transparent);
+    color: var(--color-slate-900);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in hsl, var(--color-slate-050) 10%, transparent),
+      color-mix(in hsl, var(--color-slate-050) 80%, transparent)
+    );
     border: 1px solid var(--color-slate-050);
-    box-shadow: 0 0.25rem 0.5rem #0001;
+    box-shadow:
+      0 1px 1px #0003,
+      0 0.1rem 0.25rem #0001,
+      0 0.2rem 0.5rem #0001;
     border-radius: 0.2rem;
+
+    &:hover,
+    &:focus-visible {
+      background: linear-gradient(
+        to bottom,
+        color-mix(in hsl, var(--color-slate-050) 50%, transparent),
+        color-mix(in hsl, var(--color-slate-050) 70%, transparent)
+      );
+    }
   }
 
   select:focus {
