@@ -121,19 +121,28 @@ button {
   align-items: center;
   padding: 0.6rem 0.8rem;
   border-radius: var(--border-radius);
-  background: var(--color-slate-200);
   font-weight: bold;
-  box-shadow: 0 0.25rem 0.3rem #0002;
-  cursor: pointer;
-  transition: all 0.1s ease-out;
-  background: color-mix(in hsl, var(--color-slate-100) 40%, transparent);
+  color: var(--color-slate-900);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in hsl, var(--color-slate-050) 10%, transparent),
+    color-mix(in hsl, var(--color-slate-050) 80%, transparent)
+  );
   border: 1px solid var(--color-slate-050);
-  color: var(--color-slate-800);
+  box-shadow:
+    0 1px 1px #0003,
+    0 0.1rem 0.25rem #0001,
+    0 0.2rem 0.5rem #0001;
+  cursor: pointer;
   text-decoration: none;
 
   &:hover,
   &:focus-visible {
-    background: var(--color-slate-200);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in hsl, var(--color-slate-050) 70%, transparent),
+      color-mix(in hsl, var(--color-slate-050) 90%, transparent)
+    );
     text-decoration: none;
   }
 
