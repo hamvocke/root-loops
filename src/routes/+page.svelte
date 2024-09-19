@@ -76,7 +76,7 @@
   </div>
 
   <main>
-    <form on:submit={saveUrl} data-sveltekit-replacestate>
+    <form on:submit={saveUrl} data-sveltekit-replacestate class="glass-box input-box gradient-bg">
       <div class="input">
         <Slider
           label="Sugar"
@@ -204,8 +204,13 @@
     gap: 0.5rem;
   }
 
+  .input-box {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
   .input {
-    margin: 3rem auto 2rem auto;
+    margin-bottom: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
@@ -219,9 +224,16 @@
     }
   }
 
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .bowl {
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .glow {
@@ -268,96 +280,5 @@
     grid-template-rows: auto;
     grid-auto-flow: row;
     gap: 1rem;
-  }
-
-  .buttons {
-    display: flex;
-    margin-bottom: 2rem;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .loops-background {
-    --yellow-border: color-mix(in hsl, var(--root-loops-ansi-yellow) 95%, black);
-    --bright-yellow-border: color-mix(in hsl, var(--root-loops-ansi-bright-yellow) 90%, black);
-    --red-border: color-mix(in hsl, var(--root-loops-ansi-red) 95%, black);
-    --blue-border: color-mix(in hsl, var(--root-loops-ansi-blue) 94%, black);
-    --magenta-border: color-mix(in hsl, var(--root-loops-ansi-magenta) 95%, black);
-    --bright-cyan-border: color-mix(in hsl, var(--root-loops-ansi-bright-cyan) 95%, black);
-
-    background: red;
-    background: radial-gradient(
-        circle at 14% 44%,
-        transparent 0,
-        transparent 40px,
-        var(--red-border) 41px,
-        var(--red-border) 44px,
-        var(--root-loops-ansi-red) 45px,
-        var(--root-loops-ansi-red) 120px,
-        var(--red-border) 121px,
-        var(--red-border) 124px,
-        transparent 125px
-      ),
-      radial-gradient(
-        circle at 91% 9%,
-        transparent 0,
-        transparent 30px,
-        var(--blue-border) 31px,
-        var(--blue-border) 34px,
-        var(--root-loops-ansi-blue) 35px,
-        var(--root-loops-ansi-blue) 90px,
-        var(--blue-border) 91px,
-        var(--blue-border) 94px,
-        transparent 95px
-      ),
-      radial-gradient(
-        circle at 84% 49%,
-        transparent 0,
-        transparent 40px,
-        var(--bright-cyan-border) 41px,
-        var(--bright-cyan-border) 44px,
-        var(--root-loops-ansi-bright-cyan) 45px,
-        var(--root-loops-ansi-bright-cyan) 130px,
-        var(--bright-cyan-border) 131px,
-        var(--bright-cyan-border) 134px,
-        transparent 135px
-      ),
-      radial-gradient(
-        circle at 44% 44%,
-        transparent 0,
-        transparent 20px,
-        var(--bright-yellow-border) 21px,
-        var(--bright-yellow-border) 24px,
-        var(--root-loops-ansi-bright-yellow) 25px,
-        var(--root-loops-ansi-bright-yellow) 70px,
-        var(--bright-yellow-border) 71px,
-        var(--bright-yellow-border) 74px,
-        transparent 75px
-      ),
-      radial-gradient(
-        circle at 94% 80%,
-        transparent 0,
-        transparent 30px,
-        var(--magenta-border) 31px,
-        var(--magenta-border) 34px,
-        var(--root-loops-ansi-magenta) 35px,
-        var(--root-loops-ansi-magenta) 90px,
-        var(--magenta-border) 91px,
-        var(--magenta-border) 94px,
-        transparent 95px
-      ),
-      radial-gradient(
-        circle at 10% 90%,
-        transparent 0,
-        transparent 30px,
-        var(--yellow-border) 31px,
-        var(--yellow-border) 34px,
-        var(--root-loops-ansi-yellow) 35px,
-        var(--root-loops-ansi-yellow) 90px,
-        var(--yellow-border) 91px,
-        var(--yellow-border) 94px,
-        transparent 95px
-      );
   }
 </style>
