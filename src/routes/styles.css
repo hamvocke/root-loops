@@ -60,10 +60,7 @@ body {
   min-height: 100%;
   margin: 0;
   font-weight: 400;
-  background: radial-gradient(75% 75% at 90% 30%, var(--color-slate-100) 0%, transparent 50%),
-    linear-gradient(to bottom, var(--color-slate-100) 0%, var(--color-slate-200) 10%);
-  background-repeat: no-repeat;
-  background-color: var(--color-slate-200);
+  background: url("$lib/assets/plaid.jpg") repeat;
 }
 
 p {
