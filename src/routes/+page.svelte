@@ -193,11 +193,11 @@
   }
 
   .notification {
-    background: var(--color-emerald-400);
+    background: var(--color-emerald-300);
     padding: 0.5rem 0.75rem;
     color: var(--color-emerald-950);
     border-radius: 0.5rem;
-    border: 2px solid var(--color-emerald-500);
+    border: 2px solid var(--color-emerald-400);
     box-shadow: 0 0.25rem 0.5rem #0003;
     display: flex;
     align-items: center;
@@ -205,8 +205,12 @@
   }
 
   .input-box {
-    padding: 1.5rem;
+    padding: 1rem;
     margin-bottom: 2rem;
+
+    @media screen and (min-width: 768px) {
+      padding: 1.5rem;
+    }
   }
 
   .input {
