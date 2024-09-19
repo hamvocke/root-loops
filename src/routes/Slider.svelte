@@ -28,6 +28,17 @@
     width: 100%;
   }
 
+  output {
+    background: var(--color-slate-100);
+    border: 1px solid var(--color-slate-050);
+    color: var(--color-slate-800);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    box-shadow:
+      0 1px 1px #0002,
+      0 0.1rem 0.25rem #0001;
+  }
+
   label {
     font-weight: bold;
   }
