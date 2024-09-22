@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SelectOption } from "$lib/ingredients";
+  import type { SelectOption } from "$lib/selectOptions";
 
   export let options: SelectOption[];
   export let value: number;
