@@ -4,7 +4,7 @@ import { describe, expect, test, vi } from "vitest";
 
 import Export from "./Export.svelte";
 import { defaultRecipe } from "$lib/ingredients";
-import { ExportFormat } from "$lib/export";
+import { ExportFormat } from "$lib/exporters/exportOptions";
 
 describe("Export component", () => {
   test("export region shows code", () => {

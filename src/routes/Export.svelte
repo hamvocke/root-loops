@@ -1,14 +1,13 @@
 <script lang="ts">
   import {
-    ExportFormat,
     exportToJson,
     exportToWindowsTerminal,
     exportToAlacritty,
     exportToXresources,
     exportToKitty,
     exportToWezTerm,
-    exportSelectOptions,
   } from "$lib/export";
+  import { ExportFormat, exportSelectOptions } from "$lib/exporters/exportOptions";
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
   import Select from "./Select.svelte";
