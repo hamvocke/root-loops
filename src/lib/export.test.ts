@@ -6,6 +6,7 @@ import {
   exportToXresources,
   exportToKitty,
   exportToWezTerm,
+  exportToHelix,
 } from "$lib/export";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
@@ -161,12 +162,13 @@ white = '#1e222d'
 
       expect(config).toBe(expected);
     });
+  });
 
-    describe("to Kitty", () => {
-      it("generates conf format", () => {
-        const config = exportToKitty(someRecipe);
-        // prettier-ignore
-        const expected = `
+  describe("to Kitty", () => {
+    it("generates conf format", () => {
+      const config = exportToKitty(someRecipe);
+      // prettier-ignore
+      const expected = `
 # Copy the configuration below and add it to your
 # ~/.config/kitty/kitty.conf file
 
@@ -245,15 +247,15 @@ color7  #565d73
 color15 #1e222d
 `;
 
-        expect(config).toBe(expected);
-      });
+      expect(config).toBe(expected);
     });
+  });
 
-    describe("to WezTerm", () => {
-      it("generates JSON format", () => {
-        const config = exportToWezTerm(someRecipe);
-        // prettier-ignore
-        const expected = `
+  describe("to WezTerm", () => {
+    it("generates JSON format", () => {
+      const config = exportToWezTerm(someRecipe);
+      // prettier-ignore
+      const expected = `
 -- Copy the configuration below and add it to your
 -- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
 
@@ -293,8 +295,123 @@ config.colors = {
 }
 `;
 
-        expect(config).toBe(expected);
-      });
+      expect(config).toBe(expected);
+    });
+  });
+
+  describe("to Helix", () => {
+    it("generates TOML format", () => {
+      const config = exportToHelix(someRecipe);
+      // prettier-ignore
+      const expected = `
+# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
+
+
+# Root Loops (https://rootloops.sh)
+
+"ui.background" = { fg = "white"}
+"ui.background.separator" = { fg = "gray" }
+"ui.text" = { fg = "light-gray" }
+"ui.text.focus" = { fg = "white" }
+"ui.menu" = { fg = "white" }
+"ui.menu.selected" = { modifiers = ["reversed"] }
+"ui.menu.scroll" = { fg = "light-gray" }
+"ui.linenr" = { fg = "light-gray" }
+"ui.linenr.selected" = { fg = "white",  modifiers = ["bold"] }
+"ui.popup" = { fg = "white" }
+"ui.window" = { fg = "gray" }
+"ui.selection" = { bg = "gray" }
+"comment" = "light-gray"
+"ui.statusline" = { fg = "white" }
+"ui.statusline.inactive" = { fg = "gray" }
+"ui.statusline.normal" = { fg = "black", bg = "blue" }
+"ui.statusline.insert" = { fg = "black", bg = "green" }
+"ui.statusline.select" = { fg = "black", bg = "magenta" }
+"ui.help" = { fg = "light-gray" }
+"ui.cursor" = { modifiers = ["reversed"] }
+"ui.cursor.match" = { fg = "light-yellow", underline = { color = "light-yellow", style = "line" } }
+"ui.cursor.primary" = { modifiers = ["reversed", "slow_blink"] }
+"ui.cursor.secondary" = { modifiers = ["reversed"] }
+"ui.cursorline.primary" = { underline = { color = "light-gray", style = "line" } }
+"ui.cursorline.secondary" = { underline = { color = "light-gray", style = "line" } }
+"ui.cursorcolumn.primary" = { bg = "gray" }
+"ui.cursorcolumn.secondary" = { bg = "gray" }
+"ui.virtual.ruler" = { bg = "gray" }
+"ui.virtual.whitespace" = "gray"
+"ui.virtual.indent-guide" = "gray"
+"ui.virtual.inlay-hint" = { fg = "white", bg = "gray" }
+"ui.virtual.inlay-hint.parameter" = { fg = "white", bg = "gray"}
+"ui.virtual.inlay-hint.type" = { fg = "white", bg = "gray"}
+"ui.virtual.wrap" = "gray"
+"ui.virtual.jump-label" = { fg = "blue", modifiers = ["bold", "underlined"] }
+
+"variable" = "light-red"
+"constant.numeric" = "yellow"
+"constant" = "yellow"
+"attribute" = "yellow"
+"type" = "light-yellow"
+"string"  = "light-green"
+"variable.other.member" = "green"
+"constant.character.escape" = "light-cyan"
+"function" = "light-blue"
+"constructor" = "light-blue"
+"special" = "light-blue"
+"keyword" = "light-magenta"
+"label" = "light-magenta"
+"namespace" = "light-magenta"
+
+"markup.heading" = "light-blue"
+"markup.list" = "light-red"
+"markup.bold" = { fg = "light-yellow", modifiers = ["bold"] }
+"markup.italic" = { fg = "light-magenta", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "yellow", underline = { color = "yellow", style = "line"} }
+"markup.link.text" = "light-red"
+"markup.quote" = "light-cyan"
+"markup.raw" = "green"
+"markup.normal" = { fg = "blue" }
+"markup.insert" = { fg = "green" }
+"markup.select" = { fg = "magenta" }
+
+"diff.plus" = "light-green"
+"diff.delta" = "light-blue"
+"diff.delta.moved" = "blue"
+"diff.minus" = "light-red"
+
+"ui.gutter" = "gray"
+"info" = "light-blue"
+"hint" = "light-gray"
+"debug" = "light-gray"
+"warning" = "light-yellow"
+"error" = "light-red"
+
+"diagnostic.info" = { underline = { color = "light-blue", style = "dotted" } }
+"diagnostic.hint" = { underline = { color = "light-gray", style = "double_line" } }
+"diagnostic.debug" = { underline ={ color ="light-gray", style = "dashed" } }
+"diagnostic.warning" = { underline = { color = "light-yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color ="light-red", style = "curl" } }
+
+[palette]
+black = "#dfe2eb"
+red = "#55403c"
+green = "#3c4a3e"
+yellow = "#4b4536"
+blue = "#3f4557"
+magenta = "#50404e"
+cyan = "#374a4d"
+light-gray = "#565d73"
+
+gray = "#a3abc1"
+light-red = "#6b524e"
+light-green = "#4d5e50"
+light-yellow = "#5f5946"
+light-blue = "#51586e"
+light-magenta = "#655263"
+light-cyan = "#475e62"
+white = "#1e222d"
+`;
+
+      expect(config).toBe(expected);
     });
   });
 });
