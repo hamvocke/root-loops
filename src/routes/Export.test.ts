@@ -89,6 +89,28 @@ describe("Export component", () => {
 
     expect(code).toHaveTextContent(`# ~/.config/kitty/kitty.conf file`);
   });
+
+  test("generates WezTerm snippet when chosing WezTerm option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.WezTerm } });
+
+    expect(code).toHaveTextContent(`-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file`);
+  });
+
+  test("generates Helix snippet when chosing Helix option", async () => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: ExportFormat.Helix } });
+
+    expect(code).toHaveTextContent(
+      `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`,
+    );
+  });
 });
 
 // testing-library offers a better way to interact with the clipboard, but this seems good enough

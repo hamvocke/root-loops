@@ -8,6 +8,7 @@ export enum ExportFormat {
   Kitty = 4,
   WezTerm = 5,
   // Neovim = 6,
+  Helix = 7,
 }
 
 export const exportSelectOptions: SelectOption[] = [
@@ -18,4 +19,5 @@ export const exportSelectOptions: SelectOption[] = [
   { value: ExportFormat.Kitty, label: "Kitty", group: "Terminal Emulators" },
   { value: ExportFormat.WezTerm, label: "WezTerm", group: "Terminal Emulators" },
   // { value: ExportFormat.Neovim, label: "Neovim", group: "Editors" },
+  { value: ExportFormat.Helix, label: "Helix", group: "Editors" },
 ];

@@ -303,8 +303,7 @@ config.colors = {
     it("generates TOML format", () => {
       const config = exportToHelix(someRecipe);
       // prettier-ignore
-      const expected = `
-# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
+      const expected = `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
 
 
 # Root Loops (https://rootloops.sh)

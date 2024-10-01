@@ -6,6 +6,7 @@
     exportToXresources,
     exportToKitty,
     exportToWezTerm,
+    exportToHelix,
   } from "$lib/export";
   import { ExportFormat, exportSelectOptions } from "$lib/exporters/exportOptions";
   import type { Recipe } from "$lib/ingredients";
@@ -36,6 +37,8 @@
         return exportToKitty(recipe);
       case ExportFormat.WezTerm:
         return exportToWezTerm(recipe);
+      case ExportFormat.Helix:
+        return exportToHelix(recipe);
       default:
         return exportToJson(recipe);
     }
