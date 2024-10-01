@@ -40,76 +40,30 @@ describe("Export component", () => {
     expect(button).toHaveTextContent("Copied");
   });
 
-  test("generates json snippet when chosing JSON option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.JSON } });
-
-    expect(code).toHaveTextContent(`"source": "rootloops.sh",`);
-  });
-
-  test("generates windows terminal snippet when chosing windows terminal option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.WindowsTerminal } });
-
-    expect(code).toHaveTextContent(`"name": "Root Loops",`);
-  });
-
-  test("generates alacritty snippet when chosing alacritty option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.Alacritty } });
-
-    expect(code).toHaveTextContent(`# ~/.config/alacritty/alacritty.toml file`);
-  });
-
-  test("generates XResources snippet when chosing XResources option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.XResources } });
-
-    expect(code).toHaveTextContent(`! Copy the configuration below to your ~/.Xresources file`);
-  });
-
-  test("generates Kitty snippet when chosing Kitty option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.Kitty } });
-
-    expect(code).toHaveTextContent(`# ~/.config/kitty/kitty.conf file`);
-  });
-
-  test("generates WezTerm snippet when chosing WezTerm option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.WezTerm } });
-
-    expect(code).toHaveTextContent(`-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file`);
-  });
-
-  test("generates Helix snippet when chosing Helix option", async () => {
-    render(Export, { recipe: defaultRecipe });
-
-    const select = screen.getByRole("combobox");
-    const code = screen.getByRole("code");
-    await fireEvent.change(select, { target: { value: ExportFormat.Helix } });
-
-    expect(code).toHaveTextContent(
+  test.each([
+    ["JSON", ExportFormat.JSON, `"source": "rootloops.sh",`],
+    ["Windows Terminal", ExportFormat.WindowsTerminal, `"name": "Root Loops",`],
+    ["Alacritty", ExportFormat.Alacritty, `# ~/.config/alacritty/alacritty.toml file`],
+    [
+      "XResources",
+      ExportFormat.XResources,
+      `! Copy the configuration below to your ~/.Xresources file`,
+    ],
+    ["Kitty", ExportFormat.Kitty, `# ~/.config/kitty/kitty.conf file`],
+    ["WezTerm", ExportFormat.WezTerm, `-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file`],
+    [
+      "Helix",
+      ExportFormat.Helix,
       `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`,
-    );
+    ],
+  ])("generates %s snippet", async (_, format, expectedExportString) => {
+    render(Export, { recipe: defaultRecipe });
+
+    const select = screen.getByRole("combobox");
+    const code = screen.getByRole("code");
+    await fireEvent.change(select, { target: { value: format } });
+
+    expect(code).toHaveTextContent(expectedExportString);
   });
 });
 
