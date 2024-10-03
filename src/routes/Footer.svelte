@@ -36,7 +36,7 @@
     justify-content: space-between;
     align-items: center;
     width: min(900px, 100% - 2rem);
-    padding: 2rem 3rem 1rem 3rem;
+    padding: 2rem 0 1rem 0;
   }
 
   a {
