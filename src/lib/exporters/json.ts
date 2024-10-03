@@ -27,6 +27,28 @@ export function toJson(recipe: Recipe): string {
       brightCyan: cereals.brightCyan.color_hex,
       brightWhite: cereals.brightWhite.color_hex,
     },
+    hsl: {
+      background: cereals.black.color_hsl,
+      foreground: cereals.brightWhite.color_hsl,
+      text: cereals.black.color_hsl,
+      cursor: cereals.white.color_hsl,
+      black: cereals.black.color_hsl,
+      red: cereals.red.color_hsl,
+      green: cereals.green.color_hsl,
+      yellow: cereals.yellow.color_hsl,
+      blue: cereals.blue.color_hsl,
+      magenta: cereals.magenta.color_hsl,
+      cyan: cereals.cyan.color_hsl,
+      white: cereals.white.color_hsl,
+      brightBlack: cereals.brightBlack.color_hsl,
+      brightRed: cereals.brightRed.color_hsl,
+      brightGreen: cereals.brightGreen.color_hsl,
+      brightYellow: cereals.brightYellow.color_hsl,
+      brightBlue: cereals.brightBlue.color_hsl,
+      brightMagenta: cereals.brightMagenta.color_hsl,
+      brightCyan: cereals.brightCyan.color_hsl,
+      brightWhite: cereals.brightWhite.color_hsl,
+    },
   };
 
   return JSON.stringify(colors, null, 2);

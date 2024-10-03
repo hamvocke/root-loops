@@ -45,6 +45,28 @@ describe("export", () => {
           brightCyan: "#475e62",
           brightWhite: "#1e222d",
         },
+        hsl: {
+          background: "hsl(223.99, 22.31%, 89.84%)",
+          foreground: "hsl(224.61, 19.01%, 14.72%)",
+          text: "hsl(223.99, 22.31%, 89.84%)",
+          cursor: "hsl(224.54, 14.67%, 39.42%)",
+          black: "hsl(223.99, 22.31%, 89.84%)",
+          red: "hsl(9.05, 16.78%, 28.44%)",
+          green: "hsl(130.28, 10.55%, 26.25%)",
+          yellow: "hsl(43.69, 16.1%, 25.35%)",
+          blue: "hsl(224.58, 15.97%, 29.43%)",
+          magenta: "hsl(306.93, 11.22%, 28.16%)",
+          cyan: "hsl(189.28, 16.76%, 25.84%)",
+          white: "hsl(224.54, 14.67%, 39.42%)",
+          brightBlack: "hsl(224.23, 19.01%, 69.77%)",
+          brightRed: "hsl(9.06, 15.77%, 36.25%)",
+          brightGreen: "hsl(130.23, 9.89%, 33.61%)",
+          brightYellow: "hsl(43.69, 15.07%, 32.53%)",
+          brightBlue: "hsl(224.55, 14.95%, 37.41%)",
+          brightMagenta: "hsl(306.98, 10.5%, 35.91%)",
+          brightCyan: "hsl(189.29, 15.72%, 33.12%)",
+          brightWhite: "hsl(224.61, 19.01%, 14.72%)",
+        },
       };
 
       expect(config).toBe(JSON.stringify(expected, null, 2));
