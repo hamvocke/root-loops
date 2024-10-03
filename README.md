@@ -16,6 +16,8 @@ Beautiful terminal color schemes are a proven way to increase your productivity 
 
 ## Development
 
+You'll need node >= v21.0.0.
+
 Install dependencies via `npm install`.
 
 Start a development server:
