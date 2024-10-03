@@ -1,13 +1,11 @@
 import { describe, expect, it } from "vitest";
-import {
-  exportToAlacritty,
-  exportToJson,
-  exportToWindowsTerminal,
-  exportToXresources,
-  exportToKitty,
-  exportToWezTerm,
-  exportToHelix,
-} from "$lib/export";
+import { toAlacritty } from "./alacritty";
+import { toHelix } from "./helix";
+import { toJson } from "./json";
+import { toKitty } from "./kitty";
+import { toWezTerm } from "./wezterm";
+import { toWindowsTerminal } from "./windows-terminal";
+import { toXresources } from "./xresources";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
 describe("export", () => {
@@ -22,7 +20,7 @@ describe("export", () => {
 
   describe("to JSON", () => {
     it("generates JSON format", () => {
-      const config = exportToJson(someRecipe);
+      const config = toJson(someRecipe);
       const expected = {
         source: "rootloops.sh",
         hex: {
@@ -55,7 +53,7 @@ describe("export", () => {
 
   describe("to Windows Terminal", () => {
     it("generates JSON format", () => {
-      const config = exportToWindowsTerminal(someRecipe);
+      const config = toWindowsTerminal(someRecipe);
       const expected = {
         name: "Root Loops",
 
@@ -88,7 +86,7 @@ describe("export", () => {
 
   describe("to Alacritty", () => {
     it("generates TOML format", () => {
-      const config = exportToAlacritty(someRecipe);
+      const config = toAlacritty(someRecipe);
       // prettier-ignore
       const expected = `
 # Copy the configuration below and add it to your
@@ -132,7 +130,7 @@ white = '#1e222d'
 
   describe("to xterm", () => {
     it("generates Xresources format", () => {
-      const config = exportToXresources(someRecipe);
+      const config = toXresources(someRecipe);
       // prettier-ignore
       const expected = `
 ! Copy the configuration below to your ~/.Xresources file
@@ -166,7 +164,7 @@ white = '#1e222d'
 
   describe("to Kitty", () => {
     it("generates conf format", () => {
-      const config = exportToKitty(someRecipe);
+      const config = toKitty(someRecipe);
       // prettier-ignore
       const expected = `
 # Copy the configuration below and add it to your
@@ -253,7 +251,7 @@ color15 #1e222d
 
   describe("to WezTerm", () => {
     it("generates JSON format", () => {
-      const config = exportToWezTerm(someRecipe);
+      const config = toWezTerm(someRecipe);
       // prettier-ignore
       const expected = `
 -- Copy the configuration below and add it to your
@@ -301,7 +299,7 @@ config.colors = {
 
   describe("to Helix", () => {
     it("generates TOML format", () => {
-      const config = exportToHelix(someRecipe);
+      const config = toHelix(someRecipe);
       // prettier-ignore
       const expected = `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
 

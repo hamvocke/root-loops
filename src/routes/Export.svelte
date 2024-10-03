@@ -1,13 +1,13 @@
 <script lang="ts">
   import {
-    exportToJson,
-    exportToWindowsTerminal,
-    exportToAlacritty,
-    exportToXresources,
-    exportToKitty,
-    exportToWezTerm,
-    exportToHelix,
-  } from "$lib/export";
+    toAlacritty,
+    toHelix,
+    toJson,
+    toKitty,
+    toWezTerm,
+    toWindowsTerminal,
+    toXresources,
+  } from "$lib/exporters/";
   import { ExportFormat, exportSelectOptions } from "$lib/exporters/exportOptions";
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
@@ -26,21 +26,21 @@
   function generateExportSnippet(recipe: Recipe, selectedExportFormat: ExportFormat) {
     switch (selectedExportFormat) {
       case ExportFormat.JSON:
-        return exportToJson(recipe);
+        return toJson(recipe);
       case ExportFormat.WindowsTerminal:
-        return exportToWindowsTerminal(recipe);
+        return toWindowsTerminal(recipe);
       case ExportFormat.Alacritty:
-        return exportToAlacritty(recipe);
+        return toAlacritty(recipe);
       case ExportFormat.XResources:
-        return exportToXresources(recipe);
+        return toXresources(recipe);
       case ExportFormat.Kitty:
-        return exportToKitty(recipe);
+        return toKitty(recipe);
       case ExportFormat.WezTerm:
-        return exportToWezTerm(recipe);
+        return toWezTerm(recipe);
       case ExportFormat.Helix:
-        return exportToHelix(recipe);
+        return toHelix(recipe);
       default:
-        return exportToJson(recipe);
+        return toJson(recipe);
     }
   }
 
