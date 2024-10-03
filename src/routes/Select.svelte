@@ -5,6 +5,13 @@
   export let value: number;
   export let id: string;
   export let label: string | undefined;
+
+  let groupedOptions = undefined;
+  let groups: string[] = [];
+  if (options.every((o) => o.group)) {
+    groupedOptions = Object.groupBy(options, ({ group }) => group || "");
+    groups = Object.keys(groupedOptions);
+  }
 </script>
 
 <div class="select">
@@ -12,11 +19,23 @@
     <label for={id}>{label}</label>
   {/if}
   <select bind:value {id} name={id}>
-    {#each options as option}
-      <option value={option.value}>
-        {option.label}
-      </option>
-    {/each}
+    {#if groupedOptions}
+      {#each groups as group}
+        <optgroup label={group}>
+          {#each groupedOptions[group] || [] as option}
+            <option value={option.value}>
+              {option.label}
+            </option>
+          {/each}
+        </optgroup>
+      {/each}
+    {:else}
+      {#each options as option}
+        <option value={option.value}>
+          {option.label}
+        </option>
+      {/each}
+    {/if}
   </select>
 </div>
 

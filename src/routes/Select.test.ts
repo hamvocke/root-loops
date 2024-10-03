@@ -36,4 +36,19 @@ describe("Select component", () => {
 
     expect(optionOne.selected).toBe(true);
   });
+
+  test("shows groups if present", () => {
+    const groupedOptions: SelectOption[] = [
+      { value: 1, label: "apple", group: "fruit" },
+      { value: 2, label: "banana", group: "fruit" },
+      { value: 3, label: "carrot", group: "vegetables" },
+    ];
+    render(Select, { label: "fridge content", id: "id", options: groupedOptions });
+
+    const fruitGroup = screen.getByRole("group", { name: "fruit" });
+    const vegetableGroup = screen.getByRole("group", { name: "vegetables" });
+
+    expect(fruitGroup).toBeInTheDocument();
+    expect(vegetableGroup).toBeInTheDocument();
+  });
 });
