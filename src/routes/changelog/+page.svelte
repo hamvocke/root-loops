@@ -28,6 +28,17 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2024-10-04</h3>
+    <p><strong>New</strong></p>
+    <ul>
+      <li>
+        There's a new <code>colortest</code> tab in the terminal preview, as
+        <a href="https://github.com/hamvocke/root-loops/issues/9">requested</a>
+        by <a href="https://github.com/crshrprt">@crshrprt</a>. This will allow you to validate your
+        colors against a wider variety of backgrounds and check if it still looks good.
+      </li>
+    </ul>
+
     <h3>2024-10-03</h3>
     <p><strong>New</strong></p>
     <ul>
