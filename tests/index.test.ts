@@ -80,7 +80,7 @@ test.describe("terminal", () => {
     const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
     await expect(terminal).toBeVisible();
 
-    await expect(terminal.getByRole("tab")).toHaveCount(6);
+    await expect(terminal.getByRole("tab")).toHaveCount(7);
   });
 
   test("clicking terminal tabs switches content", async ({ page }) => {
@@ -93,6 +93,11 @@ test.describe("terminal", () => {
     await getTab("fetch").click();
     // check that a part of that apple logo's ascii art is showing up
     await expect(terminal.getByRole("tabpanel")).toContainText(".:/++++++/::::/++++++/:`");
+
+    await getTab("colortest").click();
+    await expect(terminal.getByRole("tabpanel")).toContainText(
+      "40m     41m     42m     43m     44m     45m     46m     47m",
+    );
 
     await getTab("test").click();
     await expect(terminal.getByRole("tabpanel")).toContainText(
