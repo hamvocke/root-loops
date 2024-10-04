@@ -6,6 +6,7 @@
     vitestSnippet,
     screenfetchSnippet,
     rustSnippet,
+    colortestSnippet,
   } from "$lib/snippets";
   import Window from "./Window.svelte";
   import TerminalContent from "./TerminalContent.svelte";
@@ -24,6 +25,13 @@
       role="tab"
       aria-selected={activeTabId == "tab-screenfetch" ? "true" : "false"}
       on:click={handleTabClick}>fetch</button
+    >
+    <button
+      id="tab-colortest"
+      type="button"
+      role="tab"
+      aria-selected={activeTabId == "tab-colortest" ? "true" : "false"}
+      on:click={handleTabClick}>colortest</button
     >
     <button
       id="tab-vitest"
@@ -70,6 +78,14 @@
     <TerminalContent command="screenfetch">{@html screenfetchSnippet}</TerminalContent>
   </div>
 
+  <div
+    role="tabpanel"
+    aria-labelledby="tab-colortest"
+    class:hidden={activeTabId !== "tab-colortest"}
+  >
+    <TerminalContent command="colortest">{@html colortestSnippet}</TerminalContent>
+  </div>
+
   <div role="tabpanel" aria-labelledby="tab-vitest" class:hidden={activeTabId !== "tab-vitest"}>
     <TerminalContent command="npm run test:unit">{@html vitestSnippet}</TerminalContent>
   </div>
@@ -100,6 +116,7 @@
 <style>
   [role="tablist"] {
     display: flex;
+    overflow-x: auto;
   }
 
   button[role="tab"] {
