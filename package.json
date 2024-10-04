@@ -37,7 +37,7 @@
     "husky": "^9.0.11",
     "jsdom": "^24.1.1",
     "prettier": "^3.2.5",
-    "prettier-plugin-svelte": "^3.2.2",
+    "prettier-plugin-svelte": "^3.2.7",
     "svelte": "^5.0.0-next.1",
     "svelte-check": "^3.6.7",
     "svelte-feather-icons": "^4.1.0",
