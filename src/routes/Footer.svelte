@@ -27,7 +27,7 @@
   footer {
     display: flex;
     justify-content: center;
-    font-family: "Fira Code", monospace;
+    font-family: "Fira Code Variable", monospace;
     background: linear-gradient(to bottom, transparent, var(--color-slate-050));
   }
 

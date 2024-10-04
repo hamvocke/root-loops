@@ -1,6 +1,6 @@
 <script>
   import "@fontsource/luckiest-guy";
-  import "@fontsource/fira-code";
+  import "@fontsource-variable/fira-code";
   import "./styles.css";
 </script>
 

@@ -118,7 +118,7 @@
   }
 
   pre {
-    font-family: "Fira TerminalContent", monospace;
+    font-family: "Fira Code Variable", monospace;
     font-size: 14px;
     line-height: 1.25rem;
     color: var(--root-loops-foreground);

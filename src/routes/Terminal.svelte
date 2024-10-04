@@ -157,7 +157,7 @@
     background: var(--root-loops-background);
     padding: 1rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    font-family: "Fira TerminalContent", monospace;
+    font-family: "Fira Code Variable", monospace;
     font-size: 14px;
     font-weight: 400;
     color: var(--root-loops-foreground);
