@@ -9,7 +9,7 @@
       src="https://ghbtns.com/github-btn.html?user=hamvocke&repo=root-loops&type=star&count=true&size=large"
       frameborder="0"
       scrolling="0"
-      width="170"
+      width="150"
       height="30"
       title="GitHub"
     ></iframe>
@@ -19,7 +19,7 @@
       What's new?
     </a>
 
-    <div class="credit"><a href="https://hamvocke.com">Made by Ham &lt;3</a></div>
+    <div class="credit"><a href="https://hamvocke.com">Made by Ham</a></div>
   </div>
 </footer>
 
@@ -37,6 +37,7 @@
     align-items: center;
     width: min(900px, 100% - 2rem);
     padding: 2rem 0 1rem 0;
+    font-size: 0.9rem;
   }
 
   a {
