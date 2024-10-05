@@ -1,15 +1,18 @@
 <script lang="ts">
   import type { SelectOption } from "$lib/selectOptions";
+  import { groupBy } from "$lib/arrays";
 
   export let options: SelectOption[];
   export let value: number;
   export let id: string;
   export let label: string | undefined;
 
+  let shimmedGroupBy = Object.groupBy || groupBy;
+
   let groupedOptions = undefined;
   let groups: string[] = [];
   if (options.every((o) => o.group)) {
-    groupedOptions = Object.groupBy(options, ({ group }) => group || "");
+    groupedOptions = shimmedGroupBy(options, ({ group }) => group || "");
     groups = Object.keys(groupedOptions);
   }
 </script>
