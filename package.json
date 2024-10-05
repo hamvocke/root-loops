@@ -15,7 +15,7 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "test:integration": "playwright test",
-    "test:integration-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.43.1-focal npm run test:integration",
+    "test:integration-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.47.2-noble npm run test:integration",
     "test:unit": "vitest",
     "prepare": "husky || true"
   },
