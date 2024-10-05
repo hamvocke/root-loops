@@ -87,7 +87,7 @@ test.describe("terminal", () => {
     const terminal = page.getByRole("region", { name: "Terminal Preview", exact: true });
 
     function getTab(tabName: string) {
-      return terminal.getByRole("tab").filter({ hasText: tabName });
+      return terminal.getByRole("tab", { name: tabName, exact: true });
     }
 
     await getTab("fetch").click();
