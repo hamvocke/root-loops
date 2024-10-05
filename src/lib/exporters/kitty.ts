@@ -28,10 +28,6 @@ active_border_color     ${cereals.white.color_hex}
 inactive_border_color   ${cereals.brightBlack.color_hex}
 bell_border_color       ${cereals.red.color_hex}
 
-# OS Window titlebar colors
-wayland_titlebar_color system
-macos_titlebar_color system
-
 # Tab bar colors
 active_tab_foreground   ${cereals.brightWhite.color_hex}
 active_tab_background   ${cereals.brightBlack.color_hex}

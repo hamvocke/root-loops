@@ -214,10 +214,6 @@ active_border_color     #565d73
 inactive_border_color   #a3abc1
 bell_border_color       #55403c
 
-# OS Window titlebar colors
-wayland_titlebar_color system
-macos_titlebar_color system
-
 # Tab bar colors
 active_tab_foreground   #1e222d
 active_tab_background   #a3abc1
