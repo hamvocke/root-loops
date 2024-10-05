@@ -39,6 +39,11 @@
         <a href="https://github.com/hamvocke/root-loops/issues/7">requested</a>
         by <a href="https://github.com/tcoopman">tcoopman</a> 👻
       </li>
+      <li>
+        And then there's a new export option for <strong
+          ><a href="https://codeberg.org/dnkl/foot">foot</a></strong
+        >, a Wayland-compatible terminal emulator
+      </li>
     </ul>
 
     <h3>2024-10-04</h3>
