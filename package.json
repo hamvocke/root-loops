@@ -50,6 +50,8 @@
   "dependencies": {
     "@fontsource-variable/fira-code": "^5.0.18",
     "@fontsource/luckiest-guy": "^5.0.19",
-    "culori": "^4.0.1"
+    "@types/culori": "^2.1.1",
+    "culori": "^4.0.1",
+    "object.groupby": "^1.0.3"
   }
 }
