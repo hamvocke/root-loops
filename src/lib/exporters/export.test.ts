@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { toAlacritty } from "./alacritty";
+import { toGhostty } from "./ghostty";
 import { toHelix } from "./helix";
 import { toJson } from "./json";
 import { toKitty } from "./kitty";
@@ -428,6 +429,57 @@ light-blue = "#51586e"
 light-magenta = "#655263"
 light-cyan = "#475e62"
 white = "#1e222d"
+`;
+
+      expect(config).toBe(expected);
+    });
+  });
+
+  describe("to ghostty", () => {
+    it("generates config", () => {
+      const config = toGhostty(someRecipe);
+      // prettier-ignore
+      const expected = `
+# Copy the configuration below and add it to your
+# ~/.config/ghostty/config file
+
+# Colors (Root Loops)
+# via rootloops.sh
+
+background = dfe2eb
+foreground = 1e222d
+
+# black
+palette = 0=#dfe2eb
+palette = 8=#a3abc1
+
+# red
+palette = 1=#55403c
+palette = 9=#6b524e
+
+# green
+palette = 2=#3c4a3e
+palette = 10=#4d5e50
+
+# yellow
+palette = 3=#4b4536
+palette = 11=#5f5946
+
+# blue
+palette = 4=#3f4557
+palette = 12=#51586e
+
+# purple
+palette = 5=#50404e
+palette = 13=#655263
+
+# aqua
+palette = 6=#374a4d
+palette = 14=#475e62
+
+# white
+palette = 7=#565d73
+palette = 15=#1e222d
 `;
 
       expect(config).toBe(expected);

@@ -7,6 +7,7 @@
     toWezTerm,
     toWindowsTerminal,
     toXresources,
+    toGhostty,
   } from "$lib/exporters/";
   import { ExportFormat, exportSelectOptions } from "$lib/exporters/exportOptions";
   import type { Recipe } from "$lib/ingredients";
@@ -39,6 +40,8 @@
         return toWezTerm(recipe);
       case ExportFormat.Helix:
         return toHelix(recipe);
+      case ExportFormat.Ghostty:
+        return toGhostty(recipe);
       default:
         return toJson(recipe);
     }

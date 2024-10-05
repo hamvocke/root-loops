@@ -56,6 +56,7 @@ describe("Export component", () => {
       ExportFormat.Helix,
       `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`,
     ],
+    ["Ghostty", ExportFormat.Ghostty, `# ~/.config/ghostty/config file`],
   ])("generates %s snippet", async (_, format, expectedExportString) => {
     render(Export, { recipe: defaultRecipe });
 

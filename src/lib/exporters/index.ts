@@ -1,4 +1,5 @@
 export * from "./alacritty";
+export * from "./ghostty";
 export * from "./helix";
 export * from "./json";
 export * from "./kitty";

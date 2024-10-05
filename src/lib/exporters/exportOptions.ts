@@ -9,11 +9,13 @@ export enum ExportFormat {
   WezTerm,
   // Neovim,
   Helix,
+  Ghostty,
 }
 
 export const exportSelectOptions: SelectOption[] = [
   { value: ExportFormat.JSON, label: "JSON", group: "General" },
   { value: ExportFormat.Alacritty, label: "Alacritty", group: "Terminal Emulators" },
+  { value: ExportFormat.Ghostty, label: "ghostty", group: "Terminal Emulators" },
   { value: ExportFormat.Kitty, label: "Kitty", group: "Terminal Emulators" },
   { value: ExportFormat.WezTerm, label: "WezTerm", group: "Terminal Emulators" },
   { value: ExportFormat.WindowsTerminal, label: "Windows Terminal", group: "Terminal Emulators" },
