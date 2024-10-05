@@ -1,14 +1,13 @@
 <script lang="ts">
-  import {
-    toAlacritty,
-    toHelix,
-    toJson,
-    toKitty,
-    toWezTerm,
-    toWindowsTerminal,
-    toXresources,
-    toGhostty,
-  } from "$lib/exporters/";
+  import { toAlacritty } from "$lib/exporters/alacritty";
+  import { toFoot } from "$lib/exporters/foot";
+  import { toGhostty } from "$lib/exporters/ghostty";
+  import { toHelix } from "$lib/exporters/helix";
+  import { toJson } from "$lib/exporters/json";
+  import { toKitty } from "$lib/exporters/kitty";
+  import { toWezTerm } from "$lib/exporters/wezterm";
+  import { toWindowsTerminal } from "$lib/exporters/windows-terminal";
+  import { toXresources } from "$lib/exporters/xresources";
   import { ExportFormat, exportSelectOptions } from "$lib/exporters/exportOptions";
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
@@ -42,6 +41,8 @@
         return toHelix(recipe);
       case ExportFormat.Ghostty:
         return toGhostty(recipe);
+      case ExportFormat.Foot:
+        return toFoot(recipe);
       default:
         return toJson(recipe);
     }

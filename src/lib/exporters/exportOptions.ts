@@ -10,11 +10,13 @@ export enum ExportFormat {
   // Neovim,
   Helix,
   Ghostty,
+  Foot,
 }
 
 export const exportSelectOptions: SelectOption[] = [
   { value: ExportFormat.JSON, label: "JSON", group: "General" },
   { value: ExportFormat.Alacritty, label: "Alacritty", group: "Terminal Emulators" },
+  { value: ExportFormat.Foot, label: "foot", group: "Terminal Emulators" },
   { value: ExportFormat.Ghostty, label: "ghostty", group: "Terminal Emulators" },
   { value: ExportFormat.Kitty, label: "Kitty", group: "Terminal Emulators" },
   { value: ExportFormat.WezTerm, label: "WezTerm", group: "Terminal Emulators" },

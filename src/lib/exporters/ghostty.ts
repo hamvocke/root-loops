@@ -1,9 +1,9 @@
 import { type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
+import { noHash } from "./util";
 
 export function toGhostty(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  const noHash = (colorString: string): string => colorString.slice(1);
 
   return `
 # Copy the configuration below and add it to your

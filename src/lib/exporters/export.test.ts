@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { toAlacritty } from "./alacritty";
+import { toFoot } from "./foot";
 import { toGhostty } from "./ghostty";
 import { toHelix } from "./helix";
 import { toJson } from "./json";
@@ -476,6 +477,45 @@ palette = 14=#475e62
 # white
 palette = 7=#565d73
 palette = 15=#1e222d
+`;
+
+      expect(config).toBe(expected);
+    });
+  });
+  describe("to foot", () => {
+    it("generates config", () => {
+      const config = toFoot(someRecipe);
+      // prettier-ignore
+      const expected = `
+# Copy the configuration below and add it to your
+# ~/.config/foot/foot.ini file
+
+[colors]
+# Root Loops color scheme
+# via https://rootloops.sh
+
+background=dfe2eb
+foreground=1e222d
+
+# Normal/regular colors (color palette 0-7)
+regular0=dfe2eb # black
+regular1=55403c # red
+regular2=3c4a3e # green
+regular3=4b4536 # yellow
+regular4=3f4557 # blue
+regular5=50404e # magenta
+regular6=374a4d # cyan
+regular7=565d73 # white
+
+# Bright colors (color palette 8-15)
+bright0=a3abc1 # bright black
+bright1=6b524e # bright red
+bright2=4d5e50 # bright green
+bright3=5f5946 # bright yellow
+bright4=51586e # bright blue
+bright5=655263 # bright magenta
+bright6=475e62 # bright cyan
+bright7=1e222d # bright white
 `;
 
       expect(config).toBe(expected);
