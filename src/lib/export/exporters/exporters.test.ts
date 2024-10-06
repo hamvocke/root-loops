@@ -27,46 +27,44 @@ describe("export", () => {
       hex: {
         background: "#dfe2eb",
         foreground: "#1e222d",
-        text: "#dfe2eb",
-        cursor: "#565d73",
-        black: "#dfe2eb",
+        cursor: "#4a5165",
+        black: "#d0d4e1",
         red: "#55403c",
         green: "#3c4a3e",
         yellow: "#4b4536",
         blue: "#3f4557",
         magenta: "#50404e",
         cyan: "#374a4d",
-        white: "#565d73",
-        brightBlack: "#a3abc1",
+        white: "#4a5165",
+        brightBlack: "#959eb5",
         brightRed: "#6b524e",
         brightGreen: "#4d5e50",
         brightYellow: "#5f5946",
         brightBlue: "#51586e",
         brightMagenta: "#655263",
         brightCyan: "#475e62",
-        brightWhite: "#1e222d",
+        brightWhite: "#07080d",
       },
       hsl: {
         background: "hsl(223.99, 22.31%, 89.84%)",
         foreground: "hsl(224.61, 19.01%, 14.72%)",
-        text: "hsl(223.99, 22.31%, 89.84%)",
-        cursor: "hsl(224.54, 14.67%, 39.42%)",
-        black: "hsl(223.99, 22.31%, 89.84%)",
+        cursor: "hsl(224.57, 15.33%, 34.4%)",
+        black: "hsl(224.04, 21.81%, 84.81%)",
         red: "hsl(9.05, 16.78%, 28.44%)",
         green: "hsl(130.28, 10.55%, 26.25%)",
         yellow: "hsl(43.69, 16.1%, 25.35%)",
         blue: "hsl(224.58, 15.97%, 29.43%)",
         magenta: "hsl(306.93, 11.22%, 28.16%)",
         cyan: "hsl(189.28, 16.76%, 25.84%)",
-        white: "hsl(224.54, 14.67%, 39.42%)",
-        brightBlack: "hsl(224.23, 19.01%, 69.77%)",
+        white: "hsl(224.57, 15.33%, 34.4%)",
+        brightBlack: "hsl(224.3, 17.66%, 64.74%)",
         brightRed: "hsl(9.06, 15.77%, 36.25%)",
         brightGreen: "hsl(130.23, 9.89%, 33.61%)",
         brightYellow: "hsl(43.69, 15.07%, 32.53%)",
         brightBlue: "hsl(224.55, 14.95%, 37.41%)",
         brightMagenta: "hsl(306.98, 10.5%, 35.91%)",
         brightCyan: "hsl(189.29, 15.72%, 33.12%)",
-        brightWhite: "hsl(224.61, 19.01%, 14.72%)",
+        brightWhite: "hsl(226.23, 31.52%, 3.92%)",
       },
     };
 
@@ -78,28 +76,28 @@ describe("export", () => {
     const expected = {
       name: "Root Loops",
 
-      cursorColor: "#565d73",
-      selectionBackground: "#dfe2eb",
+      cursorColor: "#4a5165",
+      selectionBackground: "#4a5165",
 
       background: "#dfe2eb",
       foreground: "#1e222d",
 
-      black: "#dfe2eb",
+      black: "#d0d4e1",
       red: "#55403c",
       green: "#3c4a3e",
       yellow: "#4b4536",
       blue: "#3f4557",
       purple: "#50404e",
       cyan: "#374a4d",
-      white: "#565d73",
-      brightBlack: "#a3abc1",
+      white: "#4a5165",
+      brightBlack: "#959eb5",
       brightRed: "#6b524e",
       brightGreen: "#4d5e50",
       brightYellow: "#5f5946",
       brightBlue: "#51586e",
       brightPurple: "#655263",
       brightCyan: "#475e62",
-      brightWhite: "#1e222d",
+      brightWhite: "#07080d",
     };
     expect(JSON.parse(config)).toStrictEqual(expected);
   });
@@ -118,28 +116,28 @@ background = '#dfe2eb'
 foreground = '#1e222d'
 
 [colors.cursor]
-text = '#dfe2eb'
-cursor = '#565d73'
+text = '#1e222d'
+cursor = '#4a5165'
 
 [colors.normal]
-black = '#dfe2eb'
+black = '#d0d4e1'
 red = '#55403c'
 green = '#3c4a3e'
 yellow = '#4b4536'
 blue = '#3f4557'
 magenta = '#50404e'
 cyan = '#374a4d'
-white = '#565d73'
+white = '#4a5165'
 
 [colors.bright]
-black = '#a3abc1'
+black = '#959eb5'
 red = '#6b524e'
 green = '#4d5e50'
 yellow = '#5f5946'
 blue = '#51586e'
 magenta = '#655263'
 cyan = '#475e62'
-white = '#1e222d'`;
+white = '#07080d'`;
 
     expect(config).toBe(expected);
   });
@@ -152,24 +150,24 @@ white = '#1e222d'`;
 
 *.foreground:  #1e222d
 *.background:  #dfe2eb
-*.cursorColor: #565d73
+*.cursorColor: #4a5165
 
-*.color0: #dfe2eb
+*.color0: #d0d4e1
 *.color1: #55403c
 *.color2: #3c4a3e
 *.color3: #4b4536
 *.color4: #3f4557
 *.color5: #50404e
 *.color6: #374a4d
-*.color7: #565d73
-*.color8: #a3abc1
+*.color7: #4a5165
+*.color8: #959eb5
 *.color9: #6b524e
 *.color10: #4d5e50
 *.color11: #5f5946
 *.color12: #51586e
 *.color13: #655263
 *.color14: #475e62
-*.color15: #1e222d`;
+*.color15: #07080d`;
 
     expect(config).toBe(expected);
   });
@@ -190,37 +188,37 @@ selection_background    #1e222d
 selection_foreground    #dfe2eb
 
 # Cursor colors
-cursor_text_color       #dfe2eb
-cursor                  #565d73
+cursor_text_color       #1e222d
+cursor                  #4a5165
 
 # URL underline color when hovering with mouse
 url_color               #5f5946
 
 # Kitty window border colors
-active_border_color     #565d73
-inactive_border_color   #a3abc1
+active_border_color     #4a5165
+inactive_border_color   #959eb5
 bell_border_color       #55403c
 
 # Tab bar colors
 active_tab_foreground   #1e222d
-active_tab_background   #a3abc1
-inactive_tab_foreground #565d73
-inactive_tab_background #a3abc1
+active_tab_background   #dfe2eb
+inactive_tab_foreground #d0d4e1
+inactive_tab_background #4a5165
 tab_bar_background      #dfe2eb
 
 # Colors for marks (marked text in the terminal)
-mark1_foreground #dfe2eb
+mark1_foreground #1e222d
 mark1_background #6b524e
-mark2_foreground #dfe2eb
+mark2_foreground #1e222d
 mark2_background #5f5946
-mark3_foreground #dfe2eb
+mark3_foreground #1e222d
 mark3_background #4d5e50
 
 # The 16 terminal colors
 
 # black
-color0 #dfe2eb
-color8 #a3abc1
+color0 #d0d4e1
+color8 #959eb5
 
 # red
 color1 #55403c
@@ -247,8 +245,8 @@ color6  #374a4d
 color14 #475e62
 
 # white
-color7  #565d73
-color15 #1e222d`;
+color7  #4a5165
+color15 #07080d`;
 
     expect(config).toBe(expected);
   });
@@ -267,30 +265,30 @@ color15 #1e222d`;
 config.colors = {
   foreground = "#1e222d",
   background = "#dfe2eb",
-  cursor_bg = "#565d73",
-  cursor_border = "#1e222d",
-  cursor_fg = "#dfe2eb",
+  cursor_bg = "#4a5165",
+  cursor_border = "#07080d",
+  cursor_fg = "#1e222d",
   selection_bg = "#1e222d",
   selection_fg = "#dfe2eb",
   ansi = {
-    "#dfe2eb",
+    "#d0d4e1",
     "#55403c",
     "#3c4a3e",
     "#4b4536",
     "#3f4557",
     "#50404e",
     "#374a4d",
-    "#565d73"
+    "#4a5165"
   },
   brights = {
-    "#a3abc1",
+    "#959eb5",
     "#6b524e",
     "#4d5e50",
     "#5f5946",
     "#51586e",
     "#655263",
     "#475e62",
-    "#1e222d"
+    "#07080d"
   },
 }`;
 
@@ -305,9 +303,9 @@ config.colors = {
 
 # Root Loops (https://rootloops.sh)
 
-"ui.background" = { fg = "white"}
+"ui.background" = { fg = "background"}
 "ui.background.separator" = { fg = "gray" }
-"ui.text" = { fg = "light-gray" }
+"ui.text" = { fg = "foreground" }
 "ui.text.focus" = { fg = "white" }
 "ui.menu" = { fg = "white" }
 "ui.menu.selected" = { modifiers = ["reversed"] }
@@ -388,23 +386,26 @@ config.colors = {
 "diagnostic.error" = { underline = { color ="light-red", style = "curl" } }
 
 [palette]
-black = "#dfe2eb"
+black = "#d0d4e1"
 red = "#55403c"
 green = "#3c4a3e"
 yellow = "#4b4536"
 blue = "#3f4557"
 magenta = "#50404e"
 cyan = "#374a4d"
-light-gray = "#565d73"
+light-gray = "#4a5165"
 
-gray = "#a3abc1"
+gray = "#959eb5"
 light-red = "#6b524e"
 light-green = "#4d5e50"
 light-yellow = "#5f5946"
 light-blue = "#51586e"
 light-magenta = "#655263"
 light-cyan = "#475e62"
-white = "#1e222d"`;
+white = "#07080d"
+
+foreground = "#1e222d"
+background = "#dfe2eb"`;
 
     expect(config).toBe(expected);
   });
@@ -422,8 +423,8 @@ background = dfe2eb
 foreground = 1e222d
 
 # black
-palette = 0=#dfe2eb
-palette = 8=#a3abc1
+palette = 0=#d0d4e1
+palette = 8=#959eb5
 
 # red
 palette = 1=#55403c
@@ -450,8 +451,8 @@ palette = 6=#374a4d
 palette = 14=#475e62
 
 # white
-palette = 7=#565d73
-palette = 15=#1e222d`;
+palette = 7=#4a5165
+palette = 15=#07080d`;
 
     expect(config).toBe(expected);
   });
@@ -470,24 +471,24 @@ background=dfe2eb
 foreground=1e222d
 
 # Normal/regular colors (color palette 0-7)
-regular0=dfe2eb # black
+regular0=d0d4e1 # black
 regular1=55403c # red
 regular2=3c4a3e # green
 regular3=4b4536 # yellow
 regular4=3f4557 # blue
 regular5=50404e # magenta
 regular6=374a4d # cyan
-regular7=565d73 # white
+regular7=4a5165 # white
 
 # Bright colors (color palette 8-15)
-bright0=a3abc1 # bright black
+bright0=959eb5 # bright black
 bright1=6b524e # bright red
 bright2=4d5e50 # bright green
 bright3=5f5946 # bright yellow
 bright4=51586e # bright blue
 bright5=655263 # bright magenta
 bright6=475e62 # bright cyan
-bright7=1e222d # bright white`;
+bright7=07080d # bright white`;
 
     expect(config).toBe(expected);
   });

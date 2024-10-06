@@ -12,13 +12,13 @@ export function toWezTerm(recipe: Recipe): string {
 -- Root Loops color scheme
 -- via https://rootloops.sh
 config.colors = {
-  foreground = "${cereals.brightWhite.color_hex}",
-  background = "${cereals.black.color_hex}",
+  foreground = "${cereals.foreground.color_hex}",
+  background = "${cereals.background.color_hex}",
   cursor_bg = "${cereals.white.color_hex}",
   cursor_border = "${cereals.brightWhite.color_hex}",
-  cursor_fg = "${cereals.black.color_hex}",
-  selection_bg = "${cereals.brightWhite.color_hex}",
-  selection_fg = "${cereals.black.color_hex}",
+  cursor_fg = "${cereals.foreground.color_hex}",
+  selection_bg = "${cereals.foreground.color_hex}",
+  selection_fg = "${cereals.background.color_hex}",
   ansi = {
     "${cereals.black.color_hex}",
     "${cereals.red.color_hex}",

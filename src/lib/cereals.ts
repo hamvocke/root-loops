@@ -34,6 +34,9 @@ export type Cereals = {
   brightMagenta: Cereal;
   brightCyan: Cereal;
   brightWhite: Cereal;
+
+  foreground: Cereal;
+  background: Cereal;
 };
 
 export function prepare(recipe: Recipe): Cereals {
@@ -112,6 +115,12 @@ export function prepare(recipe: Recipe): Cereals {
       color_hex: formatHex(toHsl(baseColors.white)),
       color_hsl: formatHsl(toHsl(baseColors.white)),
     },
+    background: {
+      name: "background",
+      color: baseColors.background,
+      color_hex: formatHex(toHsl(baseColors.background)),
+      color_hsl: formatHsl(toHsl(baseColors.background)),
+    },
     brightBlack: {
       name: "bright black",
       color: baseColors.brightBlack,
@@ -159,6 +168,12 @@ export function prepare(recipe: Recipe): Cereals {
       color: baseColors.brightWhite,
       color_hex: formatHex(toHsl(baseColors.brightWhite)),
       color_hsl: formatHsl(toHsl(baseColors.brightWhite)),
+    },
+    foreground: {
+      name: "foreground",
+      color: baseColors.foreground,
+      color_hex: formatHex(toHsl(baseColors.foreground)),
+      color_hsl: formatHsl(toHsl(baseColors.foreground)),
     },
   };
 }
@@ -219,31 +234,39 @@ function getBaseColors(recipe: Recipe) {
   switch (recipe.milkAmount) {
     case MilkAmount.None:
       return {
-        black: baseColor(5),
+        background: baseColor(5),
+        black: baseColor(15),
         brightBlack: baseColor(35),
         white: baseColor(75),
+        foreground: baseColor(90),
         brightWhite: baseColor(95),
       };
     case MilkAmount.Splash:
       return {
-        black: baseColor(15),
-        brightBlack: baseColor(40),
-        white: baseColor(70),
-        brightWhite: baseColor(90),
+        background: baseColor(15),
+        black: baseColor(25),
+        brightBlack: baseColor(45),
+        white: baseColor(80),
+        foreground: baseColor(93),
+        brightWhite: baseColor(97),
       };
     case MilkAmount.Glug:
       return {
-        black: baseColor(90),
-        brightBlack: baseColor(70),
-        white: baseColor(40),
-        brightWhite: baseColor(15),
+        background: baseColor(90),
+        black: baseColor(85),
+        brightBlack: baseColor(65),
+        white: baseColor(35),
+        foreground: baseColor(15),
+        brightWhite: baseColor(5),
       };
     case MilkAmount.Cup:
       return {
-        black: baseColor(95),
-        brightBlack: baseColor(75),
-        white: baseColor(35),
-        brightWhite: baseColor(5),
+        background: baseColor(95),
+        black: baseColor(90),
+        brightBlack: baseColor(70),
+        white: baseColor(45),
+        foreground: baseColor(25),
+        brightWhite: baseColor(15),
       };
   }
 }

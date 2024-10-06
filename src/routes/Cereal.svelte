@@ -49,7 +49,7 @@
 
   .cereal {
     box-sizing: border-box;
-    height: clamp(4rem, 9vw, 120px);
+    height: clamp(4rem, 9vw, 100px);
     aspect-ratio: 1/1;
     border-radius: 50%;
     background: var(--color);

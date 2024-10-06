@@ -2,8 +2,8 @@ import { type Cereals } from "$lib/cereals";
 
 export function generateCssColors(cereals: Cereals): string {
   return `
---root-loops-foreground: ${cereals.brightWhite.color_hsl};
---root-loops-background: ${cereals.black.color_hsl};
+--root-loops-foreground: ${cereals.foreground.color_hsl};
+--root-loops-background: ${cereals.background.color_hsl};
 --root-loops-cursor: ${cereals.white.color_hsl};
 
 --root-loops-ansi-black: ${cereals.black.color_hsl};

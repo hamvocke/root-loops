@@ -10,11 +10,11 @@ export function toAlacritty(recipe: Recipe): string {
 # via rootloops.sh
 
 [colors.primary]
-background = '${cereals.black.color_hex}'
-foreground = '${cereals.brightWhite.color_hex}'
+background = '${cereals.background.color_hex}'
+foreground = '${cereals.foreground.color_hex}'
 
 [colors.cursor]
-text = '${cereals.black.color_hex}'
+text = '${cereals.foreground.color_hex}'
 cursor = '${cereals.white.color_hex}'
 
 [colors.normal]

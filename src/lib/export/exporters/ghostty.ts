@@ -11,8 +11,8 @@ export function toGhostty(recipe: Recipe): string {
 # Colors (Root Loops)
 # via rootloops.sh
 
-background = ${noHash(cereals.black.color_hex)}
-foreground = ${noHash(cereals.brightWhite.color_hex)}
+background = ${noHash(cereals.background.color_hex)}
+foreground = ${noHash(cereals.foreground.color_hex)}
 
 # black
 palette = 0=${cereals.black.color_hex}

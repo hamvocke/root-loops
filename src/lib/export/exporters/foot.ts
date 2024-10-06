@@ -11,8 +11,8 @@ export function toFoot(recipe: Recipe): string {
 # Root Loops color scheme
 # via https://rootloops.sh
 
-background=${noHash(cereals.black.color_hex)}
-foreground=${noHash(cereals.brightWhite.color_hex)}
+background=${noHash(cereals.background.color_hex)}
+foreground=${noHash(cereals.foreground.color_hex)}
 
 # Normal/regular colors (color palette 0-7)
 regular0=${noHash(cereals.black.color_hex)} # black

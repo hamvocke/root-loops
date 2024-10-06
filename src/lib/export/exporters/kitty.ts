@@ -10,13 +10,13 @@ export function toKitty(recipe: Recipe): string {
 ## via https://rootloops.sh
 
 # The basic colors
-background              ${cereals.black.color_hex}
-foreground              ${cereals.brightWhite.color_hex}
-selection_background    ${cereals.brightWhite.color_hex}
-selection_foreground    ${cereals.black.color_hex}
+background              ${cereals.background.color_hex}
+foreground              ${cereals.foreground.color_hex}
+selection_background    ${cereals.foreground.color_hex}
+selection_foreground    ${cereals.background.color_hex}
 
 # Cursor colors
-cursor_text_color       ${cereals.black.color_hex}
+cursor_text_color       ${cereals.foreground.color_hex}
 cursor                  ${cereals.white.color_hex}
 
 # URL underline color when hovering with mouse
@@ -28,18 +28,18 @@ inactive_border_color   ${cereals.brightBlack.color_hex}
 bell_border_color       ${cereals.red.color_hex}
 
 # Tab bar colors
-active_tab_foreground   ${cereals.brightWhite.color_hex}
-active_tab_background   ${cereals.brightBlack.color_hex}
-inactive_tab_foreground ${cereals.white.color_hex}
-inactive_tab_background ${cereals.brightBlack.color_hex}
-tab_bar_background      ${cereals.black.color_hex}
+active_tab_foreground   ${cereals.foreground.color_hex}
+active_tab_background   ${cereals.background.color_hex}
+inactive_tab_foreground ${cereals.black.color_hex}
+inactive_tab_background ${cereals.white.color_hex}
+tab_bar_background      ${cereals.background.color_hex}
 
 # Colors for marks (marked text in the terminal)
-mark1_foreground ${cereals.black.color_hex}
+mark1_foreground ${cereals.foreground.color_hex}
 mark1_background ${cereals.brightRed.color_hex}
-mark2_foreground ${cereals.black.color_hex}
+mark2_foreground ${cereals.foreground.color_hex}
 mark2_background ${cereals.brightYellow.color_hex}
-mark3_foreground ${cereals.black.color_hex}
+mark3_foreground ${cereals.foreground.color_hex}
 mark3_background ${cereals.brightGreen.color_hex}
 
 # The 16 terminal colors

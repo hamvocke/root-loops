@@ -6,8 +6,8 @@ export function toXresources(recipe: Recipe): string {
   return `! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via rootloops.sh)
 
-*.foreground:  ${cereals.brightWhite.color_hex}
-*.background:  ${cereals.black.color_hex}
+*.foreground:  ${cereals.foreground.color_hex}
+*.background:  ${cereals.background.color_hex}
 *.cursorColor: ${cereals.white.color_hex}
 
 *.color0: ${cereals.black.color_hex}

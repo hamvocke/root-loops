@@ -7,10 +7,10 @@ export function toWindowsTerminal(recipe: Recipe): string {
     name: "Root Loops",
 
     cursorColor: cereals.white.color_hex,
-    selectionBackground: cereals.black.color_hex,
+    selectionBackground: cereals.white.color_hex,
 
-    background: cereals.black.color_hex,
-    foreground: cereals.brightWhite.color_hex,
+    background: cereals.background.color_hex,
+    foreground: cereals.foreground.color_hex,
 
     black: cereals.black.color_hex,
     blue: cereals.blue.color_hex,

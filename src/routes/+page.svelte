@@ -282,7 +282,7 @@
     padding: 1rem;
     overflow: auto;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-template-rows: auto;
     grid-auto-flow: row;
     gap: 1rem;

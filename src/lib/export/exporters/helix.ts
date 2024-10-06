@@ -8,9 +8,9 @@ export function toHelix(recipe: Recipe): string {
 
 # Root Loops (https://rootloops.sh)
 
-"ui.background" = { fg = "white"}
+"ui.background" = { fg = "background"}
 "ui.background.separator" = { fg = "gray" }
-"ui.text" = { fg = "light-gray" }
+"ui.text" = { fg = "foreground" }
 "ui.text.focus" = { fg = "white" }
 "ui.menu" = { fg = "white" }
 "ui.menu.selected" = { modifiers = ["reversed"] }
@@ -107,5 +107,8 @@ light-yellow = "${cereals.brightYellow.color_hex}"
 light-blue = "${cereals.brightBlue.color_hex}"
 light-magenta = "${cereals.brightMagenta.color_hex}"
 light-cyan = "${cereals.brightCyan.color_hex}"
-white = "${cereals.brightWhite.color_hex}"`;
+white = "${cereals.brightWhite.color_hex}"
+
+foreground = "${cereals.foreground.color_hex}"
+background = "${cereals.background.color_hex}"`;
 }

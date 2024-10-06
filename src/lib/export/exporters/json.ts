@@ -6,9 +6,8 @@ export function toJson(recipe: Recipe): string {
   const colors = {
     source: "rootloops.sh",
     hex: {
-      background: cereals.black.color_hex,
-      foreground: cereals.brightWhite.color_hex,
-      text: cereals.black.color_hex,
+      background: cereals.background.color_hex,
+      foreground: cereals.foreground.color_hex,
       cursor: cereals.white.color_hex,
       black: cereals.black.color_hex,
       red: cereals.red.color_hex,
@@ -28,9 +27,8 @@ export function toJson(recipe: Recipe): string {
       brightWhite: cereals.brightWhite.color_hex,
     },
     hsl: {
-      background: cereals.black.color_hsl,
-      foreground: cereals.brightWhite.color_hsl,
-      text: cereals.black.color_hsl,
+      background: cereals.background.color_hsl,
+      foreground: cereals.foreground.color_hsl,
       cursor: cereals.white.color_hsl,
       black: cereals.black.color_hsl,
       red: cereals.red.color_hsl,
