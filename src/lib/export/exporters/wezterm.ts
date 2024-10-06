@@ -3,8 +3,7 @@ import { prepare } from "$lib/cereals";
 
 export function toWezTerm(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  return `
--- Copy the configuration below and add it to your
+  return `-- Copy the configuration below and add it to your
 -- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
 
 -- NOTE: make sure to *not* use any config.color_scheme option
@@ -40,6 +39,5 @@ config.colors = {
     "${cereals.brightCyan.color_hex}",
     "${cereals.brightWhite.color_hex}"
   },
-}
-`;
+}`;
 }

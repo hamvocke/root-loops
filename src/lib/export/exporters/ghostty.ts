@@ -5,8 +5,7 @@ import { noHash } from "./util";
 export function toGhostty(recipe: Recipe): string {
   const cereals = prepare(recipe);
 
-  return `
-# Copy the configuration below and add it to your
+  return `# Copy the configuration below and add it to your
 # ~/.config/ghostty/config file
 
 # Colors (Root Loops)
@@ -45,6 +44,5 @@ palette = 14=${cereals.brightCyan.color_hex}
 
 # white
 palette = 7=${cereals.white.color_hex}
-palette = 15=${cereals.brightWhite.color_hex}
-`;
+palette = 15=${cereals.brightWhite.color_hex}`;
 }

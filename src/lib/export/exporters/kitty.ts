@@ -3,8 +3,7 @@ import { prepare } from "$lib/cereals";
 
 export function toKitty(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  return `
-# Copy the configuration below and add it to your
+  return `# Copy the configuration below and add it to your
 # ~/.config/kitty/kitty.conf file
 
 ## Root Loops color scheme
@@ -75,6 +74,5 @@ color14 ${cereals.brightCyan.color_hex}
 
 # white
 color7  ${cereals.white.color_hex}
-color15 ${cereals.brightWhite.color_hex}
-`;
+color15 ${cereals.brightWhite.color_hex}`;
 }

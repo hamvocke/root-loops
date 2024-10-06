@@ -3,8 +3,7 @@ import { prepare } from "$lib/cereals";
 
 export function toAlacritty(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  return `
-# Copy the configuration below and add it to your
+  return `# Copy the configuration below and add it to your
 # ~/.config/alacritty/alacritty.toml file
 
 # Colors (Root Loops)
@@ -36,6 +35,5 @@ yellow = '${cereals.brightYellow.color_hex}'
 blue = '${cereals.brightBlue.color_hex}'
 magenta = '${cereals.brightMagenta.color_hex}'
 cyan = '${cereals.brightCyan.color_hex}'
-white = '${cereals.brightWhite.color_hex}'
-`;
+white = '${cereals.brightWhite.color_hex}'`;
 }

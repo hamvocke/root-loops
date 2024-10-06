@@ -4,8 +4,7 @@ import { noHash } from "./util";
 
 export function toFoot(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  return `
-# Copy the configuration below and add it to your
+  return `# Copy the configuration below and add it to your
 # ~/.config/foot/foot.ini file
 
 [colors]
@@ -33,6 +32,5 @@ bright3=${noHash(cereals.brightYellow.color_hex)} # bright yellow
 bright4=${noHash(cereals.brightBlue.color_hex)} # bright blue
 bright5=${noHash(cereals.brightMagenta.color_hex)} # bright magenta
 bright6=${noHash(cereals.brightCyan.color_hex)} # bright cyan
-bright7=${noHash(cereals.brightWhite.color_hex)} # bright white
-`;
+bright7=${noHash(cereals.brightWhite.color_hex)} # bright white`;
 }

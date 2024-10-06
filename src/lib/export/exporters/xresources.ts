@@ -3,8 +3,7 @@ import { prepare } from "$lib/cereals";
 
 export function toXresources(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  return `
-! Copy the configuration below to your ~/.Xresources file
+  return `! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via rootloops.sh)
 
 *.foreground:  ${cereals.brightWhite.color_hex}
@@ -26,6 +25,5 @@ export function toXresources(recipe: Recipe): string {
 *.color12: ${cereals.brightBlue.color_hex}
 *.color13: ${cereals.brightMagenta.color_hex}
 *.color14: ${cereals.brightCyan.color_hex}
-*.color15: ${cereals.brightWhite.color_hex}
-`;
+*.color15: ${cereals.brightWhite.color_hex}`;
 }

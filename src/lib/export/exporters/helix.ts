@@ -107,6 +107,5 @@ light-yellow = "${cereals.brightYellow.color_hex}"
 light-blue = "${cereals.brightBlue.color_hex}"
 light-magenta = "${cereals.brightMagenta.color_hex}"
 light-cyan = "${cereals.brightCyan.color_hex}"
-white = "${cereals.brightWhite.color_hex}"
-`;
+white = "${cereals.brightWhite.color_hex}"`;
 }

@@ -107,8 +107,7 @@ describe("export", () => {
   it("to Alacritty", () => {
     const config = toAlacritty(someRecipe);
     // prettier-ignore
-    const expected = `
-# Copy the configuration below and add it to your
+    const expected = `# Copy the configuration below and add it to your
 # ~/.config/alacritty/alacritty.toml file
 
 # Colors (Root Loops)
@@ -140,8 +139,7 @@ yellow = '#5f5946'
 blue = '#51586e'
 magenta = '#655263'
 cyan = '#475e62'
-white = '#1e222d'
-`;
+white = '#1e222d'`;
 
     expect(config).toBe(expected);
   });
@@ -149,8 +147,7 @@ white = '#1e222d'
   it("to Xresources", () => {
     const config = toXresources(someRecipe);
     // prettier-ignore
-    const expected = `
-! Copy the configuration below to your ~/.Xresources file
+    const expected = `! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via rootloops.sh)
 
 *.foreground:  #1e222d
@@ -172,8 +169,7 @@ white = '#1e222d'
 *.color12: #51586e
 *.color13: #655263
 *.color14: #475e62
-*.color15: #1e222d
-`;
+*.color15: #1e222d`;
 
     expect(config).toBe(expected);
   });
@@ -181,8 +177,7 @@ white = '#1e222d'
   it("to Kitty", () => {
     const config = toKitty(someRecipe);
     // prettier-ignore
-    const expected = `
-# Copy the configuration below and add it to your
+    const expected = `# Copy the configuration below and add it to your
 # ~/.config/kitty/kitty.conf file
 
 ## Root Loops color scheme
@@ -253,8 +248,7 @@ color14 #475e62
 
 # white
 color7  #565d73
-color15 #1e222d
-`;
+color15 #1e222d`;
 
     expect(config).toBe(expected);
   });
@@ -262,8 +256,7 @@ color15 #1e222d
   it("to WezTerm", () => {
     const config = toWezTerm(someRecipe);
     // prettier-ignore
-    const expected = `
--- Copy the configuration below and add it to your
+    const expected = `-- Copy the configuration below and add it to your
 -- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
 
 -- NOTE: make sure to *not* use any config.color_scheme option
@@ -299,8 +292,7 @@ config.colors = {
     "#475e62",
     "#1e222d"
   },
-}
-`;
+}`;
 
     expect(config).toBe(expected);
   });
@@ -412,8 +404,7 @@ light-yellow = "#5f5946"
 light-blue = "#51586e"
 light-magenta = "#655263"
 light-cyan = "#475e62"
-white = "#1e222d"
-`;
+white = "#1e222d"`;
 
     expect(config).toBe(expected);
   });
@@ -421,8 +412,7 @@ white = "#1e222d"
   it("to ghostty", () => {
     const config = toGhostty(someRecipe);
     // prettier-ignore
-    const expected = `
-# Copy the configuration below and add it to your
+    const expected = `# Copy the configuration below and add it to your
 # ~/.config/ghostty/config file
 
 # Colors (Root Loops)
@@ -461,8 +451,7 @@ palette = 14=#475e62
 
 # white
 palette = 7=#565d73
-palette = 15=#1e222d
-`;
+palette = 15=#1e222d`;
 
     expect(config).toBe(expected);
   });
@@ -470,8 +459,7 @@ palette = 15=#1e222d
   it("to foot", () => {
     const config = toFoot(someRecipe);
     // prettier-ignore
-    const expected = `
-# Copy the configuration below and add it to your
+    const expected = `# Copy the configuration below and add it to your
 # ~/.config/foot/foot.ini file
 
 [colors]
@@ -499,8 +487,7 @@ bright3=5f5946 # bright yellow
 bright4=51586e # bright blue
 bright5=655263 # bright magenta
 bright6=475e62 # bright cyan
-bright7=1e222d # bright white
-`;
+bright7=1e222d # bright white`;
 
     expect(config).toBe(expected);
   });
