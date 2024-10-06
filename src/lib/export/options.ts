@@ -1,5 +1,5 @@
 import { type SelectOption } from "$lib/selectOptions";
-import { type Format } from "$lib/exporters/availableExporters";
+import { type Format } from "$lib/export/formats";
 
 interface ExportOption extends SelectOption {
   value: Format;
