@@ -28,6 +28,24 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2024-10-04</h3>
+    <p><strong>New & Breaking Change</strong></p>
+    <ul>
+      <li>
+        Root Loops now generates an extra 2 colors that can be used as <code>foreground</code> and
+        <code>background</code>
+        colors in your color schemes. This pattern deviates from the classic 4-bit color schemes but
+        it utilizes capabilities that virtually every modern terminal emulator offers, giving us a richer
+        color palette to work with and some more 'gray' shades to make UI elements in CLI apps look nicer.
+        This changes the color generation algorithm compared to older version so if you come back to
+        Root Loops and try to re-generate older recipes, you'll notice that you'll get slightly different
+        shades of gray. Thanks to
+        <a href="https://github.com/crshrprt">@crshrprt</a>
+        for <a href="https://github.com/hamvocke/root-loops/issues/8">requesting</a> and testing this
+        feature.
+      </li>
+    </ul>
+
     <h3>2024-10-05</h3>
     <p><strong>New</strong></p>
     <ul>
