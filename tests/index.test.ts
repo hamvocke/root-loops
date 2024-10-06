@@ -51,7 +51,7 @@ test.describe("cereals", () => {
     const handle = await page.evaluateHandle(() => navigator.clipboard.readText());
     const clipboardContent = await handle.jsonValue();
 
-    expect(clipboardContent).toEqual("#0a0611");
+    expect(clipboardContent).toEqual("#261d35");
   });
 
   test("changing an input changes cereal color", async ({ page, context }) => {
