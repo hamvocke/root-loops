@@ -3,7 +3,7 @@
   import { groupBy } from "$lib/arrays";
 
   export let options: SelectOption[];
-  export let value: number;
+  export let value: number | string;
   export let id: string;
   export let label: string | undefined;
 

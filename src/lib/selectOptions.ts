@@ -1,5 +1,5 @@
-export type SelectOption = {
-  value: number;
+export interface SelectOption {
+  value: number | string;
   label: string;
   group?: string;
-};
+}

@@ -1,14 +1,6 @@
 <script lang="ts">
-  import { toAlacritty } from "$lib/exporters/alacritty";
-  import { toFoot } from "$lib/exporters/foot";
-  import { toGhostty } from "$lib/exporters/ghostty";
-  import { toHelix } from "$lib/exporters/helix";
-  import { toJson } from "$lib/exporters/json";
-  import { toKitty } from "$lib/exporters/kitty";
-  import { toWezTerm } from "$lib/exporters/wezterm";
-  import { toWindowsTerminal } from "$lib/exporters/windows-terminal";
-  import { toXresources } from "$lib/exporters/xresources";
-  import { ExportFormat, exportSelectOptions } from "$lib/exporters/exportOptions";
+  import { exportSelectOptions } from "$lib/exporters/selectOptions";
+  import { type Format, availableExports } from "$lib/exporters/availableExporters";
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
   import Select from "./Select.svelte";
@@ -16,40 +8,24 @@
   import { CheckIcon } from "svelte-feather-icons";
 
   export let recipe: Recipe;
-  let selectedExportFormat: ExportFormat;
+  let selectedExportFormat: Format;
 
   $: code = generateExportSnippet(recipe, selectedExportFormat);
 
   let icon = ClipboardIcon;
   let buttonText = "Copy";
 
-  function generateExportSnippet(recipe: Recipe, selectedExportFormat: ExportFormat) {
-    switch (selectedExportFormat) {
-      case ExportFormat.JSON:
-        return toJson(recipe);
-      case ExportFormat.WindowsTerminal:
-        return toWindowsTerminal(recipe);
-      case ExportFormat.Alacritty:
-        return toAlacritty(recipe);
-      case ExportFormat.XResources:
-        return toXresources(recipe);
-      case ExportFormat.Kitty:
-        return toKitty(recipe);
-      case ExportFormat.WezTerm:
-        return toWezTerm(recipe);
-      case ExportFormat.Helix:
-        return toHelix(recipe);
-      case ExportFormat.Ghostty:
-        return toGhostty(recipe);
-      case ExportFormat.Foot:
-        return toFoot(recipe);
-      default:
-        return toJson(recipe);
+  function generateExportSnippet(recipe: Recipe, selectedExportFormat: Format): string | undefined {
+    if (!selectedExportFormat) {
+      return;
     }
+    return availableExports[selectedExportFormat].export(recipe);
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(code);
+    if (code) {
+      navigator.clipboard.writeText(code);
+    }
 
     icon = CheckIcon;
     buttonText = "Copied";

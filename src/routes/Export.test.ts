@@ -4,7 +4,6 @@ import { describe, expect, test, vi } from "vitest";
 
 import Export from "./Export.svelte";
 import { defaultRecipe } from "$lib/ingredients";
-import { ExportFormat } from "$lib/exporters/exportOptions";
 
 describe("Export component", () => {
   test("export region shows code", () => {
@@ -41,24 +40,16 @@ describe("Export component", () => {
   });
 
   test.each([
-    ["JSON", ExportFormat.JSON, `"source": "rootloops.sh",`],
-    ["Windows Terminal", ExportFormat.WindowsTerminal, `"name": "Root Loops",`],
-    ["Alacritty", ExportFormat.Alacritty, `# ~/.config/alacritty/alacritty.toml file`],
-    [
-      "XResources",
-      ExportFormat.XResources,
-      `! Copy the configuration below to your ~/.Xresources file`,
-    ],
-    ["Kitty", ExportFormat.Kitty, `# ~/.config/kitty/kitty.conf file`],
-    ["WezTerm", ExportFormat.WezTerm, `-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file`],
-    [
-      "Helix",
-      ExportFormat.Helix,
-      `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`,
-    ],
-    ["Ghostty", ExportFormat.Ghostty, `# ~/.config/ghostty/config file`],
-    ["Foot", ExportFormat.Foot, `# ~/.config/foot/foot.ini file`],
-  ])("generates %s snippet", async (_, format, expectedExportString) => {
+    ["JSON", `"source": "rootloops.sh",`],
+    ["WindowsTerminal", `"name": "Root Loops",`],
+    ["Alacritty", `# ~/.config/alacritty/alacritty.toml file`],
+    ["Xresources", `! Copy the configuration below to your ~/.Xresources file`],
+    ["Kitty", `# ~/.config/kitty/kitty.conf file`],
+    ["WezTerm", `-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file`],
+    ["Helix", `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`],
+    ["Ghostty", `# ~/.config/ghostty/config file`],
+    ["Foot", `# ~/.config/foot/foot.ini file`],
+  ])("generates %s snippet", async (format, expectedExportString) => {
     render(Export, { recipe: defaultRecipe });
 
     const select = screen.getByRole("combobox");
