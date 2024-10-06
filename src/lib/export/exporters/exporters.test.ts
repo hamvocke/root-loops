@@ -20,79 +20,21 @@ describe("export", () => {
     sogginess: 2,
   };
 
-  describe("to JSON", () => {
-    it("generates JSON format", () => {
-      const config = toJson(someRecipe);
-      const expected = {
-        source: "rootloops.sh",
-        hex: {
-          background: "#dfe2eb",
-          foreground: "#1e222d",
-          text: "#dfe2eb",
-          cursor: "#565d73",
-          black: "#dfe2eb",
-          red: "#55403c",
-          green: "#3c4a3e",
-          yellow: "#4b4536",
-          blue: "#3f4557",
-          magenta: "#50404e",
-          cyan: "#374a4d",
-          white: "#565d73",
-          brightBlack: "#a3abc1",
-          brightRed: "#6b524e",
-          brightGreen: "#4d5e50",
-          brightYellow: "#5f5946",
-          brightBlue: "#51586e",
-          brightMagenta: "#655263",
-          brightCyan: "#475e62",
-          brightWhite: "#1e222d",
-        },
-        hsl: {
-          background: "hsl(223.99, 22.31%, 89.84%)",
-          foreground: "hsl(224.61, 19.01%, 14.72%)",
-          text: "hsl(223.99, 22.31%, 89.84%)",
-          cursor: "hsl(224.54, 14.67%, 39.42%)",
-          black: "hsl(223.99, 22.31%, 89.84%)",
-          red: "hsl(9.05, 16.78%, 28.44%)",
-          green: "hsl(130.28, 10.55%, 26.25%)",
-          yellow: "hsl(43.69, 16.1%, 25.35%)",
-          blue: "hsl(224.58, 15.97%, 29.43%)",
-          magenta: "hsl(306.93, 11.22%, 28.16%)",
-          cyan: "hsl(189.28, 16.76%, 25.84%)",
-          white: "hsl(224.54, 14.67%, 39.42%)",
-          brightBlack: "hsl(224.23, 19.01%, 69.77%)",
-          brightRed: "hsl(9.06, 15.77%, 36.25%)",
-          brightGreen: "hsl(130.23, 9.89%, 33.61%)",
-          brightYellow: "hsl(43.69, 15.07%, 32.53%)",
-          brightBlue: "hsl(224.55, 14.95%, 37.41%)",
-          brightMagenta: "hsl(306.98, 10.5%, 35.91%)",
-          brightCyan: "hsl(189.29, 15.72%, 33.12%)",
-          brightWhite: "hsl(224.61, 19.01%, 14.72%)",
-        },
-      };
-
-      expect(config).toBe(JSON.stringify(expected, null, 2));
-    });
-  });
-
-  describe("to Windows Terminal", () => {
-    it("generates JSON format", () => {
-      const config = toWindowsTerminal(someRecipe);
-      const expected = {
-        name: "Root Loops",
-
-        cursorColor: "#565d73",
-        selectionBackground: "#dfe2eb",
-
+  it("to JSON", () => {
+    const config = toJson(someRecipe);
+    const expected = {
+      source: "rootloops.sh",
+      hex: {
         background: "#dfe2eb",
         foreground: "#1e222d",
-
+        text: "#dfe2eb",
+        cursor: "#565d73",
         black: "#dfe2eb",
         red: "#55403c",
         green: "#3c4a3e",
         yellow: "#4b4536",
         blue: "#3f4557",
-        purple: "#50404e",
+        magenta: "#50404e",
         cyan: "#374a4d",
         white: "#565d73",
         brightBlack: "#a3abc1",
@@ -100,19 +42,72 @@ describe("export", () => {
         brightGreen: "#4d5e50",
         brightYellow: "#5f5946",
         brightBlue: "#51586e",
-        brightPurple: "#655263",
+        brightMagenta: "#655263",
         brightCyan: "#475e62",
         brightWhite: "#1e222d",
-      };
-      expect(JSON.parse(config)).toStrictEqual(expected);
-    });
+      },
+      hsl: {
+        background: "hsl(223.99, 22.31%, 89.84%)",
+        foreground: "hsl(224.61, 19.01%, 14.72%)",
+        text: "hsl(223.99, 22.31%, 89.84%)",
+        cursor: "hsl(224.54, 14.67%, 39.42%)",
+        black: "hsl(223.99, 22.31%, 89.84%)",
+        red: "hsl(9.05, 16.78%, 28.44%)",
+        green: "hsl(130.28, 10.55%, 26.25%)",
+        yellow: "hsl(43.69, 16.1%, 25.35%)",
+        blue: "hsl(224.58, 15.97%, 29.43%)",
+        magenta: "hsl(306.93, 11.22%, 28.16%)",
+        cyan: "hsl(189.28, 16.76%, 25.84%)",
+        white: "hsl(224.54, 14.67%, 39.42%)",
+        brightBlack: "hsl(224.23, 19.01%, 69.77%)",
+        brightRed: "hsl(9.06, 15.77%, 36.25%)",
+        brightGreen: "hsl(130.23, 9.89%, 33.61%)",
+        brightYellow: "hsl(43.69, 15.07%, 32.53%)",
+        brightBlue: "hsl(224.55, 14.95%, 37.41%)",
+        brightMagenta: "hsl(306.98, 10.5%, 35.91%)",
+        brightCyan: "hsl(189.29, 15.72%, 33.12%)",
+        brightWhite: "hsl(224.61, 19.01%, 14.72%)",
+      },
+    };
+
+    expect(config).toBe(JSON.stringify(expected, null, 2));
   });
 
-  describe("to Alacritty", () => {
-    it("generates TOML format", () => {
-      const config = toAlacritty(someRecipe);
-      // prettier-ignore
-      const expected = `
+  it("to Windows Terminal", () => {
+    const config = toWindowsTerminal(someRecipe);
+    const expected = {
+      name: "Root Loops",
+
+      cursorColor: "#565d73",
+      selectionBackground: "#dfe2eb",
+
+      background: "#dfe2eb",
+      foreground: "#1e222d",
+
+      black: "#dfe2eb",
+      red: "#55403c",
+      green: "#3c4a3e",
+      yellow: "#4b4536",
+      blue: "#3f4557",
+      purple: "#50404e",
+      cyan: "#374a4d",
+      white: "#565d73",
+      brightBlack: "#a3abc1",
+      brightRed: "#6b524e",
+      brightGreen: "#4d5e50",
+      brightYellow: "#5f5946",
+      brightBlue: "#51586e",
+      brightPurple: "#655263",
+      brightCyan: "#475e62",
+      brightWhite: "#1e222d",
+    };
+    expect(JSON.parse(config)).toStrictEqual(expected);
+  });
+
+  it("to Alacritty", () => {
+    const config = toAlacritty(someRecipe);
+    // prettier-ignore
+    const expected = `
 # Copy the configuration below and add it to your
 # ~/.config/alacritty/alacritty.toml file
 
@@ -148,15 +143,13 @@ cyan = '#475e62'
 white = '#1e222d'
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
 
-  describe("to xterm", () => {
-    it("generates Xresources format", () => {
-      const config = toXresources(someRecipe);
-      // prettier-ignore
-      const expected = `
+  it("to Xresources", () => {
+    const config = toXresources(someRecipe);
+    // prettier-ignore
+    const expected = `
 ! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via rootloops.sh)
 
@@ -182,15 +175,13 @@ white = '#1e222d'
 *.color15: #1e222d
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
 
-  describe("to Kitty", () => {
-    it("generates conf format", () => {
-      const config = toKitty(someRecipe);
-      // prettier-ignore
-      const expected = `
+  it("to Kitty", () => {
+    const config = toKitty(someRecipe);
+    // prettier-ignore
+    const expected = `
 # Copy the configuration below and add it to your
 # ~/.config/kitty/kitty.conf file
 
@@ -265,15 +256,13 @@ color7  #565d73
 color15 #1e222d
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
 
-  describe("to WezTerm", () => {
-    it("generates JSON format", () => {
-      const config = toWezTerm(someRecipe);
-      // prettier-ignore
-      const expected = `
+  it("to WezTerm", () => {
+    const config = toWezTerm(someRecipe);
+    // prettier-ignore
+    const expected = `
 -- Copy the configuration below and add it to your
 -- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
 
@@ -313,15 +302,13 @@ config.colors = {
 }
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
 
-  describe("to Helix", () => {
-    it("generates TOML format", () => {
-      const config = toHelix(someRecipe);
-      // prettier-ignore
-      const expected = `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
+  it("to Helix", () => {
+    const config = toHelix(someRecipe);
+    // prettier-ignore
+    const expected = `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
 
 
 # Root Loops (https://rootloops.sh)
@@ -428,15 +415,13 @@ light-cyan = "#475e62"
 white = "#1e222d"
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
 
-  describe("to ghostty", () => {
-    it("generates config", () => {
-      const config = toGhostty(someRecipe);
-      // prettier-ignore
-      const expected = `
+  it("to ghostty", () => {
+    const config = toGhostty(someRecipe);
+    // prettier-ignore
+    const expected = `
 # Copy the configuration below and add it to your
 # ~/.config/ghostty/config file
 
@@ -479,14 +464,13 @@ palette = 7=#565d73
 palette = 15=#1e222d
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
-  describe("to foot", () => {
-    it("generates config", () => {
-      const config = toFoot(someRecipe);
-      // prettier-ignore
-      const expected = `
+
+  it("to foot", () => {
+    const config = toFoot(someRecipe);
+    // prettier-ignore
+    const expected = `
 # Copy the configuration below and add it to your
 # ~/.config/foot/foot.ini file
 
@@ -518,7 +502,6 @@ bright6=475e62 # bright cyan
 bright7=1e222d # bright white
 `;
 
-      expect(config).toBe(expected);
-    });
+    expect(config).toBe(expected);
   });
 });

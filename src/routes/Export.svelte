@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { exportSelectOptions } from "$lib/exporters/selectOptions";
-  import { type Format, availableExports } from "$lib/exporters/availableExporters";
+  import { exportSelectOptions } from "$lib/export/options";
+  import { type Format, exporters } from "$lib/export/formats";
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
   import Select from "./Select.svelte";
@@ -15,11 +15,11 @@
   let icon = ClipboardIcon;
   let buttonText = "Copy";
 
-  function generateExportSnippet(recipe: Recipe, selectedExportFormat: Format): string | undefined {
+  function generateExportSnippet(recipe: Recipe, exportFormat: Format): string | undefined {
     if (!selectedExportFormat) {
       return;
     }
-    return availableExports[selectedExportFormat].export(recipe);
+    return exporters[exportFormat].export(recipe);
   }
 
   function copyToClipboard() {
