@@ -14,5 +14,5 @@ export const exportSelectOptions: ExportOption[] = [
   { value: "WezTerm", label: "WezTerm", group: "Terminal Emulators" },
   { value: "WindowsTerminal", label: "Windows Terminal", group: "Terminal Emulators" },
   { value: "Xresources", label: "Xresources", group: "Terminal Emulators" },
-  { value: "Helix", label: "Helix", group: "Editors" },
+  { value: "Helix", label: "Helix", group: "CLI Tools" },
 ];

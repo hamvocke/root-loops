@@ -1,5 +1,6 @@
 import { toAlacritty } from "./exporters/alacritty";
 import { toFoot } from "./exporters/foot";
+import { toFzf } from "./exporters/fzf";
 import { toGhostty } from "./exporters/ghostty";
 import { toHelix } from "./exporters/helix";
 import { toJson } from "./exporters/json";
@@ -11,6 +12,7 @@ import { toXresources } from "./exporters/xresources";
 export const exporters = {
   Alacritty: { export: toAlacritty },
   Foot: { export: toFoot },
+  FZF: { export: toFzf }, // TODO: not yet exposed, need to figure out better gray shades first
   Ghostty: { export: toGhostty },
   Helix: { export: toHelix },
   JSON: { export: toJson },
