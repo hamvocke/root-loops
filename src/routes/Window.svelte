@@ -3,14 +3,16 @@
   export let title = "My Window";
 
   let titleId = `${id}-title`;
+
+  let fullscreen = false;
 </script>
 
-<section class="window glass-box" {id} aria-labelledby={titleId}>
+<section class="window glass-box" {id} aria-labelledby={titleId} class:fullscreen>
   <div class="window-decoration">
     <div class="circles">
       <span class="circle red"></span>
       <span class="circle yellow"></span>
-      <span class="circle green"></span>
+      <button class="circle green" on:click={() => (fullscreen = !fullscreen)}></button>
     </div>
     <h2 id={titleId}>{title}</h2>
   </div>
@@ -26,6 +28,13 @@
     flex-direction: column;
     overflow: hidden;
     margin-bottom: 2rem;
+  }
+
+  .fullscreen {
+    position: fixed;
+    inset: 1rem;
+    z-index: 1000;
+    max-height: 100%;
   }
 
   .window-decoration {

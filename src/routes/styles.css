@@ -82,6 +82,11 @@ button {
   font-family: inherit;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+}
+
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);

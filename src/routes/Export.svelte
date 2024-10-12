@@ -90,10 +90,15 @@
   }
 
   .export-snippet {
-    margin: 0;
+    margin: 1rem;
+    border-radius: 0.5rem;
     background: var(--root-loops-background);
     padding: 0 1rem;
-    border-top: 1px solid var(--color-slate-050);
+    box-shadow: inset 0px 0px 6px #00000017;
+    border-top: 1px solid var(--color-slate-300);
+    border-left: 1px solid var(--color-slate-300);
+    border-right: 1px solid var(--color-slate-050);
+    border-bottom: 1px solid var(--color-slate-050);
     position: relative;
   }
 
@@ -102,8 +107,8 @@
     font-size: 14px;
     line-height: 1.25rem;
     color: var(--root-loops-foreground);
+    max-height: 600px;
     overflow: auto;
-    max-height: 400px;
 
     @media screen and (min-width: 768px) {
       font-size: 16px;

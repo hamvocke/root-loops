@@ -162,6 +162,7 @@
     font-weight: 400;
     color: var(--root-loops-foreground);
     overflow-x: auto;
+    height: 100%;
 
     @media screen and (min-width: 768px) {
       font-size: 16px;
