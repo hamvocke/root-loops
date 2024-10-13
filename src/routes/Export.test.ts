@@ -22,7 +22,7 @@ describe("Export component", () => {
 
     render(Export, { recipe: defaultRecipe });
 
-    const button = screen.getByRole("button");
+    const button = screen.getByRole("button", { name: "Copy" });
     await fireEvent.click(button);
 
     expect(clipboardSpy.mock.lastCall[0]).toContain(`"source": "rootloops.sh",`);
@@ -31,8 +31,7 @@ describe("Export component", () => {
   test("changes button text on click", async () => {
     render(Export, { recipe: defaultRecipe });
 
-    const button = screen.getByRole("button");
-    expect(button).toHaveTextContent("Copy");
+    const button = screen.getByRole("button", { name: "Copy" });
 
     await fireEvent.click(button);
 
