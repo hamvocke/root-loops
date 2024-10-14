@@ -24,7 +24,7 @@
     "@sveltejs/adapter-auto": "^3.1.1",
     "@sveltejs/adapter-node": "^5.0.1",
     "@sveltejs/kit": "^2.6.1",
-    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/svelte": "^5.2.0",
     "@types/eslint": "^8.56.5",
