@@ -49,7 +49,7 @@
   "type": "module",
   "dependencies": {
     "@fontsource-variable/fira-code": "^5.0.18",
-    "@fontsource/luckiest-guy": "^5.0.19",
+    "@fontsource/luckiest-guy": "^5.1.0",
     "culori": "^4.0.1"
   }
 }
