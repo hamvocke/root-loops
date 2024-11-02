@@ -145,11 +145,9 @@
       </div>
     </section>
 
-    <div class="loops-background full">
-      <div class="content">
-        <Terminal />
-        <Export {recipe} />
-      </div>
+    <div class="content">
+      <Terminal />
+      <Export {recipe} />
     </div>
   </main>
   <Footer />
@@ -173,15 +171,8 @@
   }
 
   main > *,
-  .content,
-  .full .content {
+  .content {
     grid-column: content;
-  }
-
-  main > .full {
-    grid-column: full;
-    display: grid;
-    grid-template-columns: subgrid;
   }
 
   main > .feature {
