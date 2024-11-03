@@ -28,7 +28,7 @@
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/svelte": "^5.2.4",
     "@types/eslint": "^8.56.5",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^7.18.0",
     "ansi_up": "^6.0.2",
     "eslint": "^8.57.0",
