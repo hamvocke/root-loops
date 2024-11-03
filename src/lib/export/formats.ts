@@ -8,6 +8,7 @@ import { toKitty } from "./exporters/kitty";
 import { toWezTerm } from "./exporters/wezterm";
 import { toWindowsTerminal } from "./exporters/windows-terminal";
 import { toXresources } from "./exporters/xresources";
+import { toZellij } from "./exporters/zellij";
 
 export const exporters = {
   Alacritty: { export: toAlacritty },
@@ -20,6 +21,7 @@ export const exporters = {
   WezTerm: { export: toWezTerm },
   WindowsTerminal: { export: toWindowsTerminal },
   Xresources: { export: toXresources },
+  Zellij: { export: toZellij },
 };
 
 export type Format = keyof typeof exporters;

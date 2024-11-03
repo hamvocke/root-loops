@@ -28,6 +28,16 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2024-11-03</h3>
+    <p><strong>New</strong></p>
+    <ul>
+      <li>
+        New export option for <strong><a href="https://zellij.dev/">Zellij</a></strong>
+        as <a href="https://github.com/hamvocke/root-loops/issues/21">requested</a>
+        by <a href="https://github.com/tcoopman">tcoopman</a>
+      </li>
+    </ul>
+
     <h3>2024-10-04</h3>
     <p><strong>New & Breaking Change</strong></p>
     <ul>

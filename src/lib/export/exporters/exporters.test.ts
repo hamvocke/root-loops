@@ -8,6 +8,7 @@ import { toKitty } from "./kitty";
 import { toWezTerm } from "./wezterm";
 import { toWindowsTerminal } from "./windows-terminal";
 import { toXresources } from "./xresources";
+import { toZellij } from "./zellij";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
 describe("export", () => {
@@ -489,6 +490,35 @@ bright4=51586e # bright blue
 bright5=655263 # bright magenta
 bright6=475e62 # bright cyan
 bright7=07080d # bright white`;
+
+    expect(config).toBe(expected);
+  });
+
+  it("to zellij", () => {
+    const config = toZellij(someRecipe);
+    // prettier-ignore
+    const expected = `// Copy the configuration below and add it to your
+// ~/.config/zellij/zellij.kdl file
+
+// Colors (Root Loops)
+// via rootloops.sh
+themes {
+   rootloops {
+        fg "#1e222d"
+        bg "#dfe2eb"
+        black "#d0d4e1"
+        red "#55403c"
+        green "#3c4a3e"
+        yellow "#4b4536"
+        blue "#3f4557"
+        magenta "#50404e"
+        cyan "#374a4d"
+        white "#4a5165"
+        orange "#5f5946"
+    }
+}
+
+theme "rootloops"`
 
     expect(config).toBe(expected);
   });
