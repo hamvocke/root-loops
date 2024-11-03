@@ -12,7 +12,8 @@
     <div class="circles">
       <span class="circle red"></span>
       <span class="circle yellow"></span>
-      <button class="circle green" on:click={() => (fullscreen = !fullscreen)}></button>
+      <button class="circle green" aria-label="maximize" on:click={() => (fullscreen = !fullscreen)}
+      ></button>
     </div>
     <h2 id={titleId}>{title}</h2>
   </div>
