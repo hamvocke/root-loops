@@ -11,7 +11,7 @@
   import Window from "./Window.svelte";
   import TerminalContent from "./TerminalContent.svelte";
 
-  let activeTabId = "tab-screenfetch";
+  let activeTabId = $state("tab-screenfetch");
   function handleTabClick(event: MouseEvent) {
     activeTabId = (event.target as HTMLElement).id;
   }
@@ -24,49 +24,49 @@
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-screenfetch" ? "true" : "false"}
-      on:click={handleTabClick}>fetch</button
+      onclick={handleTabClick}>fetch</button
     >
     <button
       id="tab-colortest"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-colortest" ? "true" : "false"}
-      on:click={handleTabClick}>colortest</button
+      onclick={handleTabClick}>colortest</button
     >
     <button
       id="tab-vitest"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-vitest" ? "true" : "false"}
-      on:click={handleTabClick}>test</button
+      onclick={handleTabClick}>test</button
     >
     <button
       id="tab-python"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-python" ? "true" : "false"}
-      on:click={handleTabClick}>python</button
+      onclick={handleTabClick}>python</button
     >
     <button
       id="tab-javascript"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-javascript" ? "true" : "false"}
-      on:click={handleTabClick}>typescript</button
+      onclick={handleTabClick}>typescript</button
     >
     <button
       id="tab-elixir"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-elixir" ? "true" : "false"}
-      on:click={handleTabClick}>elixir</button
+      onclick={handleTabClick}>elixir</button
     >
     <button
       id="tab-rust"
       type="button"
       role="tab"
       aria-selected={activeTabId == "tab-rust" ? "true" : "false"}
-      on:click={handleTabClick}>rust</button
+      onclick={handleTabClick}>rust</button
     >
   </div>
 

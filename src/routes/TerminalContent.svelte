@@ -1,5 +1,10 @@
 <script lang="ts">
-  export let command: string;
+  interface Props {
+    command: string;
+    children?: import("svelte").Snippet;
+  }
+
+  let { command, children }: Props = $props();
 </script>
 
 <div class="prompt">
@@ -8,7 +13,7 @@
 </div>
 
 <pre>
-<slot />
+{@render children?.()}
 </pre>
 
 <div class="prompt">

@@ -1,9 +1,13 @@
 <script lang="ts">
-  export let label = "My Slider";
-  export let id: string;
-  export let value: number;
-  export let min: number = 1;
-  export let max: number = 10;
+  interface Props {
+    label?: string;
+    id: string;
+    value: number;
+    min?: number;
+    max?: number;
+  }
+
+  let { label = "My Slider", id, value = $bindable(), min = 1, max = 10 }: Props = $props();
 </script>
 
 <div class="slider">

@@ -24,18 +24,18 @@
   import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
   import { fade } from "svelte/transition";
 
-  let recipe = structuredClone(defaultRecipe);
+  let recipe = $state(structuredClone(defaultRecipe));
 
   onMount(() => {
     // eslint-disable-next-line svelte/valid-compile
     recipe = fromQueryString($page.url.searchParams);
   });
 
-  let toast: string | undefined;
+  let toast: string | undefined = $state();
 
-  $: cereals = prepare(recipe);
-  $: cssColors = generateCssColors(cereals);
-  $: queryString = toQueryString(recipe);
+  let cereals = $derived(prepare(recipe));
+  let cssColors = $derived(generateCssColors(cereals));
+  let queryString = $derived(toQueryString(recipe));
 
   function calculateMilkHeight(amount: MilkAmount) {
     return `height: ${amount * 33.34}%;`;
@@ -78,7 +78,7 @@
   </div>
 
   <main>
-    <form on:submit={saveUrl} data-sveltekit-replacestate class="glass-box input-box gradient-bg">
+    <form onsubmit={saveUrl} data-sveltekit-replacestate class="glass-box input-box gradient-bg">
       <div class="input">
         <Slider
           label="Sugar"
@@ -126,7 +126,7 @@
         <a class="button plain" href="/help" data-sveltekit-replacestate="false"
           ><HelpCircleIcon size="20" /> Help</a
         >
-        <button type="button" on:click={resetRecipe} class="button">Reset</button>
+        <button type="button" onclick={resetRecipe} class="button">Reset</button>
         <button type="submit" class="button primary">
           <ExternalLinkIcon size="20" /> Save
         </button>

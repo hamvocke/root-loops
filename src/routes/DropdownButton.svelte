@@ -1,8 +1,12 @@
 <script lang="ts">
   import { ChevronDownIcon } from "svelte-feather-icons";
 
-  export let id: string;
-  export let params: string;
+  interface Props {
+    id: string;
+    params: string;
+  }
+
+  let { id, params }: Props = $props();
 </script>
 
 <div class="dropdown">

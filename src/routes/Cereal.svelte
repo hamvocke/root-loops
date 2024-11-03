@@ -1,9 +1,13 @@
 <script lang="ts">
   import { type Cereal } from "$lib/cereals";
   import { fade } from "svelte/transition";
-  export let cereal: Cereal;
+  interface Props {
+    cereal: Cereal;
+  }
 
-  let notification: string | undefined;
+  let { cereal }: Props = $props();
+
+  let notification: string | undefined = $state();
   function copyToClipboard(cereal: Cereal) {
     const showNotification = () => {
       notification = "Copied";
@@ -22,7 +26,7 @@
     class="cereal"
     aria-label={cereal.name}
     title={cereal.name}
-    on:click={() => copyToClipboard(cereal)}
+    onclick={() => copyToClipboard(cereal)}
   >
     <div class="hole"></div>
   </button>

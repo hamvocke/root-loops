@@ -7,13 +7,15 @@
   import { ClipboardIcon } from "svelte-feather-icons";
   import { CheckIcon } from "svelte-feather-icons";
 
-  export let recipe: Recipe;
-  let selectedExportFormat: Format;
+  interface Props {
+    recipe: Recipe;
+  }
 
-  $: code = generateExportSnippet(recipe, selectedExportFormat);
+  let { recipe }: Props = $props();
+  let selectedExportFormat: Format = $state();
 
-  let icon = ClipboardIcon;
-  let buttonText = "Copy";
+  let icon = $state(ClipboardIcon);
+  let buttonText = $state("Copy");
 
   function generateExportSnippet(recipe: Recipe, exportFormat: Format): string | undefined {
     if (!selectedExportFormat) {
@@ -35,6 +37,7 @@
       buttonText = "Copy";
     }, 2000);
   }
+  let code = $derived(generateExportSnippet(recipe, selectedExportFormat));
 </script>
 
 <Window id="export-window" title="Export">
@@ -54,11 +57,12 @@
       label="Export to..."
     />
   </div>
+  {@const SvelteComponent = icon}
   <div class="export-snippet">
     <pre><code>{code}</code></pre>
 
-    <button class="button primary" on:click={copyToClipboard}
-      ><svelte:component this={icon} size="20" /> {buttonText}</button
+    <button class="button primary" onclick={copyToClipboard}
+      ><SvelteComponent size="20" /> {buttonText}</button
     >
   </div>
 </Window>

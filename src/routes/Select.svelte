@@ -2,19 +2,22 @@
   import type { SelectOption } from "$lib/selectOptions";
   import { groupBy } from "$lib/arrays";
 
-  export let options: SelectOption[];
-  export let value: number | string;
-  export let id: string;
-  export let label: string | undefined;
+  interface Props {
+    options: SelectOption[];
+    value: number | string;
+    id: string;
+    label: string | undefined;
+  }
+
+  let { options, value = $bindable(), id, label }: Props = $props();
 
   let shimmedGroupBy = Object.groupBy || groupBy;
 
-  let groupedOptions = undefined;
-  let groups: string[] = [];
+  let groupedOptions = $state({});
   if (options.every((o) => o.group)) {
     groupedOptions = shimmedGroupBy(options, ({ group }) => group || "");
-    groups = Object.keys(groupedOptions);
   }
+  let groups: string[] = $derived(Object.keys(groupedOptions));
 </script>
 
 <div class="select">
@@ -22,7 +25,7 @@
     <label for={id}>{label}</label>
   {/if}
   <select bind:value {id} name={id}>
-    {#if groupedOptions}
+    {#if groups.length > 0}
       {#each groups as group}
         <optgroup label={group}>
           {#each groupedOptions[group] || [] as option}

@@ -1,10 +1,15 @@
 <script lang="ts">
-  export let id = "my-window";
-  export let title = "My Window";
+  interface Props {
+    id?: string;
+    title?: string;
+    children?: import("svelte").Snippet;
+  }
+
+  let { id = "my-window", title = "My Window", children }: Props = $props();
 
   let titleId = `${id}-title`;
 
-  let fullscreen = false;
+  let fullscreen = $state(false);
 </script>
 
 <section class="window glass-box" {id} aria-labelledby={titleId} class:fullscreen>
@@ -12,13 +17,13 @@
     <div class="circles">
       <span class="circle red"></span>
       <span class="circle yellow"></span>
-      <button class="circle green" aria-label="maximize" on:click={() => (fullscreen = !fullscreen)}
+      <button class="circle green" aria-label="maximize" onclick={() => (fullscreen = !fullscreen)}
       ></button>
     </div>
     <h2 id={titleId}>{title}</h2>
   </div>
 
-  <slot />
+  {@render children?.()}
 </section>
 
 <style>
