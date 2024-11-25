@@ -28,6 +28,16 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2024-11-25</h3>
+    <p><strong>New</strong></p>
+    <ul>
+      <li>
+        We've got a brand new export for <strong
+          ><a href="https://github.com/junegunn/fzf">fzf</a></strong
+        >, the super handy command-line fuzzy finder.
+      </li>
+    </ul>
+
     <h3>2024-11-03</h3>
     <p><strong>New</strong></p>
     <ul>

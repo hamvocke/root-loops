@@ -13,7 +13,7 @@ import { toZellij } from "./exporters/zellij";
 export const exporters = {
   Alacritty: { export: toAlacritty },
   Foot: { export: toFoot },
-  FZF: { export: toFzf }, // TODO: not yet exposed, need to figure out better gray shades first
+  fzf: { export: toFzf }, // TODO: not yet exposed, need to figure out better gray shades first
   Ghostty: { export: toGhostty },
   Helix: { export: toHelix },
   JSON: { export: toJson },
