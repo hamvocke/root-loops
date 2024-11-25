@@ -27,7 +27,6 @@
   let recipe = $state(structuredClone(defaultRecipe));
 
   onMount(() => {
-    // eslint-disable-next-line svelte/valid-compile
     recipe = fromQueryString($page.url.searchParams);
   });
 
