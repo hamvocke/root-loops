@@ -1,17 +1,25 @@
 import { MilkAmount, Flavor, Fruit, type Recipe } from "./ingredients";
-import { toGamut, formatHex, formatHsl } from "culori";
+import { toGamut, convertHslToRgb, formatHex, formatHsl } from "culori";
 import { normalize } from "./math";
 
-type Color = {
+type HslColor = {
   mode: string;
   h: number;
   s: number;
   l: number;
 };
 
+type RgbColor = {
+  mode: string;
+  r: number;
+  g: number;
+  b: number;
+};
+
 export type Cereal = {
   name: string;
-  color: Color;
+  color: HslColor;
+  color_rgb: RgbColor;
   color_hex: string;
   color_hsl: string;
 };
@@ -43,8 +51,8 @@ export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentSaturation = getAccentSaturation(recipe);
 
-  const accentColors = [];
-  const brightAccentColors = [];
+  const accentColors: HslColor[] = [];
+  const brightAccentColors: HslColor[] = [];
   const numberOfAccentColors = 6;
   for (let i = 0; i <= numberOfAccentColors; i++) {
     const hue = Math.round(360 / numberOfAccentColors) * i + accentHueShift;
@@ -66,115 +74,36 @@ export function prepare(recipe: Recipe): Cereals {
 
   const toHsl = toGamut("hsl");
 
+  const colorDefinitions = (name: string, color: HslColor) => {
+    return {
+      name: name,
+      color: color,
+      color_rgb: convertHslToRgb(color),
+      color_hex: formatHex(toHsl(color)),
+      color_hsl: formatHsl(toHsl(color)),
+    };
+  };
+
   return {
-    black: {
-      name: "black",
-      color: baseColors.black,
-      color_hex: formatHex(toHsl(baseColors.black)),
-      color_hsl: formatHsl(toHsl(baseColors.black)),
-    },
-    red: {
-      name: "red",
-      color: accentColors[0],
-      color_hex: formatHex(toHsl(accentColors[0])),
-      color_hsl: formatHsl(toHsl(accentColors[0])),
-    },
-    green: {
-      name: "green",
-      color: accentColors[2],
-      color_hex: formatHex(toHsl(accentColors[2])),
-      color_hsl: formatHsl(toHsl(accentColors[2])),
-    },
-    yellow: {
-      name: "yellow",
-      color: accentColors[1],
-      color_hex: formatHex(toHsl(accentColors[1])),
-      color_hsl: formatHsl(toHsl(accentColors[1])),
-    },
-    blue: {
-      name: "blue",
-      color: accentColors[4],
-      color_hex: formatHex(toHsl(accentColors[4])),
-      color_hsl: formatHsl(toHsl(accentColors[4])),
-    },
-    magenta: {
-      name: "magenta",
-      color: accentColors[5],
-      color_hex: formatHex(toHsl(accentColors[5])),
-      color_hsl: formatHsl(toHsl(accentColors[5])),
-    },
-    cyan: {
-      name: "cyan",
-      color: accentColors[3],
-      color_hex: formatHex(toHsl(accentColors[3])),
-      color_hsl: formatHsl(toHsl(accentColors[3])),
-    },
-    white: {
-      name: "white",
-      color: baseColors.white,
-      color_hex: formatHex(toHsl(baseColors.white)),
-      color_hsl: formatHsl(toHsl(baseColors.white)),
-    },
-    background: {
-      name: "background",
-      color: baseColors.background,
-      color_hex: formatHex(toHsl(baseColors.background)),
-      color_hsl: formatHsl(toHsl(baseColors.background)),
-    },
-    brightBlack: {
-      name: "bright black",
-      color: baseColors.brightBlack,
-      color_hex: formatHex(toHsl(baseColors.brightBlack)),
-      color_hsl: formatHsl(toHsl(baseColors.brightBlack)),
-    },
-    brightRed: {
-      name: "bright red",
-      color: brightAccentColors[0],
-      color_hex: formatHex(toHsl(brightAccentColors[0])),
-      color_hsl: formatHsl(toHsl(brightAccentColors[0])),
-    },
-    brightGreen: {
-      name: "bright green",
-      color: brightAccentColors[2],
-      color_hex: formatHex(toHsl(brightAccentColors[2])),
-      color_hsl: formatHsl(toHsl(brightAccentColors[2])),
-    },
-    brightYellow: {
-      name: "bright yellow",
-      color: brightAccentColors[1],
-      color_hex: formatHex(toHsl(brightAccentColors[1])),
-      color_hsl: formatHsl(toHsl(brightAccentColors[1])),
-    },
-    brightBlue: {
-      name: "bright blue",
-      color: brightAccentColors[4],
-      color_hex: formatHex(toHsl(brightAccentColors[4])),
-      color_hsl: formatHsl(toHsl(brightAccentColors[4])),
-    },
-    brightMagenta: {
-      name: "bright magenta",
-      color: brightAccentColors[5],
-      color_hex: formatHex(toHsl(brightAccentColors[5])),
-      color_hsl: formatHsl(toHsl(brightAccentColors[5])),
-    },
-    brightCyan: {
-      name: "bright cyan",
-      color: brightAccentColors[3],
-      color_hex: formatHex(toHsl(brightAccentColors[3])),
-      color_hsl: formatHsl(toHsl(brightAccentColors[3])),
-    },
-    brightWhite: {
-      name: "bright white",
-      color: baseColors.brightWhite,
-      color_hex: formatHex(toHsl(baseColors.brightWhite)),
-      color_hsl: formatHsl(toHsl(baseColors.brightWhite)),
-    },
-    foreground: {
-      name: "foreground",
-      color: baseColors.foreground,
-      color_hex: formatHex(toHsl(baseColors.foreground)),
-      color_hsl: formatHsl(toHsl(baseColors.foreground)),
-    },
+    black: colorDefinitions("black", baseColors.black),
+    red: colorDefinitions("red", accentColors[0]),
+    green: colorDefinitions("green", accentColors[2]),
+    yellow: colorDefinitions("yellow", accentColors[1]),
+    blue: colorDefinitions("blue", accentColors[4]),
+    magenta: colorDefinitions("magenta", accentColors[5]),
+    cyan: colorDefinitions("cyan", accentColors[3]),
+    white: colorDefinitions("white", baseColors.white),
+
+    background: colorDefinitions("background", baseColors.background),
+    brightBlack: colorDefinitions("bright black", baseColors.brightBlack),
+    brightRed: colorDefinitions("bright red", brightAccentColors[0]),
+    brightGreen: colorDefinitions("bright green", brightAccentColors[2]),
+    brightYellow: colorDefinitions("bright yellow", brightAccentColors[1]),
+    brightBlue: colorDefinitions("bright blue", brightAccentColors[4]),
+    brightMagenta: colorDefinitions("bright magenta", brightAccentColors[5]),
+    brightCyan: colorDefinitions("bright cyan", brightAccentColors[3]),
+    brightWhite: colorDefinitions("bright white", baseColors.brightWhite),
+    foreground: colorDefinitions("foreground", baseColors.foreground),
   };
 }
 
