@@ -60,7 +60,35 @@ body {
   min-height: 100%;
   margin: 0;
   font-weight: 400;
-  background: url("$lib/assets/plaid.jpg") repeat;
+
+  /* via https://colorgradient.dev/gradient-generator */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position:
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px,
+    0px 0px;
+  background-image: radial-gradient(39% 35% at 84% 90%, #c0e7ebaa 0%, #ffffff00 100%),
+    radial-gradient(60% 40% at 23% -6%, #eaec9bde 0%, #f1b3b300 100%),
+    radial-gradient(29% 40% at 57% -4%, #eab4c3b0 0%, #ffffff00 100%),
+    radial-gradient(26% 40% at 97% 64%, #f1cbdaaa 0%, #ffffff00 100%),
+    radial-gradient(48% 34% at 91% 49%, #b782e6b0 0%, #d4a7f300 100%),
+    radial-gradient(48% 34% at 6% 35%, #9cff6978 0%, #d4a7f300 100%),
+    radial-gradient(60% 80% at 50% 90%, #ffb1cb8f 0%, #d4a7f300 100%),
+    radial-gradient(29% 40% at 7% -3%, #dbeceeaa 0%, #ffffff00 100%),
+    radial-gradient(40% 50% at 76% 34%, #bbf8ecff 0%, #d4a7f300 100%),
+    radial-gradient(70% 40% at 0% 107%, #1f7bd8b3 0%, #ffffff00 100%),
+    radial-gradient(40% 40% at 100% 76%, #1f7bd8b3 0%, #ffffff00 100%),
+    linear-gradient(63deg, #b1efffff 0%, #a9bbf3ff 100%);
 }
 
 p {

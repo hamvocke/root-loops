@@ -28,6 +28,15 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2024-12-03</h3>
+    <p><strong>Design Tweaks!</strong></p>
+    <ul>
+      <li>
+        The old 'plaid' background was a little bit too much after all. I've exchanged it with a
+        slightly more calm yet still vibrant procedural gradient background.
+      </li>
+    </ul>
+
     <h3>2024-11-25</h3>
     <p><strong>New</strong></p>
     <ul>

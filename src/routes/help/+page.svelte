@@ -166,13 +166,6 @@
 
     <h2>What's up with all the cereal puns?</h2>
     <p>I think it's fun ¯\_(ツ)_/¯</p>
-
-    <h2>Credits</h2>
-    <p>
-      Thank you to Alex Tretina for the plaid background image, found via <a
-        href="http://thepatternlibrary.com/#plaid">thepatternlibrary.com</a
-      >
-    </p>
   </div>
 </main>
 
