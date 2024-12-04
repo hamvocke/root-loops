@@ -4,9 +4,10 @@ import { prepare, type Cereal } from "$lib/cereals";
 export function toITerm(recipe: Recipe): string {
   const cereals = prepare(recipe);
 
+  console.log(recipe);
+
   const colorMarkup = (name: string, cereal: Cereal, alpha: number = 1) => {
-    return `
-  <key>${name}</key>
+    return `<key>${name}</key>
   <dict>
     <key>Alpha Component</key>
     <real>${alpha}</real>
