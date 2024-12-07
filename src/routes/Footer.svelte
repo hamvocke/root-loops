@@ -37,6 +37,7 @@
     align-items: center;
     width: min(900px, 100% - 2rem);
     padding: 2rem 0 1rem 0;
+    gap: 1rem;
     font-size: 0.9rem;
   }
 
