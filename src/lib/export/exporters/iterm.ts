@@ -24,7 +24,7 @@ export function toITerm(recipe: Recipe): string {
   };
   return `<!--
 Save the configuration below to a file called root-loops.itermcolors.
-Open iTerm2's Preferences > Color tab and load the file into iTerm2.
+Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
 -->
 
 <?xml version="1.0" encoding="UTF-8"?>

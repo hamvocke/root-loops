@@ -10,6 +10,7 @@ export const exportSelectOptions: ExportOption[] = [
   { value: "Alacritty", label: "Alacritty", group: "Terminal Emulators" },
   { value: "Foot", label: "foot", group: "Terminal Emulators" },
   { value: "Ghostty", label: "ghostty", group: "Terminal Emulators" },
+  { value: "iTerm", label: "iTerm2", group: "Terminal Emulators" },
   { value: "Kitty", label: "kitty", group: "Terminal Emulators" },
   { value: "WezTerm", label: "WezTerm", group: "Terminal Emulators" },
   { value: "WindowsTerminal", label: "Windows Terminal", group: "Terminal Emulators" },
