@@ -28,6 +28,22 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2024-12-07</h3>
+    <p><strong>New</strong></p>
+    <ul>
+      <li>
+        We now finally support exporting color themes to <strong
+          ><a href="https://iterm2.com/">iTerm2</a></strong
+        >
+        as <a href="https://github.com/hamvocke/root-loops/issues/48">requested</a>
+        by <a href="https://github.com/chayes72">chayes72</a>. This one's been cooking for a while
+        since iTerm2 is using a somewhat awkward XML-based configuration format and I couldn't be
+        bothered to dive into it until now. With iTerm2 we now got support for exporting color
+        themes in RGB format, so that should make things a little easier in case there are other
+        exports relying on RGB instead of HSL or Hex notation.
+      </li>
+    </ul>
+
     <h3>2024-12-03</h3>
     <p><strong>Design Tweaks!</strong></p>
     <ul>
