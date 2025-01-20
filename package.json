@@ -10,15 +10,15 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "npm run test:integration && npm run test:unit",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
+    "test": "npm run test:unit -- --run && npm run test:e2e",
     "test:e2e": "playwright test",
     "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.49.1-noble npm run test:e2e",
     "test:unit": "vitest",
-    "prepare": "husky || true"
+    "prepare": "svelte-kit sync && husky || true"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
