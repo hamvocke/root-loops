@@ -12,7 +12,7 @@ describe("Select component", () => {
   ];
 
   test("renders combobox with the name of the given label", () => {
-    render(Select, { label: "some label", id: "id", options: options });
+    render(Select, { label: "some label", id: "id", value: "1", options: options });
 
     const selectWidget = screen.getByRole("combobox", { name: "some label" });
 
@@ -20,7 +20,7 @@ describe("Select component", () => {
   });
 
   test("renders all passed options", () => {
-    render(Select, { label: "some label", id: "id", options: options });
+    render(Select, { label: "some label", id: "id", value: "1", options: options });
 
     const optionOne = screen.getByRole("option", { name: "one" });
     const optionTwo = screen.getByRole("option", { name: "ninetynine" });
@@ -30,7 +30,7 @@ describe("Select component", () => {
   });
 
   test("selects the first option by default", () => {
-    render(Select, { label: "some label", id: "id", options: options });
+    render(Select, { label: "some label", id: "id", value: 1, options: options });
 
     const optionOne = screen.getByRole("option", { name: "one" }) as HTMLOptionElement;
 
@@ -43,7 +43,7 @@ describe("Select component", () => {
       { value: 2, label: "banana", group: "fruit" },
       { value: 3, label: "carrot", group: "vegetables" },
     ];
-    render(Select, { label: "fridge content", id: "id", options: groupedOptions });
+    render(Select, { label: "fridge content", id: "id", value: "1", options: groupedOptions });
 
     const fruitGroup = screen.getByRole("group", { name: "fruit" });
     const vegetableGroup = screen.getByRole("group", { name: "vegetables" });

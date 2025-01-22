@@ -12,7 +12,7 @@
   }
 
   let { recipe }: Props = $props();
-  let selectedExportFormat: Format = $state();
+  let selectedExportFormat: Format = $state("JSON");
 
   let icon = $state(ClipboardIcon);
   let buttonText = $state("Copy");

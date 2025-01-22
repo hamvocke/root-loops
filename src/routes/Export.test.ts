@@ -25,7 +25,8 @@ describe("Export component", () => {
     const button = screen.getByRole("button", { name: "Copy" });
     await fireEvent.click(button);
 
-    expect(clipboardSpy.mock.lastCall[0]).toContain(`"source": "rootloops.sh",`);
+    const spyCall = clipboardSpy.mock.lastCall && clipboardSpy.mock.lastCall[0];
+    expect(spyCall).toContain(`"source": "rootloops.sh",`);
   });
 
   test("changes button text on click", async () => {
