@@ -192,7 +192,4 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
       '#ffffff'
     ]
 endif
-
-" Generated with RNB (https://github.com/romainl/vim-rnb)
-
 `;
