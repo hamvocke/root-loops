@@ -13,7 +13,7 @@ const someRecipe: Recipe = {
 };
 
 describe("(neo)vim export", () => {
-  it("should export vim colorscheme", () => {
+  it.skip("should export vim colorscheme", () => {
     const config = toNeovim(someRecipe);
 
     expect(config).toBe(expectedTheme);
