@@ -36,29 +36,38 @@ function isLinkedHighlightGroup(
 type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroup>;
 
 type ColorMode = "ANSI" | "256";
+type AnsiColors =
+  | "black"
+  | "darkred"
+  | "darkgreen"
+  | "darkyellow"
+  | "darkblue"
+  | "darkmagenta"
+  | "darkcyan"
+  | "gray"
+  | "darkgray"
+  | "red"
+  | "green"
+  | "yellow"
+  | "blue"
+  | "magenta"
+  | "cyan"
+  | "white"
+  | "NONE";
 
-type ColorDefinition = [
-  hex: string, // used for true-color terminals
-  octal: number | "NONE", // used for 256 color terminals
-  name:  // used for less capable terminals
-    | "black"
-    | "darkred"
-    | "darkgreen"
-    | "darkyellow"
-    | "darkblue"
-    | "darkmagenta"
-    | "darkcyan"
-    | "gray"
-    | "darkgray"
-    | "red"
-    | "green"
-    | "yellow"
-    | "blue"
-    | "magenta"
-    | "cyan"
-    | "white"
-    | "NONE",
-];
+type ColorDefinition = {
+  hex: string; // used for true-color terminals
+  eightBit: number | "NONE"; // used for 256 color terminals
+  ansi: AnsiColors; // used for less capable terminals
+};
+
+function colorDef(hex: string, eightBit: number, ansi: AnsiColors): ColorDefinition {
+  return {
+    hex: hex,
+    eightBit: eightBit,
+    ansi: ansi,
+  };
+}
 
 /**
  *  Take color definitions in the form of cereals and assign them to highlight groups.
@@ -81,26 +90,26 @@ type ColorDefinition = [
  *  style of the other.
  */
 function generateHighlights(cereals: Cereals): HighlightGroups {
-  const background: ColorDefinition = [cereals.background.color_hex, 0, "black"];
-  const foreground: ColorDefinition = [cereals.foreground.color_hex, 15, "white"];
+  const background: ColorDefinition = colorDef(cereals.background.color_hex, 0, "black");
+  const foreground: ColorDefinition = colorDef(cereals.foreground.color_hex, 15, "white");
 
-  const black: ColorDefinition = [cereals.black.color_hex, 0, "black"];
-  const darkred: ColorDefinition = [cereals.red.color_hex, 1, "darkred"];
-  const darkgreen: ColorDefinition = [cereals.green.color_hex, 2, "darkgreen"];
-  const darkyellow: ColorDefinition = [cereals.yellow.color_hex, 3, "darkyellow"];
-  const darkblue: ColorDefinition = [cereals.blue.color_hex, 4, "darkblue"];
-  const darkmagenta: ColorDefinition = [cereals.magenta.color_hex, 5, "darkmagenta"];
-  const darkcyan: ColorDefinition = [cereals.cyan.color_hex, 6, "darkcyan"];
-  const gray: ColorDefinition = [cereals.white.color_hex, 7, "gray"];
+  const black: ColorDefinition = colorDef(cereals.black.color_hex, 0, "black");
+  const darkred: ColorDefinition = colorDef(cereals.red.color_hex, 1, "darkred");
+  const darkgreen: ColorDefinition = colorDef(cereals.green.color_hex, 2, "darkgreen");
+  const darkyellow: ColorDefinition = colorDef(cereals.yellow.color_hex, 3, "darkyellow");
+  const darkblue: ColorDefinition = colorDef(cereals.blue.color_hex, 4, "darkblue");
+  const darkmagenta: ColorDefinition = colorDef(cereals.magenta.color_hex, 5, "darkmagenta");
+  const darkcyan: ColorDefinition = colorDef(cereals.cyan.color_hex, 6, "darkcyan");
+  const gray: ColorDefinition = colorDef(cereals.white.color_hex, 7, "gray");
 
-  const darkgray: ColorDefinition = [cereals.brightBlack.color_hex, 8, "darkgray"];
-  const red: ColorDefinition = [cereals.brightRed.color_hex, 9, "red"];
-  const green: ColorDefinition = [cereals.brightGreen.color_hex, 10, "green"];
-  const yellow: ColorDefinition = [cereals.brightYellow.color_hex, 11, "yellow"];
-  const blue: ColorDefinition = [cereals.brightBlue.color_hex, 12, "blue"];
-  const magenta: ColorDefinition = [cereals.brightMagenta.color_hex, 13, "magenta"];
-  const cyan: ColorDefinition = [cereals.brightCyan.color_hex, 14, "cyan"];
-  const white: ColorDefinition = [cereals.brightWhite.color_hex, 15, "white"];
+  const darkgray: ColorDefinition = colorDef(cereals.brightBlack.color_hex, 8, "darkgray");
+  const red: ColorDefinition = colorDef(cereals.brightRed.color_hex, 9, "red");
+  const green: ColorDefinition = colorDef(cereals.brightGreen.color_hex, 10, "green");
+  const yellow: ColorDefinition = colorDef(cereals.brightYellow.color_hex, 11, "yellow");
+  const blue: ColorDefinition = colorDef(cereals.brightBlue.color_hex, 12, "blue");
+  const magenta: ColorDefinition = colorDef(cereals.brightMagenta.color_hex, 13, "magenta");
+  const cyan: ColorDefinition = colorDef(cereals.brightCyan.color_hex, 14, "cyan");
+  const white: ColorDefinition = colorDef(cereals.brightWhite.color_hex, 15, "white");
 
   // Highlight groups
   // see :help highlight-default and :help group-name for additional groups
@@ -183,12 +192,12 @@ function generateHighlights(cereals: Cereals): HighlightGroups {
 
 function hi(group: HighlightGroup, mode: ColorMode): string {
   if (mode === "ANSI") {
-    return `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition)[2]} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition)[2]} cterm=${group.style}`;
+    return `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi} cterm=${group.style}`;
   } else {
-    let command = `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition)[1]} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition)[1]} cterm=${group.style} guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition)[0]} guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition)[0]} gui=${group.style}`;
+    let command = `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).eightBit} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).eightBit} cterm=${group.style} guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).hex} guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).hex} gui=${group.style}`;
 
     if (group.undercurl) {
-      command += ` guisp=${typeof group.undercurl === "string" ? group.undercurl : (group.undercurl as ColorDefinition)[0]}`;
+      command += ` guisp=${typeof group.undercurl === "string" ? group.undercurl : (group.undercurl as ColorDefinition).hex}`;
     }
 
     return command;
@@ -277,6 +286,5 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
     ]
 endif
 `;
-  console.log(template);
   return template;
 }
