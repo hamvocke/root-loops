@@ -89,7 +89,7 @@ function colorDef(hex: string, eightBit: number, ansi: AnsiColors): ColorDefinit
  *  you can link two highlight groups together to declare that one should follow the
  *  style of the other.
  */
-function generateHighlights(cereals: Cereals): HighlightGroups {
+function defineHighlights(cereals: Cereals): HighlightGroups {
   const background: ColorDefinition = colorDef(cereals.background.color_hex, 0, "black");
   const foreground: ColorDefinition = colorDef(cereals.foreground.color_hex, 15, "white");
 
@@ -217,13 +217,14 @@ function hi(group: HighlightGroup, mode: ColorMode): string {
 }
 
 function renderAnsiHighlights(highlights: HighlightGroups) {
+  // I wish I could write this as a .filter().map().join() statement,
+  // but I can't figure out how to make TypeScript's type predicates play well with .filter()
+
   const template = [];
   for (const group of highlights) {
-    if (isLinkedHighlightGroup(group)) {
-      continue;
+    if (!isLinkedHighlightGroup(group)) {
+      template.push(hi(group, "ANSI"));
     }
-
-    template.push(hi(group, "ANSI"));
   }
   return template.join("\n    ");
 }
@@ -231,11 +232,9 @@ function renderAnsiHighlights(highlights: HighlightGroups) {
 function render256ColorHighlights(highlights: HighlightGroups) {
   const template = [];
   for (const group of highlights) {
-    if (isLinkedHighlightGroup(group)) {
-      continue;
+    if (!isLinkedHighlightGroup(group)) {
+      template.push(hi(group, "256"));
     }
-
-    template.push(hi(group, "256"));
   }
   return template.join("\n    ");
 }
@@ -252,7 +251,7 @@ function renderLinkedHighlights(highlights: HighlightGroups) {
 
 export function toNeovim(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  const highlights = generateHighlights(cereals);
+  const highlights = defineHighlights(cereals);
 
   const template = `
 " root-loops.vim -- Root Loops Vim Color Scheme.
