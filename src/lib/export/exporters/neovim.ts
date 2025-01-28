@@ -220,33 +220,33 @@ function renderAnsiHighlights(highlights: HighlightGroups) {
   // I wish I could write this as a .filter().map().join() statement,
   // but I can't figure out how to make TypeScript's type predicates play well with .filter()
 
-  const template = [];
+  let template = "";
   for (const group of highlights) {
     if (!isLinkedHighlightGroup(group)) {
-      template.push(hi(group, "ANSI"));
+      template += `    ${hi(group, "ANSI")}\n`;
     }
   }
-  return template.join("\n    ");
+  return template;
 }
 
 function render256ColorHighlights(highlights: HighlightGroups) {
-  const template = [];
+  let template = "";
   for (const group of highlights) {
     if (!isLinkedHighlightGroup(group)) {
-      template.push(hi(group, "256"));
+      template += `    ${hi(group, "256")}\n`;
     }
   }
-  return template.join("\n    ");
+  return template;
 }
 
 function renderLinkedHighlights(highlights: HighlightGroups) {
-  const template = [];
+  let template = "";
   for (const link of highlights) {
     if (isLinkedHighlightGroup(link)) {
-      template.push(`hi link ${link.group} ${link.targetGroup}`);
+      template += `  hi link ${link.group} ${link.targetGroup}\n`;
     }
   }
-  return template.join("\n  ");
+  return template;
 }
 
 export function toNeovim(recipe: Recipe): string {
