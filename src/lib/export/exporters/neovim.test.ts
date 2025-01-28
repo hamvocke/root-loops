@@ -44,6 +44,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi PreProc ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi Special ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi Statement ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
+    hi Opeartor ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi String ctermbg=0 ctermfg=11 cterm=NONE guibg=#000000 guifg=#ffff00 gui=NONE
     hi Todo ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi Type ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
@@ -75,6 +76,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi DiffDelete ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi DiffText ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi IncSearch ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
+    hi CurSearch ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi Search ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi Directory ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
     hi MatchParen ctermbg=15 ctermfg=8 cterm=NONE guibg=#ffffff guifg=#808080 gui=NONE
@@ -135,7 +137,6 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi FoldColumn ctermbg=white ctermfg=darkgray cterm=NONE
     hi Folded ctermbg=white ctermfg=darkgray cterm=NONE
     hi WildMenu ctermbg=black ctermfg=white cterm=NONE
-    hi SpecialKey ctermbg=white ctermfg=darkgray cterm=NONE
     hi DiffAdd ctermbg=white ctermfg=darkgray cterm=NONE
     hi DiffChange ctermbg=white ctermfg=darkgray cterm=NONE
     hi DiffDelete ctermbg=white ctermfg=darkgray cterm=NONE
@@ -154,6 +155,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi ModeMsg ctermbg=white ctermfg=darkgray cterm=NONE
     hi MoreMsg ctermbg=white ctermfg=darkgray cterm=NONE
     hi Question ctermbg=white ctermfg=darkgray cterm=NONE
+    hi WarningMsg ctermbg=white ctermfg=darkgray cterm=NONE
     hi Cursor ctermbg=white ctermfg=darkgray cterm=NONE
     hi CursorColumn ctermbg=white ctermfg=darkgray cterm=NONE
     hi QuickFixLine ctermbg=white ctermfg=darkgray cterm=NONE
@@ -168,9 +170,9 @@ hi link EndOfBuffer NonText
 hi link Number Constant
 hi link StatusLineTerm StatusLine
 hi link StatusLineTermNC StatusLineNC
-hi link WarningMsg Error
 hi link CursorIM Cursor
 hi link Terminal Normal
+hi link SpecialKey NonText
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')
     let g:terminal_ansi_colors = [

@@ -25,9 +25,17 @@ type HighlightGroup = {
 /**
  * Links two highlight groups. "group" will inherit the styles of "targetGroup"
  */
-type LinkedHighlightGroups = { group: string; targetGroup: string };
+type LinkedHighlightGroup = { group: string; targetGroup: string };
 
-type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroups>;
+function isLinkedHighlightGroup(
+  group: HighlightGroup | LinkedHighlightGroup,
+): group is LinkedHighlightGroup {
+  return "targetGroup" in group;
+}
+
+type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroup>;
+
+type ColorMode = "ANSI" | "256";
 
 type ColorDefinition = [
   hex: string, // used for true-color terminals
@@ -109,6 +117,8 @@ function generateHighlights(cereals: Cereals): HighlightGroups {
     { group: "Special", bg: background, fg: magenta, style: "NONE" },
     { group: "Statement", bg: background, fg: darkcyan, style: "NONE" },
     { group: "String", bg: background, fg: darkgreen, style: "NONE" },
+    { group: "Opeator", bg: background, fg: cyan, style: "NONE" },
+
     // TODO: boolean? statement? operator? label? keyword? exception? conditional? repeat?
     { group: "Number", targetGroup: "Constant" },
     { group: "Todo", bg: darkmagenta, fg: background, style: "NONE" },
@@ -171,54 +181,59 @@ function generateHighlights(cereals: Cereals): HighlightGroups {
   ];
 }
 
-function renderHighlights(highlights: HighlightGroups): string {
-  const renderedHighlights = [];
-  for (const highlight of highlights) {
-    if (highlight.length === 4) {
-      // TODO: use types instead of array indexing notation
-      const hi = `hi ${highlight[0]} ctermbg=${typeof highlight[1] === "string" ? highlight[1] : highlight[1][1]} ctermfg=${typeof highlight[2] === "string" ? highlight[2] : highlight[2][1]} cterm=${highlight[3]} guibg=${typeof highlight[1] === "string" ? highlight[1] : highlight[1][0]} guifg=${typeof highlight[2] === "string" ? highlight[2] : highlight[2][0]} gui=${highlight[3]}`;
-      renderedHighlights.push(hi);
-    } else if (highlight.length > 4) {
-      const hi = `hi ${highlight[0]} ctermbg=${typeof highlight[1] === "string" ? highlight[1] : highlight[1][1]} ctermfg=${typeof highlight[2] === "string" ? highlight[2] : highlight[2][1]} cterm=${highlight[3]} guibg=${typeof highlight[1] === "string" ? highlight[1] : highlight[1][0]} guifg=${typeof highlight[2] === "string" ? highlight[2] : highlight[2][0]} gui=${highlight[3]} guisp=${typeof highlight[4] === "string" ? highlight[4] : highlight[4][0]}`;
-      renderedHighlights.push(hi);
-    }
-  }
+function hi(group: HighlightGroup, mode: ColorMode): string {
+  if (mode === "ANSI") {
+    return `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition)[2]} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition)[2]} cterm=${group.style}`;
+  } else {
+    let command = `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition)[1]} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition)[1]} cterm=${group.style} guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition)[0]} guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition)[0]} gui=${group.style}`;
 
-  // TODO: find a better way to do padding
-  return renderedHighlights.join("\n    ");
+    if (group.undercurl) {
+      command += ` guisp=${typeof group.undercurl === "string" ? group.undercurl : (group.undercurl as ColorDefinition)[0]}`;
+    }
+
+    return command;
+  }
 }
 
-function renderSimpleHighlights(highlights: HighlightGroups): string {
-  const renderedHighlights = [];
-  for (const highlight of highlights) {
-    // TODO: use types instead of array indexing notation - should be a check if this is not a link
-    if (highlight.length > 2) {
-      const hi = `hi ${highlight[0]} ctermbg=${typeof highlight[1] === "string" ? highlight[1] : highlight[1][2]} ctermfg=${typeof highlight[2] === "string" ? highlight[2] : highlight[2][2]} cterm=${highlight[3]}`;
-      renderedHighlights.push(hi);
+function renderAnsiHighlights(highlights: HighlightGroups) {
+  const template = [];
+  for (const group of highlights) {
+    if (isLinkedHighlightGroup(group)) {
+      continue;
     }
-  }
 
-  // TODO: find a better way to do padding
-  return renderedHighlights.join("\n    ");
+    template.push(hi(group, "ANSI"));
+  }
+  return template.join("\n    ");
 }
 
-function renderLinks(links: HighlightGroups): string {
-  const renderedLinks = [];
-  for (const link of links) {
-    if (link.length === 2) {
-      renderedLinks.push(`hi link ${link[0]} ${link[1]}`);
+function render256ColorHighlights(highlights: HighlightGroups) {
+  const template = [];
+  for (const group of highlights) {
+    if (isLinkedHighlightGroup(group)) {
+      continue;
+    }
+
+    template.push(hi(group, "256"));
+  }
+  return template.join("\n    ");
+}
+
+function renderLinkedHighlights(highlights: HighlightGroups) {
+  const template = [];
+  for (const link of highlights) {
+    if (isLinkedHighlightGroup(link)) {
+      template.push(`hi link ${link.group} ${link.targetGroup}`);
     }
   }
-
-  // TODO: find a better way to do padding
-  return renderedLinks.join("\n");
+  return template.join("\n  ");
 }
 
 export function toNeovim(recipe: Recipe): string {
   const cereals = prepare(recipe);
   const highlights = generateHighlights(cereals);
 
-  return `
+  const template = `
 " root-loops.vim -- Root Loops Vim Color Scheme.
 " Webpage:          https://rootloops.sh
 " Description:      A (neo)vim color scheme for cereal lovers
@@ -232,14 +247,14 @@ endif
 let colors_name = "root loops"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-    ${renderHighlights(highlights)}
+    ${render256ColorHighlights(highlights)}
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
-    ${renderSimpleHighlights(highlights)}
+    ${renderAnsiHighlights(highlights)}
 endif
 
-${renderLinks(highlights)}
+${renderLinkedHighlights(highlights)}
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')
     let g:terminal_ansi_colors = [
@@ -262,4 +277,6 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
     ]
 endif
 `;
+  console.log(template);
+  return template;
 }
