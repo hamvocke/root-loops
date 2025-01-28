@@ -192,9 +192,21 @@ function generateHighlights(cereals: Cereals): HighlightGroups {
 
 function hi(group: HighlightGroup, mode: ColorMode): string {
   if (mode === "ANSI") {
-    return `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi} cterm=${group.style}`;
+    let command = "hi";
+    command += ` ${group.group}`;
+    command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi}`;
+    command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi}`;
+    command += ` cterm=${group.style}`;
+    return command;
   } else {
-    let command = `hi ${group.group} ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).eightBit} ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).eightBit} cterm=${group.style} guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).hex} guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).hex} gui=${group.style}`;
+    let command = "hi";
+    command += ` ${group.group}`;
+    command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).eightBit}`;
+    command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).eightBit}`;
+    command += ` cterm=${group.style}`;
+    command += ` guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).hex}`;
+    command += ` guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).hex}`;
+    command += ` gui=${group.style}`;
 
     if (group.undercurl) {
       command += ` guisp=${typeof group.undercurl === "string" ? group.undercurl : (group.undercurl as ColorDefinition).hex}`;
