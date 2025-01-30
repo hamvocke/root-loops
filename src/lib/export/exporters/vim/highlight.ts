@@ -11,12 +11,6 @@ export type HighlightGroup = {
   undercurl?: ColorDefinition;
 };
 
-const defaultHighlightValues = {
-  bg: "NONE",
-  fg: "NONE",
-  style: "NONE",
-};
-
 /**
  * Links two highlight groups. "group" will inherit the styles of "targetGroup"
  */
@@ -32,23 +26,39 @@ export type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroup>;
 
 type ColorMode = "ANSI" | "Truecolor";
 
-type ColorDefinition = {
+export type ColorDefinition = {
   hex: string; // used for true-color terminals
   ansi: number | "NONE"; // used when 'notermguicolors' is set
 };
 
-export function hi(highlightGroup: HighlightGroup, mode: ColorMode): string {
-  const group = { ...defaultHighlightValues, ...highlightGroup };
+export function hi(group: HighlightGroup, mode: ColorMode): string {
   let command = "hi";
   command += ` ${group.group}`;
-  command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi}`;
-  command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi}`;
-  command += ` cterm=${group.style}`;
+
+  if (group.bg) {
+    command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi}`;
+  }
+
+  if (group.fg) {
+    command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi}`;
+  }
+
+  if (group.style) {
+    command += ` cterm=${group.style}`;
+  }
 
   if (mode === "Truecolor") {
-    command += ` guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).hex}`;
-    command += ` guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).hex}`;
-    command += ` gui=${group.style}`;
+    if (group.bg) {
+      command += ` guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).hex}`;
+    }
+
+    if (group.fg) {
+      command += ` guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).hex}`;
+    }
+
+    if (group.style) {
+      command += ` gui=${group.style}`;
+    }
 
     if (group.undercurl) {
       command += ` guisp=${typeof group.undercurl === "string" ? group.undercurl : (group.undercurl as ColorDefinition).hex}`;
