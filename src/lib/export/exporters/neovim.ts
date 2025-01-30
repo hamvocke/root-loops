@@ -35,48 +35,23 @@ function isLinkedHighlightGroup(
 
 type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroup>;
 
-type ColorMode = "ANSI" | "256";
-type AnsiColors =
-  | "black"
-  | "darkred"
-  | "darkgreen"
-  | "darkyellow"
-  | "darkblue"
-  | "darkmagenta"
-  | "darkcyan"
-  | "gray"
-  | "darkgray"
-  | "red"
-  | "green"
-  | "yellow"
-  | "blue"
-  | "magenta"
-  | "cyan"
-  | "white"
-  | "NONE";
+type ColorMode = "ANSI" | "Truecolor";
 
 type ColorDefinition = {
   hex: string; // used for true-color terminals
-  eightBit: number | "NONE"; // used for 256 color terminals
-  ansi: AnsiColors; // used for less capable terminals
+  ansi: number | "NONE"; // used when 'notermguicolors' is set
 };
 
-function colorDef(hex: string, eightBit: number, ansi: AnsiColors): ColorDefinition {
-  return {
-    hex: hex,
-    eightBit: eightBit,
-    ansi: ansi,
-  };
-}
-
 /**
- *  Take color definitions in the form of cereals and assign them to highlight groups.
- *  This is where we declare that something like a "constant" should be vibrant red,
- *  a comment should appear in dimmed dark and italic font, and that a "number" should
- *  always look the same as a "constant".
+ *  Assign colors and styles to vim highlight groups.
  *
  *  For Root Loops, we use 16 cereal colors (the standard ANSI colors) plus a
  *  foreground and a background color that are shades of gray. That's all you get.
+ *  For vim, we could get away with simply setting the 'notermguicolors' option
+ *  and rely on setting 'ctermfg' and 'ctermbg' alone, but since some folks
+ *  might not use Root Loops for their terminal and only want to use it for vim
+ *  we're setting the full truecolor attributes using 'guifg' and 'guibg' and
+ *  assigning the hex colors we get from our Root Loops recipe.
  *
  *  @remark
  *  * To learn more about highlight groups in vim, see :help highlight-default
@@ -89,35 +64,33 @@ function colorDef(hex: string, eightBit: number, ansi: AnsiColors): ColorDefinit
  *  you can link two highlight groups together to declare that one should follow the
  *  style of the other.
  */
-function defineHighlights(cereals: Cereals): HighlightGroups {
-  const background: ColorDefinition = colorDef(cereals.background.color_hex, 0, "black");
-  const foreground: ColorDefinition = colorDef(cereals.foreground.color_hex, 15, "white");
+function defineHighlights(c: Cereals): HighlightGroups {
+  const background: ColorDefinition = { hex: c.background.color_hex, ansi: "NONE" };
+  const foreground: ColorDefinition = { hex: c.foreground.color_hex, ansi: "NONE" };
 
-  const black: ColorDefinition = colorDef(cereals.black.color_hex, 0, "black");
-  const darkred: ColorDefinition = colorDef(cereals.red.color_hex, 1, "darkred");
-  const darkgreen: ColorDefinition = colorDef(cereals.green.color_hex, 2, "darkgreen");
-  const darkyellow: ColorDefinition = colorDef(cereals.yellow.color_hex, 3, "darkyellow");
-  const darkblue: ColorDefinition = colorDef(cereals.blue.color_hex, 4, "darkblue");
-  const darkmagenta: ColorDefinition = colorDef(cereals.magenta.color_hex, 5, "darkmagenta");
-  const darkcyan: ColorDefinition = colorDef(cereals.cyan.color_hex, 6, "darkcyan");
-  const gray: ColorDefinition = colorDef(cereals.white.color_hex, 7, "gray");
+  const black: ColorDefinition = { hex: c.black.color_hex, ansi: 0 };
+  const darkred: ColorDefinition = { hex: c.red.color_hex, ansi: 1 };
+  const darkgreen: ColorDefinition = { hex: c.green.color_hex, ansi: 2 };
+  const darkyellow: ColorDefinition = { hex: c.yellow.color_hex, ansi: 3 };
+  const darkblue: ColorDefinition = { hex: c.blue.color_hex, ansi: 4 };
+  const darkmagenta: ColorDefinition = { hex: c.magenta.color_hex, ansi: 5 };
+  const darkcyan: ColorDefinition = { hex: c.cyan.color_hex, ansi: 6 };
+  const gray: ColorDefinition = { hex: c.white.color_hex, ansi: 7 };
 
-  const darkgray: ColorDefinition = colorDef(cereals.brightBlack.color_hex, 8, "darkgray");
-  const red: ColorDefinition = colorDef(cereals.brightRed.color_hex, 9, "red");
-  const green: ColorDefinition = colorDef(cereals.brightGreen.color_hex, 10, "green");
-  const yellow: ColorDefinition = colorDef(cereals.brightYellow.color_hex, 11, "yellow");
-  const blue: ColorDefinition = colorDef(cereals.brightBlue.color_hex, 12, "blue");
-  const magenta: ColorDefinition = colorDef(cereals.brightMagenta.color_hex, 13, "magenta");
-  const cyan: ColorDefinition = colorDef(cereals.brightCyan.color_hex, 14, "cyan");
-  const white: ColorDefinition = colorDef(cereals.brightWhite.color_hex, 15, "white");
+  const darkgray: ColorDefinition = { hex: c.brightBlack.color_hex, ansi: 8 };
+  const red: ColorDefinition = { hex: c.brightRed.color_hex, ansi: 9 };
+  const green: ColorDefinition = { hex: c.brightGreen.color_hex, ansi: 10 };
+  const yellow: ColorDefinition = { hex: c.brightYellow.color_hex, ansi: 11 };
+  const blue: ColorDefinition = { hex: c.brightBlue.color_hex, ansi: 12 };
+  const magenta: ColorDefinition = { hex: c.brightMagenta.color_hex, ansi: 13 };
+  const cyan: ColorDefinition = { hex: c.brightCyan.color_hex, ansi: 14 };
+  const white: ColorDefinition = { hex: c.brightWhite.color_hex, ansi: 15 };
 
-  // Highlight groups
-  // see :help highlight-default and :help group-name for additional groups
   return [
     { group: "Normal", bg: background, fg: foreground, style: "NONE" },
-    { group: "NonText", bg: background, fg: black, style: "NONE" },
+    { group: "NonText", bg: "NONE", fg: black, style: "NONE" },
     { group: "EndOfBuffer", targetGroup: "NonText" },
-    { group: "Comment", bg: background, fg: darkgray, style: "italic" },
+    { group: "Comment", bg: "NONE", fg: darkgray, style: "italic" },
     { group: "Constant", bg: background, fg: darkyellow, style: "NONE" },
     { group: "Error", bg: background, fg: darkred, style: "NONE" },
     { group: "Identifier", bg: background, fg: darkmagenta, style: "NONE" },
@@ -191,19 +164,13 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
 }
 
 function hi(group: HighlightGroup, mode: ColorMode): string {
-  if (mode === "ANSI") {
-    let command = "hi";
-    command += ` ${group.group}`;
-    command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi}`;
-    command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi}`;
-    command += ` cterm=${group.style}`;
-    return command;
-  } else {
-    let command = "hi";
-    command += ` ${group.group}`;
-    command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).eightBit}`;
-    command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).eightBit}`;
-    command += ` cterm=${group.style}`;
+  let command = "hi";
+  command += ` ${group.group}`;
+  command += ` ctermbg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).ansi}`;
+  command += ` ctermfg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).ansi}`;
+  command += ` cterm=${group.style}`;
+
+  if (mode === "Truecolor") {
     command += ` guibg=${typeof group.bg === "string" ? group.bg : (group.bg as ColorDefinition).hex}`;
     command += ` guifg=${typeof group.fg === "string" ? group.fg : (group.fg as ColorDefinition).hex}`;
     command += ` gui=${group.style}`;
@@ -211,9 +178,8 @@ function hi(group: HighlightGroup, mode: ColorMode): string {
     if (group.undercurl) {
       command += ` guisp=${typeof group.undercurl === "string" ? group.undercurl : (group.undercurl as ColorDefinition).hex}`;
     }
-
-    return command;
   }
+  return command;
 }
 
 function renderAnsiHighlights(highlights: HighlightGroups) {
@@ -229,11 +195,11 @@ function renderAnsiHighlights(highlights: HighlightGroups) {
   return template;
 }
 
-function render256ColorHighlights(highlights: HighlightGroups) {
+function renderTruecolorHighlights(highlights: HighlightGroups) {
   let template = "";
   for (const group of highlights) {
     if (!isLinkedHighlightGroup(group)) {
-      template += `    ${hi(group, "256")}\n`;
+      template += `    ${hi(group, "Truecolor")}\n`;
     }
   }
   return template;
@@ -254,6 +220,10 @@ export function toNeovim(recipe: Recipe): string {
   const highlights = defineHighlights(cereals);
 
   const template = `
+" Store the following config under ~/.config/nvim/colors/root-loops.vim
+" then load it into neovim via :colorscheme root-loops or by declaring
+" it as your colorscheme in your neovim config.
+
 " root-loops.vim -- Root Loops Vim Color Scheme.
 " Webpage:          https://rootloops.sh
 " Description:      A (neo)vim color scheme for cereal lovers
@@ -267,7 +237,7 @@ endif
 let colors_name = "root loops"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-    ${render256ColorHighlights(highlights)}
+    ${renderTruecolorHighlights(highlights)}
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
