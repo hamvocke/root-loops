@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 
-import { toNeovim } from "$lib/export/exporters/neovim";
+import { toVim } from "$lib/export/exporters/vim";
 
 const someRecipe: Recipe = {
   milkAmount: MilkAmount.Glug,
@@ -12,21 +12,21 @@ const someRecipe: Recipe = {
   sogginess: 2,
 };
 
-describe("neovim export", () => {
-  it("should export neovim colorscheme", () => {
-    const config = toNeovim(someRecipe);
+describe("vim export", () => {
+  it("should export vim colorscheme", () => {
+    const config = toVim(someRecipe);
 
     expect(config).toBe(expectedTheme);
   });
 });
 
-const expectedTheme = `" Store the following config under ~/.config/nvim/colors/root-loops.vim
-" then load it into neovim via ':colorscheme root-loops' or by declaring
-" it as your colorscheme in your neovim config.
+const expectedTheme = `" Store the following config under ~/.vim/colors/root-loops.vim
+" then load it into vim via ':colorscheme root-loops' or by declaring
+" it as your colorscheme in your .vimrc.
 
 " root-loops.vim -- Root Loops Vim Color Scheme.
 " Webpage:          https://rootloops.sh
-" Description:      A neovim color scheme for cereal lovers
+" Description:      A vim color scheme for cereal lovers
 
 hi clear
 
@@ -108,9 +108,6 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi debugBreakpoint ctermfg=8 guifg=#959eb5
     hi ErrorMsg ctermfg=1 cterm=bold,italic guifg=#d77c6e gui=bold,italic
     hi WarningMsg ctermfg=11 guifg=#c7ab60
-    hi healthError ctermfg=1 guifg=#d77c6e
-    hi healthSuccess ctermfg=2 guifg=#66ab75
-    hi healthWarning ctermfg=3 guifg=#b0964e
     hi DiffAdd ctermfg=10 guifg=#79c289
     hi DiffChange ctermfg=12 guifg=#99ace5
     hi DiffDelete ctermfg=9 guifg=#e4978a
@@ -197,9 +194,6 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi debugBreakpoint ctermfg=8
     hi ErrorMsg ctermfg=1 cterm=bold,italic
     hi WarningMsg ctermfg=11
-    hi healthError ctermfg=1
-    hi healthSuccess ctermfg=2
-    hi healthWarning ctermfg=3
     hi DiffAdd ctermfg=10
     hi DiffChange ctermfg=12
     hi DiffDelete ctermfg=9

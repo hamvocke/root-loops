@@ -12,28 +12,6 @@ import {
  * whole mechanism as a Ruby implementation that I could port to TypeScript.
  */
 
-/**
- *  Assign colors and styles to vim highlight groups.
- *
- *  For Root Loops, we use 16 cereal colors (the standard ANSI colors) plus a
- *  foreground and a background color that are shades of gray. That's all you get.
- *  For vim, we could get away with simply setting the 'notermguicolors' option
- *  and rely on setting 'ctermfg' and 'ctermbg' alone, but since some folks
- *  might not use Root Loops for their terminal and only want to use it for vim
- *  we're setting the full truecolor attributes using 'guifg' and 'guibg' and
- *  assigning the hex colors we get from our Root Loops recipe.
- *
- *  @remark
- *  * To learn more about highlight groups in vim, see :help highlight-default
- *  and :help group-name
- *  * To see all currently active highlight groups in your vim instance, use :so $VIMRUNTIME/syntax/hitest.vim
- *
- *
- *  @returns HighlightGroups - mapping a single highlight group to a background and
- *  foreground color, a font style, and an optional underline color. Alternatively
- *  you can link two highlight groups together to declare that one should follow the
- *  style of the other.
- */
 function defineHighlights(c: Cereals): HighlightGroups {
   const background: ColorDefinition = { hex: c.background.color_hex, ansi: 0 };
   const foreground: ColorDefinition = { hex: c.foreground.color_hex, ansi: 15 };
@@ -151,9 +129,6 @@ function defineHighlights(c: Cereals): HighlightGroups {
     // errors and warnings
     { group: "ErrorMsg", fg: darkred, style: "bold,italic" },
     { group: "WarningMsg", fg: yellow },
-    { group: "healthError", fg: darkred },
-    { group: "healthSuccess", fg: darkgreen },
-    { group: "healthWarning", fg: darkyellow },
 
     // vim diff (vim -d)
     { group: "DiffAdd", fg: green },
@@ -170,22 +145,20 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "diffFile", fg: blue },
     { group: "diffLine", fg: gray },
     { group: "diffIndexLine", fg: cyan },
-
-    // TODO: treesitter
   ];
 }
 
-export function toNeovim(recipe: Recipe): string {
+export function toVim(recipe: Recipe): string {
   const cereals = prepare(recipe);
   const highlights = defineHighlights(cereals);
 
-  const template = `" Store the following config under ~/.config/nvim/colors/root-loops.vim
-" then load it into neovim via ':colorscheme root-loops' or by declaring
-" it as your colorscheme in your neovim config.
+  const template = `" Store the following config under ~/.vim/colors/root-loops.vim
+" then load it into vim via ':colorscheme root-loops' or by declaring
+" it as your colorscheme in your .vimrc.
 
 " root-loops.vim -- Root Loops Vim Color Scheme.
 " Webpage:          https://rootloops.sh
-" Description:      A neovim color scheme for cereal lovers
+" Description:      A vim color scheme for cereal lovers
 
 hi clear
 
