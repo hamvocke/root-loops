@@ -35,6 +35,7 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
   const white: ColorDefinition = { hex: c.brightWhite.color_hex, ansi: 15 };
 
   return [
+    { group: "Normal", bg: "NONE", fg: "NONE" },
     { group: "NonText", fg: black },
     { group: "EndOfBuffer", targetGroup: "NonText" },
 
@@ -90,8 +91,8 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
     { group: "CursorLineNr", fg: darkcyan },
     { group: "helpLeadBlank", bg: "NONE", fg: "NONE" },
     { group: "helpNormal", bg: "NONE", fg: "NONE" },
-    { group: "Visual", bg: gray, style: "bold" }, // visual mode selection
-    { group: "VisualNOS", bg: gray, style: "bold" },
+    { group: "Visual", bg: gray, fg: black, style: "bold" }, // visual mode selection
+    { group: "VisualNOS", bg: gray, fg: black, style: "bold" },
     { group: "Pmenu", bg: black, fg: foreground }, // popup menu item
     { group: "PmenuSbar", bg: darkgray }, // popup menu scrollbar
     { group: "PmenuSel", bg: darkgray, style: "bold" }, // popup menu selected item

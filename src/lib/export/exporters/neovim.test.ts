@@ -37,6 +37,7 @@ endif
 let colors_name = "root loops"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
+    hi Normal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
     hi NonText ctermfg=0 guifg=#d0d4e1
     hi Comment ctermfg=8 cterm=italic guifg=#959eb5 gui=italic
     hi Constant ctermfg=3 guifg=#b0964e
@@ -75,8 +76,8 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi CursorLineNr ctermfg=6 guifg=#51a7b6
     hi helpLeadBlank ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
     hi helpNormal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-    hi Visual ctermbg=7 cterm=bold guibg=#4a5165 gui=bold
-    hi VisualNOS ctermbg=7 cterm=bold guibg=#4a5165 gui=bold
+    hi Visual ctermbg=7 ctermfg=0 cterm=bold guibg=#4a5165 guifg=#d0d4e1 gui=bold
+    hi VisualNOS ctermbg=7 ctermfg=0 cterm=bold guibg=#4a5165 guifg=#d0d4e1 gui=bold
     hi Pmenu ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#1e222d
     hi PmenuSbar ctermbg=8 guibg=#959eb5
     hi PmenuSel ctermbg=8 cterm=bold guibg=#959eb5 gui=bold
@@ -126,6 +127,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
+    hi Normal ctermbg=NONE ctermfg=NONE
     hi NonText ctermfg=0
     hi Comment ctermfg=8 cterm=italic
     hi Constant ctermfg=3
@@ -164,8 +166,8 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi CursorLineNr ctermfg=6
     hi helpLeadBlank ctermbg=NONE ctermfg=NONE
     hi helpNormal ctermbg=NONE ctermfg=NONE
-    hi Visual ctermbg=7 cterm=bold
-    hi VisualNOS ctermbg=7 cterm=bold
+    hi Visual ctermbg=7 ctermfg=0 cterm=bold
+    hi VisualNOS ctermbg=7 ctermfg=0 cterm=bold
     hi Pmenu ctermbg=0 ctermfg=15
     hi PmenuSbar ctermbg=8
     hi PmenuSel ctermbg=8 cterm=bold
