@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { type HighlightGroup, type ColorDefinition, hi } from "./highlight";
+import {
+  type HighlightGroup,
+  type ColorDefinition,
+  hi,
+  type LinkedHighlightGroup,
+  renderLinkedHighlights,
+} from "./highlight";
 
 describe("hi()", () => {
   const green: ColorDefinition = { hex: "#00ff00", ansi: 2 };
@@ -80,6 +86,17 @@ describe("hi()", () => {
         "hi Comment ctermbg=bg ctermfg=fg cterm=underline guibg=bg guifg=fg gui=underline guisp=#00ff00";
 
       expect(hi(highlight, mode)).toBe(expected);
+    });
+  });
+
+  describe("renderLinkedHighlights()", () => {
+    it("links group to targetGroup", () => {
+      const links: LinkedHighlightGroup[] = [
+        { group: "Number", targetGroup: "Constant" },
+        { group: "String", targetGroup: "Comment" },
+      ];
+      const expected = "hi link Number Constant\nhi link String Comment";
+      expect(renderLinkedHighlights(links)).toBe(expected);
     });
   });
 });

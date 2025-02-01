@@ -16,7 +16,7 @@ export type HighlightGroup = {
  */
 export type LinkedHighlightGroup = { group: string; targetGroup: string };
 
-export function isLinkedHighlightGroup(
+function isLinkedHighlightGroup(
   group: HighlightGroup | LinkedHighlightGroup,
 ): group is LinkedHighlightGroup {
   return "targetGroup" in group;
@@ -67,35 +67,16 @@ export function hi(group: HighlightGroup, mode: ColorMode): string {
   return command;
 }
 
-export function renderAnsiHighlights(highlights: HighlightGroups) {
-  // I wish I could write this as a .filter().map().join() statement,
-  // but I can't figure out how to make TypeScript's type predicates play well with .filter()
-
-  let template = "";
-  for (const group of highlights) {
-    if (!isLinkedHighlightGroup(group)) {
-      template += `    ${hi(group, "ANSI")}\n`;
-    }
-  }
-  return template;
-}
-
-export function renderTruecolorHighlights(highlights: HighlightGroups) {
-  let template = "";
-  for (const group of highlights) {
-    if (!isLinkedHighlightGroup(group)) {
-      template += `    ${hi(group, "Truecolor")}\n`;
-    }
-  }
-  return template;
+export function renderHighlights(highlights: HighlightGroups, mode: ColorMode) {
+  return highlights
+    .filter((h) => !isLinkedHighlightGroup(h))
+    .map((h) => `    ${hi(h, mode)}`)
+    .join("\n");
 }
 
 export function renderLinkedHighlights(highlights: HighlightGroups) {
-  let template = "";
-  for (const link of highlights) {
-    if (isLinkedHighlightGroup(link)) {
-      template += `  hi link ${link.group} ${link.targetGroup}\n`;
-    }
-  }
-  return template;
+  return highlights
+    .filter((h) => isLinkedHighlightGroup(h))
+    .map((link) => `hi link ${link.group} ${link.targetGroup}`)
+    .join("\n");
 }
