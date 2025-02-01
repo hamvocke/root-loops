@@ -12,7 +12,7 @@ import {
  * whole mechanism as a Ruby implementation that I could port to TypeScript.
  */
 
-function defineHighlights(c: Cereals): HighlightGroups {
+export function defineVimHighlights(c: Cereals): HighlightGroups {
   const background: ColorDefinition = { hex: c.background.color_hex, ansi: 0 };
   const foreground: ColorDefinition = { hex: c.foreground.color_hex, ansi: 15 };
 
@@ -72,17 +72,17 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "Underlined", style: "underline" },
     { group: "Bold", style: "bold" },
     { group: "Italic", style: "italic" },
-    { group: "Ignore" },
+    { group: "Ignore", bg: "NONE", fg: "NONE", style: "NONE" },
 
     // editor elements
-    { group: "StatusLine", bg: gray, fg: black },
-    { group: "StatusLineNC", bg: black, fg: white }, // status line of not-current window
+    { group: "StatusLine", bg: gray, fg: black, style: "NONE" },
+    { group: "StatusLineNC", bg: black, fg: white, style: "NONE" }, // status line of not-current window
     { group: "StatusLineTerm", targetGroup: "StatusLine" },
     { group: "StatusLineTermNC", targetGroup: "StatusLineNC" },
     { group: "VertSplit", fg: darkgray },
     { group: "WinSeparator", targetGroup: "VertSplit" },
-    { group: "TabLine", bg: white, fg: black },
-    { group: "TabLineFill", bg: gray },
+    { group: "TabLine", bg: black, fg: gray },
+    { group: "TabLineFill", fg: white, bg: "NONE" },
     { group: "TabLineSel", bg: yellow, fg: black }, // active tab panel
     { group: "Title", fg: darkblue, style: "bold" },
     { group: "CursorLine", bg: black, fg: "NONE" },
@@ -98,7 +98,7 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "PmenuThumb", bg: gray, fg: "NONE" }, // popup menu scrollbar thumb
     { group: "FoldColumn", fg: gray },
     { group: "Folded", fg: blue },
-    { group: "WildMenu", bg: darkgray, style: "NONE" }, // current selection in 'wildmenu' completion
+    { group: "WildMenu", bg: black, fg: foreground, style: "NONE" }, // current selection in 'wildmenu' completion
     { group: "SpecialKey", targetGroup: "NonText" },
     { group: "IncSearch", bg: darkred, fg: background },
     { group: "CurSearch", bg: darkyellow, fg: background },
@@ -111,7 +111,7 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "SpellRare", style: "undercurl", undercurl: green },
     { group: "ColorColumn", bg: darkgray },
     { group: "SignColumn", fg: gray },
-    { group: "ModeMsg", fg: foreground, style: "bold" },
+    { group: "ModeMsg", fg: black, bg: white, style: "bold" },
     { group: "MoreMsg", fg: darkblue },
     { group: "Question", fg: darkblue },
     { group: "Cursor", bg: foreground, fg: background }, // character under cursor
@@ -131,10 +131,10 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "WarningMsg", fg: yellow },
 
     // vim diff (vim -d)
-    { group: "DiffAdd", fg: green },
-    { group: "DiffChange", fg: blue },
-    { group: "DiffDelete", fg: red },
-    { group: "DiffText", bg: darkblue, fg: white },
+    { group: "DiffAdd", bg: green, fg: background },
+    { group: "DiffChange", bg: blue, fg: background },
+    { group: "DiffDelete", bg: red, fg: background },
+    { group: "DiffText", bg: cyan, fg: background },
 
     // diff
     { group: "diffAdded", fg: green },
@@ -150,7 +150,7 @@ function defineHighlights(c: Cereals): HighlightGroups {
 
 export function toVim(recipe: Recipe): string {
   const cereals = prepare(recipe);
-  const highlights = defineHighlights(cereals);
+  const highlights = defineVimHighlights(cereals);
 
   const template = `" Store the following config under ~/.vim/colors/root-loops.vim
 " then load it into vim via ':colorscheme root-loops' or by declaring
@@ -179,24 +179,7 @@ endif
 ${renderLinkedHighlights(highlights)}
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')
-    let g:terminal_ansi_colors = [
-      '${cereals.black.color_hex}',
-      '${cereals.red.color_hex}',
-      '${cereals.green.color_hex}',
-      '${cereals.yellow.color_hex}',
-      '${cereals.blue.color_hex}',
-      '${cereals.magenta.color_hex}',
-      '${cereals.cyan.color_hex}',
-      '${cereals.white.color_hex}',
-      '${cereals.brightBlack.color_hex}',
-      '${cereals.brightRed.color_hex}',
-      '${cereals.brightGreen.color_hex}',
-      '${cereals.brightYellow.color_hex}',
-      '${cereals.brightBlue.color_hex}',
-      '${cereals.brightMagenta.color_hex}',
-      '${cereals.brightCyan.color_hex}',
-      '${cereals.brightWhite.color_hex}'
-    ]
+    let g:terminal_ansi_colors = [ '${cereals.black.color_hex}', '${cereals.red.color_hex}', '${cereals.green.color_hex}', '${cereals.yellow.color_hex}', '${cereals.blue.color_hex}', '${cereals.magenta.color_hex}', '${cereals.cyan.color_hex}', '${cereals.white.color_hex}', '${cereals.brightBlack.color_hex}', '${cereals.brightRed.color_hex}', '${cereals.brightGreen.color_hex}', '${cereals.brightYellow.color_hex}', '${cereals.brightBlue.color_hex}', '${cereals.brightMagenta.color_hex}', '${cereals.brightCyan.color_hex}', '${cereals.brightWhite.color_hex}' ]
 endif`;
 
   return template;

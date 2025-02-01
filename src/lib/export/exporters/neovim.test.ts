@@ -62,12 +62,12 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Underlined cterm=underline gui=underline
     hi Bold cterm=bold gui=bold
     hi Italic cterm=italic gui=italic
-    hi Ignore
-    hi StatusLine ctermbg=7 ctermfg=0 guibg=#4a5165 guifg=#d0d4e1
-    hi StatusLineNC ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#07080d
+    hi Ignore ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
+    hi StatusLine ctermbg=7 ctermfg=0 cterm=NONE guibg=#4a5165 guifg=#d0d4e1 gui=NONE
+    hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#07080d gui=NONE
     hi VertSplit ctermfg=8 guifg=#959eb5
-    hi TabLine ctermbg=15 ctermfg=0 guibg=#07080d guifg=#d0d4e1
-    hi TabLineFill ctermbg=7 guibg=#4a5165
+    hi TabLine ctermbg=0 ctermfg=7 guibg=#d0d4e1 guifg=#4a5165
+    hi TabLineFill ctermbg=NONE ctermfg=15 guibg=NONE guifg=#07080d
     hi TabLineSel ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#d0d4e1
     hi Title ctermfg=4 cterm=bold guifg=#7f95db gui=bold
     hi CursorLine ctermbg=0 ctermfg=NONE guibg=#d0d4e1 guifg=NONE
@@ -83,7 +83,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi PmenuThumb ctermbg=7 ctermfg=NONE guibg=#4a5165 guifg=NONE
     hi FoldColumn ctermfg=7 guifg=#4a5165
     hi Folded ctermfg=12 guifg=#99ace5
-    hi WildMenu ctermbg=8 cterm=NONE guibg=#959eb5 gui=NONE
+    hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#1e222d gui=NONE
     hi IncSearch ctermbg=1 ctermfg=0 guibg=#d77c6e guifg=#dfe2eb
     hi CurSearch ctermbg=3 ctermfg=0 guibg=#b0964e guifg=#dfe2eb
     hi Search ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#dfe2eb
@@ -95,7 +95,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi SpellRare cterm=undercurl gui=undercurl guisp=#79c289
     hi ColorColumn ctermbg=8 guibg=#959eb5
     hi SignColumn ctermfg=7 guifg=#4a5165
-    hi ModeMsg ctermfg=15 cterm=bold guifg=#1e222d gui=bold
+    hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold guibg=#07080d guifg=#d0d4e1 gui=bold
     hi MoreMsg ctermfg=4 guifg=#7f95db
     hi Question ctermfg=4 guifg=#7f95db
     hi Cursor ctermbg=15 ctermfg=0 guibg=#1e222d guifg=#dfe2eb
@@ -108,13 +108,10 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi debugBreakpoint ctermfg=8 guifg=#959eb5
     hi ErrorMsg ctermfg=1 cterm=bold,italic guifg=#d77c6e gui=bold,italic
     hi WarningMsg ctermfg=11 guifg=#c7ab60
-    hi healthError ctermfg=1 guifg=#d77c6e
-    hi healthSuccess ctermfg=2 guifg=#66ab75
-    hi healthWarning ctermfg=3 guifg=#b0964e
-    hi DiffAdd ctermfg=10 guifg=#79c289
-    hi DiffChange ctermfg=12 guifg=#99ace5
-    hi DiffDelete ctermfg=9 guifg=#e4978a
-    hi DiffText ctermbg=4 ctermfg=15 guibg=#7f95db guifg=#07080d
+    hi DiffAdd ctermbg=10 ctermfg=0 guibg=#79c289 guifg=#dfe2eb
+    hi DiffChange ctermbg=12 ctermfg=0 guibg=#99ace5 guifg=#dfe2eb
+    hi DiffDelete ctermbg=9 ctermfg=0 guibg=#e4978a guifg=#dfe2eb
+    hi DiffText ctermbg=14 ctermfg=0 guibg=#64becd guifg=#dfe2eb
     hi diffAdded ctermfg=10 guifg=#79c289
     hi diffRemoved ctermfg=9 guifg=#e4978a
     hi diffChanged ctermfg=12 guifg=#99ace5
@@ -123,6 +120,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi diffFile ctermfg=12 guifg=#99ace5
     hi diffLine ctermfg=7 guifg=#4a5165
     hi diffIndexLine ctermfg=14 guifg=#64becd
+    hi healthError ctermfg=1 guifg=#d77c6e
+    hi healthSuccess ctermfg=2 guifg=#66ab75
+    hi healthWarning ctermfg=3 guifg=#b0964e
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
@@ -151,12 +151,12 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Underlined cterm=underline
     hi Bold cterm=bold
     hi Italic cterm=italic
-    hi Ignore
-    hi StatusLine ctermbg=7 ctermfg=0
-    hi StatusLineNC ctermbg=0 ctermfg=15
+    hi Ignore ctermbg=NONE ctermfg=NONE cterm=NONE
+    hi StatusLine ctermbg=7 ctermfg=0 cterm=NONE
+    hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE
     hi VertSplit ctermfg=8
-    hi TabLine ctermbg=15 ctermfg=0
-    hi TabLineFill ctermbg=7
+    hi TabLine ctermbg=0 ctermfg=7
+    hi TabLineFill ctermbg=NONE ctermfg=15
     hi TabLineSel ctermbg=11 ctermfg=0
     hi Title ctermfg=4 cterm=bold
     hi CursorLine ctermbg=0 ctermfg=NONE
@@ -172,7 +172,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi PmenuThumb ctermbg=7 ctermfg=NONE
     hi FoldColumn ctermfg=7
     hi Folded ctermfg=12
-    hi WildMenu ctermbg=8 cterm=NONE
+    hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE
     hi IncSearch ctermbg=1 ctermfg=0
     hi CurSearch ctermbg=3 ctermfg=0
     hi Search ctermbg=11 ctermfg=0
@@ -184,7 +184,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi SpellRare cterm=undercurl
     hi ColorColumn ctermbg=8
     hi SignColumn ctermfg=7
-    hi ModeMsg ctermfg=15 cterm=bold
+    hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold
     hi MoreMsg ctermfg=4
     hi Question ctermfg=4
     hi Cursor ctermbg=15 ctermfg=0
@@ -197,13 +197,10 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi debugBreakpoint ctermfg=8
     hi ErrorMsg ctermfg=1 cterm=bold,italic
     hi WarningMsg ctermfg=11
-    hi healthError ctermfg=1
-    hi healthSuccess ctermfg=2
-    hi healthWarning ctermfg=3
-    hi DiffAdd ctermfg=10
-    hi DiffChange ctermfg=12
-    hi DiffDelete ctermfg=9
-    hi DiffText ctermbg=4 ctermfg=15
+    hi DiffAdd ctermbg=10 ctermfg=0
+    hi DiffChange ctermbg=12 ctermfg=0
+    hi DiffDelete ctermbg=9 ctermfg=0
+    hi DiffText ctermbg=14 ctermfg=0
     hi diffAdded ctermfg=10
     hi diffRemoved ctermfg=9
     hi diffChanged ctermfg=12
@@ -212,6 +209,9 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi diffFile ctermfg=12
     hi diffLine ctermfg=7
     hi diffIndexLine ctermfg=14
+    hi healthError ctermfg=1
+    hi healthSuccess ctermfg=2
+    hi healthWarning ctermfg=3
 endif
 
 hi link EndOfBuffer NonText
@@ -232,22 +232,5 @@ hi link CursorIM Cursor
 hi link Terminal Normal
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')
-    let g:terminal_ansi_colors = [
-      '#d0d4e1',
-      '#d77c6e',
-      '#66ab75',
-      '#b0964e',
-      '#7f95db',
-      '#c877c1',
-      '#51a7b6',
-      '#4a5165',
-      '#959eb5',
-      '#e4978a',
-      '#79c289',
-      '#c7ab60',
-      '#99ace5',
-      '#d694d0',
-      '#64becd',
-      '#07080d'
-    ]
+    let g:terminal_ansi_colors = [ '#d0d4e1', '#d77c6e', '#66ab75', '#b0964e', '#7f95db', '#c877c1', '#51a7b6', '#4a5165', '#959eb5', '#e4978a', '#79c289', '#c7ab60', '#99ace5', '#d694d0', '#64becd', '#07080d' ]
 endif`;

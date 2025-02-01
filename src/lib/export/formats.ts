@@ -6,6 +6,8 @@ import { toHelix } from "./exporters/helix";
 import { toITerm } from "./exporters/iterm";
 import { toJson } from "./exporters/json";
 import { toKitty } from "./exporters/kitty";
+import { toNeovim } from "./exporters/neovim";
+import { toVim } from "./exporters/vim";
 import { toWezTerm } from "./exporters/wezterm";
 import { toWindowsTerminal } from "./exporters/windows-terminal";
 import { toXresources } from "./exporters/xresources";
@@ -20,6 +22,8 @@ export const exporters = {
   iTerm: { export: toITerm },
   JSON: { export: toJson },
   Kitty: { export: toKitty },
+  neovim: { export: toNeovim },
+  vim: { export: toVim },
   WezTerm: { export: toWezTerm },
   WindowsTerminal: { export: toWindowsTerminal },
   Xresources: { export: toXresources },

@@ -17,5 +17,7 @@ export const exportSelectOptions: ExportOption[] = [
   { value: "Xresources", label: "Xresources", group: "Terminal Emulators" },
   { value: "fzf", label: "fzf", group: "CLI Tools" },
   { value: "Helix", label: "Helix", group: "CLI Tools" },
+  { value: "neovim", label: "neovim", group: "CLI Tools" },
+  { value: "vim", label: "vim", group: "CLI Tools" },
   { value: "Zellij", label: "Zellij", group: "CLI Tools" },
 ];
