@@ -28,30 +28,50 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-02-01</h3>
+    <p>
+      <strong
+        >Wake up, nerds! <code>vim</code> &amp; <code>neovim</code> support just dropped!</strong
+      >
+    </p>
+    <p>
+      This is a huge one for me personally. After months of fiddling, experimenting, and learning
+      how vim and neovim theming works, I finally got a first version of an exporter for <code
+        >vim</code
+      >
+      and <code>neovim</code> out of the door. This feature has been
+      <a href="https://github.com/hamvocke/root-loops/issues/58">requested</a>
+      by <a href="https://github.com/Diablo-D3">Diablo-D3</a> and it's one that I've personally been
+      looking for.
+    </p>
+
+    <p>
+      I've been rocking this colorscheme locally for a few days now and have grown to like it. There
+      are still a few things to tweak and improve (the <code>neovim</code> version is very basic and
+      does not come with TreeSitter support yet, for example) but I plan to improve this over the next
+      few days and weeks. If you've got any feedback or are missing specific things, don't hesitate to
+      open an issue on GitHub.
+    </p>
     <h3>2024-12-07</h3>
     <p><strong>New</strong></p>
-    <ul>
-      <li>
-        We now finally support exporting color themes to <strong
-          ><a href="https://iterm2.com/">iTerm2</a></strong
-        >
-        as <a href="https://github.com/hamvocke/root-loops/issues/48">requested</a>
-        by <a href="https://github.com/chayes72">chayes72</a>. This one's been cooking for a while
-        since iTerm2 is using a somewhat awkward XML-based configuration format and I couldn't be
-        bothered to dive into it until now. With iTerm2 we now got support for exporting color
-        themes in RGB format, so that should make things a little easier in case there are other
-        exports relying on RGB instead of HSL or Hex notation.
-      </li>
-    </ul>
+    <p>
+      We now finally support exporting color themes to <strong
+        ><a href="https://iterm2.com/">iTerm2</a></strong
+      >
+      as <a href="https://github.com/hamvocke/root-loops/issues/48">requested</a>
+      by <a href="https://github.com/chayes72">chayes72</a>. This one's been cooking for a while
+      since iTerm2 is using a somewhat awkward XML-based configuration format and I couldn't be
+      bothered to dive into it until now. With iTerm2 we now got support for exporting color themes
+      in RGB format, so that should make things a little easier in case there are other exports
+      relying on RGB instead of HSL or Hex notation.
+    </p>
 
     <h3>2024-12-03</h3>
     <p><strong>Design Tweaks!</strong></p>
-    <ul>
-      <li>
-        The old 'plaid' background was a little bit too much after all. I've exchanged it with a
-        slightly more calm yet still vibrant procedural gradient background.
-      </li>
-    </ul>
+    <p>
+      The old 'plaid' background was a little bit too much after all. I've exchanged it with a
+      slightly more calm yet still vibrant procedural gradient background.
+    </p>
 
     <h3>2024-11-25</h3>
     <p><strong>New</strong></p>
