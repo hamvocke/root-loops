@@ -59,13 +59,14 @@ function defineHighlights(c: Cereals): HighlightGroups {
   return [
     { group: "NonText", fg: black },
     { group: "EndOfBuffer", targetGroup: "NonText" },
+
+    // syntax
     { group: "Comment", fg: darkgray, style: "italic" },
+    { group: "SpecialComment", targetGroup: "Special" },
     { group: "Constant", fg: darkyellow },
     { group: "Error", fg: darkred },
     { group: "Identifier", fg: red },
     { group: "Function", fg: darkblue },
-    { group: "Ignore" },
-    { group: "PreProc", fg: magenta },
     { group: "Special", fg: magenta },
     { group: "Statement", fg: darkmagenta },
     { group: "String", fg: darkgreen },
@@ -75,12 +76,27 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "Keyword", fg: darkmagenta },
     { group: "Exception", fg: darkmagenta },
     { group: "Conditional", fg: darkmagenta },
-
+    { group: "PreProc", fg: magenta }, // generic preprocessor
+    { group: "Include", fg: darkmagenta }, // preprocessor #include
+    { group: "Define", targetGroup: "PreProc" }, // preprocessor #define
+    { group: "Macro", fg: darkmagenta },
+    { group: "PreCondit", targetGroup: "PreProc" }, // preprocessor #if, #else
+    { group: "StorageClass", fg: yellow }, // static, register, volatile
+    { group: "Structure", fg: yellow }, // struct, union, enum, etc.
     { group: "Number", targetGroup: "Constant" },
     { group: "Float", targetGroup: "Number" },
     { group: "Todo", bg: red, fg: background, style: "bold" },
     { group: "Type", fg: yellow },
+    { group: "Typedef", targetGroup: "Type" },
+    { group: "SpecialChar", targetGroup: "Special" }, // special character in a constant
+    { group: "Debug", targetGroup: "Special" }, // debugging statements
+
     { group: "Underlined", style: "underline" },
+    { group: "Bold", style: "bold" },
+    { group: "Italic", style: "italic" },
+    { group: "Ignore" },
+
+    // editor elements
     { group: "StatusLine", bg: gray, fg: black },
     { group: "StatusLineNC", bg: black, fg: white }, // status line of not-current window
     { group: "StatusLineTerm", targetGroup: "StatusLine" },
@@ -106,10 +122,6 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "Folded", fg: blue },
     { group: "WildMenu", bg: darkgray, style: "NONE" }, // current selection in 'wildmenu' completion
     { group: "SpecialKey", targetGroup: "NonText" },
-    { group: "DiffAdd", fg: green },
-    { group: "DiffChange", fg: blue },
-    { group: "DiffDelete", fg: red },
-    { group: "DiffText", bg: darkblue, fg: white },
     { group: "IncSearch", bg: darkred, fg: background },
     { group: "CurSearch", bg: darkyellow, fg: background },
     { group: "Search", bg: yellow, fg: background },
@@ -121,11 +133,9 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "SpellRare", style: "undercurl", undercurl: green },
     { group: "ColorColumn", bg: darkgray },
     { group: "SignColumn", fg: gray },
-    { group: "ErrorMsg", fg: darkred, style: "bold,italic" },
     { group: "ModeMsg", fg: foreground, style: "bold" },
     { group: "MoreMsg", fg: darkblue },
     { group: "Question", fg: darkblue },
-    { group: "WarningMsg", fg: yellow },
     { group: "Cursor", bg: foreground, fg: background }, // character under cursor
     { group: "lCursor", targetGroup: "Cursor" },
     { group: "CursorIM", targetGroup: "Cursor" },
@@ -137,6 +147,31 @@ function defineHighlights(c: Cereals): HighlightGroups {
     { group: "ToolbarButton", bg: darkgray, fg: white },
     { group: "debugPC", fg: gray },
     { group: "debugBreakpoint", fg: darkgray },
+
+    // errors and warnings
+    { group: "ErrorMsg", fg: darkred, style: "bold,italic" },
+    { group: "WarningMsg", fg: yellow },
+    { group: "healthError", fg: darkred },
+    { group: "healthSuccess", fg: darkgreen },
+    { group: "healthWarning", fg: darkyellow },
+
+    // vim diff (vim -d)
+    { group: "DiffAdd", fg: green },
+    { group: "DiffChange", fg: blue },
+    { group: "DiffDelete", fg: red },
+    { group: "DiffText", bg: darkblue, fg: white },
+
+    // diff
+    { group: "diffAdded", fg: green },
+    { group: "diffRemoved", fg: red },
+    { group: "diffChanged", fg: blue },
+    { group: "diffOldFile", fg: yellow },
+    { group: "diffNewFile", fg: magenta },
+    { group: "diffFile", fg: blue },
+    { group: "diffLine", fg: gray },
+    { group: "diffIndexLine", fg: cyan },
+
+    // TODO: treesitter
   ];
 }
 
