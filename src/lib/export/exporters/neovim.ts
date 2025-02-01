@@ -179,8 +179,7 @@ export function toNeovim(recipe: Recipe): string {
   const cereals = prepare(recipe);
   const highlights = defineHighlights(cereals);
 
-  const template = `
-" Store the following config under ~/.config/nvim/colors/root-loops.vim
+  const template = `" Store the following config under ~/.config/nvim/colors/root-loops.vim
 " then load it into neovim via :colorscheme root-loops or by declaring
 " it as your colorscheme in your neovim config.
 
@@ -225,7 +224,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
       '${cereals.brightCyan.color_hex}',
       '${cereals.brightWhite.color_hex}'
     ]
-endif
-`;
+endif`;
+
   return template;
 }
