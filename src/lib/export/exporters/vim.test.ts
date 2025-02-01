@@ -68,7 +68,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#07080d gui=NONE
     hi VertSplit ctermfg=8 guifg=#959eb5
     hi TabLine ctermbg=0 ctermfg=7 guibg=#d0d4e1 guifg=#4a5165
-    hi TabLineFill ctermbg=NONE ctermfg=15 guibg=NONE guifg=#07080d
+    hi TabLineFill ctermbg=NONE ctermfg=0 guibg=NONE guifg=#d0d4e1
     hi TabLineSel ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#d0d4e1
     hi Title ctermfg=4 cterm=bold guifg=#7f95db gui=bold
     hi CursorLine ctermbg=0 ctermfg=NONE guibg=#d0d4e1 guifg=NONE
@@ -155,7 +155,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE
     hi VertSplit ctermfg=8
     hi TabLine ctermbg=0 ctermfg=7
-    hi TabLineFill ctermbg=NONE ctermfg=15
+    hi TabLineFill ctermbg=NONE ctermfg=0
     hi TabLineSel ctermbg=11 ctermfg=0
     hi Title ctermfg=4 cterm=bold
     hi CursorLine ctermbg=0 ctermfg=NONE

@@ -83,7 +83,7 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
     { group: "VertSplit", fg: darkgray },
     { group: "WinSeparator", targetGroup: "VertSplit" },
     { group: "TabLine", bg: black, fg: gray },
-    { group: "TabLineFill", fg: white, bg: "NONE" },
+    { group: "TabLineFill", fg: black, bg: "NONE" },
     { group: "TabLineSel", bg: yellow, fg: black }, // active tab panel
     { group: "Title", fg: darkblue, style: "bold" },
     { group: "CursorLine", bg: black, fg: "NONE" },
