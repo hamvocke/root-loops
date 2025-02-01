@@ -13,7 +13,7 @@ const someRecipe: Recipe = {
 };
 
 describe("(neo)vim export", () => {
-  it.skip("should export vim colorscheme", () => {
+  it("should export vim colorscheme", () => {
     const config = toNeovim(someRecipe);
 
     expect(config).toBe(expectedTheme);
@@ -21,6 +21,10 @@ describe("(neo)vim export", () => {
 });
 
 const expectedTheme = `
+" Store the following config under ~/.config/nvim/colors/root-loops.vim
+" then load it into neovim via :colorscheme root-loops or by declaring
+" it as your colorscheme in your neovim config.
+
 " root-loops.vim -- Root Loops Vim Color Scheme.
 " Webpage:          https://rootloops.sh
 " Description:      A (neo)vim color scheme for cereal lovers
@@ -28,7 +32,7 @@ const expectedTheme = `
 hi clear
 
 if exists("syntax_on")
-  syntax reset
+    syntax reset
 endif
 
 let colors_name = "root loops"

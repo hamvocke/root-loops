@@ -2,9 +2,9 @@ import { type Recipe } from "$lib/ingredients";
 import { prepare, type Cereals } from "$lib/cereals";
 import {
   type HighlightGroups,
-  renderAnsiHighlights,
+  type ColorDefinition,
+  renderHighlights,
   renderLinkedHighlights,
-  renderTruecolorHighlights,
 } from "./vim/highlight";
 
 /**
@@ -35,8 +35,8 @@ import {
  *  style of the other.
  */
 function defineHighlights(c: Cereals): HighlightGroups {
-  const background: ColorDefinition = { hex: c.background.color_hex, ansi: "NONE" };
-  const foreground: ColorDefinition = { hex: c.foreground.color_hex, ansi: "NONE" };
+  const background: ColorDefinition = { hex: c.background.color_hex, ansi: 0 };
+  const foreground: ColorDefinition = { hex: c.foreground.color_hex, ansi: 15 };
 
   const black: ColorDefinition = { hex: c.black.color_hex, ansi: 0 };
   const darkred: ColorDefinition = { hex: c.red.color_hex, ansi: 1 };
@@ -57,79 +57,86 @@ function defineHighlights(c: Cereals): HighlightGroups {
   const white: ColorDefinition = { hex: c.brightWhite.color_hex, ansi: 15 };
 
   return [
-    { group: "Normal", bg: background, fg: foreground, style: "NONE" },
-    { group: "NonText", bg: "NONE", fg: black, style: "NONE" },
+    { group: "NonText", fg: black },
     { group: "EndOfBuffer", targetGroup: "NonText" },
-    { group: "Comment", bg: "NONE", fg: darkgray, style: "italic" },
-    { group: "Constant", bg: background, fg: darkyellow, style: "NONE" },
-    { group: "Error", bg: background, fg: darkred, style: "NONE" },
-    { group: "Identifier", bg: background, fg: darkmagenta, style: "NONE" },
-    { group: "Ignore", bg: background, fg: background, style: "NONE" },
-    { group: "PreProc", bg: background, fg: magenta, style: "NONE" },
-    { group: "Special", bg: background, fg: magenta, style: "NONE" },
-    { group: "Statement", bg: background, fg: darkcyan, style: "NONE" },
-    { group: "String", bg: background, fg: darkgreen, style: "NONE" },
-    { group: "Opeator", bg: background, fg: cyan, style: "NONE" },
+    { group: "Comment", fg: darkgray, style: "italic" },
+    { group: "Constant", fg: darkyellow },
+    { group: "Error", fg: darkred },
+    { group: "Identifier", fg: red },
+    { group: "Function", fg: darkblue },
+    { group: "Ignore" },
+    { group: "PreProc", fg: magenta },
+    { group: "Special", fg: magenta },
+    { group: "Statement", fg: darkmagenta },
+    { group: "String", fg: darkgreen },
+    { group: "Operator", fg: darkcyan },
+    { group: "Boolean", fg: darkyellow },
+    { group: "Label", fg: cyan },
+    { group: "Keyword", fg: darkmagenta },
+    { group: "Exception", fg: darkmagenta },
+    { group: "Conditional", fg: darkmagenta },
 
-    // TODO: boolean? statement? operator? label? keyword? exception? conditional? repeat?
     { group: "Number", targetGroup: "Constant" },
-    { group: "Todo", bg: darkmagenta, fg: background, style: "NONE" },
-    { group: "Type", bg: background, fg: yellow, style: "NONE" },
-    { group: "Underlined", bg: "bg", fg: "fg", style: "underline" },
-    { group: "StatusLine", bg: "NONE", fg: foreground, style: "NONE" },
-    { group: "StatusLineNC", bg: "NONE", fg: white, style: "NONE" }, // status line of not-current window
+    { group: "Float", targetGroup: "Number" },
+    { group: "Todo", bg: red, fg: background, style: "bold" },
+    { group: "Type", fg: yellow },
+    { group: "Underlined", style: "underline" },
+    { group: "StatusLine", bg: gray, fg: black },
+    { group: "StatusLineNC", bg: black, fg: white }, // status line of not-current window
     { group: "StatusLineTerm", targetGroup: "StatusLine" },
     { group: "StatusLineTermNC", targetGroup: "StatusLineNC" },
-    { group: "VertSplit", bg: background, fg: black, style: "NONE" },
-    { group: "TabLine", bg: black, fg: white, style: "NONE" },
-    { group: "TabLineFill", bg: darkgray, fg: "NONE", style: "NONE" },
-    { group: "TabLineSel", bg: gray, fg: black, style: "NONE" }, // active tab panel
-    { group: "Title", bg: "NONE", fg: darkblue, style: "bold" },
-    { group: "CursorLine", bg: gray, fg: "NONE", style: "NONE" },
-    { group: "LineNr", bg: "NONE", fg: darkgray, style: "NONE" },
-    { group: "CursorLineNr", bg: "bg", fg: blue, style: "NONE" },
-    { group: "helpLeadBlank", bg: "NONE", fg: "NONE", style: "NONE" },
-    { group: "helpNormal", bg: "NONE", fg: "NONE", style: "NONE" },
-    { group: "Visual", bg: darkgray, fg: "NONE", style: "bold" }, // visual mode selection
-    { group: "VisualNOS", bg: darkgray, fg: "NONE", style: "bold" },
-    { group: "Pmenu", bg: black, fg: foreground, style: "NONE" }, // popup menu item
-    { group: "PmenuSbar", bg: darkgray, fg: "NONE", style: "NONE" }, // popup menu scrollbar
-    { group: "PmenuSel", bg: darkgray, fg: "NONE", style: "bold" }, // popup menu selected item
-    { group: "PmenuThumb", bg: gray, fg: "NONE", style: "NONE" }, // popup menu scrollbar thumb
-    { group: "FoldColumn", bg: "NONE", fg: gray, style: "NONE" },
-    { group: "Folded", bg: white, fg: blue, style: "NONE" },
-    { group: "WildMenu", bg: darkgray, fg: "NONE", style: "NONE" }, // current selection in 'wildmenu' completion
+    { group: "VertSplit", fg: darkgray },
+    { group: "WinSeparator", targetGroup: "VertSplit" },
+    { group: "TabLine", bg: white, fg: black },
+    { group: "TabLineFill", bg: gray },
+    { group: "TabLineSel", bg: yellow, fg: black }, // active tab panel
+    { group: "Title", fg: darkblue, style: "bold" },
+    { group: "CursorLine", bg: black, fg: "NONE" },
+    { group: "LineNr", fg: darkgray },
+    { group: "CursorLineNr", fg: darkcyan },
+    { group: "helpLeadBlank", bg: "NONE", fg: "NONE" },
+    { group: "helpNormal", bg: "NONE", fg: "NONE" },
+    { group: "Visual", bg: gray, style: "bold" }, // visual mode selection
+    { group: "VisualNOS", bg: gray, style: "bold" },
+    { group: "Pmenu", bg: black, fg: foreground }, // popup menu item
+    { group: "PmenuSbar", bg: darkgray }, // popup menu scrollbar
+    { group: "PmenuSel", bg: darkgray, style: "bold" }, // popup menu selected item
+    { group: "PmenuThumb", bg: gray, fg: "NONE" }, // popup menu scrollbar thumb
+    { group: "FoldColumn", fg: gray },
+    { group: "Folded", fg: blue },
+    { group: "WildMenu", bg: darkgray, style: "NONE" }, // current selection in 'wildmenu' completion
     { group: "SpecialKey", targetGroup: "NonText" },
-    { group: "DiffAdd", bg: "NONE", fg: green, style: "NONE" },
-    { group: "DiffChange", bg: "NONE", fg: blue, style: "NONE" },
-    { group: "DiffDelete", bg: "NONE", fg: red, style: "NONE" },
-    { group: "DiffText", bg: "NONE", fg: white, style: "NONE" },
-    { group: "IncSearch", bg: black, fg: white, style: "NONE" },
-    { group: "CurSearch", bg: darkyellow, fg: background, style: "NONE" },
-    { group: "Search", bg: black, fg: foreground, style: "NONE" },
-    { group: "Directory", bg: "NONE", fg: darkblue, style: "NONE" },
+    { group: "DiffAdd", fg: green },
+    { group: "DiffChange", fg: blue },
+    { group: "DiffDelete", fg: red },
+    { group: "DiffText", bg: darkblue, fg: white },
+    { group: "IncSearch", bg: darkred, fg: background },
+    { group: "CurSearch", bg: darkyellow, fg: background },
+    { group: "Search", bg: yellow, fg: background },
+    { group: "Directory", fg: darkblue },
     { group: "MatchParen", bg: gray, fg: darkyellow, style: "bold" },
-    { group: "SpellBad", bg: "bg", fg: "fg", style: "undercurl", undercurl: red },
-    { group: "SpellCap", bg: "bg", fg: "fg", style: "undercurl", undercurl: yellow },
-    { group: "SpellLocal", bg: "bg", fg: "fg", style: "undercurl", undercurl: blue },
-    { group: "SpellRare", bg: "bg", fg: "fg", style: "undercurl", undercurl: green },
-    { group: "ColorColumn", bg: gray, fg: "NONE", style: "NONE" },
-    { group: "SignColumn", bg: "NONE", fg: white, style: "NONE" },
-    { group: "ErrorMsg", bg: "NONE", fg: red, style: "bold,italic" },
-    { group: "ModeMsg", bg: "NONE", fg: foreground, style: "bold" },
-    { group: "MoreMsg", bg: "NONE", fg: darkblue, style: "NONE" },
-    { group: "Question", bg: "NONE", fg: darkblue, style: "NONE" },
-    { group: "WarningMsg", bg: "NONE", fg: darkyellow, style: "NONE" },
-    { group: "Cursor", bg: foreground, fg: background, style: "NONE" }, // character under cursor
+    { group: "SpellBad", style: "undercurl", undercurl: red },
+    { group: "SpellCap", style: "undercurl", undercurl: yellow },
+    { group: "SpellLocal", style: "undercurl", undercurl: blue },
+    { group: "SpellRare", style: "undercurl", undercurl: green },
+    { group: "ColorColumn", bg: darkgray },
+    { group: "SignColumn", fg: gray },
+    { group: "ErrorMsg", fg: darkred, style: "bold,italic" },
+    { group: "ModeMsg", fg: foreground, style: "bold" },
+    { group: "MoreMsg", fg: darkblue },
+    { group: "Question", fg: darkblue },
+    { group: "WarningMsg", fg: yellow },
+    { group: "Cursor", bg: foreground, fg: background }, // character under cursor
+    { group: "lCursor", targetGroup: "Cursor" },
     { group: "CursorIM", targetGroup: "Cursor" },
-    { group: "CursorColumn", bg: black, fg: "fg", style: "NONE" },
-    { group: "QuickFixLine", bg: black, fg: foreground, style: "NONE" },
+    { group: "CursorColumn", bg: black },
+    { group: "QuickFixLine", bg: gray },
     { group: "Terminal", targetGroup: "Normal" },
-    { group: "Conceal", bg: "NONE", fg: gray, style: "NONE" },
-    { group: "ToolbarLine", bg: black, fg: white, style: "NONE" },
-    { group: "ToolbarButton", bg: darkgray, fg: white, style: "NONE" },
-    { group: "debugPC", bg: black, fg: "fg", style: "NONE" },
-    { group: "debugBreakpoint", bg: gray, fg: foreground, style: "NONE" },
+    { group: "Conceal", fg: darkgray },
+    { group: "ToolbarLine", bg: black, fg: white },
+    { group: "ToolbarButton", bg: darkgray, fg: white },
+    { group: "debugPC", fg: gray },
+    { group: "debugBreakpoint", fg: darkgray },
   ];
 }
 
@@ -149,17 +156,17 @@ export function toNeovim(recipe: Recipe): string {
 hi clear
 
 if exists("syntax_on")
-  syntax reset
+    syntax reset
 endif
 
 let colors_name = "root loops"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-    ${renderTruecolorHighlights(highlights)}
+${renderHighlights(highlights, "Truecolor")}
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
-    ${renderAnsiHighlights(highlights)}
+${renderHighlights(highlights, "ANSI")}
 endif
 
 ${renderLinkedHighlights(highlights)}
