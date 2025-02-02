@@ -69,7 +69,6 @@
 
 <style>
   .content {
-    background: color-mix(in hsl, var(--color-slate-200) 60%, transparent);
     border-top: 1px solid var(--color-slate-100);
     padding: 2rem;
     font-size: 1rem;
