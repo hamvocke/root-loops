@@ -16,7 +16,7 @@ selection_background    ${cereals.foreground.color_hex}
 selection_foreground    ${cereals.background.color_hex}
 
 # Cursor colors
-cursor_text_color       ${cereals.foreground.color_hex}
+cursor_text_color       ${cereals.background.color_hex}
 cursor                  ${cereals.white.color_hex}
 
 # URL underline color when hovering with mouse

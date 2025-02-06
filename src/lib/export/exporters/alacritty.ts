@@ -14,7 +14,7 @@ background = '${cereals.background.color_hex}'
 foreground = '${cereals.foreground.color_hex}'
 
 [colors.cursor]
-text = '${cereals.foreground.color_hex}'
+text = '${cereals.background.color_hex}'
 cursor = '${cereals.white.color_hex}'
 
 [colors.normal]

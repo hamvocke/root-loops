@@ -52,7 +52,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
   ${colorMarkup("Bold Color", cereals.brightWhite)}
   ${colorMarkup("Cursor Color", cereals.white)}
   ${colorMarkup("Cursor Guide Color", cereals.brightCyan, 0.5)}
-  ${colorMarkup("Cursor Text Color", cereals.white)}
+  ${colorMarkup("Cursor Text Color", cereals.background)}
   ${colorMarkup("Foreground Color", cereals.foreground)}
   ${colorMarkup("Match Background Color", cereals.black)}
   ${colorMarkup("Selected Text Color", cereals.white)}

@@ -119,7 +119,7 @@ background = '#dfe2eb'
 foreground = '#1e222d'
 
 [colors.cursor]
-text = '#1e222d'
+text = '#dfe2eb'
 cursor = '#4a5165'
 
 [colors.normal]
@@ -191,7 +191,7 @@ selection_background    #1e222d
 selection_foreground    #dfe2eb
 
 # Cursor colors
-cursor_text_color       #1e222d
+cursor_text_color       #dfe2eb
 cursor                  #4a5165
 
 # URL underline color when hovering with mouse
@@ -270,7 +270,7 @@ config.colors = {
   background = "#dfe2eb",
   cursor_bg = "#4a5165",
   cursor_border = "#07080d",
-  cursor_fg = "#1e222d",
+  cursor_fg = "#dfe2eb",
   selection_bg = "#1e222d",
   selection_fg = "#dfe2eb",
   ansi = {
@@ -540,6 +540,7 @@ export FZF_DEFAULT_OPTS="\
     expect(config).toBe(expected);
   });
 
+  // FIXME: floating point rounding issues below. find a better way to test this.
   it.todo("to iTerm2", () => {
     const recipe: Recipe = {
       milkAmount: MilkAmount.None,
@@ -615,7 +616,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Green Component</key>
     <real>0.7212521790275102</real>
     <key>Red Component</key>
-    <real>0.9520338449780147</real>
+    <real>0.9520338449780149</real>
   </dict>
 
   <key>Ansi 12 Color</key>
@@ -643,7 +644,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Green Component</key>
     <real>0.6869381535598401</real>
     <key>Red Component</key>
-    <real>0.8709925917019176</real>
+    <real>0.8709925917019175</real>
   </dict>
 
   <key>Ansi 14 Color</key>
@@ -651,13 +652,13 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Alpha Component</key>
     <real>1</real>
     <key>Blue Component</key>
-    <real>0.8613665139730448</real>
+    <real>0.8613665139730446</real>
     <key>Color Space</key>
     <string>P3</string>
     <key>Green Component</key>
-    <real>0.8618616729201257</real>
+    <real>0.8618616729201256</real>
     <key>Red Component</key>
-    <real>0.3102627076439054</real>
+    <real>0.31026270764390584</real>
   </dict>
 
   <key>Ansi 15 Color</key>
@@ -679,7 +680,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Alpha Component</key>
     <real>1</real>
     <key>Blue Component</key>
-    <real>0.3235642513391245</real>
+    <real>0.3235642513391246</real>
     <key>Color Space</key>
     <string>P3</string>
     <key>Green Component</key>
@@ -711,7 +712,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Color Space</key>
     <string>P3</string>
     <key>Green Component</key>
-    <real>0.694395984075212</real>
+    <real>0.6943959840752121</real>
     <key>Red Component</key>
     <real>0.48729504778723526</real>
   </dict>
@@ -797,7 +798,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Green Component</key>
     <real>0.02578957895514688</real>
     <key>Red Component</key>
-    <real>0.013955119191120533</real>
+    <real>0.01395511919112051</real>
   </dict>
 
   <key>Badge Color</key>
@@ -839,7 +840,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Green Component</key>
     <real>0.7173440498259581</real>
     <key>Red Component</key>
-    <real>0.6423075221496393</real>
+    <real>0.6423075221496392</real>
   </dict>
 
   <key>Cursor Guide Color</key>
@@ -847,13 +848,13 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Alpha Component</key>
     <real>0.5</real>
     <key>Blue Component</key>
-    <real>0.8613665139730448</real>
+    <real>0.8613665139730446</real>
     <key>Color Space</key>
     <string>P3</string>
     <key>Green Component</key>
-    <real>0.8618616729201257</real>
+    <real>0.8618616729201256</real>
     <key>Red Component</key>
-    <real>0.3102627076439054</real>
+    <real>0.31026270764390584</real>
   </dict>
 
   <key>Cursor Text Color</key>
@@ -861,13 +862,13 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Alpha Component</key>
     <real>1</real>
     <key>Blue Component</key>
-    <real>0.9404511900583498</real>
+    <real>0.1028840922262528</real>
     <key>Color Space</key>
     <string>P3</string>
     <key>Green Component</key>
-    <real>0.7173440498259581</real>
+    <real>0.02578957895514688</real>
     <key>Red Component</key>
-    <real>0.6423075221496393</real>
+    <real>0.01395511919112051</real>
   </dict>
 
   <key>Foreground Color</key>
@@ -909,7 +910,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Green Component</key>
     <real>0.7173440498259581</real>
     <key>Red Component</key>
-    <real>0.6423075221496393</real>
+    <real>0.6423075221496392</real>
   </dict>
 
   <key>Selection Color</key>
@@ -937,7 +938,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
     <key>Green Component</key>
     <real>0.02578957895514688</real>
     <key>Red Component</key>
-    <real>0.013955119191120533</real>
+    <real>0.01395511919112051</real>
   </dict>
 
 </dict>
