@@ -91,11 +91,11 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
     { group: "CursorLineNr", fg: darkcyan },
     { group: "helpLeadBlank", bg: "NONE", fg: "NONE" },
     { group: "helpNormal", bg: "NONE", fg: "NONE" },
-    { group: "Visual", bg: gray, fg: black, style: "bold" }, // visual mode selection
-    { group: "VisualNOS", bg: gray, fg: black, style: "bold" },
+    { group: "Visual", bg: darkgray, fg: foreground, style: "bold" }, // visual mode selection
+    { group: "VisualNOS", bg: darkgray, fg: foreground, style: "bold" },
     { group: "Pmenu", bg: black, fg: foreground }, // popup menu item
-    { group: "PmenuSbar", bg: darkgray }, // popup menu scrollbar
-    { group: "PmenuSel", bg: darkgray, style: "bold" }, // popup menu selected item
+    { group: "PmenuSbar", bg: darkgray, fg: gray }, // popup menu scrollbar
+    { group: "PmenuSel", bg: darkgray, fg: foreground, style: "bold" }, // popup menu selected item
     { group: "PmenuThumb", bg: gray, fg: "NONE" }, // popup menu scrollbar thumb
     { group: "FoldColumn", fg: gray },
     { group: "Folded", fg: blue },

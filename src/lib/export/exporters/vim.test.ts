@@ -76,11 +76,11 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi CursorLineNr ctermfg=6 guifg=#51a7b6
     hi helpLeadBlank ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
     hi helpNormal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-    hi Visual ctermbg=7 ctermfg=0 cterm=bold guibg=#4a5165 guifg=#d0d4e1 gui=bold
-    hi VisualNOS ctermbg=7 ctermfg=0 cterm=bold guibg=#4a5165 guifg=#d0d4e1 gui=bold
+    hi Visual ctermbg=8 ctermfg=15 cterm=bold guibg=#959eb5 guifg=#1e222d gui=bold
+    hi VisualNOS ctermbg=8 ctermfg=15 cterm=bold guibg=#959eb5 guifg=#1e222d gui=bold
     hi Pmenu ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#1e222d
-    hi PmenuSbar ctermbg=8 guibg=#959eb5
-    hi PmenuSel ctermbg=8 cterm=bold guibg=#959eb5 gui=bold
+    hi PmenuSbar ctermbg=8 ctermfg=7 guibg=#959eb5 guifg=#4a5165
+    hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold guibg=#959eb5 guifg=#1e222d gui=bold
     hi PmenuThumb ctermbg=7 ctermfg=NONE guibg=#4a5165 guifg=NONE
     hi FoldColumn ctermfg=7 guifg=#4a5165
     hi Folded ctermfg=12 guifg=#99ace5
@@ -163,11 +163,11 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi CursorLineNr ctermfg=6
     hi helpLeadBlank ctermbg=NONE ctermfg=NONE
     hi helpNormal ctermbg=NONE ctermfg=NONE
-    hi Visual ctermbg=7 ctermfg=0 cterm=bold
-    hi VisualNOS ctermbg=7 ctermfg=0 cterm=bold
+    hi Visual ctermbg=8 ctermfg=15 cterm=bold
+    hi VisualNOS ctermbg=8 ctermfg=15 cterm=bold
     hi Pmenu ctermbg=0 ctermfg=15
-    hi PmenuSbar ctermbg=8
-    hi PmenuSel ctermbg=8 cterm=bold
+    hi PmenuSbar ctermbg=8 ctermfg=7
+    hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold
     hi PmenuThumb ctermbg=7 ctermfg=NONE
     hi FoldColumn ctermfg=7
     hi Folded ctermfg=12
