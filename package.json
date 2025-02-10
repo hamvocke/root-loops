@@ -27,6 +27,7 @@
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/svelte": "^5.2.6",
+    "@types/culori": "^2.1.1",
     "ansi_up": "^6.0.2",
     "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
