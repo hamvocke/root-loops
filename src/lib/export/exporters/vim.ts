@@ -87,6 +87,10 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
     { group: "TabLineSel", bg: yellow, fg: black }, // active tab panel
     { group: "Title", fg: darkblue, style: "bold" },
     { group: "CursorLine", bg: black, fg: "NONE" },
+    { group: "Cursor", bg: foreground, fg: background }, // character under cursor
+    { group: "lCursor", targetGroup: "Cursor" },
+    { group: "CursorIM", targetGroup: "Cursor" },
+    { group: "CursorColumn", bg: black },
     { group: "LineNr", fg: darkgray },
     { group: "CursorLineNr", fg: darkcyan },
     { group: "helpLeadBlank", bg: "NONE", fg: "NONE" },
@@ -115,10 +119,6 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
     { group: "ModeMsg", fg: black, bg: white, style: "bold" },
     { group: "MoreMsg", fg: darkblue },
     { group: "Question", fg: darkblue },
-    { group: "Cursor", bg: foreground, fg: background }, // character under cursor
-    { group: "lCursor", targetGroup: "Cursor" },
-    { group: "CursorIM", targetGroup: "Cursor" },
-    { group: "CursorColumn", bg: black },
     { group: "QuickFixLine", bg: gray },
     { group: "Terminal", targetGroup: "Normal" },
     { group: "Conceal", fg: darkgray },
