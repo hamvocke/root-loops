@@ -64,8 +64,8 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Bold cterm=bold gui=bold
     hi Italic cterm=italic gui=italic
     hi Ignore ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
-    hi StatusLine ctermbg=7 ctermfg=0 cterm=NONE guibg=#4a5165 guifg=#d0d4e1 gui=NONE
-    hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#07080d gui=NONE
+    hi StatusLine ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#1e222d gui=NONE
+    hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE guibg=#dfe2eb guifg=#07080d gui=NONE
     hi VertSplit ctermfg=8 guifg=#959eb5
     hi TabLine ctermbg=0 ctermfg=7 guibg=#d0d4e1 guifg=#4a5165
     hi TabLineFill ctermbg=NONE ctermfg=0 guibg=NONE guifg=#d0d4e1
@@ -87,11 +87,12 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi FoldColumn ctermfg=7 guifg=#4a5165
     hi Folded ctermfg=12 guifg=#99ace5
     hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#1e222d gui=NONE
+    hi SpecialKey ctermfg=0 guifg=#d0d4e1
     hi IncSearch ctermbg=1 ctermfg=0 guibg=#d77c6e guifg=#dfe2eb
     hi CurSearch ctermbg=3 ctermfg=0 guibg=#b0964e guifg=#dfe2eb
     hi Search ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#dfe2eb
     hi Directory ctermfg=4 guifg=#7f95db
-    hi MatchParen ctermbg=7 ctermfg=3 cterm=bold guibg=#4a5165 guifg=#b0964e gui=bold
+    hi MatchParen ctermbg=0 ctermfg=3 cterm=bold guibg=#d0d4e1 guifg=#b0964e gui=bold
     hi SpellBad cterm=undercurl gui=undercurl guisp=#e4978a
     hi SpellCap cterm=undercurl gui=undercurl guisp=#c7ab60
     hi SpellLocal cterm=undercurl gui=undercurl guisp=#99ace5
@@ -101,7 +102,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold guibg=#07080d guifg=#d0d4e1 gui=bold
     hi MoreMsg ctermfg=4 guifg=#7f95db
     hi Question ctermfg=4 guifg=#7f95db
-    hi QuickFixLine ctermbg=7 guibg=#4a5165
+    hi QuickFixLine ctermbg=0 ctermfg=14 guibg=#d0d4e1 guifg=#64becd
     hi Conceal ctermfg=8 guifg=#959eb5
     hi ToolbarLine ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#07080d
     hi ToolbarButton ctermbg=8 ctermfg=15 guibg=#959eb5 guifg=#07080d
@@ -124,6 +125,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi healthError ctermfg=1 guifg=#d77c6e
     hi healthSuccess ctermfg=2 guifg=#66ab75
     hi healthWarning ctermfg=3 guifg=#b0964e
+    hi NormalFloat ctermbg=0 ctermfg=15 guibg=#dfe2eb guifg=#1e222d
+    hi FloatBorder ctermbg=0 ctermfg=7 guibg=#dfe2eb guifg=#4a5165
+    hi FloatShadow ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#1e222d
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
@@ -154,7 +158,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Bold cterm=bold
     hi Italic cterm=italic
     hi Ignore ctermbg=NONE ctermfg=NONE cterm=NONE
-    hi StatusLine ctermbg=7 ctermfg=0 cterm=NONE
+    hi StatusLine ctermbg=0 ctermfg=15 cterm=NONE
     hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE
     hi VertSplit ctermfg=8
     hi TabLine ctermbg=0 ctermfg=7
@@ -177,11 +181,12 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi FoldColumn ctermfg=7
     hi Folded ctermfg=12
     hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE
+    hi SpecialKey ctermfg=0
     hi IncSearch ctermbg=1 ctermfg=0
     hi CurSearch ctermbg=3 ctermfg=0
     hi Search ctermbg=11 ctermfg=0
     hi Directory ctermfg=4
-    hi MatchParen ctermbg=7 ctermfg=3 cterm=bold
+    hi MatchParen ctermbg=0 ctermfg=3 cterm=bold
     hi SpellBad cterm=undercurl
     hi SpellCap cterm=undercurl
     hi SpellLocal cterm=undercurl
@@ -191,7 +196,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold
     hi MoreMsg ctermfg=4
     hi Question ctermfg=4
-    hi QuickFixLine ctermbg=7
+    hi QuickFixLine ctermbg=0 ctermfg=14
     hi Conceal ctermfg=8
     hi ToolbarLine ctermbg=0 ctermfg=15
     hi ToolbarButton ctermbg=8 ctermfg=15
@@ -214,6 +219,9 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi healthError ctermfg=1
     hi healthSuccess ctermfg=2
     hi healthWarning ctermfg=3
+    hi NormalFloat ctermbg=0 ctermfg=15
+    hi FloatBorder ctermbg=0 ctermfg=7
+    hi FloatShadow ctermbg=0 ctermfg=15
 endif
 
 hi link EndOfBuffer NonText
@@ -228,9 +236,10 @@ hi link Debug Special
 hi link StatusLineTerm StatusLine
 hi link StatusLineTermNC StatusLineNC
 hi link WinSeparator VertSplit
+hi link WinBar StatusLine
+hi link WinBarNC StatusLineNC
 hi link lCursor Cursor
 hi link CursorIM Cursor
-hi link SpecialKey NonText
 hi link Terminal Normal
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')

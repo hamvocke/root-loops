@@ -57,12 +57,14 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
     { group: "Ignore", bg: "NONE", fg: "NONE", style: "NONE" },
 
     // editor elements
-    { group: "StatusLine", bg: c.gray, fg: c.black, style: "NONE" },
-    { group: "StatusLineNC", bg: c.black, fg: c.white, style: "NONE" }, // status line of not-current window
+    { group: "StatusLine", bg: c.black, fg: c.foreground, style: "NONE" },
+    { group: "StatusLineNC", bg: c.background, fg: c.white, style: "NONE" }, // status line of not-current window
     { group: "StatusLineTerm", targetGroup: "StatusLine" },
     { group: "StatusLineTermNC", targetGroup: "StatusLineNC" },
     { group: "VertSplit", fg: c.darkgray },
     { group: "WinSeparator", targetGroup: "VertSplit" },
+    { group: "WinBar", targetGroup: "StatusLine" },
+    { group: "WinBarNC", targetGroup: "StatusLineNC" },
     { group: "TabLine", bg: c.black, fg: c.gray },
     { group: "TabLineFill", fg: c.black, bg: "NONE" },
     { group: "TabLineSel", bg: c.yellow, fg: c.black }, // active tab panel
@@ -85,12 +87,12 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
     { group: "FoldColumn", fg: c.gray },
     { group: "Folded", fg: c.blue },
     { group: "WildMenu", bg: c.black, fg: c.foreground, style: "NONE" }, // current selection in 'wildmenu' completion
-    { group: "SpecialKey", targetGroup: "NonText" },
+    { group: "SpecialKey", fg: c.black }, // unprintable characters
     { group: "IncSearch", bg: c.darkred, fg: c.background },
     { group: "CurSearch", bg: c.darkyellow, fg: c.background },
     { group: "Search", bg: c.yellow, fg: c.background },
     { group: "Directory", fg: c.darkblue },
-    { group: "MatchParen", bg: c.gray, fg: c.darkyellow, style: "bold" },
+    { group: "MatchParen", bg: c.black, fg: c.darkyellow, style: "bold" },
     { group: "SpellBad", style: "undercurl", undercurl: c.red },
     { group: "SpellCap", style: "undercurl", undercurl: c.yellow },
     { group: "SpellLocal", style: "undercurl", undercurl: c.blue },
@@ -100,7 +102,7 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
     { group: "ModeMsg", fg: c.black, bg: c.white, style: "bold" },
     { group: "MoreMsg", fg: c.darkblue },
     { group: "Question", fg: c.darkblue },
-    { group: "QuickFixLine", bg: c.gray },
+    { group: "QuickFixLine", bg: c.black, fg: c.cyan },
     { group: "Terminal", targetGroup: "Normal" },
     { group: "Conceal", fg: c.darkgray },
     { group: "ToolbarLine", bg: c.black, fg: c.white },

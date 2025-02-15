@@ -47,6 +47,11 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
     { group: "healthSuccess", fg: c.darkgreen },
     { group: "healthWarning", fg: c.darkyellow },
 
+    // neovim UI
+    { group: "NormalFloat", bg: c.background, fg: c.foreground },
+    { group: "FloatBorder", bg: c.background, fg: c.gray },
+    { group: "FloatShadow", bg: c.black, fg: c.foreground },
+
     // TODO: treesitter
   ];
 }
