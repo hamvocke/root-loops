@@ -1,3 +1,5 @@
+import { type SelectOption } from "$lib/selectOptions";
+
 import { toAlacritty } from "./exporters/alacritty";
 import { toFoot } from "./exporters/foot";
 import { toFzf } from "./exporters/fzf";
@@ -13,6 +15,9 @@ import { toWindowsTerminal } from "./exporters/windows-terminal";
 import { toXresources } from "./exporters/xresources";
 import { toZellij } from "./exporters/zellij";
 
+/**
+ * Declares which export function to call for a given named exporter that is selected in the UI
+ */
 export const exporters = {
   Alacritty: { export: toAlacritty },
   Foot: { export: toFoot },
@@ -30,4 +35,31 @@ export const exporters = {
   Zellij: { export: toZellij },
 };
 
-export type Format = keyof typeof exporters;
+type Format = keyof typeof exporters;
+
+interface ExportOption extends SelectOption {
+  value: Format;
+}
+
+/**
+ *  Defines how export options show up in <select> elements in the UI.
+ *  * label: the label used for the <option> element
+ *  * group: can be used to group <options> in the <select> widget
+ *  * value: the exporter to be used to generate configuration from cereals (see 'exporters')
+ */
+export const exportSelectOptions: ExportOption[] = [
+  { value: "JSON", label: "JSON", group: "General" },
+  { value: "Alacritty", label: "Alacritty", group: "Terminal Emulators" },
+  { value: "Foot", label: "foot", group: "Terminal Emulators" },
+  { value: "Ghostty", label: "ghostty", group: "Terminal Emulators" },
+  { value: "iTerm", label: "iTerm2", group: "Terminal Emulators" },
+  { value: "Kitty", label: "kitty", group: "Terminal Emulators" },
+  { value: "WezTerm", label: "WezTerm", group: "Terminal Emulators" },
+  { value: "WindowsTerminal", label: "Windows Terminal", group: "Terminal Emulators" },
+  { value: "Xresources", label: "Xresources", group: "Terminal Emulators" },
+  { value: "fzf", label: "fzf", group: "CLI Tools" },
+  { value: "Helix", label: "Helix", group: "CLI Tools" },
+  { value: "neovim", label: "neovim", group: "CLI Tools" },
+  { value: "vim", label: "vim", group: "CLI Tools" },
+  { value: "Zellij", label: "Zellij", group: "CLI Tools" },
+];
