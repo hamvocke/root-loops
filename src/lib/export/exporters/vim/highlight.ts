@@ -1,3 +1,5 @@
+import type { Cereals } from "$lib/cereals";
+
 /**
  * A highlight group takes the name of a vim highlight group (see :h highlight-default) and assigns a background color, foreground color, optional style modifier, and optional undercurl color.
  * The style modifier can either be "NONE", one of the allowed values, or a string combining multiple values in a comma-separated way, e.g. "bold,underline".
@@ -26,10 +28,58 @@ export type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroup>;
 
 type ColorMode = "ANSI" | "Truecolor";
 
-export type ColorDefinition = {
+type ColorDefinition = {
   hex: string; // used for true-color terminals
   ansi: number | "NONE"; // used when 'notermguicolors' is set
 };
+
+type ColorDefinitions = {
+  background: ColorDefinition;
+  foreground: ColorDefinition;
+
+  black: ColorDefinition;
+  darkred: ColorDefinition;
+  darkgreen: ColorDefinition;
+  darkyellow: ColorDefinition;
+  darkblue: ColorDefinition;
+  darkmagenta: ColorDefinition;
+  darkcyan: ColorDefinition;
+  gray: ColorDefinition;
+
+  darkgray: ColorDefinition;
+  red: ColorDefinition;
+  green: ColorDefinition;
+  yellow: ColorDefinition;
+  blue: ColorDefinition;
+  magenta: ColorDefinition;
+  cyan: ColorDefinition;
+  white: ColorDefinition;
+};
+
+export function defineColors(c: Cereals): ColorDefinitions {
+  return {
+    background: { hex: c.background.color_hex, ansi: 0 },
+    foreground: { hex: c.foreground.color_hex, ansi: 15 },
+
+    black: { hex: c.black.color_hex, ansi: 0 },
+    darkred: { hex: c.red.color_hex, ansi: 1 },
+    darkgreen: { hex: c.green.color_hex, ansi: 2 },
+    darkyellow: { hex: c.yellow.color_hex, ansi: 3 },
+    darkblue: { hex: c.blue.color_hex, ansi: 4 },
+    darkmagenta: { hex: c.magenta.color_hex, ansi: 5 },
+    darkcyan: { hex: c.cyan.color_hex, ansi: 6 },
+    gray: { hex: c.white.color_hex, ansi: 7 },
+
+    darkgray: { hex: c.brightBlack.color_hex, ansi: 8 },
+    red: { hex: c.brightRed.color_hex, ansi: 9 },
+    green: { hex: c.brightGreen.color_hex, ansi: 10 },
+    yellow: { hex: c.brightYellow.color_hex, ansi: 11 },
+    blue: { hex: c.brightBlue.color_hex, ansi: 12 },
+    magenta: { hex: c.brightMagenta.color_hex, ansi: 13 },
+    cyan: { hex: c.brightCyan.color_hex, ansi: 14 },
+    white: { hex: c.brightWhite.color_hex, ansi: 15 },
+  };
+}
 
 export function hi(group: HighlightGroup, mode: ColorMode): string {
   let command = "hi";

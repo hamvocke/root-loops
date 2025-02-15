@@ -2,9 +2,9 @@ import { type Recipe } from "$lib/ingredients";
 import { prepare, type Cereals } from "$lib/cereals";
 import {
   type HighlightGroups,
-  type ColorDefinition,
   renderHighlights,
   renderLinkedHighlights,
+  defineColors,
 } from "./vim/highlight";
 import { defineVimHighlights } from "./vim";
 
@@ -35,19 +35,17 @@ import { defineVimHighlights } from "./vim";
  *  you can link two highlight groups together to declare that one should follow the
  *  style of the other.
  */
-function defineHighlights(c: Cereals): HighlightGroups {
-  const darkred: ColorDefinition = { hex: c.red.color_hex, ansi: 1 };
-  const darkgreen: ColorDefinition = { hex: c.green.color_hex, ansi: 2 };
-  const darkyellow: ColorDefinition = { hex: c.yellow.color_hex, ansi: 3 };
+function defineHighlights(cereals: Cereals): HighlightGroups {
+  const c = defineColors(cereals);
 
-  const vimHighlights = defineVimHighlights(c);
+  const vimHighlights = defineVimHighlights(cereals);
 
   return [
     ...vimHighlights,
     // errors and warnings
-    { group: "healthError", fg: darkred },
-    { group: "healthSuccess", fg: darkgreen },
-    { group: "healthWarning", fg: darkyellow },
+    { group: "healthError", fg: c.darkred },
+    { group: "healthSuccess", fg: c.darkgreen },
+    { group: "healthWarning", fg: c.darkyellow },
 
     // TODO: treesitter
   ];

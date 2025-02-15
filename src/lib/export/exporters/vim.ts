@@ -1,8 +1,8 @@
 import { type Recipe } from "$lib/ingredients";
 import { prepare, type Cereals } from "$lib/cereals";
 import {
+  defineColors,
   type HighlightGroups,
-  type ColorDefinition,
   renderHighlights,
   renderLinkedHighlights,
 } from "./vim/highlight";
@@ -12,60 +12,41 @@ import {
  * whole mechanism as a Ruby implementation that I could port to TypeScript.
  */
 
-export function defineVimHighlights(c: Cereals): HighlightGroups {
-  const background: ColorDefinition = { hex: c.background.color_hex, ansi: 0 };
-  const foreground: ColorDefinition = { hex: c.foreground.color_hex, ansi: 15 };
-
-  const black: ColorDefinition = { hex: c.black.color_hex, ansi: 0 };
-  const darkred: ColorDefinition = { hex: c.red.color_hex, ansi: 1 };
-  const darkgreen: ColorDefinition = { hex: c.green.color_hex, ansi: 2 };
-  const darkyellow: ColorDefinition = { hex: c.yellow.color_hex, ansi: 3 };
-  const darkblue: ColorDefinition = { hex: c.blue.color_hex, ansi: 4 };
-  const darkmagenta: ColorDefinition = { hex: c.magenta.color_hex, ansi: 5 };
-  const darkcyan: ColorDefinition = { hex: c.cyan.color_hex, ansi: 6 };
-  const gray: ColorDefinition = { hex: c.white.color_hex, ansi: 7 };
-
-  const darkgray: ColorDefinition = { hex: c.brightBlack.color_hex, ansi: 8 };
-  const red: ColorDefinition = { hex: c.brightRed.color_hex, ansi: 9 };
-  const green: ColorDefinition = { hex: c.brightGreen.color_hex, ansi: 10 };
-  const yellow: ColorDefinition = { hex: c.brightYellow.color_hex, ansi: 11 };
-  const blue: ColorDefinition = { hex: c.brightBlue.color_hex, ansi: 12 };
-  const magenta: ColorDefinition = { hex: c.brightMagenta.color_hex, ansi: 13 };
-  const cyan: ColorDefinition = { hex: c.brightCyan.color_hex, ansi: 14 };
-  const white: ColorDefinition = { hex: c.brightWhite.color_hex, ansi: 15 };
+export function defineVimHighlights(cereals: Cereals): HighlightGroups {
+  const c = defineColors(cereals);
 
   return [
     { group: "Normal", bg: "NONE", fg: "NONE" },
-    { group: "NonText", fg: black },
+    { group: "NonText", fg: c.black },
     { group: "EndOfBuffer", targetGroup: "NonText" },
 
     // syntax
-    { group: "Comment", fg: darkgray, style: "italic" },
+    { group: "Comment", fg: c.darkgray, style: "italic" },
     { group: "SpecialComment", targetGroup: "Special" },
-    { group: "Constant", fg: darkyellow },
-    { group: "Error", fg: darkred },
-    { group: "Identifier", fg: red },
-    { group: "Function", fg: darkblue },
-    { group: "Special", fg: magenta },
-    { group: "Statement", fg: darkmagenta },
-    { group: "String", fg: darkgreen },
-    { group: "Operator", fg: darkcyan },
-    { group: "Boolean", fg: darkyellow },
-    { group: "Label", fg: cyan },
-    { group: "Keyword", fg: darkmagenta },
-    { group: "Exception", fg: darkmagenta },
-    { group: "Conditional", fg: darkmagenta },
-    { group: "PreProc", fg: magenta }, // generic preprocessor
-    { group: "Include", fg: darkmagenta }, // preprocessor #include
+    { group: "Constant", fg: c.darkyellow },
+    { group: "Error", fg: c.darkred },
+    { group: "Identifier", fg: c.red },
+    { group: "Function", fg: c.darkblue },
+    { group: "Special", fg: c.magenta },
+    { group: "Statement", fg: c.darkmagenta },
+    { group: "String", fg: c.darkgreen },
+    { group: "Operator", fg: c.darkcyan },
+    { group: "Boolean", fg: c.darkyellow },
+    { group: "Label", fg: c.cyan },
+    { group: "Keyword", fg: c.darkmagenta },
+    { group: "Exception", fg: c.darkmagenta },
+    { group: "Conditional", fg: c.darkmagenta },
+    { group: "PreProc", fg: c.magenta }, // generic preprocessor
+    { group: "Include", fg: c.darkmagenta }, // preprocessor #include
     { group: "Define", targetGroup: "PreProc" }, // preprocessor #define
-    { group: "Macro", fg: darkmagenta },
+    { group: "Macro", fg: c.darkmagenta },
     { group: "PreCondit", targetGroup: "PreProc" }, // preprocessor #if, #else
-    { group: "StorageClass", fg: yellow }, // static, register, volatile
-    { group: "Structure", fg: yellow }, // struct, union, enum, etc.
+    { group: "StorageClass", fg: c.yellow }, // static, register, volatile
+    { group: "Structure", fg: c.yellow }, // struct, union, enum, etc.
     { group: "Number", targetGroup: "Constant" },
     { group: "Float", targetGroup: "Number" },
-    { group: "Todo", bg: red, fg: background, style: "bold" },
-    { group: "Type", fg: yellow },
+    { group: "Todo", bg: c.red, fg: c.background, style: "bold" },
+    { group: "Type", fg: c.yellow },
     { group: "Typedef", targetGroup: "Type" },
     { group: "SpecialChar", targetGroup: "Special" }, // special character in a constant
     { group: "Debug", targetGroup: "Special" }, // debugging statements
@@ -76,76 +57,76 @@ export function defineVimHighlights(c: Cereals): HighlightGroups {
     { group: "Ignore", bg: "NONE", fg: "NONE", style: "NONE" },
 
     // editor elements
-    { group: "StatusLine", bg: gray, fg: black, style: "NONE" },
-    { group: "StatusLineNC", bg: black, fg: white, style: "NONE" }, // status line of not-current window
+    { group: "StatusLine", bg: c.gray, fg: c.black, style: "NONE" },
+    { group: "StatusLineNC", bg: c.black, fg: c.white, style: "NONE" }, // status line of not-current window
     { group: "StatusLineTerm", targetGroup: "StatusLine" },
     { group: "StatusLineTermNC", targetGroup: "StatusLineNC" },
-    { group: "VertSplit", fg: darkgray },
+    { group: "VertSplit", fg: c.darkgray },
     { group: "WinSeparator", targetGroup: "VertSplit" },
-    { group: "TabLine", bg: black, fg: gray },
-    { group: "TabLineFill", fg: black, bg: "NONE" },
-    { group: "TabLineSel", bg: yellow, fg: black }, // active tab panel
-    { group: "Title", fg: darkblue, style: "bold" },
-    { group: "CursorLine", bg: black, fg: "NONE" },
-    { group: "Cursor", bg: foreground, fg: background }, // character under cursor
+    { group: "TabLine", bg: c.black, fg: c.gray },
+    { group: "TabLineFill", fg: c.black, bg: "NONE" },
+    { group: "TabLineSel", bg: c.yellow, fg: c.black }, // active tab panel
+    { group: "Title", fg: c.darkblue, style: "bold" },
+    { group: "CursorLine", bg: c.black, fg: "NONE" },
+    { group: "Cursor", bg: c.foreground, fg: c.background }, // character under cursor
     { group: "lCursor", targetGroup: "Cursor" },
     { group: "CursorIM", targetGroup: "Cursor" },
-    { group: "CursorColumn", bg: black },
-    { group: "LineNr", fg: darkgray },
-    { group: "CursorLineNr", fg: darkcyan },
+    { group: "CursorColumn", bg: c.black },
+    { group: "LineNr", fg: c.darkgray },
+    { group: "CursorLineNr", fg: c.darkcyan },
     { group: "helpLeadBlank", bg: "NONE", fg: "NONE" },
     { group: "helpNormal", bg: "NONE", fg: "NONE" },
-    { group: "Visual", bg: darkgray, fg: foreground, style: "bold" }, // visual mode selection
-    { group: "VisualNOS", bg: darkgray, fg: foreground, style: "bold" },
-    { group: "Pmenu", bg: black, fg: foreground }, // popup menu item
-    { group: "PmenuSbar", bg: darkgray, fg: gray }, // popup menu scrollbar
-    { group: "PmenuSel", bg: darkgray, fg: foreground, style: "bold" }, // popup menu selected item
-    { group: "PmenuThumb", bg: gray, fg: "NONE" }, // popup menu scrollbar thumb
-    { group: "FoldColumn", fg: gray },
-    { group: "Folded", fg: blue },
-    { group: "WildMenu", bg: black, fg: foreground, style: "NONE" }, // current selection in 'wildmenu' completion
+    { group: "Visual", bg: c.darkgray, fg: c.foreground, style: "bold" }, // visual mode selection
+    { group: "VisualNOS", bg: c.darkgray, fg: c.foreground, style: "bold" },
+    { group: "Pmenu", bg: c.black, fg: c.foreground }, // popup menu item
+    { group: "PmenuSbar", bg: c.darkgray, fg: c.gray }, // popup menu scrollbar
+    { group: "PmenuSel", bg: c.darkgray, fg: c.foreground, style: "bold" }, // popup menu selected item
+    { group: "PmenuThumb", bg: c.gray, fg: "NONE" }, // popup menu scrollbar thumb
+    { group: "FoldColumn", fg: c.gray },
+    { group: "Folded", fg: c.blue },
+    { group: "WildMenu", bg: c.black, fg: c.foreground, style: "NONE" }, // current selection in 'wildmenu' completion
     { group: "SpecialKey", targetGroup: "NonText" },
-    { group: "IncSearch", bg: darkred, fg: background },
-    { group: "CurSearch", bg: darkyellow, fg: background },
-    { group: "Search", bg: yellow, fg: background },
-    { group: "Directory", fg: darkblue },
-    { group: "MatchParen", bg: gray, fg: darkyellow, style: "bold" },
-    { group: "SpellBad", style: "undercurl", undercurl: red },
-    { group: "SpellCap", style: "undercurl", undercurl: yellow },
-    { group: "SpellLocal", style: "undercurl", undercurl: blue },
-    { group: "SpellRare", style: "undercurl", undercurl: green },
-    { group: "ColorColumn", bg: darkgray },
-    { group: "SignColumn", fg: gray },
-    { group: "ModeMsg", fg: black, bg: white, style: "bold" },
-    { group: "MoreMsg", fg: darkblue },
-    { group: "Question", fg: darkblue },
-    { group: "QuickFixLine", bg: gray },
+    { group: "IncSearch", bg: c.darkred, fg: c.background },
+    { group: "CurSearch", bg: c.darkyellow, fg: c.background },
+    { group: "Search", bg: c.yellow, fg: c.background },
+    { group: "Directory", fg: c.darkblue },
+    { group: "MatchParen", bg: c.gray, fg: c.darkyellow, style: "bold" },
+    { group: "SpellBad", style: "undercurl", undercurl: c.red },
+    { group: "SpellCap", style: "undercurl", undercurl: c.yellow },
+    { group: "SpellLocal", style: "undercurl", undercurl: c.blue },
+    { group: "SpellRare", style: "undercurl", undercurl: c.green },
+    { group: "ColorColumn", bg: c.darkgray },
+    { group: "SignColumn", fg: c.gray },
+    { group: "ModeMsg", fg: c.black, bg: c.white, style: "bold" },
+    { group: "MoreMsg", fg: c.darkblue },
+    { group: "Question", fg: c.darkblue },
+    { group: "QuickFixLine", bg: c.gray },
     { group: "Terminal", targetGroup: "Normal" },
-    { group: "Conceal", fg: darkgray },
-    { group: "ToolbarLine", bg: black, fg: white },
-    { group: "ToolbarButton", bg: darkgray, fg: white },
-    { group: "debugPC", fg: gray },
-    { group: "debugBreakpoint", fg: darkgray },
+    { group: "Conceal", fg: c.darkgray },
+    { group: "ToolbarLine", bg: c.black, fg: c.white },
+    { group: "ToolbarButton", bg: c.darkgray, fg: c.white },
+    { group: "debugPC", fg: c.gray },
+    { group: "debugBreakpoint", fg: c.darkgray },
 
     // errors and warnings
-    { group: "ErrorMsg", fg: darkred, style: "bold,italic" },
-    { group: "WarningMsg", fg: yellow },
+    { group: "ErrorMsg", fg: c.darkred, style: "bold,italic" },
+    { group: "WarningMsg", fg: c.yellow },
 
     // vim diff (vim -d)
-    { group: "DiffAdd", bg: green, fg: background },
-    { group: "DiffChange", bg: blue, fg: background },
-    { group: "DiffDelete", bg: red, fg: background },
-    { group: "DiffText", bg: cyan, fg: background },
+    { group: "DiffAdd", bg: c.green, fg: c.background },
+    { group: "DiffChange", bg: c.blue, fg: c.background },
+    { group: "DiffDelete", bg: c.red, fg: c.background },
+    { group: "DiffText", bg: c.cyan, fg: c.background },
 
     // diff
-    { group: "diffAdded", fg: green },
-    { group: "diffRemoved", fg: red },
-    { group: "diffChanged", fg: blue },
-    { group: "diffOldFile", fg: yellow },
-    { group: "diffNewFile", fg: magenta },
-    { group: "diffFile", fg: blue },
-    { group: "diffLine", fg: gray },
-    { group: "diffIndexLine", fg: cyan },
+    { group: "diffAdded", fg: c.green },
+    { group: "diffRemoved", fg: c.red },
+    { group: "diffChanged", fg: c.blue },
+    { group: "diffOldFile", fg: c.yellow },
+    { group: "diffNewFile", fg: c.magenta },
+    { group: "diffFile", fg: c.blue },
+    { group: "diffLine", fg: c.gray },
+    { group: "diffIndexLine", fg: c.cyan },
   ];
 }
 
