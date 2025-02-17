@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { exportSelectOptions } from "$lib/export/options";
-  import { type Format, exporters } from "$lib/export/formats";
+  import { type Format, exporters, exportSelectOptions } from "$lib/export/formats";
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
   import Select from "./Select.svelte";

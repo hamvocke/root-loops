@@ -35,7 +35,7 @@ export const exporters = {
   Zellij: { export: toZellij },
 };
 
-type Format = keyof typeof exporters;
+export type Format = keyof typeof exporters;
 
 interface ExportOption extends SelectOption {
   value: Format;
