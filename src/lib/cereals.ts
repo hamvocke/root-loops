@@ -1,5 +1,5 @@
 import { MilkAmount, Flavor, Fruit, type Recipe } from "./ingredients";
-import { toGamut, converter, formatHex, formatHsl, type Rgb, type Okhsl } from "culori";
+import { converter, formatHex, formatHsl, type Rgb, type Okhsl } from "culori";
 import { normalize } from "./math";
 
 export type Cereal = {
@@ -58,15 +58,14 @@ export function prepare(recipe: Recipe): Cereals {
 
   const baseColors = getBaseColors(recipe);
 
-  const toP3 = toGamut("p3", "oklch");
   const rgb = converter("rgb");
   const colorDefinitions = (name: string, color: Okhsl) => {
     return {
       name: name,
       color: color,
       color_rgb: rgb(color),
-      color_hex: formatHex(toP3(color)),
-      color_hsl: formatHsl(toP3(color)),
+      color_hex: formatHex(color),
+      color_hsl: formatHsl(color),
     };
   };
 
