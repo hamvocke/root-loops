@@ -137,7 +137,7 @@
       <div class="bowl-content glass-box">
         <div class="milk" style={calculateMilkHeight(recipe.milkAmount)}></div>
         <div class="cereals">
-          {#each Object.entries(cereals) as [_, cereal]}
+          {#each Object.entries(cereals) as [_, cereal] (cereal.name)}
             <Cereal {cereal} />
           {/each}
         </div>

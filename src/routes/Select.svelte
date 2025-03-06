@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { SelectOption } from "$lib/selectOptions";
-  import { groupBy } from "$lib/arrays";
 
   interface Props {
     options: SelectOption[];
@@ -11,11 +10,9 @@
 
   let { options, value = $bindable(), id, label }: Props = $props();
 
-  let shimmedGroupBy = Object.groupBy || groupBy;
-
-  let groupedOptions = $state({});
+  let groupedOptions: Record<string, SelectOption[] | undefined> = $state({});
   if (options.every((o) => o.group)) {
-    groupedOptions = shimmedGroupBy(options, ({ group }) => group || "");
+    groupedOptions = Object.groupBy(options, ({ group }) => group || "");
   }
   let groups: string[] = $derived(Object.keys(groupedOptions));
 </script>
@@ -26,9 +23,9 @@
   {/if}
   <select bind:value {id} name={id}>
     {#if groups.length > 0}
-      {#each groups as group}
+      {#each groups as group (group)}
         <optgroup label={group}>
-          {#each groupedOptions[group] || [] as option}
+          {#each groupedOptions[group] || [] as option (option.value)}
             <option value={option.value}>
               {option.label}
             </option>
@@ -36,7 +33,7 @@
         </optgroup>
       {/each}
     {:else}
-      {#each options as option}
+      {#each options as option (option.value)}
         <option value={option.value}>
           {option.label}
         </option>
