@@ -1,25 +1,11 @@
 import { MilkAmount, Flavor, Fruit, type Recipe } from "./ingredients";
-import { toGamut, converter, formatHex, formatHsl } from "culori";
+import { toGamut, converter, formatHex, formatHsl, type Rgb, type Okhsl } from "culori";
 import { normalize } from "./math";
-
-type HslColor = {
-  mode: string;
-  h: number;
-  s: number;
-  l: number;
-};
-
-type RgbColor = {
-  mode: string;
-  r: number;
-  g: number;
-  b: number;
-};
 
 export type Cereal = {
   name: string;
-  color: HslColor;
-  color_rgb: RgbColor;
+  color: Okhsl;
+  color_rgb: Rgb;
   color_hex: string;
   color_hsl: string;
 };
@@ -51,8 +37,8 @@ export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentSaturation = getAccentSaturation(recipe);
 
-  const accentColors: HslColor[] = [];
-  const brightAccentColors: HslColor[] = [];
+  const accentColors: Okhsl[] = [];
+  const brightAccentColors: Okhsl[] = [];
   const numberOfAccentColors = 6;
   for (let i = 0; i <= numberOfAccentColors; i++) {
     const hue = Math.round(360 / numberOfAccentColors) * i + accentHueShift;
@@ -72,9 +58,9 @@ export function prepare(recipe: Recipe): Cereals {
 
   const baseColors = getBaseColors(recipe);
 
-  const toP3 = toGamut("p3");
+  const toP3 = toGamut("p3", "oklch");
   const rgb = converter("rgb");
-  const colorDefinitions = (name: string, color: HslColor) => {
+  const colorDefinitions = (name: string, color: Okhsl) => {
     return {
       name: name,
       color: color,
@@ -151,7 +137,7 @@ function getBaseHue(recipe: Recipe): number {
 }
 
 function getBaseColors(recipe: Recipe) {
-  const baseColor = (lightness: number): Color => {
+  const baseColor = (lightness: number): Okhsl => {
     return {
       mode: "okhsl",
       h: getBaseHue(recipe),
