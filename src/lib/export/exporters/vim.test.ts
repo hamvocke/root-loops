@@ -58,7 +58,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Macro ctermfg=5 guifg=#c877c1
     hi StorageClass ctermfg=11 guifg=#c7ab60
     hi Structure ctermfg=11 guifg=#c7ab60
-    hi Todo ctermbg=9 ctermfg=0 cterm=bold guibg=#e4978a guifg=#dfe2eb gui=bold
+    hi Todo ctermbg=12 ctermfg=0 cterm=bold guibg=#99ace5 guifg=#dfe2eb gui=bold
     hi Type ctermfg=11 guifg=#c7ab60
     hi Underlined cterm=underline gui=underline
     hi Bold cterm=bold gui=bold
@@ -146,7 +146,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Macro ctermfg=5
     hi StorageClass ctermfg=11
     hi Structure ctermfg=11
-    hi Todo ctermbg=9 ctermfg=0 cterm=bold
+    hi Todo ctermbg=12 ctermfg=0 cterm=bold
     hi Type ctermfg=11
     hi Underlined cterm=underline
     hi Bold cterm=bold

@@ -45,7 +45,7 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
     { group: "Structure", fg: c.yellow }, // struct, union, enum, etc.
     { group: "Number", targetGroup: "Constant" },
     { group: "Float", targetGroup: "Number" },
-    { group: "Todo", bg: c.red, fg: c.background, style: "bold" },
+    { group: "Todo", bg: c.blue, fg: c.background, style: "bold" },
     { group: "Type", fg: c.yellow },
     { group: "Typedef", targetGroup: "Type" },
     { group: "SpecialChar", targetGroup: "Special" }, // special character in a constant

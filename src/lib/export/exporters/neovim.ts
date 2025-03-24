@@ -52,7 +52,104 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
     { group: "FloatBorder", bg: c.background, fg: c.gray },
     { group: "FloatShadow", bg: c.black, fg: c.foreground },
 
-    // TODO: treesitter
+    // Treesitter
+    { group: "@variable", fg: c.foreground },
+    { group: "@variable.builtin", fg: c.darkred }, // this, self, ...
+    { group: "@variable.parameter", fg: c.darkyellow },
+    { group: "@variable.parameter.builtin", targetGroup: "@variable.parameter" }, // _, it
+    { group: "@variable.member", fg: c.darkred },
+
+    { group: "@constant", targetGroup: "Constant" },
+    { group: "@constant.builtin", fg: c.darkmagenta }, // built-in constant values, e.g. nil
+    { group: "@constant.macro", targetGroup: "Macro" },
+
+    { group: "@module", targetGroup: "Structure" },
+    { group: "@module.builtin", targetGroup: "Special" },
+    { group: "@label", targetGroup: "Label" },
+
+    { group: "@string", targetGroup: "String" },
+    { group: "@string.regexp", fg: c.darkred },
+    { group: "@string.escape", fg: c.darkcyan },
+    { group: "@string.special", targetGroup: "Special" },
+    { group: "@string.special.url", fg: c.darkblue, style: "underline" },
+    { group: "@string.special.symbol", fg: c.magenta },
+
+    { group: "@character", targetGroup: "Character" },
+    { group: "@character.special", targetGroup: "SpecialChar" },
+
+    { group: "@boolean", targetGroup: "Boolean" },
+    { group: "@number", targetGroup: "Number" },
+    { group: "@number.float", targetGroup: "Float" },
+
+    { group: "@type", targetGroup: "Type" },
+    { group: "@type.builtin", fg: c.darkyellow },
+    { group: "@type.definition", targetGroup: "Type" },
+
+    { group: "@attribute", targetGroup: "Constant" },
+    { group: "@attribute.builtin", targetGroup: "Constant" },
+    { group: "@property", fg: c.darkred },
+
+    { group: "@function", targetGroup: "Function" },
+    { group: "@function.builtin", fg: c.darkmagenta },
+    { group: "@function.call", targetGroup: "Function" },
+    { group: "@function.method", targetGroup: "Function" },
+    { group: "@function.method.call", targetGroup: "Function" },
+
+    { group: "@constructor", fg: c.yellow },
+    { group: "@operator", targetGroup: "Operator" },
+
+    { group: "@keyword", targetGroup: "Keyword" },
+    { group: "@keyword.coroutine", fg: c.darkred },
+    { group: "@keyword.function", fg: c.darkmagenta },
+    { group: "@keyword.operator", targetGroup: "Operator" },
+    { group: "@keyword.import", targetGroup: "Include" },
+    { group: "@keyword.type", targetGroup: "Keyword" },
+    { group: "@keyword.modifier", targetGroup: "Keyword" },
+    { group: "@keyword.repeat", targetGroup: "Repeat" },
+    { group: "@keyword.return", fg: c.darkcyan },
+    { group: "@keyword.debug", targetGroup: "Exception" },
+    { group: "@keyword.exception", targetGroup: "Exception" },
+    { group: "@keyword.conditional", targetGroup: "Conditional" },
+    { group: "@keyword.conditional.ternary", targetGroup: "Operator" },
+    { group: "@keyword.directive", targetGroup: "PreProc" },
+    { group: "@keyword.directive.define", targetGroup: "Define" },
+    { group: "@keyword.export", fg: c.cyan },
+
+    { group: "@punctuation.delimiter", targetGroup: "Delimiter" },
+    { group: "@punctuation.bracket", fg: c.foreground },
+    { group: "@punctuation.special", targetGroup: "Special" },
+
+    { group: "@comment", targetGroup: "Comment" },
+    { group: "@comment.documentation", targetGroup: "Comment" },
+    { group: "@comment.error", fg: c.background, bg: c.red },
+    { group: "@comment.warning", fg: c.background, bg: c.yellow },
+    { group: "@comment.todo", fg: c.background, bg: c.blue },
+    { group: "@comment.note", fg: c.background, bg: c.cyan },
+
+    { group: "@markup", fg: c.foreground },
+    { group: "@markup.strong", fg: c.foreground, style: "bold" },
+    { group: "@markup.italic", fg: c.foreground, style: "italic" },
+    { group: "@markup.strikethrough", fg: c.foreground, style: "strikethrough" },
+    { group: "@markup.underline", targetGroup: "underline" },
+    { group: "@markup.heading", fg: c.darkblue, style: "bold" },
+    { group: "@markup.quote", fg: c.darkcyan },
+    { group: "@markup.math", fg: c.darkblue },
+    { group: "@markup.link", targetGroup: "Tag" },
+    { group: "@markup.link.label", targetGroup: "Label" },
+    { group: "@markup.link.url", fg: c.darkmagenta, style: "underline" },
+    { group: "@markup.raw", fg: c.cyan },
+    { group: "@markup.list", targetGroup: "Special" },
+    { group: "@markup.list.checked", fg: c.darkgreen },
+    { group: "@markup.list.unchecked", fg: c.gray },
+
+    { group: "@diff.plus", targetGroup: "diffAdded" },
+    { group: "@diff.minus", targetGroup: "diffRemoved" },
+    { group: "@diff.delta", targetGroup: "diffChanged" },
+
+    { group: "@tag", fg: c.darkmagenta },
+    { group: "@tag.builtin", fg: c.darkcyan },
+    { group: "@tag.attribute", fg: c.darkblue },
+    { group: "@tag.delimiter", fg: c.foreground },
   ];
 }
 

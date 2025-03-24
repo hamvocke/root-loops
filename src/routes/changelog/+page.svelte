@@ -28,6 +28,15 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-03-24</h3>
+    <p>
+      <strong>Added treesitter highlights for <code>neovim</code></strong>
+    </p>
+    <p>
+      The <code>neovim</code> export now includes highlight groups for <code>neovim's</code> Treesitter
+      integration. This should lead to richer and more fine-grained color schemes.
+    </p>
+
     <h3>2025-02-01</h3>
     <p>
       <strong
@@ -35,10 +44,8 @@
       >
     </p>
     <p>
-      This is a huge one for me personally. After months of fiddling, experimenting, and learning
-      how vim and neovim theming works, I finally got a first version of an exporter for <code
-        >vim</code
-      >
+      This is a huge one. After months of fiddling, experimenting, and learning how vim and neovim
+      theming works, I finally got a first version of an exporter for <code>vim</code>
       and <code>neovim</code> out of the door. This feature has been
       <a href="https://github.com/hamvocke/root-loops/issues/58">requested</a>
       by <a href="https://github.com/Diablo-D3">Diablo-D3</a> and it's one that I've personally been
