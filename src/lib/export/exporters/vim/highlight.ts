@@ -28,7 +28,7 @@ export type HighlightGroups = Array<HighlightGroup | LinkedHighlightGroup>;
 
 type ColorMode = "ANSI" | "Truecolor";
 
-type ColorDefinition = {
+export type ColorDefinition = {
   hex: string; // used for true-color terminals
   ansi: number | "NONE"; // used when 'notermguicolors' is set
 };

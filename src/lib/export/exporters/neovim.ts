@@ -55,7 +55,7 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
     // Treesitter
     { group: "@variable", fg: c.foreground },
     { group: "@variable.builtin", fg: c.darkred }, // this, self, ...
-    { group: "@variable.parameter", fg: c.darkyellow },
+    { group: "@variable.parameter", fg: c.darkred },
     { group: "@variable.parameter.builtin", targetGroup: "@variable.parameter" }, // _, it
     { group: "@variable.member", fg: c.darkred },
 
@@ -99,21 +99,21 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
     { group: "@operator", targetGroup: "Operator" },
 
     { group: "@keyword", targetGroup: "Keyword" },
-    { group: "@keyword.coroutine", fg: c.darkred },
+    { group: "@keyword.coroutine", targetGroup: "Keyword" },
     { group: "@keyword.function", fg: c.darkmagenta },
     { group: "@keyword.operator", targetGroup: "Operator" },
     { group: "@keyword.import", targetGroup: "Include" },
     { group: "@keyword.type", targetGroup: "Keyword" },
     { group: "@keyword.modifier", targetGroup: "Keyword" },
     { group: "@keyword.repeat", targetGroup: "Repeat" },
-    { group: "@keyword.return", fg: c.darkcyan },
+    { group: "@keyword.return", fg: c.darkmagenta },
     { group: "@keyword.debug", targetGroup: "Exception" },
     { group: "@keyword.exception", targetGroup: "Exception" },
     { group: "@keyword.conditional", targetGroup: "Conditional" },
     { group: "@keyword.conditional.ternary", targetGroup: "Operator" },
     { group: "@keyword.directive", targetGroup: "PreProc" },
     { group: "@keyword.directive.define", targetGroup: "Define" },
-    { group: "@keyword.export", fg: c.cyan },
+    { group: "@keyword.export", fg: c.blue },
 
     { group: "@punctuation.delimiter", targetGroup: "Delimiter" },
     { group: "@punctuation.bracket", fg: c.foreground },

@@ -130,7 +130,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi FloatShadow ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#1e222d
     hi @variable ctermfg=15 guifg=#1e222d
     hi @variable.builtin ctermfg=1 guifg=#d77c6e
-    hi @variable.parameter ctermfg=3 guifg=#b0964e
+    hi @variable.parameter ctermfg=1 guifg=#d77c6e
     hi @variable.member ctermfg=1 guifg=#d77c6e
     hi @constant.builtin ctermfg=5 guifg=#c877c1
     hi @string.regexp ctermfg=1 guifg=#d77c6e
@@ -141,10 +141,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi @property ctermfg=1 guifg=#d77c6e
     hi @function.builtin ctermfg=5 guifg=#c877c1
     hi @constructor ctermfg=11 guifg=#c7ab60
-    hi @keyword.coroutine ctermfg=1 guifg=#d77c6e
     hi @keyword.function ctermfg=5 guifg=#c877c1
-    hi @keyword.return ctermfg=6 guifg=#51a7b6
-    hi @keyword.export ctermfg=14 guifg=#64becd
+    hi @keyword.return ctermfg=5 guifg=#c877c1
+    hi @keyword.export ctermfg=12 guifg=#99ace5
     hi @punctuation.bracket ctermfg=15 guifg=#1e222d
     hi @comment.error ctermbg=9 ctermfg=0 guibg=#e4978a guifg=#dfe2eb
     hi @comment.warning ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#dfe2eb
@@ -261,7 +260,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi FloatShadow ctermbg=0 ctermfg=15
     hi @variable ctermfg=15
     hi @variable.builtin ctermfg=1
-    hi @variable.parameter ctermfg=3
+    hi @variable.parameter ctermfg=1
     hi @variable.member ctermfg=1
     hi @constant.builtin ctermfg=5
     hi @string.regexp ctermfg=1
@@ -272,10 +271,9 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi @property ctermfg=1
     hi @function.builtin ctermfg=5
     hi @constructor ctermfg=11
-    hi @keyword.coroutine ctermfg=1
     hi @keyword.function ctermfg=5
-    hi @keyword.return ctermfg=6
-    hi @keyword.export ctermfg=14
+    hi @keyword.return ctermfg=5
+    hi @keyword.export ctermfg=12
     hi @punctuation.bracket ctermfg=15
     hi @comment.error ctermbg=9 ctermfg=0
     hi @comment.warning ctermbg=11 ctermfg=0
@@ -338,6 +336,7 @@ hi link @function.method Function
 hi link @function.method.call Function
 hi link @operator Operator
 hi link @keyword Keyword
+hi link @keyword.coroutine Keyword
 hi link @keyword.operator Operator
 hi link @keyword.import Include
 hi link @keyword.type Keyword
