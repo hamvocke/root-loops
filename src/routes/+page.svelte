@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
   import Slider from "./Slider.svelte";
@@ -27,7 +27,7 @@
   let recipe = $state(structuredClone(defaultRecipe));
 
   onMount(() => {
-    recipe = fromQueryString($page.url.searchParams);
+    recipe = fromQueryString(page.url.searchParams);
   });
 
   let toast: string | undefined = $state();
@@ -41,7 +41,7 @@
   }
 
   function resetRecipe() {
-    recipe = fromQueryString($page.url.searchParams);
+    recipe = fromQueryString(page.url.searchParams);
   }
 
   function saveUrl() {
