@@ -28,6 +28,15 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-05-19</h3>
+    <p>
+      <strong>New <code>Warp</code> export option</strong>
+    </p>
+    <p>
+      Thanks to <a href="https://github.com/osamaqarem">osamaqarem</a> we now have a flashy new
+      export for all the <a href="https://www.warp.dev/">Warp</a> terminal users out there!
+    </p>
+
     <h3>2025-03-24</h3>
     <p>
       <strong>Added treesitter highlights for <code>neovim</code></strong>
