@@ -78,8 +78,4 @@
       );
     }
   }
-
-  select:focus {
-    outline: 2px solid var(--root-loops-ansi-red);
-  }
 </style>

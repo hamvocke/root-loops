@@ -51,9 +51,8 @@
   input[type="range"] {
     width: 100%;
 
-    &:focus {
-      outline: 2px solid var(--root-loops-ansi-red);
-      outline-offset: 2px;
+    &:focus-visible {
+      outline-offset: 0.5rem;
     }
   }
 </style>
