@@ -44,9 +44,21 @@
 
 <style>
   .select {
+    position: relative;
     display: inline-flex;
     flex-direction: column;
     gap: 0.4rem;
+
+    &::after {
+      position: absolute;
+      content: "";
+      right: 0.5rem;
+      pointer-events: none;
+      border-left: 0.3rem solid transparent;
+      border-right: 0.3rem solid transparent;
+      border-top: 0.3rem solid black;
+      top: 65%;
+    }
   }
 
   label {
@@ -54,8 +66,12 @@
   }
 
   select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     padding: 0.5rem 0.6rem;
     font-size: 1rem;
+    cursor: pointer;
     color: var(--color-slate-900);
     background: linear-gradient(
       to bottom,
