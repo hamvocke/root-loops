@@ -1,10 +1,11 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toXresources(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
   return `! Copy the configuration below to your ~/.Xresources file
-! Root Loops (via rootloops.sh)
+! Root Loops (via https://rootloops.sh?${queryString})
 
 *.foreground:  ${cereals.foreground.color_hex}
 *.background:  ${cereals.background.color_hex}

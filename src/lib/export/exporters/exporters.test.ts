@@ -27,7 +27,7 @@ describe("export", () => {
   it("to JSON", () => {
     const config = toJson(someRecipe);
     const expected = {
-      source: "rootloops.sh",
+      source: "https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2",
       hex: {
         background: "#dfe2eb",
         foreground: "#1e222d",
@@ -113,7 +113,7 @@ describe("export", () => {
 # ~/.config/alacritty/alacritty.toml file
 
 # Colors (Root Loops)
-# via rootloops.sh
+# via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
 [colors.primary]
 background = '#dfe2eb'
@@ -150,7 +150,7 @@ white = '#07080d'`;
     const config = toXresources(someRecipe);
     // prettier-ignore
     const expected = `! Copy the configuration below to your ~/.Xresources file
-! Root Loops (via rootloops.sh)
+! Root Loops (via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2)
 
 *.foreground:  #1e222d
 *.background:  #dfe2eb
@@ -183,7 +183,7 @@ white = '#07080d'`;
 # ~/.config/kitty/kitty.conf file
 
 ## Root Loops color scheme
-## via https://rootloops.sh
+## via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
 # The basic colors
 background              #dfe2eb
@@ -265,7 +265,7 @@ color15 #07080d`;
 --       if you want to define your own root loops color scheme
 
 -- Root Loops color scheme
--- via https://rootloops.sh
+-- via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 config.colors = {
   foreground = "#1e222d",
   background = "#dfe2eb",
@@ -305,7 +305,7 @@ config.colors = {
     const expected = `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
 
 
-# Root Loops (https://rootloops.sh)
+# Root Loops (https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2)
 
 "ui.background" = { fg = "background"}
 "ui.background.separator" = { fg = "gray" }
@@ -421,7 +421,7 @@ background = "#dfe2eb"`;
 # ~/.config/ghostty/config file
 
 # Colors (Root Loops)
-# via rootloops.sh
+# via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
 background = dfe2eb
 foreground = 1e222d
@@ -469,7 +469,7 @@ palette = 15=#07080d`;
 
 [colors]
 # Root Loops color scheme
-# via https://rootloops.sh
+# via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
 background=dfe2eb
 foreground=1e222d
@@ -504,7 +504,7 @@ bright7=07080d # bright white`;
 // ~/.config/zellij/zellij.kdl file
 
 // Colors (Root Loops)
-// via rootloops.sh
+// via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 themes {
    rootloops {
         fg "#1e222d"
@@ -532,6 +532,7 @@ theme "rootloops"`
     const expected = `# Add the 'export' statement below to your shell's configuration
 # (e.g. ~/.bashrc, ~/.zshrc, or a custom file you load during shell startup)
 
+# Root Loops (https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2)
 export FZF_DEFAULT_OPTS="\
   --color=fg:#1e222d,fg+:#07080d,bg:#dfe2eb,bg+:#d0d4e1 \\
   --color=hl:#374a4d,hl+:#475e62,info:#4b4536,marker:#3c4a3e \\
@@ -955,7 +956,7 @@ Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
 # ~/.warp/themes/rootloops.yaml
 # Open Warp's Settings > Appearance > Themes and select the 'Root Loops' theme.
 
-# via rootloops.sh
+# via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
 name: Root Loops
 accent: '#4a5165'

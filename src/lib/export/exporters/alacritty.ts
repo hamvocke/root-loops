@@ -1,13 +1,14 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toAlacritty(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
   return `# Copy the configuration below and add it to your
 # ~/.config/alacritty/alacritty.toml file
 
 # Colors (Root Loops)
-# via rootloops.sh
+# via https://rootloops.sh?${queryString}
 
 [colors.primary]
 background = '${cereals.background.color_hex}'

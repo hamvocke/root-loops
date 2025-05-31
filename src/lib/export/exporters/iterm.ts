@@ -1,8 +1,9 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare, type Cereal } from "$lib/cereals";
 
 export function toITerm(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
 
   console.log(recipe);
 
@@ -27,6 +28,7 @@ Save the configuration below to a file called root-loops.itermcolors.
 Open iTerm2's Settings > Profiles > Color tab and import the file into iTerm2.
 -->
 
+<!-- Root Loops (https://rootloops.sh?${queryString}) -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">

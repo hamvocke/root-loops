@@ -25,7 +25,7 @@ const expectedTheme = `" Store the following config under ~/.config/nvim/colors/
 " it as your colorscheme in your neovim config.
 
 " root-loops.vim -- Root Loops Vim Color Scheme.
-" Webpage:          https://rootloops.sh
+" Webpage:          https://rootloops.sh?sugar=7&colors=6&sogginess=2&flavor=2&fruit=9&milk=2
 " Description:      A neovim color scheme for cereal lovers
 
 hi clear

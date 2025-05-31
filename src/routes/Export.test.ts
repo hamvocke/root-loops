@@ -14,7 +14,9 @@ describe("Export component", () => {
 
     expect(exportRegion).toBeInTheDocument();
     expect(code).toBeInTheDocument();
-    expect(code).toHaveTextContent(`"source": "rootloops.sh",`);
+    expect(code).toHaveTextContent(
+      `"source": "https://rootloops.sh?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0",`,
+    );
   });
 
   test("copies code to clipboard on click", async () => {
@@ -26,7 +28,9 @@ describe("Export component", () => {
     await fireEvent.click(button);
 
     const spyCall = clipboardSpy.mock.lastCall && clipboardSpy.mock.lastCall[0];
-    expect(spyCall).toContain(`"source": "rootloops.sh",`);
+    expect(spyCall).toContain(
+      `"source": "https://rootloops.sh?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0",`,
+    );
   });
 
   test("changes button text on click", async () => {
@@ -40,7 +44,10 @@ describe("Export component", () => {
   });
 
   test.each([
-    ["JSON", `"source": "rootloops.sh",`],
+    [
+      "JSON",
+      `"source": "https://rootloops.sh?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0",`,
+    ],
     ["WindowsTerminal", `"name": "Root Loops",`],
     ["Alacritty", `# ~/.config/alacritty/alacritty.toml file`],
     ["Xresources", `! Copy the configuration below to your ~/.Xresources file`],

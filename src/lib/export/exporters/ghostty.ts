@@ -1,15 +1,16 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 import { noHash } from "./util";
 
 export function toGhostty(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
 
   return `# Copy the configuration below and add it to your
 # ~/.config/ghostty/config file
 
 # Colors (Root Loops)
-# via rootloops.sh
+# via https://rootloops.sh?${queryString}
 
 background = ${noHash(cereals.background.color_hex)}
 foreground = ${noHash(cereals.foreground.color_hex)}

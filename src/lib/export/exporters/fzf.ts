@@ -1,11 +1,13 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toFzf(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
   return `# Add the 'export' statement below to your shell's configuration
 # (e.g. ~/.bashrc, ~/.zshrc, or a custom file you load during shell startup)
 
+# Root Loops (https://rootloops.sh?${queryString})
 export FZF_DEFAULT_OPTS="\
   --color=fg:${cereals.foreground.color_hex},fg+:${cereals.brightWhite.color_hex},bg:${cereals.background.color_hex},bg+:${cereals.black.color_hex} \\
   --color=hl:${cereals.cyan.color_hex},hl+:${cereals.brightCyan.color_hex},info:${cereals.yellow.color_hex},marker:${cereals.green.color_hex} \\

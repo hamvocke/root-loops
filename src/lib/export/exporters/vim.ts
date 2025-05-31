@@ -1,4 +1,4 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare, type Cereals } from "$lib/cereals";
 import {
   defineColors,
@@ -135,13 +135,14 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
 export function toVim(recipe: Recipe): string {
   const cereals = prepare(recipe);
   const highlights = defineVimHighlights(cereals);
+  const queryString = toQueryString(recipe);
 
   const template = `" Store the following config under ~/.vim/colors/root-loops.vim
 " then load it into vim via ':colorscheme root-loops' or by declaring
 " it as your colorscheme in your .vimrc.
 
 " root-loops.vim -- Root Loops Vim Color Scheme.
-" Webpage:          https://rootloops.sh
+" Webpage:          https://rootloops.sh?${queryString}
 " Description:      A vim color scheme for cereal lovers
 
 hi clear
