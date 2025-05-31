@@ -27,7 +27,7 @@ describe("export", () => {
   it("to JSON", () => {
     const config = toJson(someRecipe);
     const expected = {
-      source: "rootloops.sh",
+      source: "rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2",
       hex: {
         background: "#dfe2eb",
         foreground: "#1e222d",
@@ -305,7 +305,7 @@ config.colors = {
     const expected = `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
 
 
-# Root Loops (https://rootloops.sh)
+# Root Loops (https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2)
 
 "ui.background" = { fg = "background"}
 "ui.background.separator" = { fg = "gray" }

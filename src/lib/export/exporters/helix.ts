@@ -1,12 +1,13 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toHelix(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
   return `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml
 
 
-# Root Loops (https://rootloops.sh)
+# Root Loops (https://rootloops.sh?${queryString})
 
 "ui.background" = { fg = "background"}
 "ui.background.separator" = { fg = "gray" }
