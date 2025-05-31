@@ -1,8 +1,9 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toWezTerm(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
   return `-- Copy the configuration below and add it to your
 -- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file
 
@@ -10,7 +11,7 @@ export function toWezTerm(recipe: Recipe): string {
 --       if you want to define your own root loops color scheme
 
 -- Root Loops color scheme
--- via https://rootloops.sh
+-- via https://rootloops.sh?${queryString}
 config.colors = {
   foreground = "${cereals.foreground.color_hex}",
   background = "${cereals.background.color_hex}",

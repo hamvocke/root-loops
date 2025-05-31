@@ -1,14 +1,15 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toWarp(recipe: Recipe): string {
+  const queryString = toQueryString(recipe);
   const cereals = prepare(recipe);
 
   return `# Copy the configuration below and add it to a new file under
 # ~/.warp/themes/rootloops.yaml
 # Open Warp's Settings > Appearance > Themes and select the 'Root Loops' theme.
 
-# via rootloops.sh
+# via https://rootloops.sh?${queryString}
 
 name: Root Loops
 accent: '${cereals.white.color_hex}'

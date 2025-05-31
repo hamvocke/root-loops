@@ -1,10 +1,11 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare } from "$lib/cereals";
 
 export function toJson(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
   const colors = {
-    source: "rootloops.sh",
+    source: `https://rootloops.sh?${queryString}`,
     hex: {
       background: cereals.background.color_hex,
       foreground: cereals.foreground.color_hex,

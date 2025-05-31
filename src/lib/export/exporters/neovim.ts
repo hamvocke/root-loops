@@ -1,4 +1,4 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { prepare, type Cereals } from "$lib/cereals";
 import {
   type HighlightGroups,
@@ -156,13 +156,14 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
 export function toNeovim(recipe: Recipe): string {
   const cereals = prepare(recipe);
   const highlights = defineHighlights(cereals);
+  const queryString = toQueryString(recipe);
 
   const template = `" Store the following config under ~/.config/nvim/colors/root-loops.vim
 " then load it into neovim via ':colorscheme root-loops' or by declaring
 " it as your colorscheme in your neovim config.
 
 " root-loops.vim -- Root Loops Vim Color Scheme.
-" Webpage:          https://rootloops.sh
+" Webpage:          https://rootloops.sh?${queryString}
 " Description:      A neovim color scheme for cereal lovers
 
 hi clear
