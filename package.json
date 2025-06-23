@@ -21,9 +21,9 @@
     "prepare": "svelte-kit sync && husky || true"
   },
   "devDependencies": {
-    "@playwright/test": "^1.53.0",
+    "@playwright/test": "^1.53.1",
     "@sveltejs/adapter-auto": "^6.0.1",
-    "@sveltejs/kit": "^2.21.5",
+    "@sveltejs/kit": "^2.22.0",
     "@sveltejs/vite-plugin-svelte": "^5.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/svelte": "^5.2.8",
@@ -31,20 +31,20 @@
     "ansi_up": "^6.0.6",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-svelte": "^3.9.2",
+    "eslint-plugin-svelte": "^3.9.3",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.0",
     "prettier-plugin-svelte": "^3.4.0",
-    "svelte": "^5.34.3",
-    "svelte-check": "^4.2.1",
+    "svelte": "^5.34.7",
+    "svelte-check": "^4.2.2",
     "svelte-feather-icons": "^4.2.0",
     "tslib": "^2.8.1",
-    "typescript-eslint": "^8.34.0",
+    "typescript-eslint": "^8.34.1",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vitest": "^3.2.3"
+    "vitest": "^3.2.4"
   },
   "dependencies": {
     "@fontsource-variable/fira-code": "^5.2.6",
