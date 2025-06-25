@@ -13,6 +13,7 @@ import { toZellij } from "./zellij";
 import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
 import { toFzf } from "./fzf";
 import { toWarp } from "./warp";
+import { toTabby } from "./tabby";
 
 describe("export", () => {
   const someRecipe: Recipe = {
@@ -983,6 +984,41 @@ terminal_colors:
     red: '#55403c'
     white: '#4a5165'
     yellow: '#4b4536'`
+
+    expect(config).toBe(expected);
+  });
+
+  it("to Tabby", () => {
+    const config = toTabby(someRecipe);
+    // prettier-ignore
+    const expected = `# Copy the configuration below and add it under
+# terminal.customColorSchemes in the appropriate config file:
+# Linux: ~/.config/tabby/config.yaml
+# macOS: ~/Library/Application Support/tabby/config.yaml
+# Windows: ~\\AppData\\Roaming\\tabby\\config.yaml
+# Open Tabby's Settings > Color scheme and select the 'Root Loops' theme.
+
+    - name: Root Loops # via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
+      foreground: '#1e222d'
+      background: '#dfe2eb'
+      cursor: '#4a5165'
+      colors:
+        - '#d0d4e1'
+        - '#55403c'
+        - '#3c4a3e'
+        - '#4b4536'
+        - '#3f4557'
+        - '#50404e'
+        - '#374a4d'
+        - '#4a5165'
+        - '#959eb5'
+        - '#6b524e'
+        - '#4d5e50'
+        - '#5f5946'
+        - '#51586e'
+        - '#655263'
+        - '#475e62'
+        - '#07080d'`
 
     expect(config).toBe(expected);
   });
