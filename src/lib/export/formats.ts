@@ -9,6 +9,7 @@ import { toITerm } from "./exporters/iterm";
 import { toJson } from "./exporters/json";
 import { toKitty } from "./exporters/kitty";
 import { toNeovim } from "./exporters/neovim";
+import { toTabby } from "./exporters/tabby";
 import { toVim } from "./exporters/vim";
 import { toWarp } from "./exporters/warp";
 import { toWezTerm } from "./exporters/wezterm";
@@ -29,6 +30,7 @@ export const exporters = {
   JSON: { export: toJson },
   Kitty: { export: toKitty },
   neovim: { export: toNeovim },
+  Tabby: { export: toTabby },
   vim: { export: toVim },
   Warp: { export: toWarp },
   WezTerm: { export: toWezTerm },
@@ -56,6 +58,7 @@ export const exportSelectOptions: ExportOption[] = [
   { value: "Ghostty", label: "ghostty", group: "Terminal Emulators" },
   { value: "iTerm", label: "iTerm2", group: "Terminal Emulators" },
   { value: "Kitty", label: "kitty", group: "Terminal Emulators" },
+  { value: "Tabby", label: "Tabby", group: "Terminal Emulators" },
   { value: "Warp", label: "Warp", group: "Terminal Emulators" },
   { value: "WezTerm", label: "WezTerm", group: "Terminal Emulators" },
   { value: "WindowsTerminal", label: "Windows Terminal", group: "Terminal Emulators" },
