@@ -16,12 +16,12 @@
     "format": "prettier --write .",
     "test": "npm run test:unit -- --run && npm run test:e2e",
     "test:e2e": "playwright test",
-    "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.53.2-noble npm run test:e2e",
+    "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.54.0-noble npm run test:e2e",
     "test:unit": "vitest",
     "prepare": "svelte-kit sync && husky || true"
   },
   "devDependencies": {
-    "@playwright/test": "^1.53.2",
+    "@playwright/test": "^1.54.0",
     "@sveltejs/adapter-auto": "^6.0.1",
     "@sveltejs/kit": "^2.22.5",
     "@sveltejs/vite-plugin-svelte": "^6.0.0-next.3",
