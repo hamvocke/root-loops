@@ -991,13 +991,18 @@ terminal_colors:
   it("to Tabby", () => {
     const config = toTabby(someRecipe);
     // prettier-ignore
-    const expected = `# Copy the configuration below and add it under
-# terminal.customColorSchemes in the appropriate config file:
+    const expected = `# Copy the configuration below and add it to the
+# appropriate config file. (If your config file already
+# contains a 'customColorSchemes' section, add all lines
+# from '- name:...' to the bottom to the 'customColorSchemes'
+# section):
 # Linux: ~/.config/tabby/config.yaml
 # macOS: ~/Library/Application Support/tabby/config.yaml
 # Windows: ~\\AppData\\Roaming\\tabby\\config.yaml
 # Open Tabby's Settings > Color scheme and select the 'Root Loops' theme.
 
+terminal:
+  customColorSchemes:
     - name: Root Loops # via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
       foreground: '#1e222d'
       background: '#dfe2eb'
