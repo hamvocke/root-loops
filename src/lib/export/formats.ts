@@ -10,6 +10,7 @@ import { toJson } from "./exporters/json";
 import { toKitty } from "./exporters/kitty";
 import { toNeovim } from "./exporters/neovim";
 import { toVim } from "./exporters/vim";
+import { toVSCode } from "./exporters/vscode";
 import { toWarp } from "./exporters/warp";
 import { toWezTerm } from "./exporters/wezterm";
 import { toWindowsTerminal } from "./exporters/windows-terminal";
@@ -30,6 +31,7 @@ export const exporters = {
   Kitty: { export: toKitty },
   neovim: { export: toNeovim },
   vim: { export: toVim },
+  VSCode: { export: toVSCode },
   Warp: { export: toWarp },
   WezTerm: { export: toWezTerm },
   WindowsTerminal: { export: toWindowsTerminal },
@@ -59,6 +61,7 @@ export const exportSelectOptions: ExportOption[] = [
   { value: "Warp", label: "Warp", group: "Terminal Emulators" },
   { value: "WezTerm", label: "WezTerm", group: "Terminal Emulators" },
   { value: "WindowsTerminal", label: "Windows Terminal", group: "Terminal Emulators" },
+  { value: "VSCode", label: "Visual Studio Code", group: "Terminal Emulators" },
   { value: "Xresources", label: "Xresources", group: "Terminal Emulators" },
   { value: "fzf", label: "fzf", group: "CLI Tools" },
   { value: "Helix", label: "Helix", group: "CLI Tools" },

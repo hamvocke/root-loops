@@ -52,6 +52,7 @@ describe("Export component", () => {
     ["Alacritty", `# ~/.config/alacritty/alacritty.toml file`],
     ["Xresources", `! Copy the configuration below to your ~/.Xresources file`],
     ["Kitty", `# ~/.config/kitty/kitty.conf file`],
+    ["VSCode", `"workbench.colorCustomizations": {`],
     ["Warp", `# Copy the configuration below and add it to a new file under`],
     ["WezTerm", `-- ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua file`],
     ["Helix", `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`],
