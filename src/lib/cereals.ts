@@ -33,6 +33,17 @@ export type Cereals = {
   background: Cereal;
 };
 
+export function mapValues<T>(
+  cereals: Cereals,
+  f: (cereal: Cereal, key: keyof Cereals) => T,
+): { [K in keyof Cereals]: T } {
+  const result = {} as { [K in keyof Cereals]: U };
+  for (const key in cereals) {
+    result[key] = f(cereals[key], key);
+  }
+  return result;
+}
+
 export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentSaturation = getAccentSaturation(recipe);
