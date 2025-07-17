@@ -59,7 +59,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 1.8rem 0.5rem 0.6rem;
     font-size: 1rem;
     cursor: pointer;
     color: var(--color-slate-900);
