@@ -59,6 +59,10 @@ describe("Export component", () => {
     ["Helix", `# Copy the configuration below to ~/.config/helix/themes/rootloops.toml`],
     ["Ghostty", `# ~/.config/ghostty/config file`],
     ["Foot", `# ~/.config/foot/foot.ini file`],
+    [
+      "Nix",
+      `source = "https://rootloops.sh?sugar=7&colors=6&sogginess=4&flavor=1&fruit=10&milk=0";`,
+    ],
   ])("generates %s snippet", async (format, expectedExportString) => {
     render(Export, { recipe: defaultRecipe });
 
