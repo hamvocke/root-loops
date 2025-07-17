@@ -28,6 +28,16 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-07-17</h3>
+    <p>
+      <strong>New <code>Tabby</code> and Visual Studio Code terminal export options</strong>
+    </p>
+    <p>
+      <a href="https://github.com/natescherer">natescherer</a> provided not just one but two new
+      exports. Thanks to his work, Root Loops now supports exporting to
+      <a href="https://github.com/Eugeny/tabby">Tabby</a> and Visual Studio Code's terminal. Sweet stuff!
+    </p>
+
     <h3>2025-05-19</h3>
     <p>
       <strong>New <code>Warp</code> export option</strong>
