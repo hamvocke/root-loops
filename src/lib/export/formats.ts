@@ -9,6 +9,7 @@ import { toITerm } from "./exporters/iterm";
 import { toJson } from "./exporters/json";
 import { toKitty } from "./exporters/kitty";
 import { toNeovim } from "./exporters/neovim";
+import { toNix } from "./exporters/nix";
 import { toTabby } from "./exporters/tabby";
 import { toVim } from "./exporters/vim";
 import { toVSCode } from "./exporters/vscode";
@@ -31,6 +32,7 @@ export const exporters = {
   JSON: { export: toJson },
   Kitty: { export: toKitty },
   neovim: { export: toNeovim },
+  Nix: { export: toNix },
   Tabby: { export: toTabby },
   vim: { export: toVim },
   VSCode: { export: toVSCode },
@@ -55,6 +57,7 @@ interface ExportOption extends SelectOption {
  */
 export const exportSelectOptions: ExportOption[] = [
   { value: "JSON", label: "JSON", group: "General" },
+  { value: "Nix", label: "Nix", group: "General" },
   { value: "Alacritty", label: "Alacritty", group: "Terminal Emulators" },
   { value: "Foot", label: "foot", group: "Terminal Emulators" },
   { value: "Ghostty", label: "ghostty", group: "Terminal Emulators" },
