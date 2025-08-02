@@ -28,6 +28,16 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-08-02</h3>
+    <p>
+      <strong><code>Nix</code> config export just arrived</strong>
+    </p>
+    <p>
+      If you're a nix user you might want to manage all your configuration using nix. Thanks to the
+      new nix export format provided by <a href="https://github.com/matthew-healy">matthew-healy</a>
+      you can now declare Root Loops colors in your nix config and reference them everywhere.
+    </p>
+
     <h3>2025-07-17</h3>
     <p>
       <strong>New <code>Tabby</code> and Visual Studio Code terminal export options</strong>
