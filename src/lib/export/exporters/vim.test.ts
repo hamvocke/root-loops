@@ -38,13 +38,14 @@ let colors_name = "root loops"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Normal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-    hi NonText ctermfg=0 guifg=#d0d4e1
+    hi NonText ctermfg=0 guifg=#dfe2eb
     hi Comment ctermfg=8 cterm=italic guifg=#959eb5 gui=italic
     hi Constant ctermfg=3 guifg=#b0964e
     hi Error ctermfg=1 guifg=#d77c6e
     hi Identifier ctermfg=9 guifg=#e4978a
     hi Function ctermfg=4 guifg=#7f95db
     hi Special ctermfg=13 guifg=#d694d0
+    hi Delimiter ctermfg=15 guifg=#1e222d
     hi Statement ctermfg=5 guifg=#c877c1
     hi String ctermfg=2 guifg=#66ab75
     hi Operator ctermfg=6 guifg=#51a7b6
@@ -133,6 +134,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Identifier ctermfg=9
     hi Function ctermfg=4
     hi Special ctermfg=13
+    hi Delimiter ctermfg=15
     hi Statement ctermfg=5
     hi String ctermfg=2
     hi Operator ctermfg=6

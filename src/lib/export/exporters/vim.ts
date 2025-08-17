@@ -17,7 +17,7 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
 
   return [
     { group: "Normal", bg: "NONE", fg: "NONE" },
-    { group: "NonText", fg: c.black },
+    { group: "NonText", fg: c.background },
     { group: "EndOfBuffer", targetGroup: "NonText" },
 
     // syntax
@@ -28,6 +28,7 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
     { group: "Identifier", fg: c.red },
     { group: "Function", fg: c.darkblue },
     { group: "Special", fg: c.magenta },
+    { group: "Delimiter", fg: c.foreground },
     { group: "Statement", fg: c.darkmagenta },
     { group: "String", fg: c.darkgreen },
     { group: "Operator", fg: c.darkcyan },
