@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "test": "npm run test:unit -- --run && npm run test:e2e",
     "test:e2e": "playwright test",
-    "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.54.2-noble npm run test:e2e",
+    "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.55.0-noble npm run test:e2e",
     "test:unit": "vitest",
     "prepare": "svelte-kit sync && husky || true"
   },
