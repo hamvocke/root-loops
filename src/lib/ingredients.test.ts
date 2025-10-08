@@ -12,7 +12,7 @@ describe("ingredient parsing", () => {
     expect(recipe).toEqual(defaultRecipe);
   });
 
-  it("parses uses missing values from default recipe", () => {
+  it("uses missing values from default recipe", () => {
     const recipe = fromQueryString(new URLSearchParams("?sugar=1&sogginess=7"));
     expect(recipe.sugar).toBe(1);
     expect(recipe.sogginess).toBe(7);
@@ -153,6 +153,49 @@ describe("ingredient parsing", () => {
       expect(recipe.flavor).toBe(2);
     });
   });
+
+  describe("for fruitMix ingredient", () => {
+    it("returns default value when string is given", () => {
+      const recipe = fromQueryString(new URLSearchParams("?fruitMix=some"));
+      expect(recipe.fruitMix).toBe(undefined);
+    });
+
+    it("returns max value when value is too large", () => {
+      const recipe = fromQueryString(new URLSearchParams("?fruitMix=361"));
+      expect(recipe.fruitMix).toBe(validationRules.fruitMix.maxValue);
+    });
+
+    it("returns min value when value is too small", () => {
+      const recipe = fromQueryString(new URLSearchParams("?fruitMix=-1"));
+      expect(recipe.fruitMix).toBe(validationRules.fruitMix.minValue);
+    });
+
+    it("parses valid value correctly", () => {
+      const recipe = fromQueryString(new URLSearchParams("?fruitMix=111"));
+      expect(recipe.fruitMix).toBe(111);
+    });
+  });
+  describe("for preciseMilkAmount ingredient", () => {
+    it("returns default value when string is given", () => {
+      const recipe = fromQueryString(new URLSearchParams("?preciseMilk=some"));
+      expect(recipe.preciseMilkAmount).toBe(undefined);
+    });
+
+    it("returns max value when value is too large", () => {
+      const recipe = fromQueryString(new URLSearchParams("?preciseMilk=101"));
+      expect(recipe.preciseMilkAmount).toBe(validationRules.preciseMilkAmount.maxValue);
+    });
+
+    it("returns min value when value is too small", () => {
+      const recipe = fromQueryString(new URLSearchParams("?preciseMilk=-1"));
+      expect(recipe.preciseMilkAmount).toBe(validationRules.preciseMilkAmount.minValue);
+    });
+
+    it("parses valid value correctly", () => {
+      const recipe = fromQueryString(new URLSearchParams("?preciseMilk=80"));
+      expect(recipe.preciseMilkAmount).toBe(80);
+    });
+  });
 });
 
 describe("recipe serialization", () => {
@@ -162,6 +205,18 @@ describe("recipe serialization", () => {
     const queryString = toQueryString(recipe);
 
     const expected = `sugar=${recipe.sugar}&colors=${recipe.artificialColors}&sogginess=${recipe.sogginess}&flavor=${recipe.flavor}&fruit=${recipe.fruit}&milk=${recipe.milkAmount}`;
+
+    expect(queryString).toBe(expected);
+  });
+
+  it("should only include optional URL params if explicitly specified", () => {
+    const recipe = defaultRecipe;
+    recipe.fruitMix = 350;
+    recipe.preciseMilkAmount = 78;
+
+    const queryString = toQueryString(recipe);
+
+    const expected = `sugar=${recipe.sugar}&colors=${recipe.artificialColors}&sogginess=${recipe.sogginess}&flavor=${recipe.flavor}&fruit=${recipe.fruit}&milk=${recipe.milkAmount}&fruitMix=${recipe.fruitMix}&preciseMilk=${recipe.preciseMilkAmount}`;
 
     expect(queryString).toBe(expected);
   });

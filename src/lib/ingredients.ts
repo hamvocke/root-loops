@@ -60,6 +60,16 @@ export const validationRules = {
     minValue: MilkAmount.None,
     maxValue: MilkAmount.Cup,
   },
+  fruitMix: {
+    name: "fruitMix",
+    minValue: 0,
+    maxValue: 360,
+  },
+  preciseMilkAmount: {
+    name: "preciseMilk",
+    minValue: 0,
+    maxValue: 100,
+  },
 };
 
 export const milkSelectOptions: SelectOption[] = [
@@ -97,6 +107,8 @@ export type Recipe = {
   sugar: number;
   fruit: Fruit;
   sogginess: number;
+  fruitMix?: number;
+  preciseMilkAmount?: number;
 };
 
 export const defaultRecipe: Recipe = {
@@ -108,14 +120,9 @@ export const defaultRecipe: Recipe = {
   sogginess: 4,
 };
 
-function sanitize(
-  value: string | number | null,
-  min: number,
-  max: number,
-  fallback: number,
-): number {
+function sanitize(value: string | number | null, min: number, max: number): number | undefined {
   if (!value) {
-    return fallback;
+    return undefined;
   }
 
   let n = value;
@@ -124,63 +131,66 @@ function sanitize(
   }
 
   if (isNaN(n)) {
-    return fallback;
+    return undefined;
   }
 
   return clamp(n, min, max);
 }
 
 function sanitizeSugar(value: string | number | null) {
-  return sanitize(
-    value,
-    validationRules.sugar.minValue,
-    validationRules.sugar.maxValue,
-    defaultRecipe.sugar,
+  return (
+    sanitize(value, validationRules.sugar.minValue, validationRules.sugar.maxValue) ??
+    defaultRecipe.sugar
   );
 }
 
 function sanitizeArtificialColors(value: string | number | null) {
-  return sanitize(
-    value,
-    validationRules.artificialColors.minValue,
-    validationRules.artificialColors.maxValue,
-    defaultRecipe.artificialColors,
+  return (
+    sanitize(
+      value,
+      validationRules.artificialColors.minValue,
+      validationRules.artificialColors.maxValue,
+    ) ?? defaultRecipe.artificialColors
   );
 }
 
 function sanitizeFlavor(value: string | number | null) {
-  return sanitize(
-    value,
-    validationRules.flavor.minValue,
-    validationRules.flavor.maxValue,
-    defaultRecipe.flavor,
+  return (
+    sanitize(value, validationRules.flavor.minValue, validationRules.flavor.maxValue) ??
+    defaultRecipe.flavor
   );
 }
 
 function sanitizeSogginess(value: string | number | null) {
-  return sanitize(
-    value,
-    validationRules.sogginess.minValue,
-    validationRules.sogginess.maxValue,
-    defaultRecipe.sogginess,
+  return (
+    sanitize(value, validationRules.sogginess.minValue, validationRules.sogginess.maxValue) ??
+    defaultRecipe.sogginess
   );
 }
 
 function sanitizeFruit(value: string | number | null) {
-  return sanitize(
-    value,
-    validationRules.fruit.minValue,
-    validationRules.fruit.maxValue,
-    defaultRecipe.fruit,
+  return (
+    sanitize(value, validationRules.fruit.minValue, validationRules.fruit.maxValue) ??
+    defaultRecipe.fruit
   );
 }
 
 function sanitizeMilk(value: string | number | null) {
+  return (
+    sanitize(value, validationRules.milk.minValue, validationRules.milk.maxValue) ??
+    defaultRecipe.milkAmount
+  );
+}
+
+function sanitizeFruitMix(value: string | number | null) {
+  return sanitize(value, validationRules.fruitMix.minValue, validationRules.fruitMix.maxValue);
+}
+
+function sanitizePreciseMilkAmount(value: string | number | null) {
   return sanitize(
     value,
-    validationRules.milk.minValue,
-    validationRules.milk.maxValue,
-    defaultRecipe.milkAmount,
+    validationRules.preciseMilkAmount.minValue,
+    validationRules.preciseMilkAmount.maxValue,
   );
 }
 
@@ -193,6 +203,14 @@ export function toQueryString(recipe: Recipe): string {
     [validationRules.fruit.name]: `${recipe.fruit}`,
     [validationRules.milk.name]: `${recipe.milkAmount}`,
   });
+
+  if (recipe.fruitMix) {
+    urlParams.append(validationRules.fruitMix.name, `${recipe.fruitMix}`);
+  }
+
+  if (recipe.preciseMilkAmount) {
+    urlParams.append(validationRules.preciseMilkAmount.name, `${recipe.preciseMilkAmount}`);
+  }
 
   return urlParams.toString();
 }
@@ -211,5 +229,9 @@ export function fromQueryString(searchParams: URLSearchParams): Recipe {
     milkAmount: sanitizeMilk(searchParams.get(validationRules.milk.name)),
     fruit: sanitizeFruit(searchParams.get(validationRules.fruit.name)),
     flavor: sanitizeFlavor(searchParams.get(validationRules.flavor.name)),
+    fruitMix: sanitizeFruitMix(searchParams.get(validationRules.fruitMix.name)),
+    preciseMilkAmount: sanitizePreciseMilkAmount(
+      searchParams.get(validationRules.preciseMilkAmount.name),
+    ),
   };
 }
