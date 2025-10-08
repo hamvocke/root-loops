@@ -11,6 +11,7 @@ describe("Nix export", () => {
     fruit: Fruit.Elderberry,
     sogginess: 2,
   };
+
   it("exports the right format", () => {
     const config = toNix(someRecipe);
     // prettier-ignore

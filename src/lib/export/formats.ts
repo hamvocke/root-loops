@@ -1,23 +1,23 @@
 import { type SelectOption } from "$lib/selectOptions";
 
-import { toAlacritty } from "./exporters/alacritty";
-import { toFoot } from "./exporters/foot";
-import { toFzf } from "./exporters/fzf";
-import { toGhostty } from "./exporters/ghostty";
-import { toHelix } from "./exporters/helix";
-import { toITerm } from "./exporters/iterm";
-import { toJson } from "./exporters/json";
-import { toKitty } from "./exporters/kitty";
-import { toNeovim } from "./exporters/neovim";
-import { toNix } from "./exporters/nix";
-import { toTabby } from "./exporters/tabby";
-import { toVim } from "./exporters/vim";
-import { toVSCode } from "./exporters/vscode";
-import { toWarp } from "./exporters/warp";
-import { toWezTerm } from "./exporters/wezterm";
-import { toWindowsTerminal } from "./exporters/windows-terminal";
-import { toXresources } from "./exporters/xresources";
-import { toZellij } from "./exporters/zellij";
+import { toAlacritty } from "./alacritty";
+import { toFoot } from "./foot";
+import { toFzf } from "./fzf";
+import { toGhostty } from "./ghostty";
+import { toHelix } from "./helix";
+import { toITerm } from "./iterm";
+import { toJson } from "./json";
+import { toKitty } from "./kitty";
+import { toNeovim } from "./neovim";
+import { toNix } from "./nix";
+import { toTabby } from "./tabby";
+import { toVim } from "./vim";
+import { toVSCode } from "./vscode";
+import { toWarp } from "./warp";
+import { toWezTerm } from "./wezterm";
+import { toWindowsTerminal } from "./windows-terminal";
+import { toXresources } from "./xresources";
+import { toZellij } from "./zellij";
 
 /**
  * Declares which export function to call for a given named exporter that is selected in the UI
