@@ -5,8 +5,6 @@ export function toITerm(recipe: Recipe): string {
   const cereals = prepare(recipe);
   const queryString = toQueryString(recipe);
 
-  console.log(recipe);
-
   const colorMarkup = (name: string, cereal: Cereal, alpha: number = 1) => {
     return `<key>${name}</key>
   <dict>
