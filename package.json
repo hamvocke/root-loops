@@ -21,9 +21,9 @@
     "prepare": "svelte-kit sync && husky || true"
   },
   "devDependencies": {
-    "@playwright/test": "^1.55.1",
+    "@playwright/test": "^1.56.0",
     "@sveltejs/adapter-auto": "^6.1.1",
-    "@sveltejs/kit": "^2.44.0",
+    "@sveltejs/kit": "^2.46.5",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/svelte": "^5.2.8",
@@ -37,11 +37,11 @@
     "jsdom": "^27.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.4.0",
-    "svelte": "^5.39.9",
-    "svelte-check": "^4.3.2",
+    "svelte": "^5.39.11",
+    "svelte-check": "^4.3.3",
     "svelte-feather-icons": "^4.2.0",
     "tslib": "^2.8.1",
-    "typescript-eslint": "^8.45.0",
+    "typescript-eslint": "^8.46.0",
     "typescript": "^5.9.3",
     "vite": "^7.1.9",
     "vitest": "^3.2.4"
