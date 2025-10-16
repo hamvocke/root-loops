@@ -13,7 +13,6 @@
 </script>
 
 <div class="slider">
-  <label for={id}>{label}</label>
   <button
     type="button"
     role="switch"
@@ -23,9 +22,14 @@
     onclick={handleClick}
   >
   </button>
+  <label for={id}>{label}</label>
 </div>
 
 <style>
+  label {
+    font-weight: bold;
+  }
+
   .slider {
     display: flex;
     align-items: center;
@@ -35,7 +39,7 @@
     width: 3.5rem;
     height: 2rem;
     position: relative;
-    margin: 0 0 0 0.5rem;
+    margin: 0 0.5rem 0 0;
     background: linear-gradient(
       to bottom,
       color-mix(in hsl, var(--color-slate-050) 10%, transparent),
@@ -46,6 +50,14 @@
       0 1px 1px #0003,
       0 0.1rem 0.25rem #0001,
       0 0.2rem 0.5rem #0001;
+
+    &:hover {
+      background: linear-gradient(
+        to bottom,
+        color-mix(in hsl, var(--color-slate-050) 40%, transparent),
+        color-mix(in hsl, var(--color-slate-050) 80%, transparent)
+      );
+    }
   }
 
   .slider button::before {
@@ -79,6 +91,15 @@
       var(--color-red-700)
     );
     border: 1px solid var(--color-red-700);
+  }
+
+  .slider:hover button[aria-checked="true"]::before {
+    background: linear-gradient(
+      to bottom,
+      var(--color-red-100),
+      var(--color-red-500) 50%,
+      var(--color-red-700)
+    );
   }
 
   .slider button {
