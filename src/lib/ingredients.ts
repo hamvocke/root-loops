@@ -2,10 +2,10 @@ import { clamp } from "$lib/math";
 import { type SelectOption } from "./selectOptions";
 
 export enum MilkAmount {
-  None,
-  Splash,
-  Glug,
-  Cup,
+  None = 0,
+  Splash = 1,
+  Glug = 2,
+  Cup = 3,
 }
 
 export enum Flavor {
@@ -60,16 +60,6 @@ export const validationRules = {
     minValue: MilkAmount.None,
     maxValue: MilkAmount.Cup,
   },
-  fruitMix: {
-    name: "fruitMix",
-    minValue: 0,
-    maxValue: 360,
-  },
-  preciseMilkAmount: {
-    name: "preciseMilk",
-    minValue: 0,
-    maxValue: 100,
-  },
 };
 
 export const milkSelectOptions: SelectOption[] = [
@@ -107,8 +97,6 @@ export type Recipe = {
   sugar: number;
   fruit: Fruit;
   sogginess: number;
-  fruitMix?: number;
-  preciseMilkAmount?: number;
 };
 
 export const defaultRecipe: Recipe = {
@@ -182,18 +170,6 @@ function sanitizeMilk(value: string | number | null) {
   );
 }
 
-function sanitizeFruitMix(value: string | number | null) {
-  return sanitize(value, validationRules.fruitMix.minValue, validationRules.fruitMix.maxValue);
-}
-
-function sanitizePreciseMilkAmount(value: string | number | null) {
-  return sanitize(
-    value,
-    validationRules.preciseMilkAmount.minValue,
-    validationRules.preciseMilkAmount.maxValue,
-  );
-}
-
 export function toQueryString(recipe: Recipe): string {
   const urlParams = new URLSearchParams({
     [validationRules.sugar.name]: `${recipe.sugar}`,
@@ -203,14 +179,6 @@ export function toQueryString(recipe: Recipe): string {
     [validationRules.fruit.name]: `${recipe.fruit}`,
     [validationRules.milk.name]: `${recipe.milkAmount}`,
   });
-
-  if (recipe.fruitMix) {
-    urlParams.append(validationRules.fruitMix.name, `${recipe.fruitMix}`);
-  }
-
-  if (recipe.preciseMilkAmount) {
-    urlParams.append(validationRules.preciseMilkAmount.name, `${recipe.preciseMilkAmount}`);
-  }
 
   return urlParams.toString();
 }
@@ -229,9 +197,5 @@ export function fromQueryString(searchParams: URLSearchParams): Recipe {
     milkAmount: sanitizeMilk(searchParams.get(validationRules.milk.name)),
     fruit: sanitizeFruit(searchParams.get(validationRules.fruit.name)),
     flavor: sanitizeFlavor(searchParams.get(validationRules.flavor.name)),
-    fruitMix: sanitizeFruitMix(searchParams.get(validationRules.fruitMix.name)),
-    preciseMilkAmount: sanitizePreciseMilkAmount(
-      searchParams.get(validationRules.preciseMilkAmount.name),
-    ),
   };
 }
