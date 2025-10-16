@@ -5,9 +5,17 @@
     value: number;
     min?: number;
     max?: number;
+    step?: number;
   }
 
-  let { label = "My Slider", id, value = $bindable(), min = 1, max = 10 }: Props = $props();
+  let {
+    label = "My Slider",
+    id,
+    value = $bindable(),
+    min = 1,
+    max = 10,
+    step = 1,
+  }: Props = $props();
 </script>
 
 <div class="slider">
@@ -15,7 +23,7 @@
     <label for={id}>{label}</label>
     <output>{value}</output>
   </div>
-  <input type="range" {id} name={id} {min} {max} bind:value />
+  <input type="range" {id} name={id} {min} {max} {step} bind:value />
 </div>
 
 <style>
