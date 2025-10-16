@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
   import { GiftIcon } from "svelte-feather-icons";
 </script>
 
@@ -14,7 +15,7 @@
       title="GitHub"
     ></iframe>
 
-    <a href="/changelog">
+    <a href={resolve("/changelog")}>
       <GiftIcon size="20" />
       What's new?
     </a>

@@ -1,5 +1,9 @@
+<script>
+  import { resolve } from "$app/paths";
+</script>
+
 <header>
-  <a class="label" href="/">
+  <a class="label" href={resolve("/")}>
     <h1>
       R<span class="green">o</span><span class="magenta">o</span>t <br /> L<span class="blue"
         >o</span

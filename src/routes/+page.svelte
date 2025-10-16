@@ -23,6 +23,8 @@
   import { faviconDataUrl } from "$lib/favicon";
   import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
   import { fade } from "svelte/transition";
+  import Switch from "./Switch.svelte";
+  import { resolve } from "$app/paths";
 
   let recipe = $state(structuredClone(defaultRecipe));
 

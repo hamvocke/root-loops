@@ -4,6 +4,7 @@
   import { defaultRecipe } from "$lib/ingredients";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
+  import { resolve } from "$app/paths";
 
   const cereals = prepare(defaultRecipe);
   const cssColors = generateCssColors(cereals);
@@ -19,7 +20,7 @@
   <Header />
 
   <div class="info glass-box">
-    <a href="/" class="back-link">&lt; Go back</a>
+    <a href={resolve("/")} class="back-link">&lt; Go back</a>
     <h2 class="large">Changelog</h2>
     <p class="lead">
       Root Loops is constantly evolving and packing new features to make it even sweeter to create
