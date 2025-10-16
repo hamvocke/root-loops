@@ -33,7 +33,7 @@ export type Cereals = {
   background: Cereal;
 };
 
-export function prepare(recipe: Recipe): Cereals {
+export function prepare(recipe: Recipe, useNew: boolean = false): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentSaturation = getAccentSaturation(recipe);
 
@@ -56,7 +56,7 @@ export function prepare(recipe: Recipe): Cereals {
     });
   }
 
-  const baseColors = getBaseColors(recipe);
+  const baseColors = useNew ? getBaseColorsLogistics(recipe) : getBaseColors(recipe);
 
   const rgb = converter("rgb");
   const colorDefinitions = (name: string, color: Okhsl) => {
@@ -131,8 +131,70 @@ function getSaturation(saturation: number): number {
 
 function getBaseHue(recipe: Recipe): number {
   const hueRange = 360;
-  const numberOfFruits = Object.keys(Fruit).length / 2; // divide by 2, since numeric enums get reverse mappings
+  const numberOfFruits = Object.keys(Fruit).length / 2; // divide by 2, since numeric enums get "reverse mappings", leading to the total number of keys being doubled
   return recipe.fruit * (hueRange / numberOfFruits);
+}
+
+function getBaseColorsLogistics(recipe: Recipe) {
+  const baseColor = (lightness: number): Okhsl => {
+    return {
+      mode: "okhsl",
+      h: getBaseHue(recipe),
+      s: getBaseSaturation(recipe),
+      l: lightness / 100,
+    };
+  };
+
+  /**
+   * Generalised logistic function.
+   * See https://en.wikipedia.org/wiki/Generalised_logistic_function for details.
+   *
+   * Compared to the first algorithm which only generated colors for four discrete
+   * milk values, this algorithm allows generating colors for a continuous range of
+   * milk values between 0 and 3, giving many more options. The drawback is that
+   * this allows to create some truly cursed combinations where legibility is pretty
+   * messed up. C'est la vie.
+   *
+   * @param {number} a - the left horizontal asymptote (the lightness we want to have at a milk value approaching 0)
+   * @param {number} k - the right horizontal asymptote (the lightness we want to have at a milk value approaching 3)
+   *
+   * @returns a logistics function for the provided boundaries
+   */
+  function logisticsFn(a: number, k: number): (x: number) => number {
+    const b = 5.06; // growth factor, figured out by trial and error
+    const nu = 1;
+    const C = 1;
+    const Q = 1;
+    const e = 2.71828;
+    const xOffset = 7.1; // figured out by trial and error
+
+    return (x) => a + (k - a) / Math.pow(C + Q * Math.pow(e, -b * x + xOffset), 1 / nu);
+  }
+
+  const backgroundFn = logisticsFn(4, 96);
+  const blackFn = logisticsFn(15, 90);
+  const brightBlackFn = logisticsFn(35, 70);
+  const whiteFn = logisticsFn(70, 35);
+  const brightWhiteFn = logisticsFn(90, 15);
+  const foregroundFn = logisticsFn(96, 4);
+
+  const background = baseColor(backgroundFn(recipe.milkAmount));
+  const black = baseColor(blackFn(recipe.milkAmount));
+  const brightBlack = baseColor(brightBlackFn(recipe.milkAmount));
+  const white = baseColor(whiteFn(recipe.milkAmount));
+  const brightWhite = baseColor(brightWhiteFn(recipe.milkAmount));
+  const foreground = baseColor(foregroundFn(recipe.milkAmount));
+
+  const result = {
+    background,
+    black,
+    brightBlack,
+    white,
+    foreground,
+    brightWhite,
+  };
+
+  return result;
 }
 
 function getBaseColors(recipe: Recipe) {
@@ -144,7 +206,6 @@ function getBaseColors(recipe: Recipe) {
       l: lightness / 100,
     };
   };
-
   switch (recipe.milkAmount) {
     case MilkAmount.None:
       return {

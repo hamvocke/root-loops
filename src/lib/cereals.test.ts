@@ -238,4 +238,28 @@ describe("prepare()", () => {
     expect(soggy.white.color.s).toBe(1);
     expect(soggy.brightWhite.color.s).toBe(1);
   });
+
+  describe("new baseColor algorithm", () => {
+    it("uses the right lower bound for lightness", () => {
+      const result = prepare(someRecipe({ milkAmount: 0.1 }), true);
+
+      expect(result.background.color.l).toBeCloseTo(0.04);
+      expect(result.black.color.l).toBeCloseTo(0.15);
+      expect(result.brightBlack.color.l).toBeCloseTo(0.35);
+      expect(result.white.color.l).toBeCloseTo(0.7);
+      expect(result.brightWhite.color.l).toBeCloseTo(0.9);
+      expect(result.foreground.color.l).toBeCloseTo(0.96);
+    });
+
+    it("uses the right upper bound for lightness", () => {
+      const result = prepare(someRecipe({ milkAmount: 2.9 }), true);
+
+      expect(result.background.color.l).toBeCloseTo(0.96);
+      expect(result.black.color.l).toBeCloseTo(0.9);
+      expect(result.brightBlack.color.l).toBeCloseTo(0.7);
+      expect(result.white.color.l).toBeCloseTo(0.35);
+      expect(result.brightWhite.color.l).toBeCloseTo(0.15);
+      expect(result.foreground.color.l).toBeCloseTo(0.04);
+    });
+  });
 });
