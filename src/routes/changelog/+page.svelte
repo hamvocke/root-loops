@@ -29,6 +29,41 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-10-17</h3>
+    <p>
+      <strong>Expert Mode and a new cereal pouring algorithm!</strong>
+    </p>
+    <p>
+      Some users requested that they wanted to be able to control milk amounts and fruit flavors
+      (i.e. lightness and hue of base colors) more precisely. Currently Root Loops only offers very
+      few discrete steps. The benefit is that these discrete steps almost always look alright but
+      the drawback is that you don't get to fine tune your color scheme should you want to go beyond
+      that.
+    </p>
+
+    <p>
+      In the last few days I've overhauled the color generation algorithm. What was a simple mapping
+      from milk amounts to a set of colors with varying lightness before is now an algorithm using a
+      logistics function to map arbitrary milk amounts to a set of colors.
+    </p>
+
+    <p>
+      This is a much more powerful approach, but it can lead to some truly cursed creations. So
+      beware! The default way of combining ingredients is still there.
+    </p>
+
+    <p>
+      This algorithm change also comes as a <strong>breaking change</strong>. If you take an older
+      Root Loops recipe and use it on the current site, then your black/white and
+      foreground/background colors will look a little different than before. I've tried to fit the
+      new algorithm as closely to the old behavior as possible, but there will be some deviations.
+      The new colors look more consistent and should be more accessible than before, so it's an
+      improvement over the old algorithm, but it can certainly create inconsistencies in your
+      terminal experience. I've debated a lot if I wanted to provide a way to keep using the old
+      algorithm but for the sake of simplicity (both in code and in the user interface) I decided
+      that it's going to be the new algorithm for everyone moving forward.
+    </p>
+
     <h3>2025-08-02</h3>
     <p>
       <strong><code>Nix</code> config export just arrived</strong>
