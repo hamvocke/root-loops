@@ -22,7 +22,7 @@
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
   import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
-  import { fade } from "svelte/transition";
+  import { fade, slide } from "svelte/transition";
   import Switch from "./Switch.svelte";
   import { resolve } from "$app/paths";
 
@@ -34,9 +34,10 @@
 
   let toast: string | undefined = $state();
 
-  let cereals = $derived(prepare(recipe));
+  let cereals = $derived(prepare(recipe, true));
   let cssColors = $derived(generateCssColors(cereals));
   let queryString = $derived(toQueryString(recipe));
+  let expertMode = $state(false);
 
   function calculateMilkHeight(amount: MilkAmount) {
     return `height: ${amount * 33.34}%;`;
@@ -114,23 +115,49 @@
           id={validationRules.fruit.name}
           options={fruitSelectOptions}
           bind:value={recipe.fruit}
+          disabled={expertMode}
         />
         <Select
           label="Milk"
           id={validationRules.milk.name}
           options={milkSelectOptions}
           bind:value={recipe.milkAmount}
+          disabled={expertMode}
         />
       </div>
 
-      <div class="buttons">
-        <a class="button plain" href="/help" data-sveltekit-replacestate="false"
-          ><HelpCircleIcon size="20" /> Help</a
-        >
-        <button type="button" onclick={resetRecipe} class="button">Reset</button>
-        <button type="submit" class="button primary">
-          <ExternalLinkIcon size="20" /> Save
-        </button>
+      {#if expertMode}
+        <div class="expert-mode" transition:slide={{ duration: 300, delay: 500, axis: "y" }}>
+          <Slider
+            label="Milk"
+            id={validationRules.milk.name}
+            bind:value={recipe.milkAmount}
+            min={validationRules.milk.minValue}
+            max={validationRules.milk.maxValue}
+            step={0.01}
+          />
+          <Slider
+            label="Fruit Mix"
+            id={validationRules.fruit.name}
+            bind:value={recipe.fruit}
+            min={validationRules.fruit.minValue}
+            max={validationRules.fruit.maxValue}
+            step={0.1}
+          />
+        </div>
+      {/if}
+
+      <div class="button-wrapper">
+        <Switch id="expertMode" label="Expert Mode" bind:checked={expertMode} />
+        <div class="buttons">
+          <a class="button plain" href={resolve("/help")} data-sveltekit-replacestate="false"
+            ><HelpCircleIcon size="20" /> Help</a
+          >
+          <button type="button" onclick={resetRecipe} class="button">Reset</button>
+          <button type="submit" class="button primary">
+            <ExternalLinkIcon size="20" /> Save
+          </button>
+        </div>
       </div>
     </form>
 
@@ -220,6 +247,21 @@
       grid-template-rows: 1fr 1fr;
       grid-auto-flow: row;
     }
+  }
+
+  .expert-mode {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .buttons {

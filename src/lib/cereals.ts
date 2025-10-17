@@ -33,7 +33,7 @@ export type Cereals = {
   background: Cereal;
 };
 
-export function prepare(recipe: Recipe, useNew: boolean = false): Cereals {
+export function prepare(recipe: Recipe, useNew: boolean = true): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentSaturation = getAccentSaturation(recipe);
 

@@ -5,10 +5,11 @@
     options: SelectOption[];
     value: number | string;
     id: string;
-    label: string | undefined;
+    label?: string;
+    disabled?: boolean;
   }
 
-  let { options, value = $bindable(), id, label }: Props = $props();
+  let { options, value = $bindable(), id, label, disabled = false }: Props = $props();
 
   let groupedOptions: Record<string, SelectOption[] | undefined> = $state({});
   if (options.every((o) => o.group)) {
@@ -21,7 +22,7 @@
   {#if label}
     <label for={id}>{label}</label>
   {/if}
-  <select bind:value {id} name={id}>
+  <select bind:value {id} name={id} {disabled}>
     {#if groups.length > 0}
       {#each groups as group (group)}
         <optgroup label={group}>
@@ -77,6 +78,10 @@
       0 0.1rem 0.25rem #0001,
       0 0.2rem 0.5rem #0001;
     border-radius: 0.2rem;
+
+    &:disabled {
+      opacity: 0.6;
+    }
 
     &:hover,
     &:focus-visible {

@@ -116,6 +116,18 @@
       </li>
     </ul>
 
+    <h2>What does "Expert Mode" mean?</h2>
+    <p>
+      If you're a true cereal connoiseur and feel like you know what you're doing, "Expert Mode"
+      allows go beyond what you can regularly do with the cereal ingredients. You can fine tune
+      parameters to create more custom color schemes.
+    </p>
+    <p>
+      But beware, expert mode allows you to create some truly hideous and almost unusable color
+      schemes if you don't watch out. Not recommended for the faint of heart or those who can't
+      stomach it.
+    </p>
+
     <h2>How do I use the color scheme in my terminal emulator?</h2>
     <p>
       You can click on a cereal to copy its color value to your clipboard. Depending on the terminal
