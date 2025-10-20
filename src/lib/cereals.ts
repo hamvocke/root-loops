@@ -1,4 +1,4 @@
-import { MilkAmount, Flavor, Fruit, type Recipe } from "./ingredients";
+import { Flavor, Fruit, type Recipe } from "./ingredients";
 import { converter, formatHex, formatHsl, type Rgb, type Okhsl } from "culori";
 import { normalize } from "./math";
 
@@ -33,7 +33,7 @@ export type Cereals = {
   background: Cereal;
 };
 
-export function prepare(recipe: Recipe, useNew: boolean = true): Cereals {
+export function prepare(recipe: Recipe): Cereals {
   const accentHueShift = getAccentHueShift(recipe);
   const accentSaturation = getAccentSaturation(recipe);
 
@@ -56,7 +56,7 @@ export function prepare(recipe: Recipe, useNew: boolean = true): Cereals {
     });
   }
 
-  const baseColors = useNew ? getBaseColorsLogistics(recipe) : getBaseColors(recipe);
+  const baseColors = getBaseColors(recipe);
 
   const rgb = converter("rgb");
   const colorDefinitions = (name: string, color: Okhsl) => {
@@ -135,7 +135,7 @@ function getBaseHue(recipe: Recipe): number {
   return recipe.fruit * (hueRange / numberOfFruits);
 }
 
-function getBaseColorsLogistics(recipe: Recipe) {
+function getBaseColors(recipe: Recipe) {
   const baseColor = (lightness: number): Okhsl => {
     return {
       mode: "okhsl",
@@ -195,53 +195,4 @@ function getBaseColorsLogistics(recipe: Recipe) {
   };
 
   return result;
-}
-
-function getBaseColors(recipe: Recipe) {
-  const baseColor = (lightness: number): Okhsl => {
-    return {
-      mode: "okhsl",
-      h: getBaseHue(recipe),
-      s: getBaseSaturation(recipe),
-      l: lightness / 100,
-    };
-  };
-  switch (recipe.milkAmount) {
-    case MilkAmount.None:
-      return {
-        background: baseColor(5),
-        black: baseColor(15),
-        brightBlack: baseColor(35),
-        white: baseColor(75),
-        foreground: baseColor(90),
-        brightWhite: baseColor(95),
-      };
-    case MilkAmount.Splash:
-      return {
-        background: baseColor(15),
-        black: baseColor(25),
-        brightBlack: baseColor(45),
-        white: baseColor(80),
-        foreground: baseColor(93),
-        brightWhite: baseColor(97),
-      };
-    case MilkAmount.Glug:
-      return {
-        background: baseColor(90),
-        black: baseColor(85),
-        brightBlack: baseColor(65),
-        white: baseColor(35),
-        foreground: baseColor(15),
-        brightWhite: baseColor(5),
-      };
-    case MilkAmount.Cup:
-      return {
-        background: baseColor(95),
-        black: baseColor(90),
-        brightBlack: baseColor(70),
-        white: baseColor(45),
-        foreground: baseColor(25),
-        brightWhite: baseColor(15),
-      };
-  }
 }

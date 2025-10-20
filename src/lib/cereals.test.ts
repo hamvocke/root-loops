@@ -93,7 +93,7 @@ describe("prepare()", () => {
   });
 
   it("uses the right lower bound for lightness", () => {
-    const result = prepare(someRecipe({ milkAmount: 0.1 }), true);
+    const result = prepare(someRecipe({ milkAmount: 0.1 }));
 
     expect(result.background.color.l).toBeCloseTo(0.04);
     expect(result.black.color.l).toBeCloseTo(0.15);
@@ -104,7 +104,7 @@ describe("prepare()", () => {
   });
 
   it("uses the right upper bound for lightness", () => {
-    const result = prepare(someRecipe({ milkAmount: 2.9 }), true);
+    const result = prepare(someRecipe({ milkAmount: 2.9 }));
 
     expect(result.background.color.l).toBeCloseTo(0.96);
     expect(result.black.color.l).toBeCloseTo(0.9);

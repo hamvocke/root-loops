@@ -34,7 +34,7 @@
 
   let toast: string | undefined = $state();
 
-  let cereals = $derived(prepare(recipe, true));
+  let cereals = $derived(prepare(recipe));
   let cssColors = $derived(generateCssColors(cereals));
   let queryString = $derived(toQueryString(recipe));
   let expertMode = $state(false);
