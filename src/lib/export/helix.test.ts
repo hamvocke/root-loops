@@ -103,26 +103,26 @@ describe("Helix export", () => {
 "diagnostic.error" = { underline = { color ="light-red", style = "curl" } }
 
 [palette]
-black = "#d0d4e1"
+black = "#d4d9e4"
 red = "#55403c"
 green = "#3c4a3e"
 yellow = "#4b4536"
 blue = "#3f4557"
 magenta = "#50404e"
 cyan = "#374a4d"
-light-gray = "#4a5165"
+light-gray = "#4e556a"
 
-gray = "#959eb5"
+gray = "#9fa7bd"
 light-red = "#6b524e"
 light-green = "#4d5e50"
 light-yellow = "#5f5946"
 light-blue = "#51586e"
 light-magenta = "#655263"
 light-cyan = "#475e62"
-white = "#07080d"
+white = "#262a37"
 
-foreground = "#1e222d"
-background = "#dfe2eb"`;
+foreground = "#0f1219"
+background = "#e5e7ee"`;
 
     expect(config).toBe(expected);
   });

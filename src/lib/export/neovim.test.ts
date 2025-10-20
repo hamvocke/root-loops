@@ -38,14 +38,14 @@ let colors_name = "root loops"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Normal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-    hi NonText ctermfg=0 guifg=#dfe2eb
-    hi Comment ctermfg=8 cterm=italic guifg=#959eb5 gui=italic
+    hi NonText ctermfg=0 guifg=#e5e7ee
+    hi Comment ctermfg=8 cterm=italic guifg=#9fa7bd gui=italic
     hi Constant ctermfg=3 guifg=#b0964e
     hi Error ctermfg=1 guifg=#d77c6e
     hi Identifier ctermfg=9 guifg=#e4978a
     hi Function ctermfg=4 guifg=#7f95db
     hi Special ctermfg=13 guifg=#d694d0
-    hi Delimiter ctermfg=15 guifg=#1e222d
+    hi Delimiter ctermfg=15 guifg=#0f1219
     hi Statement ctermfg=5 guifg=#c877c1
     hi String ctermfg=2 guifg=#66ab75
     hi Operator ctermfg=6 guifg=#51a7b6
@@ -59,77 +59,77 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Macro ctermfg=5 guifg=#c877c1
     hi StorageClass ctermfg=11 guifg=#c7ab60
     hi Structure ctermfg=11 guifg=#c7ab60
-    hi Todo ctermbg=12 ctermfg=0 cterm=bold guibg=#99ace5 guifg=#dfe2eb gui=bold
+    hi Todo ctermbg=12 ctermfg=0 cterm=bold guibg=#99ace5 guifg=#e5e7ee gui=bold
     hi Type ctermfg=11 guifg=#c7ab60
     hi Underlined cterm=underline gui=underline
     hi Bold cterm=bold gui=bold
     hi Italic cterm=italic gui=italic
     hi Ignore ctermbg=NONE ctermfg=NONE cterm=NONE guibg=NONE guifg=NONE gui=NONE
-    hi StatusLine ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#1e222d gui=NONE
-    hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE guibg=#dfe2eb guifg=#07080d gui=NONE
-    hi VertSplit ctermfg=8 guifg=#959eb5
-    hi TabLine ctermbg=0 ctermfg=7 guibg=#d0d4e1 guifg=#4a5165
-    hi TabLineFill ctermbg=NONE ctermfg=0 guibg=NONE guifg=#d0d4e1
-    hi TabLineSel ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#d0d4e1
+    hi StatusLine ctermbg=0 ctermfg=15 cterm=NONE guibg=#d4d9e4 guifg=#0f1219 gui=NONE
+    hi StatusLineNC ctermbg=0 ctermfg=15 cterm=NONE guibg=#e5e7ee guifg=#262a37 gui=NONE
+    hi VertSplit ctermfg=8 guifg=#9fa7bd
+    hi TabLine ctermbg=0 ctermfg=7 guibg=#d4d9e4 guifg=#4e556a
+    hi TabLineFill ctermbg=NONE ctermfg=0 guibg=NONE guifg=#d4d9e4
+    hi TabLineSel ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#d4d9e4
     hi Title ctermfg=4 cterm=bold guifg=#7f95db gui=bold
-    hi CursorLine ctermbg=0 ctermfg=NONE guibg=#d0d4e1 guifg=NONE
-    hi Cursor ctermbg=15 ctermfg=0 guibg=#1e222d guifg=#dfe2eb
-    hi CursorColumn ctermbg=0 guibg=#d0d4e1
-    hi LineNr ctermfg=8 guifg=#959eb5
+    hi CursorLine ctermbg=0 ctermfg=NONE guibg=#d4d9e4 guifg=NONE
+    hi Cursor ctermbg=15 ctermfg=0 guibg=#0f1219 guifg=#e5e7ee
+    hi CursorColumn ctermbg=0 guibg=#d4d9e4
+    hi LineNr ctermfg=8 guifg=#9fa7bd
     hi CursorLineNr ctermfg=6 guifg=#51a7b6
     hi helpLeadBlank ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
     hi helpNormal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-    hi Visual ctermbg=8 ctermfg=15 cterm=bold guibg=#959eb5 guifg=#1e222d gui=bold
-    hi VisualNOS ctermbg=8 ctermfg=15 cterm=bold guibg=#959eb5 guifg=#1e222d gui=bold
-    hi Pmenu ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#1e222d
-    hi PmenuSbar ctermbg=8 ctermfg=7 guibg=#959eb5 guifg=#4a5165
-    hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold guibg=#959eb5 guifg=#1e222d gui=bold
-    hi PmenuThumb ctermbg=7 ctermfg=NONE guibg=#4a5165 guifg=NONE
-    hi FoldColumn ctermfg=7 guifg=#4a5165
+    hi Visual ctermbg=8 ctermfg=15 cterm=bold guibg=#9fa7bd guifg=#0f1219 gui=bold
+    hi VisualNOS ctermbg=8 ctermfg=15 cterm=bold guibg=#9fa7bd guifg=#0f1219 gui=bold
+    hi Pmenu ctermbg=0 ctermfg=15 guibg=#d4d9e4 guifg=#0f1219
+    hi PmenuSbar ctermbg=8 ctermfg=7 guibg=#9fa7bd guifg=#4e556a
+    hi PmenuSel ctermbg=8 ctermfg=15 cterm=bold guibg=#9fa7bd guifg=#0f1219 gui=bold
+    hi PmenuThumb ctermbg=7 ctermfg=NONE guibg=#4e556a guifg=NONE
+    hi FoldColumn ctermfg=7 guifg=#4e556a
     hi Folded ctermfg=12 guifg=#99ace5
-    hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE guibg=#d0d4e1 guifg=#1e222d gui=NONE
-    hi SpecialKey ctermfg=0 guifg=#d0d4e1
-    hi IncSearch ctermbg=1 ctermfg=0 guibg=#d77c6e guifg=#dfe2eb
-    hi CurSearch ctermbg=3 ctermfg=0 guibg=#b0964e guifg=#dfe2eb
-    hi Search ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#dfe2eb
+    hi WildMenu ctermbg=0 ctermfg=15 cterm=NONE guibg=#d4d9e4 guifg=#0f1219 gui=NONE
+    hi SpecialKey ctermfg=0 guifg=#d4d9e4
+    hi IncSearch ctermbg=1 ctermfg=0 guibg=#d77c6e guifg=#e5e7ee
+    hi CurSearch ctermbg=3 ctermfg=0 guibg=#b0964e guifg=#e5e7ee
+    hi Search ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#e5e7ee
     hi Directory ctermfg=4 guifg=#7f95db
-    hi MatchParen ctermbg=0 ctermfg=3 cterm=bold guibg=#d0d4e1 guifg=#b0964e gui=bold
+    hi MatchParen ctermbg=0 ctermfg=3 cterm=bold guibg=#d4d9e4 guifg=#b0964e gui=bold
     hi SpellBad cterm=undercurl gui=undercurl guisp=#e4978a
     hi SpellCap cterm=undercurl gui=undercurl guisp=#c7ab60
     hi SpellLocal cterm=undercurl gui=undercurl guisp=#99ace5
     hi SpellRare cterm=undercurl gui=undercurl guisp=#79c289
-    hi ColorColumn ctermbg=8 guibg=#959eb5
-    hi SignColumn ctermfg=7 guifg=#4a5165
-    hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold guibg=#07080d guifg=#d0d4e1 gui=bold
+    hi ColorColumn ctermbg=8 guibg=#9fa7bd
+    hi SignColumn ctermfg=7 guifg=#4e556a
+    hi ModeMsg ctermbg=15 ctermfg=0 cterm=bold guibg=#262a37 guifg=#d4d9e4 gui=bold
     hi MoreMsg ctermfg=4 guifg=#7f95db
     hi Question ctermfg=4 guifg=#7f95db
-    hi QuickFixLine ctermbg=0 ctermfg=14 guibg=#d0d4e1 guifg=#64becd
-    hi Conceal ctermfg=8 guifg=#959eb5
-    hi ToolbarLine ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#07080d
-    hi ToolbarButton ctermbg=8 ctermfg=15 guibg=#959eb5 guifg=#07080d
-    hi debugPC ctermfg=7 guifg=#4a5165
-    hi debugBreakpoint ctermfg=8 guifg=#959eb5
+    hi QuickFixLine ctermbg=0 ctermfg=14 guibg=#d4d9e4 guifg=#64becd
+    hi Conceal ctermfg=8 guifg=#9fa7bd
+    hi ToolbarLine ctermbg=0 ctermfg=15 guibg=#d4d9e4 guifg=#262a37
+    hi ToolbarButton ctermbg=8 ctermfg=15 guibg=#9fa7bd guifg=#262a37
+    hi debugPC ctermfg=7 guifg=#4e556a
+    hi debugBreakpoint ctermfg=8 guifg=#9fa7bd
     hi ErrorMsg ctermfg=1 cterm=bold,italic guifg=#d77c6e gui=bold,italic
     hi WarningMsg ctermfg=11 guifg=#c7ab60
-    hi DiffAdd ctermbg=10 ctermfg=0 guibg=#79c289 guifg=#dfe2eb
-    hi DiffChange ctermbg=12 ctermfg=0 guibg=#99ace5 guifg=#dfe2eb
-    hi DiffDelete ctermbg=9 ctermfg=0 guibg=#e4978a guifg=#dfe2eb
-    hi DiffText ctermbg=14 ctermfg=0 guibg=#64becd guifg=#dfe2eb
+    hi DiffAdd ctermbg=10 ctermfg=0 guibg=#79c289 guifg=#e5e7ee
+    hi DiffChange ctermbg=12 ctermfg=0 guibg=#99ace5 guifg=#e5e7ee
+    hi DiffDelete ctermbg=9 ctermfg=0 guibg=#e4978a guifg=#e5e7ee
+    hi DiffText ctermbg=14 ctermfg=0 guibg=#64becd guifg=#e5e7ee
     hi diffAdded ctermfg=10 guifg=#79c289
     hi diffRemoved ctermfg=9 guifg=#e4978a
     hi diffChanged ctermfg=12 guifg=#99ace5
     hi diffOldFile ctermfg=11 guifg=#c7ab60
     hi diffNewFile ctermfg=13 guifg=#d694d0
     hi diffFile ctermfg=12 guifg=#99ace5
-    hi diffLine ctermfg=7 guifg=#4a5165
+    hi diffLine ctermfg=7 guifg=#4e556a
     hi diffIndexLine ctermfg=14 guifg=#64becd
     hi healthError ctermfg=1 guifg=#d77c6e
     hi healthSuccess ctermfg=2 guifg=#66ab75
     hi healthWarning ctermfg=3 guifg=#b0964e
-    hi NormalFloat ctermbg=0 ctermfg=15 guibg=#dfe2eb guifg=#1e222d
-    hi FloatBorder ctermbg=0 ctermfg=7 guibg=#dfe2eb guifg=#4a5165
-    hi FloatShadow ctermbg=0 ctermfg=15 guibg=#d0d4e1 guifg=#1e222d
-    hi @variable ctermfg=15 guifg=#1e222d
+    hi NormalFloat ctermbg=0 ctermfg=15 guibg=#e5e7ee guifg=#0f1219
+    hi FloatBorder ctermbg=0 ctermfg=7 guibg=#e5e7ee guifg=#4e556a
+    hi FloatShadow ctermbg=0 ctermfg=15 guibg=#d4d9e4 guifg=#0f1219
+    hi @variable ctermfg=15 guifg=#0f1219
     hi @variable.builtin ctermfg=1 guifg=#d77c6e
     hi @variable.parameter ctermfg=1 guifg=#d77c6e
     hi @variable.member ctermfg=1 guifg=#d77c6e
@@ -145,26 +145,26 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi @keyword.function ctermfg=5 guifg=#c877c1
     hi @keyword.return ctermfg=5 guifg=#c877c1
     hi @keyword.export ctermfg=12 guifg=#99ace5
-    hi @punctuation.bracket ctermfg=15 guifg=#1e222d
-    hi @comment.error ctermbg=9 ctermfg=0 guibg=#e4978a guifg=#dfe2eb
-    hi @comment.warning ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#dfe2eb
-    hi @comment.todo ctermbg=12 ctermfg=0 guibg=#99ace5 guifg=#dfe2eb
-    hi @comment.note ctermbg=14 ctermfg=0 guibg=#64becd guifg=#dfe2eb
-    hi @markup ctermfg=15 guifg=#1e222d
-    hi @markup.strong ctermfg=15 cterm=bold guifg=#1e222d gui=bold
-    hi @markup.italic ctermfg=15 cterm=italic guifg=#1e222d gui=italic
-    hi @markup.strikethrough ctermfg=15 cterm=strikethrough guifg=#1e222d gui=strikethrough
+    hi @punctuation.bracket ctermfg=15 guifg=#0f1219
+    hi @comment.error ctermbg=9 ctermfg=0 guibg=#e4978a guifg=#e5e7ee
+    hi @comment.warning ctermbg=11 ctermfg=0 guibg=#c7ab60 guifg=#e5e7ee
+    hi @comment.todo ctermbg=12 ctermfg=0 guibg=#99ace5 guifg=#e5e7ee
+    hi @comment.note ctermbg=14 ctermfg=0 guibg=#64becd guifg=#e5e7ee
+    hi @markup ctermfg=15 guifg=#0f1219
+    hi @markup.strong ctermfg=15 cterm=bold guifg=#0f1219 gui=bold
+    hi @markup.italic ctermfg=15 cterm=italic guifg=#0f1219 gui=italic
+    hi @markup.strikethrough ctermfg=15 cterm=strikethrough guifg=#0f1219 gui=strikethrough
     hi @markup.heading ctermfg=4 cterm=bold guifg=#7f95db gui=bold
     hi @markup.quote ctermfg=6 guifg=#51a7b6
     hi @markup.math ctermfg=4 guifg=#7f95db
     hi @markup.link.url ctermfg=5 cterm=underline guifg=#c877c1 gui=underline
     hi @markup.raw ctermfg=14 guifg=#64becd
     hi @markup.list.checked ctermfg=2 guifg=#66ab75
-    hi @markup.list.unchecked ctermfg=7 guifg=#4a5165
+    hi @markup.list.unchecked ctermfg=7 guifg=#4e556a
     hi @tag ctermfg=5 guifg=#c877c1
     hi @tag.builtin ctermfg=6 guifg=#51a7b6
     hi @tag.attribute ctermfg=4 guifg=#7f95db
-    hi @tag.delimiter ctermfg=15 guifg=#1e222d
+    hi @tag.delimiter ctermfg=15 guifg=#0f1219
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
@@ -363,5 +363,5 @@ hi link @diff.minus diffRemoved
 hi link @diff.delta diffChanged
 
 if (has('termguicolors') && &termguicolors) || has('gui_running')
-    let g:terminal_ansi_colors = [ '#d0d4e1', '#d77c6e', '#66ab75', '#b0964e', '#7f95db', '#c877c1', '#51a7b6', '#4a5165', '#959eb5', '#e4978a', '#79c289', '#c7ab60', '#99ace5', '#d694d0', '#64becd', '#07080d' ]
+    let g:terminal_ansi_colors = [ '#d4d9e4', '#d77c6e', '#66ab75', '#b0964e', '#7f95db', '#c877c1', '#51a7b6', '#4e556a', '#9fa7bd', '#e4978a', '#79c289', '#c7ab60', '#99ace5', '#d694d0', '#64becd', '#262a37' ]
 endif`;

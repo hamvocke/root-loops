@@ -20,10 +20,10 @@ describe("Fzf export", () => {
 
 # Root Loops (https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2)
 export FZF_DEFAULT_OPTS="\
-  --color=fg:#1e222d,fg+:#07080d,bg:#dfe2eb,bg+:#d0d4e1 \\
+  --color=fg:#0f1219,fg+:#262a37,bg:#e5e7ee,bg+:#d4d9e4 \\
   --color=hl:#374a4d,hl+:#475e62,info:#4b4536,marker:#3c4a3e \\
   --color=prompt:#55403c,spinner:#50404e,pointer:#50404e,header:#3f4557 \\
-  --color=border:#959eb5,label:#4a5165,query:#1e222d"`;
+  --color=border:#9fa7bd,label:#4e556a,query:#0f1219"`;
 
     expect(config).toBe(expected);
   });

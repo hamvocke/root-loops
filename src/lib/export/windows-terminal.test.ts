@@ -17,28 +17,28 @@ describe("Windows Terminal export", () => {
     const expected = {
       name: "Root Loops",
 
-      cursorColor: "#4a5165",
-      selectionBackground: "#4a5165",
+      cursorColor: "#4e556a",
+      selectionBackground: "#4e556a",
 
-      background: "#dfe2eb",
-      foreground: "#1e222d",
+      background: "#e5e7ee",
+      foreground: "#0f1219",
 
-      black: "#d0d4e1",
+      black: "#d4d9e4",
       red: "#55403c",
       green: "#3c4a3e",
       yellow: "#4b4536",
       blue: "#3f4557",
       purple: "#50404e",
       cyan: "#374a4d",
-      white: "#4a5165",
-      brightBlack: "#959eb5",
+      white: "#4e556a",
+      brightBlack: "#9fa7bd",
       brightRed: "#6b524e",
       brightGreen: "#4d5e50",
       brightYellow: "#5f5946",
       brightBlue: "#51586e",
       brightPurple: "#655263",
       brightCyan: "#475e62",
-      brightWhite: "#07080d",
+      brightWhite: "#262a37",
     };
     expect(JSON.parse(config)).toStrictEqual(expected);
   });

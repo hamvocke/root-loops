@@ -22,29 +22,29 @@ describe("Warp export", () => {
 # via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
 name: Root Loops
-accent: '#4a5165'
-cursor: '#4a5165'
-background: '#dfe2eb'
-foreground: '#1e222d'
+accent: '#4e556a'
+cursor: '#4e556a'
+background: '#e5e7ee'
+foreground: '#0f1219'
 details: darker
 terminal_colors:
   bright:
-    black: '#959eb5'
+    black: '#9fa7bd'
     blue: '#51586e'
     cyan: '#475e62'
     green: '#4d5e50'
     magenta: '#655263'
     red: '#6b524e'
-    white: '#07080d'
+    white: '#262a37'
     yellow: '#5f5946'
   normal:
-    black: '#d0d4e1'
+    black: '#d4d9e4'
     blue: '#3f4557'
     cyan: '#374a4d'
     green: '#3c4a3e'
     magenta: '#50404e'
     red: '#55403c'
-    white: '#4a5165'
+    white: '#4e556a'
     yellow: '#4b4536'`
 
     expect(config).toBe(expected);

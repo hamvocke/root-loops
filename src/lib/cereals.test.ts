@@ -92,52 +92,26 @@ describe("prepare()", () => {
     expect(cereals.brightCyan.color.l).toBeGreaterThan(cereals.cyan.color.l);
   });
 
-  it("creates dark base colors for milk amount of 'None'", () => {
-    const recipe = someRecipe({ milkAmount: MilkAmount.None });
-    const cereals = prepare(recipe);
+  it("uses the right lower bound for lightness", () => {
+    const result = prepare(someRecipe({ milkAmount: 0.1 }), true);
 
-    expect(cereals.background.color.l).toBe(0.05);
-    expect(cereals.black.color.l).toBe(0.15);
-    expect(cereals.brightBlack.color.l).toBe(0.35);
-    expect(cereals.white.color.l).toBe(0.75);
-    expect(cereals.brightWhite.color.l).toBe(0.95);
-    expect(cereals.foreground.color.l).toBe(0.9);
+    expect(result.background.color.l).toBeCloseTo(0.04);
+    expect(result.black.color.l).toBeCloseTo(0.15);
+    expect(result.brightBlack.color.l).toBeCloseTo(0.35);
+    expect(result.white.color.l).toBeCloseTo(0.7);
+    expect(result.brightWhite.color.l).toBeCloseTo(0.9);
+    expect(result.foreground.color.l).toBeCloseTo(0.96);
   });
 
-  it("creates lighter base colors for milk amount of 'Splash'", () => {
-    const recipe = someRecipe({ milkAmount: MilkAmount.Splash });
-    const cereals = prepare(recipe);
+  it("uses the right upper bound for lightness", () => {
+    const result = prepare(someRecipe({ milkAmount: 2.9 }), true);
 
-    expect(cereals.background.color.l).toBe(0.15);
-    expect(cereals.black.color.l).toBe(0.25);
-    expect(cereals.brightBlack.color.l).toBe(0.45);
-    expect(cereals.white.color.l).toBe(0.8);
-    expect(cereals.brightWhite.color.l).toBe(0.97);
-    expect(cereals.foreground.color.l).toBe(0.93);
-  });
-
-  it("creates light base colors for milk amount of 'Glug'", () => {
-    const recipe = someRecipe({ milkAmount: MilkAmount.Glug });
-    const cereals = prepare(recipe);
-
-    expect(cereals.background.color.l).toBe(0.9);
-    expect(cereals.black.color.l).toBe(0.85);
-    expect(cereals.brightBlack.color.l).toBe(0.65);
-    expect(cereals.white.color.l).toBe(0.35);
-    expect(cereals.brightWhite.color.l).toBe(0.05);
-    expect(cereals.foreground.color.l).toBe(0.15);
-  });
-
-  it("creates lightest base colors for milk amount of 'Cup'", () => {
-    const recipe = someRecipe({ milkAmount: MilkAmount.Cup });
-    const cereals = prepare(recipe);
-
-    expect(cereals.background.color.l).toBe(0.95);
-    expect(cereals.black.color.l).toBe(0.9);
-    expect(cereals.brightBlack.color.l).toBe(0.7);
-    expect(cereals.white.color.l).toBe(0.45);
-    expect(cereals.brightWhite.color.l).toBe(0.15);
-    expect(cereals.foreground.color.l).toBe(0.25);
+    expect(result.background.color.l).toBeCloseTo(0.96);
+    expect(result.black.color.l).toBeCloseTo(0.9);
+    expect(result.brightBlack.color.l).toBeCloseTo(0.7);
+    expect(result.white.color.l).toBeCloseTo(0.35);
+    expect(result.brightWhite.color.l).toBeCloseTo(0.15);
+    expect(result.foreground.color.l).toBeCloseTo(0.04);
   });
 
   it("ignores 'milk' parameter for accent colors", () => {
@@ -199,8 +173,8 @@ describe("prepare()", () => {
     expect(lessSugar.brightRed.color.l).toBe(0.22);
     expect(moreSugar.red.color.l).toBe(0.22);
     expect(moreSugar.brightRed.color.l).toBeCloseTo(0.3);
-    expect(lessSugar.black.color.l).toBe(0.85);
-    expect(moreSugar.black.color.l).toBe(0.85);
+    expect(lessSugar.black.color.l).toBeCloseTo(0.865);
+    expect(moreSugar.black.color.l).toBeCloseTo(0.865);
   });
 
   it("uses 'fruit' parameter to drive hue of base colors", () => {
@@ -237,29 +211,5 @@ describe("prepare()", () => {
     expect(soggy.brightBlack.color.s).toBe(1);
     expect(soggy.white.color.s).toBe(1);
     expect(soggy.brightWhite.color.s).toBe(1);
-  });
-
-  describe("new baseColor algorithm", () => {
-    it("uses the right lower bound for lightness", () => {
-      const result = prepare(someRecipe({ milkAmount: 0.1 }), true);
-
-      expect(result.background.color.l).toBeCloseTo(0.04);
-      expect(result.black.color.l).toBeCloseTo(0.15);
-      expect(result.brightBlack.color.l).toBeCloseTo(0.35);
-      expect(result.white.color.l).toBeCloseTo(0.7);
-      expect(result.brightWhite.color.l).toBeCloseTo(0.9);
-      expect(result.foreground.color.l).toBeCloseTo(0.96);
-    });
-
-    it("uses the right upper bound for lightness", () => {
-      const result = prepare(someRecipe({ milkAmount: 2.9 }), true);
-
-      expect(result.background.color.l).toBeCloseTo(0.96);
-      expect(result.black.color.l).toBeCloseTo(0.9);
-      expect(result.brightBlack.color.l).toBeCloseTo(0.7);
-      expect(result.white.color.l).toBeCloseTo(0.35);
-      expect(result.brightWhite.color.l).toBeCloseTo(0.15);
-      expect(result.foreground.color.l).toBeCloseTo(0.04);
-    });
   });
 });

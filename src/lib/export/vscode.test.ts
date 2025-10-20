@@ -16,25 +16,25 @@ describe("Visual Studio Code terminal export", () => {
     const config = toVSCode(someRecipe);
     const expected = {
       "workbench.colorCustomizations": {
-        "terminal.ansiBlack": "#d0d4e1",
+        "terminal.ansiBlack": "#d4d9e4",
         "terminal.ansiBlue": "#3f4557",
-        "terminal.ansiBrightBlack": "#959eb5",
+        "terminal.ansiBrightBlack": "#9fa7bd",
         "terminal.ansiBrightBlue": "#51586e",
         "terminal.ansiBrightCyan": "#475e62",
         "terminal.ansiBrightGreen": "#4d5e50",
         "terminal.ansiBrightMagenta": "#655263",
         "terminal.ansiBrightRed": "#6b524e",
-        "terminal.ansiBrightWhite": "#07080d",
+        "terminal.ansiBrightWhite": "#262a37",
         "terminal.ansiBrightYellow": "#5f5946",
         "terminal.ansiCyan": "#374a4d",
         "terminal.ansiGreen": "#3c4a3e",
         "terminal.ansiMagenta": "#50404e",
         "terminal.ansiRed": "#55403c",
-        "terminal.ansiWhite": "#4a5165",
+        "terminal.ansiWhite": "#4e556a",
         "terminal.ansiYellow": "#4b4536",
-        "terminal.background": "#dfe2eb",
-        "terminal.foreground": "#1e222d",
-        "terminalCursor.foreground": "#4a5165",
+        "terminal.background": "#e5e7ee",
+        "terminal.foreground": "#0f1219",
+        "terminalCursor.foreground": "#4e556a",
       },
     };
     expect(JSON.parse(config)).toStrictEqual(expected);

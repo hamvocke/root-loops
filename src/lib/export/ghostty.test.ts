@@ -21,12 +21,12 @@ describe("Ghostty export", () => {
 # Colors (Root Loops)
 # via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 
-background = dfe2eb
-foreground = 1e222d
+background = e5e7ee
+foreground = 0f1219
 
 # black
-palette = 0=#d0d4e1
-palette = 8=#959eb5
+palette = 0=#d4d9e4
+palette = 8=#9fa7bd
 
 # red
 palette = 1=#55403c
@@ -53,8 +53,8 @@ palette = 6=#374a4d
 palette = 14=#475e62
 
 # white
-palette = 7=#4a5165
-palette = 15=#07080d`;
+palette = 7=#4e556a
+palette = 15=#262a37`;
 
     expect(config).toBe(expected);
   });

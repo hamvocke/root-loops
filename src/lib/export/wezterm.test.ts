@@ -24,32 +24,32 @@ describe("WezTerm export", () => {
 -- Root Loops color scheme
 -- via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
 config.colors = {
-  foreground = "#1e222d",
-  background = "#dfe2eb",
-  cursor_bg = "#4a5165",
-  cursor_border = "#07080d",
-  cursor_fg = "#dfe2eb",
-  selection_bg = "#1e222d",
-  selection_fg = "#dfe2eb",
+  foreground = "#0f1219",
+  background = "#e5e7ee",
+  cursor_bg = "#4e556a",
+  cursor_border = "#262a37",
+  cursor_fg = "#e5e7ee",
+  selection_bg = "#0f1219",
+  selection_fg = "#e5e7ee",
   ansi = {
-    "#d0d4e1",
+    "#d4d9e4",
     "#55403c",
     "#3c4a3e",
     "#4b4536",
     "#3f4557",
     "#50404e",
     "#374a4d",
-    "#4a5165"
+    "#4e556a"
   },
   brights = {
-    "#959eb5",
+    "#9fa7bd",
     "#6b524e",
     "#4d5e50",
     "#5f5946",
     "#51586e",
     "#655263",
     "#475e62",
-    "#07080d"
+    "#262a37"
   },
 }`;
 

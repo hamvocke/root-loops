@@ -28,26 +28,26 @@ describe("Tabby export", () => {
 terminal:
   customColorSchemes:
     - name: Root Loops # via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2
-      foreground: '#1e222d'
-      background: '#dfe2eb'
-      cursor: '#4a5165'
+      foreground: '#0f1219'
+      background: '#e5e7ee'
+      cursor: '#4e556a'
       colors:
-        - '#d0d4e1'
+        - '#d4d9e4'
         - '#55403c'
         - '#3c4a3e'
         - '#4b4536'
         - '#3f4557'
         - '#50404e'
         - '#374a4d'
-        - '#4a5165'
-        - '#959eb5'
+        - '#4e556a'
+        - '#9fa7bd'
         - '#6b524e'
         - '#4d5e50'
         - '#5f5946'
         - '#51586e'
         - '#655263'
         - '#475e62'
-        - '#07080d'`
+        - '#262a37'`
 
     expect(config).toBe(expected);
   });

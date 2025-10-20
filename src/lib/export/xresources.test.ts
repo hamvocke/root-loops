@@ -18,26 +18,26 @@ describe("Xresources export", () => {
     const expected = `! Copy the configuration below to your ~/.Xresources file
 ! Root Loops (via https://rootloops.sh?sugar=3&colors=2&sogginess=2&flavor=2&fruit=9&milk=2)
 
-*.foreground:  #1e222d
-*.background:  #dfe2eb
-*.cursorColor: #4a5165
+*.foreground:  #0f1219
+*.background:  #e5e7ee
+*.cursorColor: #4e556a
 
-*.color0: #d0d4e1
+*.color0: #d4d9e4
 *.color1: #55403c
 *.color2: #3c4a3e
 *.color3: #4b4536
 *.color4: #3f4557
 *.color5: #50404e
 *.color6: #374a4d
-*.color7: #4a5165
-*.color8: #959eb5
+*.color7: #4e556a
+*.color8: #9fa7bd
 *.color9: #6b524e
 *.color10: #4d5e50
 *.color11: #5f5946
 *.color12: #51586e
 *.color13: #655263
 *.color14: #475e62
-*.color15: #07080d`;
+*.color15: #262a37`;
 
     expect(config).toBe(expected);
   });
