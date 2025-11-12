@@ -1,14 +1,10 @@
 import type { Cereals } from "$lib/cereals";
-import type { Recipe } from "$lib/ingredients";
 
 /**
  *  Textmate ("TM") syntax is used by many editors and syntax highlighting engines.
  *  While Textmate itself doesn't play a huge role anymore, Visual Studio Code, Sublime Text,
  *  Shiki (JS syntax highlighter) an many others are compatible with this syntax.
  */
-export function toTextmate(recipe: Recipe): string {
-  return "";
-}
 
 interface TextmateRule {
   scope: string[] | string;
@@ -19,7 +15,7 @@ interface TextmateRule {
   };
 }
 
-function defineSyntaxRules(cereals: Cereals) {
+export function textmateSyntaxRules(cereals: Cereals) {
   const tmRules: TextmateRule[] = [
     {
       name: "basic text, variable names",

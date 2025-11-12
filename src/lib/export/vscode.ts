@@ -1,36 +1,61 @@
-import { type Recipe } from "$lib/ingredients";
+import { toQueryString, type Recipe } from "$lib/ingredients";
 import { type Cereals } from "$lib/cereals";
 import { prepare } from "$lib/cereals";
+import { textmateSyntaxRules } from "./textmate";
 
 export function toVSCode(recipe: Recipe): string {
   const cereals = prepare(recipe);
+  const queryString = toQueryString(recipe);
+
   const colors = {
     "workbench.colorCustomizations": {
-      "terminal.ansiBlack": cereals.black.color_hex,
-      "terminal.ansiBlue": cereals.blue.color_hex,
-      "terminal.ansiBrightBlack": cereals.brightBlack.color_hex,
-      "terminal.ansiBrightBlue": cereals.brightBlue.color_hex,
-      "terminal.ansiBrightCyan": cereals.brightCyan.color_hex,
-      "terminal.ansiBrightGreen": cereals.brightGreen.color_hex,
-      "terminal.ansiBrightMagenta": cereals.brightMagenta.color_hex,
-      "terminal.ansiBrightRed": cereals.brightRed.color_hex,
-      "terminal.ansiBrightWhite": cereals.brightWhite.color_hex,
-      "terminal.ansiBrightYellow": cereals.brightYellow.color_hex,
-      "terminal.ansiCyan": cereals.cyan.color_hex,
-      "terminal.ansiGreen": cereals.green.color_hex,
-      "terminal.ansiMagenta": cereals.magenta.color_hex,
-      "terminal.ansiRed": cereals.red.color_hex,
-      "terminal.ansiWhite": cereals.white.color_hex,
-      "terminal.ansiYellow": cereals.yellow.color_hex,
-      "terminal.background": cereals.background.color_hex,
-      "terminal.foreground": cereals.foreground.color_hex,
-      "terminalCursor.foreground": cereals.white.color_hex,
+      ...VSCodeUI(cereals),
+      ...VSCodeTerminal(cereals),
+    },
+    "editor.tokenColorCustomizations": {
+      textMateRules: textmateSyntaxRules(cereals),
     },
   };
-  return JSON.stringify(colors, null, 2);
+  const config = JSON.stringify(colors, null, 2);
+
+  return `
+// Add the following config to your ~/.config/Code/Usersettings.json file.
+// Root Loops: https://rootloops.sh?${queryString}
+//
+// NOTE: This will override other UI and syntax highlighting colors you
+//       might expect to apply from extensions you installed. To use a
+//       different color scheme installed via extensions, remove the config
+//       below again.
+
+${config}
+  `;
 }
 
-function VSCodeUI(cereals: Cereals): unknown {
+function VSCodeTerminal(cereals: Cereals) {
+  return {
+    "terminal.ansiBlack": cereals.black.color_hex,
+    "terminal.ansiBlue": cereals.blue.color_hex,
+    "terminal.ansiBrightBlack": cereals.brightBlack.color_hex,
+    "terminal.ansiBrightBlue": cereals.brightBlue.color_hex,
+    "terminal.ansiBrightCyan": cereals.brightCyan.color_hex,
+    "terminal.ansiBrightGreen": cereals.brightGreen.color_hex,
+    "terminal.ansiBrightMagenta": cereals.brightMagenta.color_hex,
+    "terminal.ansiBrightRed": cereals.brightRed.color_hex,
+    "terminal.ansiBrightWhite": cereals.brightWhite.color_hex,
+    "terminal.ansiBrightYellow": cereals.brightYellow.color_hex,
+    "terminal.ansiCyan": cereals.cyan.color_hex,
+    "terminal.ansiGreen": cereals.green.color_hex,
+    "terminal.ansiMagenta": cereals.magenta.color_hex,
+    "terminal.ansiRed": cereals.red.color_hex,
+    "terminal.ansiWhite": cereals.white.color_hex,
+    "terminal.ansiYellow": cereals.yellow.color_hex,
+    "terminal.background": cereals.background.color_hex,
+    "terminal.foreground": cereals.foreground.color_hex,
+    "terminalCursor.foreground": cereals.white.color_hex,
+  };
+}
+
+function VSCodeUI(cereals: Cereals): object {
   return {
     "activityBar.activeBackground": cereals.black.color_hex,
     "activityBar.activeBorder": cereals.red.color_hex,
