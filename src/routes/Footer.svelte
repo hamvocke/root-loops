@@ -1,6 +1,6 @@
 <script lang="ts">
   import { resolve } from "$app/paths";
-  import { GiftIcon } from "svelte-feather-icons";
+  import GiftIcon from "svelte-feather-icons/src/icons/GiftIcon.svelte";
 </script>
 
 <footer>

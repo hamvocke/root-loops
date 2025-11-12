@@ -21,7 +21,9 @@
   import { prepare } from "$lib/cereals";
   import { generateCssColors } from "$lib/css";
   import { faviconDataUrl } from "$lib/favicon";
-  import { HelpCircleIcon, CheckCircleIcon, ExternalLinkIcon } from "svelte-feather-icons";
+  import HelpCircleIcon from "svelte-feather-icons/src/icons/HelpCircleIcon.svelte";
+  import CheckCircleIcon from "svelte-feather-icons/src/icons/CheckCircleIcon.svelte";
+  import ExternalLinkIcon from "svelte-feather-icons/src/icons/ExternalLinkIcon.svelte";
   import { fade, slide } from "svelte/transition";
   import Switch from "./Switch.svelte";
   import { resolve } from "$app/paths";

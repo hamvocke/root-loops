@@ -3,8 +3,8 @@
   import type { Recipe } from "$lib/ingredients";
   import Window from "./Window.svelte";
   import Select from "./Select.svelte";
-  import { ClipboardIcon } from "svelte-feather-icons";
-  import { CheckIcon } from "svelte-feather-icons";
+  import ClipboardIcon from "svelte-feather-icons/src/icons/ClipboardIcon.svelte";
+  import CheckIcon from "svelte-feather-icons/src/icons/CheckIcon.svelte";
 
   interface Props {
     recipe: Recipe;
