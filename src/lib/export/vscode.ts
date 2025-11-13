@@ -55,9 +55,8 @@ function VSCodeTerminal(cereals: Cereals) {
   };
 }
 
-function VSCodeUI(cereals: Cereals): object {
+function VSCodeUI(cereals: Cereals) {
   return {
-    "activityBar.activeBackground": cereals.black.color_hex,
     "activityBar.activeBorder": cereals.red.color_hex,
     "activityBar.background": cereals.background.color_hex,
     "activityBar.border": cereals.black.color_hex,
@@ -77,6 +76,7 @@ function VSCodeUI(cereals: Cereals): object {
     "button.foreground": cereals.background.color_hex,
     "button.hoverBackground": cereals.brightBlue.color_hex,
     "button.secondaryBackground": cereals.black.color_hex,
+    "button.secondaryHoverBackground": cereals.brightBlack.color_hex,
     "checkbox.background": cereals.background.color_hex,
     "checkbox.border": cereals.blue.color_hex,
     "checkbox.foreground": cereals.foreground.color_hex,
@@ -107,6 +107,8 @@ function VSCodeUI(cereals: Cereals): object {
     "editorIndentGuide.background1": cereals.black.color_hex,
     "editorLineNumber.activeForeground": cereals.red.color_hex,
     "editorLineNumber.foreground": cereals.brightBlack.color_hex,
+    "editorLink.activeForeground": cereals.brightRed.color_hex,
+    "editorStickyScrollHover.background": cereals.brightBlack.color_hex,
     "editorSuggestWidget.background": cereals.background.color_hex,
     "editorSuggestWidget.border": cereals.brightBlack.color_hex,
     "editorSuggestWidget.focusHighlightForeground": cereals.red.color_hex,
@@ -122,7 +124,7 @@ function VSCodeUI(cereals: Cereals): object {
     focusBorder: cereals.white.color_hex,
     foreground: cereals.foreground.color_hex,
     "input.background": cereals.black.color_hex,
-    "input.border": cereals.brightBlack.color_hex,
+    "input.border": cereals.black.color_hex,
     "input.foreground": cereals.foreground.color_hex,
     "input.placeholderForeground": cereals.white.color_hex,
     "inputOption.activeBackground": cereals.magenta.color_hex,
@@ -145,6 +147,9 @@ function VSCodeUI(cereals: Cereals): object {
     "menu.selectionForeground": cereals.foreground.color_hex,
     "menu.separatorBackground": cereals.black.color_hex,
     "menubar.selectionBackground": cereals.brightBlack.color_hex,
+    "notifications.background": cereals.background.color_hex,
+    "notifications.border": cereals.brightBlack.color_hex,
+    "notificationToast.border": cereals.brightBlack.color_hex,
     "panel.background": cereals.background.color_hex,
     "panel.border": cereals.black.color_hex,
     "panel.dropBorder": cereals.white.color_hex,
