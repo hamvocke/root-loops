@@ -27,8 +27,7 @@ export function toVSCode(recipe: Recipe): string {
 //       different color scheme installed via extensions, remove the config
 //       below again.
 
-${config}
-  `;
+${config}`;
 }
 
 function VSCodeTerminal(cereals: Cereals) {
