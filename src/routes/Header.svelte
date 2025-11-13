@@ -9,7 +9,7 @@
         >o</span
       ><span class="yellow">o</span>ps
     </h1>
-    <p>Terminal color schemes for cereal lovers.</p>
+    <p>Code color schemes for cereal lovers.</p>
   </a>
 </header>
 

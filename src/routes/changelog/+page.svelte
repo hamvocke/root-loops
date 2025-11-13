@@ -29,6 +29,47 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2025-11-13</h3>
+    <p>
+      <strong>Visual Studio Code UI and syntax theme export</strong>
+    </p>
+    <p>
+      Root Loops now supports a fully-fleshed theme export for Visual Studio Code (and its
+      derivatives, most likely - I didn't check). This includes theming the actual UI of VS Code as
+      well as modifying the syntax coloring used within the editor and its terminal. This is also
+      the first time Root Loops provides a proper theme export for something that's not living on
+      the command line - wild times!
+    </p>
+    <p>There are a few caveats to keep in mind:</p>
+    <ol>
+      <li>
+        Theming the VS Code UI is quite sophisticated. Chances are that I've missed a few elements.
+        If you notice something send me an <a href="https://github.com/hamvocke/root-loops"
+          >issue on GitHub</a
+        >.
+      </li>
+      <li>
+        Creating syntax color themes for textmate-based syntax engines is even more finicky.
+        Supporting each and every language out there is beyond what I can reasonably maintain but I
+        tried to come up with a solid set of fundamental syntax coloring rules. Again, if you notice
+        something that's super wonky, reach out via GitHub.
+      </li>
+      <li>
+        The way VS Code distributes themes (i.e. by installing an extension from their market)
+        obviously does not work for a theme engine like Root Loops where all of you can design your
+        own color schemes. So I had to come up with a slightly different way to allow users to
+        declare their own custom VS Code theme. The approach used for Root Loops works by copying a
+        big amount of color definitions and overrides into your VS Code user settings. That's all
+        fine and dandy, but it will clash if you want to switch back to a different UI or syntax
+        theme (either a built-in one or one you installed via the marketplace). <strong
+          >If you want to switch back to a different theme, you have to remove the custom user
+          configuration you copied from Root Loops again.</strong
+        >
+        I know that's not ideal, but it's the only way to distribute custom themes that I could figure
+        out so far.
+      </li>
+    </ol>
+
     <h3>2025-10-17</h3>
     <p>
       <strong>Expert Mode and a new cereal pouring algorithm!</strong>
