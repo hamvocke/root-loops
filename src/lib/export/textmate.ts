@@ -19,7 +19,14 @@ export function textmateSyntaxRules(cereals: Cereals) {
   const tmRules: TextmateRule[] = [
     {
       name: "basic text, variable names",
-      scope: ["text", "source", "variable.other.readwrite", "punctuation.definition.variable"],
+      scope: [
+        "text",
+        "source",
+        "variable.other.readwrite",
+        "punctuation.definition.variable",
+        "variable.argument",
+        "variable",
+      ],
       settings: {
         foreground: cereals.foreground.color_hex,
       },
@@ -44,6 +51,27 @@ export function textmateSyntaxRules(cereals: Cereals) {
       scope: ["string", "punctuation.definition.string"],
       settings: {
         foreground: cereals.green.color_hex,
+      },
+    },
+    {
+      name: "control flow keywords (if, throw, catch, import, export)",
+      scope: ["keyword.control"],
+      settings: {
+        foreground: cereals.magenta.color_hex,
+      },
+    },
+    {
+      name: "invalid tokens",
+      scope: "invalid",
+      settings: {
+        foreground: cereals.brightRed.color_hex,
+      },
+    },
+    {
+      name: "deprecated tokens",
+      scope: "invalid.deprecated",
+      settings: {
+        foreground: cereals.brightYellow.color_hex,
       },
     },
     {
@@ -125,6 +153,7 @@ export function textmateSyntaxRules(cereals: Cereals) {
         "support.class",
         "meta.function-call.constructor",
         "entity.name.struct",
+        "meta.selector",
       ],
       settings: {
         foreground: cereals.brightYellow.color_hex,
@@ -149,6 +178,20 @@ export function textmateSyntaxRules(cereals: Cereals) {
       scope: "meta.property.object",
       settings: {
         foreground: cereals.red.color_hex,
+      },
+    },
+    {
+      name: "property names (JSON, CSS, etc)",
+      scope: ["support.type.property-name"],
+      settings: {
+        foreground: cereals.brightBlue.color_hex,
+      },
+    },
+    {
+      name: "property values (e.g. right hand side of CSS)",
+      scope: ["support.constant.property-value"],
+      settings: {
+        foreground: cereals.foreground.color_hex,
       },
     },
     {
@@ -247,9 +290,24 @@ export function textmateSyntaxRules(cereals: Cereals) {
       },
     },
     {
-      scope: ["entity.name.tag"],
+      name: "HTML, XML tags",
+      scope: "entity.name.tag",
       settings: {
         foreground: cereals.magenta.color_hex,
+      },
+    },
+    {
+      name: "Components",
+      scope: "support.class.components",
+      settings: {
+        foreground: cereals.magenta.color_hex,
+      },
+    },
+    {
+      name: "HTML, XML attributes",
+      scope: ["entity.other.attribute-name"],
+      settings: {
+        foreground: cereals.brightCyan.color_hex,
       },
     },
     {
