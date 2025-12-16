@@ -9,7 +9,20 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    <script defer data-domain="rootloops.sh" src="https://plausible.io/js/script.js"></script>
+    <script async src="/js/script.js"></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init({ endpoint: "/api/event" });
+    </script>
     <meta property="og:url" content="https://rootloops.sh" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Root Loops" />
