@@ -32,7 +32,7 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.13.1",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "husky": "^9.1.7",
     "jsdom": "^27.4.0",
     "prettier": "^3.7.4",
@@ -40,7 +40,7 @@
     "svelte": "^5.46.1",
     "svelte-check": "^4.3.5",
     "svelte-feather-icons": "^4.2.0",
-    "typescript-eslint": "^8.50.1",
+    "typescript-eslint": "^8.51.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.0",
     "vitest": "^4.0.16"
