@@ -154,16 +154,16 @@
       theming works, I finally got a first version of an exporter for <code>vim</code>
       and <code>neovim</code> out of the door. This feature has been
       <a href="https://github.com/hamvocke/root-loops/issues/58">requested</a>
-      by <a href="https://github.com/Diablo-D3">Diablo-D3</a> and it's one that I've personally been
-      looking for.
+      by <a href="https://github.com/Diablo-D3">Diablo-D3</a> and it's one that I've personally been looking
+      for.
     </p>
 
     <p>
       I've been rocking this colorscheme locally for a few days now and have grown to like it. There
-      are still a few things to tweak and improve (the <code>neovim</code> version is very basic and
-      does not come with TreeSitter support yet, for example) but I plan to improve this over the next
-      few days and weeks. If you've got any feedback or are missing specific things, don't hesitate to
-      open an issue on GitHub.
+      are still a few things to tweak and improve (the <code>neovim</code> version is very basic and does
+      not come with TreeSitter support yet, for example) but I plan to improve this over the next few
+      days and weeks. If you've got any feedback or are missing specific things, don't hesitate to open
+      an issue on GitHub.
     </p>
     <h3>2024-12-07</h3>
     <p><strong>New</strong></p>
@@ -212,12 +212,12 @@
       <li>
         Root Loops now generates an extra 2 colors that can be used as <code>foreground</code> and
         <code>background</code>
-        colors in your color schemes. This pattern deviates from the classic 4-bit color schemes but
-        it utilizes capabilities that virtually every modern terminal emulator offers, giving us a richer
+        colors in your color schemes. This pattern deviates from the classic 4-bit color schemes but it
+        utilizes capabilities that virtually every modern terminal emulator offers, giving us a richer
         color palette to work with and some more 'gray' shades to make UI elements in CLI apps look nicer.
-        This changes the color generation algorithm compared to older version so if you come back to
-        Root Loops and try to re-generate older recipes, you'll notice that you'll get slightly different
-        shades of gray. Thanks to
+        This changes the color generation algorithm compared to older version so if you come back to Root
+        Loops and try to re-generate older recipes, you'll notice that you'll get slightly different shades
+        of gray. Thanks to
         <a href="https://github.com/crshrprt">@crshrprt</a>
         for <a href="https://github.com/hamvocke/root-loops/issues/8">requesting</a> and testing this
         feature.

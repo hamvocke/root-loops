@@ -71,9 +71,9 @@
 
     <p>
       This color model isn't perfect but it generates better results than a more tried-and-trusted
-      models like <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSL</a> which often leads to a
-      color palette that looks like it's got uneven saturation. The result is a more harmonic, even,
-      and maybe even accessible color palette.
+      models like <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSL</a> which often leads to a color
+      palette that looks like it's got uneven saturation. The result is a more harmonic, even, and maybe
+      even accessible color palette.
     </p>
 
     <h2>How does it work?</h2>
