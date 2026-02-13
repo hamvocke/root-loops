@@ -21,7 +21,7 @@ export function defineVimHighlights(cereals: Cereals): HighlightGroups {
     { group: "EndOfBuffer", targetGroup: "NonText" },
 
     // syntax
-    { group: "Comment", fg: c.darkgray, style: "italic" },
+    { group: "Comment", fg: c.gray, style: "italic" },
     { group: "SpecialComment", targetGroup: "Special" },
     { group: "Constant", fg: c.darkyellow },
     { group: "Error", fg: c.darkred },

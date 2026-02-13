@@ -258,7 +258,7 @@ describe("Visual Studio Code export", () => {
         ],
         "settings": {
           "fontStyle": "italic",
-          "foreground": "#9fa7bd"
+          "foreground": "#4e556a"
         }
       },
       {

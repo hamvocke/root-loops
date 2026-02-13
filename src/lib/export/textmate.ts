@@ -43,7 +43,7 @@ export function textmateSyntaxRules(cereals: Cereals) {
       scope: ["comment", "punctuation.definition.comment"],
       settings: {
         fontStyle: "italic",
-        foreground: cereals.brightBlack.color_hex,
+        foreground: cereals.white.color_hex,
       },
     },
     {
