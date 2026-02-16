@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "test": "npm run test:unit -- --run && npm run test:e2e",
     "test:e2e": "playwright test",
-    "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.58.0-noble npm run test:e2e",
+    "test:e2e-docker": "docker run -i --rm --ipc=host -v $(pwd):/playwright -w /playwright mcr.microsoft.com/playwright:v1.58.2-noble npm run test:e2e",
     "test:unit": "vitest",
     "prepare": "svelte-kit sync && husky || true"
   },
@@ -32,7 +32,7 @@
     "@testing-library/svelte": "^5.3.1",
     "@types/culori": "^4.0.1",
     "ansi_up": "^6.0.6",
-    "eslint": "^10.0.0",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.15.0",
     "globals": "^17.3.0",
