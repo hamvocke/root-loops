@@ -129,6 +129,9 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi NormalFloat ctermbg=0 ctermfg=15 guibg=#e5e7ee guifg=#0f1219
     hi FloatBorder ctermbg=0 ctermfg=7 guibg=#e5e7ee guifg=#4e556a
     hi FloatShadow ctermbg=0 ctermfg=15 guibg=#d4d9e4 guifg=#0f1219
+    hi LspInlayHint ctermfg=8 guifg=#9fa7bd
+    hi LspCodeLens ctermfg=8 guifg=#9fa7bd
+    hi LspCodeLensSeparator ctermfg=8 guifg=#9fa7bd
     hi @variable ctermfg=15 guifg=#0f1219
     hi @variable.builtin ctermfg=1 guifg=#d77c6e
     hi @variable.parameter ctermfg=1 guifg=#d77c6e
@@ -260,6 +263,9 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi NormalFloat ctermbg=0 ctermfg=15
     hi FloatBorder ctermbg=0 ctermfg=7
     hi FloatShadow ctermbg=0 ctermfg=15
+    hi LspInlayHint ctermfg=8
+    hi LspCodeLens ctermfg=8
+    hi LspCodeLensSeparator ctermfg=8
     hi @variable ctermfg=15
     hi @variable.builtin ctermfg=1
     hi @variable.parameter ctermfg=1

@@ -52,6 +52,11 @@ function defineHighlights(cereals: Cereals): HighlightGroups {
     { group: "FloatBorder", bg: c.background, fg: c.gray },
     { group: "FloatShadow", bg: c.black, fg: c.foreground },
 
+    // LSP editor hints
+    { group: "LspInlayHint", fg: c.darkgray },
+    { group: "LspCodeLens", fg: c.darkgray },
+    { group: "LspCodeLensSeparator", fg: c.darkgray },
+
     // Treesitter
     { group: "@variable", fg: c.foreground },
     { group: "@variable.builtin", fg: c.darkred }, // this, self, ...
