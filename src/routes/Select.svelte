@@ -11,10 +11,13 @@
 
   let { options, value = $bindable(), id, label, disabled = false }: Props = $props();
 
-  let groupedOptions: Record<string, SelectOption[] | undefined> = $state({});
-  if (options.every((o) => o.group)) {
-    groupedOptions = Object.groupBy(options, ({ group }) => group || "");
-  }
+  let groupedOptions: Record<string, SelectOption[] | undefined> = $derived.by(() => {
+    if (options.every((o) => o.group)) {
+      return Object.groupBy(options, ({ group }) => group || "");
+    }
+
+    return {};
+  });
   let groups: string[] = $derived(Object.keys(groupedOptions));
 </script>
 

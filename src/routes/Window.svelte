@@ -7,7 +7,7 @@
 
   let { id = "my-window", title = "My Window", children }: Props = $props();
 
-  let titleId = `${id}-title`;
+  let titleId = $derived(`${id}-title`);
 
   let fullscreen = $state(false);
 </script>
