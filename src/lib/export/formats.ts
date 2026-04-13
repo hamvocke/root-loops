@@ -8,6 +8,7 @@ import { toHelix } from "./helix";
 import { toITerm } from "./iterm";
 import { toJson } from "./json";
 import { toKitty } from "./kitty";
+import { toKonsole } from "./konsole";
 import { toNeovim } from "./neovim";
 import { toNix } from "./nix";
 import { toTabby } from "./tabby";
@@ -31,6 +32,7 @@ export const exporters = {
   iTerm: { export: toITerm },
   JSON: { export: toJson },
   Kitty: { export: toKitty },
+  Konsole: { export: toKonsole },
   neovim: { export: toNeovim },
   Nix: { export: toNix },
   Tabby: { export: toTabby },
@@ -63,6 +65,7 @@ export const exportSelectOptions: ExportOption[] = [
   { value: "Ghostty", label: "ghostty", group: "Terminal Emulators" },
   { value: "iTerm", label: "iTerm2", group: "Terminal Emulators" },
   { value: "Kitty", label: "kitty", group: "Terminal Emulators" },
+  { value: "Konsole", label: "Konsole", group: "Terminal Emulators" },
   { value: "Tabby", label: "Tabby", group: "Terminal Emulators" },
   { value: "Warp", label: "Warp", group: "Terminal Emulators" },
   { value: "WezTerm", label: "WezTerm", group: "Terminal Emulators" },
