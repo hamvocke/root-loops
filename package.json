@@ -43,10 +43,10 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.2",
     "prettier-plugin-svelte": "^3.5.1",
-    "svelte": "^5.55.2",
+    "svelte": "^5.55.3",
     "svelte-check": "^4.4.6",
     "svelte-feather-icons": "^4.2.0",
-    "typescript-eslint": "^8.58.0",
+    "typescript-eslint": "^8.58.1",
     "typescript": "^5.9.3",
     "vite": "^8.0.8",
     "vitest": "^4.1.4"
