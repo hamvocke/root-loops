@@ -29,6 +29,15 @@
       <a href="https://github.com/hamvocke/root-loops">our GitHub repository</a> and open up an issue.
     </p>
 
+    <h3>2026-04-14</h3>
+    <p>
+      <strong>A new <code>Konsole</code> config export</strong>
+    </p>
+    <p>
+      Thanks to <a href="https://github.com/slahn">slahn</a> we now have an export option for Konsole,
+      KDE's default terminal emulator. Enjoy!
+    </p>
+
     <h3>2025-11-13</h3>
     <p>
       <strong>Visual Studio Code UI and syntax theme export</strong>
