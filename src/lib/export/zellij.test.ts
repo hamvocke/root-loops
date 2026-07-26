@@ -36,7 +36,7 @@ themes {
     }
 }
 
-theme "rootloops"`
+theme "rootloops"`;
 
     expect(config).toBe(expected);
   });

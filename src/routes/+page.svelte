@@ -129,7 +129,7 @@
       </div>
 
       {#if expertMode}
-        <div class="expert-mode" transition:slide={{ duration: 300, delay: 500, axis: "y" }}>
+        <div class="expert-mode" transition:slide={{ duration: 300, delay: 200, axis: "y" }}>
           <Slider
             label="Milk"
             id={validationRules.milk.name}

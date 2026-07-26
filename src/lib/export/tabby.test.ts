@@ -47,7 +47,7 @@ terminal:
         - '#51586e'
         - '#655263'
         - '#475e62'
-        - '#262a37'`
+        - '#262a37'`;
 
     expect(config).toBe(expected);
   });

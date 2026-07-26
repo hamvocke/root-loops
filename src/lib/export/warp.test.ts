@@ -45,7 +45,7 @@ terminal_colors:
     magenta: '#50404e'
     red: '#55403c'
     white: '#4e556a'
-    yellow: '#4b4536'`
+    yellow: '#4b4536'`;
 
     expect(config).toBe(expected);
   });
