@@ -55,12 +55,6 @@ npm run test:e2e
 
 ```
 
-If that doesn't work (it doesn't work on non-LTS Ubuntu systems, for example) try running stuff in a container:
-
-```bash
-npm run test:e2e-docker
-```
-
 Playwright tests will start your application automatically.
 
 ### (Re-)Generating Terminal Snippets

@@ -20,8 +20,6 @@ jobs:
   playwright:
     name: "Playwright Tests"
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,7 +27,9 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm ci
-      - name: Run your tests
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Run tests
         run: npm run test:e2e
         env:
           HOME: /root
