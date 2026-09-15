@@ -30,6 +30,4 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Run tests
-        run: npm run test:e2e
-        env:
-          HOME: /root
+        run: npx playwright test
