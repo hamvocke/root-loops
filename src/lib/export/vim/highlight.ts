@@ -1,4 +1,4 @@
-import type { Cereals } from "$lib/cereals";
+import type { Cereals } from "#lib/cereals.js";
 
 /**
  * A highlight group takes the name of a vim highlight group (see :h highlight-default) and assigns a background color, foreground color, optional style modifier, and optional undercurl color.

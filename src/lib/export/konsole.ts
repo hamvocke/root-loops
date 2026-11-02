@@ -1,5 +1,5 @@
-import { toQueryString, type Recipe } from "$lib/ingredients";
-import { prepare, type Cereal } from "$lib/cereals";
+import { toQueryString, type Recipe } from "#lib/ingredients.js";
+import { prepare, type Cereal } from "#lib/cereals.js";
 
 /**
  * Formats a color as "RRR,GGG,BBB"

@@ -1,4 +1,4 @@
-import { defaultRecipe } from "$lib/ingredients";
+import { defaultRecipe } from "#lib/ingredients.js";
 import { expect, test, type Page } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {

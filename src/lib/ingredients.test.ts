@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { fromQueryString, defaultRecipe, validationRules, toQueryString } from "$lib/ingredients";
+import {
+  fromQueryString,
+  defaultRecipe,
+  validationRules,
+  toQueryString,
+} from "#lib/ingredients.js";
 
 describe("ingredient parsing", () => {
   it("returns default recipe if no query params are given", () => {

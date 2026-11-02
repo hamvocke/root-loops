@@ -1,5 +1,5 @@
-import { toQueryString, type Recipe } from "$lib/ingredients";
-import { prepare } from "$lib/cereals";
+import { toQueryString, type Recipe } from "#lib/ingredients.js";
+import { prepare } from "#lib/cereals.js";
 
 export function toJson(recipe: Recipe): string {
   const cereals = prepare(recipe);

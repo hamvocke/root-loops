@@ -1,5 +1,5 @@
-import { type Cereals } from "$lib/cereals";
-import { dev } from "$app/environment";
+import { type Cereals } from "#lib/cereals.js";
+import { dev } from "$app/env";
 
 function favicon(cereals: Cereals) {
   let colors = {

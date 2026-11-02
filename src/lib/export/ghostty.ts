@@ -1,5 +1,5 @@
-import { toQueryString, type Recipe } from "$lib/ingredients";
-import { prepare } from "$lib/cereals";
+import { toQueryString, type Recipe } from "#lib/ingredients.js";
+import { prepare } from "#lib/cereals.js";
 import { noHash } from "./util";
 
 export function toGhostty(recipe: Recipe): string {

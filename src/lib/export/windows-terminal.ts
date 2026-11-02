@@ -1,5 +1,5 @@
-import { type Recipe } from "$lib/ingredients";
-import { prepare } from "$lib/cereals";
+import { type Recipe } from "#lib/ingredients.js";
+import { prepare } from "#lib/cereals.js";
 
 export function toWindowsTerminal(recipe: Recipe): string {
   const cereals = prepare(recipe);

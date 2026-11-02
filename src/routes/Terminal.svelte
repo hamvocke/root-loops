@@ -7,7 +7,7 @@
     screenfetchSnippet,
     rustSnippet,
     colortestSnippet,
-  } from "$lib/snippets";
+  } from "#lib/snippets.js";
   import Window from "./Window.svelte";
   import TerminalContent from "./TerminalContent.svelte";
 

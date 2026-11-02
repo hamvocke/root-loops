@@ -15,11 +15,7 @@
       title="GitHub"
     ></iframe>
 
-    <a href={resolve("/changelog")}>
-      <GiftIcon size="20" />
-      What's new?
-    </a>
-
+    <a href={resolve("changelog")}><GiftIcon size="20" />What's new?</a>
     <div class="credit"><a href="https://hamvocke.com">Made by Ham</a></div>
   </div>
 </footer>

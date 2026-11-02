@@ -1,4 +1,4 @@
-import { type Cereals } from "$lib/cereals";
+import { type Cereals } from "#lib/cereals.js";
 
 export function generateCssColors(cereals: Cereals): string {
   return `

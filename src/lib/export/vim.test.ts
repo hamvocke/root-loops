@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
+import { type Recipe, MilkAmount, Flavor, Fruit } from "#lib/ingredients.js";
 
-import { toVim } from "$lib/export/vim";
+import { toVim } from "#lib/export/vim.js";
 
 const someRecipe: Recipe = {
   milkAmount: MilkAmount.Glug,

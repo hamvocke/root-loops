@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { type Recipe, MilkAmount, Flavor, Fruit } from "$lib/ingredients";
+import { type Recipe, MilkAmount, Flavor, Fruit } from "#lib/ingredients.js";
 import { toWindowsTerminal } from "./windows-terminal";
 
 describe("Windows Terminal export", () => {

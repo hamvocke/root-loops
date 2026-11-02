@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type Cereal } from "$lib/cereals";
+  import { type Cereal } from "#lib/cereals.js";
   import { fade } from "svelte/transition";
   interface Props {
     cereal: Cereal;

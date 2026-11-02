@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { type Format, exporters, exportSelectOptions } from "$lib/export/formats";
-  import type { Recipe } from "$lib/ingredients";
+  import { type Format, exporters, exportSelectOptions } from "#lib/export/formats.js";
+  import type { Recipe } from "#lib/ingredients.js";
   import Window from "./Window.svelte";
   import Select from "./Select.svelte";
   import ClipboardIcon from "svelte-feather-icons/src/icons/ClipboardIcon.svelte";

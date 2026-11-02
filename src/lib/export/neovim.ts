@@ -1,5 +1,5 @@
-import { toQueryString, type Recipe } from "$lib/ingredients";
-import { prepare, type Cereals } from "$lib/cereals";
+import { toQueryString, type Recipe } from "#lib/ingredients.js";
+import { prepare, type Cereals } from "#lib/cereals.js";
 import {
   type HighlightGroups,
   renderHighlights,
