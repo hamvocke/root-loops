@@ -3,7 +3,7 @@ import "@testing-library/jest-dom/vitest";
 import { describe, expect, test } from "vitest";
 
 import Select from "./Select.svelte";
-import { type SelectOption } from "$lib/selectOptions";
+import { type SelectOption } from "#lib/selectOptions.js";
 
 describe("Select component", () => {
   const options: SelectOption[] = [

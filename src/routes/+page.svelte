@@ -17,10 +17,10 @@
     validationRules,
     fromQueryString,
     toQueryString,
-  } from "$lib/ingredients";
-  import { prepare } from "$lib/cereals";
-  import { generateCssColors } from "$lib/css";
-  import { faviconDataUrl } from "$lib/favicon";
+  } from "#lib/ingredients.js";
+  import { prepare } from "#lib/cereals.js";
+  import { generateCssColors } from "#lib/css.js";
+  import { faviconDataUrl } from "#lib/favicon.js";
   import HelpCircleIcon from "svelte-feather-icons/src/icons/HelpCircleIcon.svelte";
   import CheckCircleIcon from "svelte-feather-icons/src/icons/CheckCircleIcon.svelte";
   import ExternalLinkIcon from "svelte-feather-icons/src/icons/ExternalLinkIcon.svelte";
@@ -152,9 +152,10 @@
       <div class="button-wrapper">
         <Switch id="expertMode" label="Expert Mode" bind:checked={expertMode} />
         <div class="buttons">
-          <a class="button plain" href={resolve("/help")} data-sveltekit-replacestate="false"
-            ><HelpCircleIcon size="20" /> Help</a
+          <a class="button plain" href={resolve("help")} data-sveltekit-replacestate="false"
+            ><HelpCircleIcon size="20" />Help</a
           >
+
           <button type="button" onclick={resetRecipe} class="button">Reset</button>
           <button type="submit" class="button primary">
             <ExternalLinkIcon size="20" /> Save
@@ -175,10 +176,7 @@
       </div>
     </section>
 
-    <div class="content">
-      <Terminal />
-      <Export {recipe} />
-    </div>
+    <div class="content"><Terminal /><Export {recipe} /></div>
   </main>
   <Footer />
 </div>

@@ -1,4 +1,4 @@
-import { clamp } from "$lib/math";
+import { clamp } from "#lib/math.js";
 import { type SelectOption } from "./selectOptions";
 
 export enum MilkAmount {

@@ -3,7 +3,7 @@ import "@testing-library/jest-dom/vitest";
 import { describe, expect, test, vi } from "vitest";
 
 import Export from "./Export.svelte";
-import { defaultRecipe } from "$lib/ingredients";
+import { defaultRecipe } from "#lib/ingredients.js";
 
 describe("Export component", () => {
   test("export region shows code", () => {

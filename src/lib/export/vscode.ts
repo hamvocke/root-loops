@@ -1,6 +1,6 @@
-import { toQueryString, type Recipe } from "$lib/ingredients";
-import { type Cereals } from "$lib/cereals";
-import { prepare } from "$lib/cereals";
+import { toQueryString, type Recipe } from "#lib/ingredients.js";
+import { type Cereals } from "#lib/cereals.js";
+import { prepare } from "#lib/cereals.js";
 import { textmateSyntaxRules } from "./textmate";
 
 export function toVSCode(recipe: Recipe): string {

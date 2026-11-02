@@ -1,4 +1,4 @@
-import { type SelectOption } from "$lib/selectOptions";
+import { type SelectOption } from "#lib/selectOptions.js";
 
 import { toAlacritty } from "./alacritty";
 import { toFoot } from "./foot";

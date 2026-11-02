@@ -1,9 +1,9 @@
 <script lang="ts">
   import Header from "../Header.svelte";
-  import { prepare } from "$lib/cereals";
-  import { defaultRecipe } from "$lib/ingredients";
-  import { generateCssColors } from "$lib/css";
-  import { faviconDataUrl } from "$lib/favicon";
+  import { prepare } from "#lib/cereals.js";
+  import { defaultRecipe } from "#lib/ingredients.js";
+  import { generateCssColors } from "#lib/css.js";
+  import { faviconDataUrl } from "#lib/favicon.js";
   import { resolve } from "$app/paths";
 
   const cereals = prepare(defaultRecipe);

@@ -1,4 +1,4 @@
-import type { Cereals } from "$lib/cereals";
+import type { Cereals } from "#lib/cereals.js";
 
 /**
  *  Textmate ("TM") syntax is used by many editors and syntax highlighting engines.
